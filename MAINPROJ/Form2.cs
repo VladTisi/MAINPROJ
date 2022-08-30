@@ -62,9 +62,16 @@ namespace PrisonBreakProj
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkLog_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkLog.Checked)
+            {
+               logpass.PasswordChar = '\0';
+            }
+            else
+            {
+                logpass.PasswordChar = '*';
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -78,6 +85,20 @@ namespace PrisonBreakProj
         }
 
         private void checkAut_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkAut.Checked)
+            {
+                autpass.PasswordChar = '\0';
+                conpass.PasswordChar = '\0';
+            }
+            else
+            {
+                autpass.PasswordChar = '*';
+                conpass.PasswordChar = '*';
+            }
+        }
+
+        private void autpass_TextChanged(object sender, EventArgs e)
         {
 
         }
