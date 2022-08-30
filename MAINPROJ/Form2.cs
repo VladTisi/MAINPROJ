@@ -27,15 +27,15 @@ namespace PrisonBreakProj
 
         }
 
-        private void AUTENTIFICARE_Click(object sender, EventArgs e, SqlConnection con)
+        private void AUTENTIFICARE_Click(object sender, EventArgs e)
         {
            if(autemail.Text =="" && autpass.Text=="" && conpass.Text =="")
             {
                 MessageBox.Show("Campurile nu sunt completate");
             }
-          /* else if(autpass.Text == conpass.Text)
+           else if(autpass.Text == conpass.Text)
             {
-                SqlConnection con = Common.GetConnection();
+                OleDbConnection con = Common.GetConnection();
                 con.Open();
                 string register = "INSERT INTO Angajati VALUES('" + autpass.Text + "','" + autpass.Text + "')" ;
                 cmd = new OleDbCommand(register, con);
@@ -49,7 +49,7 @@ namespace PrisonBreakProj
             {
                 MessageBox.Show("Parolele nu se potrivesc!");
             }
-          */
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
