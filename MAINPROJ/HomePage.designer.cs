@@ -322,6 +322,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
             this.pictureBox1.Location = new System.Drawing.Point(695, 5);
             this.pictureBox1.Name = "pictureBox1";
