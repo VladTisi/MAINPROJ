@@ -58,13 +58,22 @@ namespace MAINPROJ
         {
             Application.Exit();
         }
-
-        private void showTable()
+        
+    private void showTable()
         {
+
+            DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
+            uninstallButtonColumn.Name = "Profil";
+            uninstallButtonColumn.Text = "*";
+            int columnIndex = 0;
+            if (tabelAngajati.Columns["Profil"] == null)
+            {
+                tabelAngajati.Columns.Insert(columnIndex, uninstallButtonColumn);
+            }
             string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
             using (SqlConnection con = new SqlConnection(constring))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT Angajat.Poza, Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia],Angajat.Data_Angajarii as [Data angajarii] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia],Angajat.Data_Angajarii as [Data angajarii] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id", con))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
@@ -77,8 +86,19 @@ namespace MAINPROJ
                     }
                 }
             }
+            tabelAngajati.CellClick += dataGridViewSoftware_CellClick;
+        }
+        private void dataGridViewSoftware_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == tabelAngajati.Columns["Profil"].Index)
+            {
+                //Do something with your button.
+            }
         }
 
+        private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }
