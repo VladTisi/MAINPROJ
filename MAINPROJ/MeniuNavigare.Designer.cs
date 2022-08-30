@@ -40,15 +40,18 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.tabelAngajati = new System.Windows.Forms.DataGridView();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebar
@@ -65,9 +68,8 @@
             this.sidebar.MaximumSize = new System.Drawing.Size(200, 450);
             this.sidebar.MinimumSize = new System.Drawing.Size(60, 450);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(200, 450);
+            this.sidebar.Size = new System.Drawing.Size(60, 450);
             this.sidebar.TabIndex = 0;
-            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
             // 
             // panel1
             // 
@@ -175,20 +177,42 @@
             this.button4.Text = "           Lista Angajati";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // Logo
             // 
-            this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(484, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(169, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.Logo.BackColor = System.Drawing.Color.Transparent;
+            this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
+            this.Logo.Location = new System.Drawing.Point(360, 37);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(169, 50);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Logo.TabIndex = 1;
+            this.Logo.TabStop = false;
             // 
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 10;
             this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick_1);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(767, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(33, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "X";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // tabelAngajati
+            // 
+            this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelAngajati.Location = new System.Drawing.Point(175, 115);
+            this.tabelAngajati.Name = "tabelAngajati";
+            this.tabelAngajati.Size = new System.Drawing.Size(527, 298);
+            this.tabelAngajati.TabIndex = 7;
             // 
             // MeniuNavigare
             // 
@@ -196,17 +220,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.tabelAngajati);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.Logo);
             this.Controls.Add(this.sidebar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MeniuNavigare";
             this.Text = "MeniuNavigare";
+            this.Load += new System.EventHandler(this.MeniuNavigare_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,8 +252,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Button menuButton;
         private System.Windows.Forms.Timer sidebarTimer;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView tabelAngajati;
     }
 }
