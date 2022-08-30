@@ -10,10 +10,13 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 
+
+
 namespace PrisonBreakProj
 {
     public partial class LogAuten : Form
     {
+      
         public LogAuten()
         {
             InitializeComponent();
@@ -33,11 +36,11 @@ namespace PrisonBreakProj
             {
                 MessageBox.Show("Campurile nu sunt completate");
             }
-           else if(autpass.Text == conpass.Text)
+           else if(autpass.Text == conpass.Text && autemail.Text!="")
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
-                string register = "INSERT INTO Testing(Email,Parola) VALUES('" + autpass.Text + "','" + autpass.Text + "')" ;
+                string register = "INSERT INTO Login(Email,Parola) VALUES('" + autpass.Text + "','" + autpass.Text + "')" ;
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -100,6 +103,13 @@ namespace PrisonBreakProj
 
         private void autpass_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void logare_Click(object sender, EventArgs e)
+        {
+           //string username,password;
+
 
         }
     }
