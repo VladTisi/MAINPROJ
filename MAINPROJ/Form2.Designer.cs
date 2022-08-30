@@ -49,8 +49,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkLog = new System.Windows.Forms.CheckBox();
+            this.checkAut = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -89,8 +89,7 @@
             this.AUTENTIFICARE.TabIndex = 2;
             this.AUTENTIFICARE.Text = "INREGISTRARE";
             this.AUTENTIFICARE.UseVisualStyleBackColor = true;
-            LogAuten logAuten = this;
-            logAuten.AUTENTIFICARE.Click += new System.EventHandler(this.AUTENTIFICARE_Click);
+            this.AUTENTIFICARE.Click += new System.EventHandler(this.AUTENTIFICARE_Click);
             // 
             // logmail
             // 
@@ -258,30 +257,31 @@
             this.pictureBox6.TabIndex = 19;
             this.pictureBox6.TabStop = false;
             // 
-            // checkBox1
+            // checkLog
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(80, 303);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(120, 17);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "Afiseaza Parola";
-            this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkLog.AutoSize = true;
+            this.checkLog.BackColor = System.Drawing.Color.Transparent;
+            this.checkLog.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkLog.Location = new System.Drawing.Point(80, 303);
+            this.checkLog.Name = "checkLog";
+            this.checkLog.Size = new System.Drawing.Size(120, 17);
+            this.checkLog.TabIndex = 20;
+            this.checkLog.Text = "Afiseaza Parola";
+            this.checkLog.UseVisualStyleBackColor = false;
+            this.checkLog.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // checkBox3
+            // checkAut
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox3.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(647, 347);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(120, 17);
-            this.checkBox3.TabIndex = 22;
-            this.checkBox3.Text = "Afiseaza Parola";
-            this.checkBox3.UseVisualStyleBackColor = false;
+            this.checkAut.AutoSize = true;
+            this.checkAut.BackColor = System.Drawing.Color.Transparent;
+            this.checkAut.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkAut.Location = new System.Drawing.Point(647, 347);
+            this.checkAut.Name = "checkAut";
+            this.checkAut.Size = new System.Drawing.Size(120, 17);
+            this.checkAut.TabIndex = 22;
+            this.checkAut.Text = "Afiseaza Parola";
+            this.checkAut.UseVisualStyleBackColor = false;
+            this.checkAut.CheckedChanged += new System.EventHandler(this.checkAut_CheckedChanged);
             // 
             // LogAuten
             // 
@@ -289,8 +289,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(914, 491);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkAut);
+            this.Controls.Add(this.checkLog);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -349,7 +349,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkLog;
+        private System.Windows.Forms.CheckBox checkAut;
     }
 }
