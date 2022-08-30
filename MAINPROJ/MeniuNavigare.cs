@@ -12,14 +12,35 @@ namespace MAINPROJ
 {
     public partial class MeniuNavigare : Form
     {
+        bool sidebarExpand;
         public MeniuNavigare()
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void sidebarTimer_Tick(object sender, EventArgs e)
         {
-
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
+        }
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
         }
     }
 }
