@@ -136,6 +136,7 @@
             // 
             this.logpass.Location = new System.Drawing.Point(80, 272);
             this.logpass.Name = "logpass";
+            this.logpass.PasswordChar = '*';
             this.logpass.Size = new System.Drawing.Size(142, 20);
             this.logpass.TabIndex = 7;
             // 
@@ -196,8 +197,10 @@
             // 
             this.autpass.Location = new System.Drawing.Point(647, 276);
             this.autpass.Name = "autpass";
+            this.autpass.PasswordChar = '*';
             this.autpass.Size = new System.Drawing.Size(135, 20);
             this.autpass.TabIndex = 13;
+            this.autpass.TextChanged += new System.EventHandler(this.autpass_TextChanged);
             // 
             // label6
             // 
@@ -214,6 +217,7 @@
             // 
             this.conpass.Location = new System.Drawing.Point(647, 321);
             this.conpass.Name = "conpass";
+            this.conpass.PasswordChar = '*';
             this.conpass.Size = new System.Drawing.Size(135, 20);
             this.conpass.TabIndex = 15;
             this.conpass.TextChanged += new System.EventHandler(this.conpass_TextChanged);
@@ -269,7 +273,7 @@
             this.checkLog.TabIndex = 20;
             this.checkLog.Text = "Afiseaza Parola";
             this.checkLog.UseVisualStyleBackColor = false;
-            this.checkLog.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkLog.CheckedChanged += new System.EventHandler(this.checkLog_CheckedChanged);
             // 
             // checkAut
             // 
