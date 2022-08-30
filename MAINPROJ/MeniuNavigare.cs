@@ -17,7 +17,12 @@ namespace MAINPROJ
         {
             InitializeComponent();
         }
-        private void sidebarTimer_Tick(object sender, EventArgs e)
+
+        private void menuButton_Click_1(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+        private void sidebarTimer_Tick_1(object sender, EventArgs e)
         {
             if (sidebarExpand)
             {
@@ -38,9 +43,10 @@ namespace MAINPROJ
                 }
             }
         }
-        private void menuButton_Click(object sender, EventArgs e)
+
+        private void sidebar_Paint(object sender, PaintEventArgs e)
         {
-            sidebarTimer.Start();
+
         }
     }
 }

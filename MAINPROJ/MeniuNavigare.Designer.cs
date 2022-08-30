@@ -54,17 +54,20 @@
             // sidebar
             // 
             this.sidebar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.sidebar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel2);
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Controls.Add(this.panel5);
-            this.sidebar.Location = new System.Drawing.Point(0, 0);
+            this.sidebar.Location = new System.Drawing.Point(-4, 0);
+            this.sidebar.Margin = new System.Windows.Forms.Padding(0);
             this.sidebar.MaximumSize = new System.Drawing.Size(200, 450);
             this.sidebar.MinimumSize = new System.Drawing.Size(60, 450);
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(200, 450);
             this.sidebar.TabIndex = 0;
+            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
             // 
             // panel1
             // 
@@ -80,12 +83,13 @@
             this.menuButton.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuButton.Image = global::MAINPROJ.Properties.Resources.rsz_menu_icon_icon_iconscom_71858;
             this.menuButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.menuButton.Location = new System.Drawing.Point(1, 8);
+            this.menuButton.Location = new System.Drawing.Point(-3, 8);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(194, 51);
+            this.menuButton.Size = new System.Drawing.Size(200, 51);
             this.menuButton.TabIndex = 2;
             this.menuButton.Text = "      Meniu";
             this.menuButton.UseVisualStyleBackColor = false;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click_1);
             // 
             // panel2
             // 
@@ -101,9 +105,9 @@
             this.button1.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::MAINPROJ.Properties.Resources.rsz_homeicon;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 3);
+            this.button1.Location = new System.Drawing.Point(-3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 57);
+            this.button1.Size = new System.Drawing.Size(200, 57);
             this.button1.TabIndex = 1;
             this.button1.Text = "      Home";
             this.button1.UseVisualStyleBackColor = false;
@@ -122,9 +126,9 @@
             this.button2.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = global::MAINPROJ.Properties.Resources.rsz_calendaricon;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 3);
+            this.button2.Location = new System.Drawing.Point(-1, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 57);
+            this.button2.Size = new System.Drawing.Size(198, 57);
             this.button2.TabIndex = 1;
             this.button2.Text = "       Concediile \r\n      mele";
             this.button2.UseVisualStyleBackColor = false;
@@ -143,9 +147,9 @@
             this.button3.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::MAINPROJ.Properties.Resources.rsz_teamicon;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 3);
+            this.button3.Location = new System.Drawing.Point(-2, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 57);
+            this.button3.Size = new System.Drawing.Size(199, 57);
             this.button3.TabIndex = 1;
             this.button3.Text = "        Echipa";
             this.button3.UseVisualStyleBackColor = false;
@@ -164,9 +168,9 @@
             this.button4.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = global::MAINPROJ.Properties.Resources.rsz_istockphoto_1136653100_170667a;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 3);
+            this.button4.Location = new System.Drawing.Point(-1, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(194, 57);
+            this.button4.Size = new System.Drawing.Size(198, 57);
             this.button4.TabIndex = 1;
             this.button4.Text = "           Lista Angajati";
             this.button4.UseVisualStyleBackColor = false;
@@ -184,6 +188,7 @@
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 10;
+            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick_1);
             // 
             // MeniuNavigare
             // 
