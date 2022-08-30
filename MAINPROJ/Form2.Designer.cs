@@ -166,6 +166,7 @@
             // 
             this.autemail.Location = new System.Drawing.Point(647, 231);
             this.autemail.Name = "autemail";
+            this.autemail.PasswordChar = '*';
             this.autemail.Size = new System.Drawing.Size(135, 20);
             this.autemail.TabIndex = 10;
             // 
