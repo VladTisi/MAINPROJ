@@ -64,6 +64,12 @@
     <Compile Include="CerereConcediu.Designer.cs">
       <DependentUpon>CerereConcediu.cs</DependentUpon>
     </Compile>
+    <Compile Include="MeniuGestionareConcedii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuGestionareConcedii.Designer.cs">
+      <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeniuNavigare.cs">
       <SubType>Form</SubType>
     </Compile>
