@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="ConcediiPersonale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConcediiPersonale.Designer.cs">
+      <DependentUpon>ConcediiPersonale.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,6 +69,14 @@
     </Compile>
     <Compile Include="CerereConcediu.Designer.cs">
       <DependentUpon>CerereConcediu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeniuGestionareConcedii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuGestionareConcedii.Designer.cs">
+      <DependentUpon>MeniuGestionareConcedii.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="MeniuNavigare.cs">
       <SubType>Form</SubType>
@@ -87,6 +101,9 @@
     <EmbeddedResource Include="CerereConcediu.resx">
       <DependentUpon>CerereConcediu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConcediiPersonale.resx">
+      <DependentUpon>ConcediiPersonale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +112,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MeniuGestionareConcedii.resx">
       <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MeniuGestionareConcedii.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
