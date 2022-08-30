@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogAuten));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.logare = new System.Windows.Forms.Button();
             this.AUTENTIFICARE = new System.Windows.Forms.Button();
             this.logmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,15 +69,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // logare
             // 
-            this.button1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(80, 325);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "AUTENTIFICARE";
-            this.button1.UseVisualStyleBackColor = true;
+            this.logare.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logare.Location = new System.Drawing.Point(80, 325);
+            this.logare.Name = "logare";
+            this.logare.Size = new System.Drawing.Size(179, 34);
+            this.logare.TabIndex = 1;
+            this.logare.Text = "AUTENTIFICARE";
+            this.logare.UseVisualStyleBackColor = true;
+            this.logare.Click += new System.EventHandler(this.logare_Click);
             // 
             // AUTENTIFICARE
             // 
@@ -313,7 +314,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logmail);
             this.Controls.Add(this.AUTENTIFICARE);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.logare);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox6);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -335,7 +336,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button logare;
         private System.Windows.Forms.Button AUTENTIFICARE;
         private System.Windows.Forms.TextBox logmail;
         private System.Windows.Forms.Label label1;

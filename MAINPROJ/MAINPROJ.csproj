@@ -93,6 +93,9 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MeniuGestionareConcedii.resx">
+      <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
     </EmbeddedResource>
