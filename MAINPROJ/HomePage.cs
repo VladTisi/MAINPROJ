@@ -56,7 +56,13 @@ namespace PrisonBreakProj
 
         private void button2_Click(object sender, EventArgs e)
         {
+            btnUpdatePoza.Visible = false;
 
+            btnSalvare.Visible = false;
+
+            txtEmail.Enabled = false;
+
+            txtTelefon.Enabled = false;
         }
 
         
@@ -74,6 +80,11 @@ namespace PrisonBreakProj
         private void btnUpdatePoza_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
