@@ -89,7 +89,8 @@
             this.AUTENTIFICARE.TabIndex = 2;
             this.AUTENTIFICARE.Text = "INREGISTRARE";
             this.AUTENTIFICARE.UseVisualStyleBackColor = true;
-           // this.AUTENTIFICARE.Click += new System.EventHandler(this.AUTENTIFICARE_Click);
+            LogAuten logAuten = this;
+            logAuten.AUTENTIFICARE.Click += new System.EventHandler(this.AUTENTIFICARE_Click);
             // 
             // logmail
             // 
