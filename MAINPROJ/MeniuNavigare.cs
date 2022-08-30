@@ -23,9 +23,6 @@ namespace MAINPROJ
             showTable();
         }
 
-        
-    
-
         private void menuButton_Click_1(object sender, EventArgs e)
         {
             sidebarTimer.Start();
@@ -34,8 +31,6 @@ namespace MAINPROJ
         {
             if (sidebarExpand)
             {
-                Logo.Location = new Point(330, 37);
-                tabelAngajati.Location = new Point(175, 115);
                 sidebar.Width -= 10;
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
@@ -45,8 +40,6 @@ namespace MAINPROJ
             }
             else
             {
-                Logo.Location = new Point(360, 37);
-                tabelAngajati.Location = new Point(205, 115);
                 sidebar.Width += 10;
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {

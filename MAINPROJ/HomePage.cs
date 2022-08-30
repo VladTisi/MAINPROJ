@@ -13,6 +13,7 @@ namespace PrisonBreakProj
 {
     public partial class HomePage : Form
     {
+        bool sidebarExpand;
         public HomePage()
         {
             InitializeComponent();
@@ -49,11 +50,6 @@ namespace PrisonBreakProj
 
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
@@ -85,6 +81,38 @@ namespace PrisonBreakProj
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
         }
     }
 }
