@@ -37,7 +37,7 @@ namespace PrisonBreakProj
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
-                string register = "INSERT INTO Angajati VALUES('" + autpass.Text + "','" + autpass.Text + "')" ;
+                string register = "INSERT INTO Testing(Email,Parola) VALUES('" + autpass.Text + "','" + autpass.Text + "')" ;
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -73,6 +73,11 @@ namespace PrisonBreakProj
         }
 
         private void conpass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkAut_CheckedChanged(object sender, EventArgs e)
         {
 
         }
