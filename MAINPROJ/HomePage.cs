@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,8 @@ namespace PrisonBreakProj
         {
             InitializeComponent();
         }
-
+        
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -48,6 +50,28 @@ namespace PrisonBreakProj
         }
 
         private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+        private void button6_Click(object sender, EventArgs e)
+        {
+            txtEmail.Enabled = true;
+
+            txtTelefon.Enabled = true;
+
+            btnSalvare.Visible = true;
+
+            btnUpdatePoza.Visible = true;
+        }
+
+        private void btnUpdatePoza_Click(object sender, EventArgs e)
         {
 
         }
