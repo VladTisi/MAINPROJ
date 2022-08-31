@@ -121,6 +121,9 @@
   <data name="rsz_teamicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_teamicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Sample_User_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sample_User_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Prison_Break_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Prison_Break_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,10 +136,13 @@
   <data name="rsz_istockphoto-1136653100-170667a" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_istockphoto-1136653100-170667a.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rsz_menu_icon_icon-iconscom_71858" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rsz_menu_icon_icon-iconscom_71858.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="rsz_calendaricon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_calendaricon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rsz_menu_icon_icon-iconscom_71858" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rsz_menu_icon_icon-iconscom_71858.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lock-icon-11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock-icon-11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
