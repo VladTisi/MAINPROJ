@@ -78,9 +78,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MeniuGestionareConcedii.Designer.cs">
-      <DependentUpon>MeniuGestionareConcedii.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>MeniuGestionareConcedii.resx</DependentUpon>
     </Compile>
     <Compile Include="MeniuNavigare.cs">
       <SubType>Form</SubType>
@@ -117,6 +117,7 @@
     <EmbeddedResource Include="MeniuGestionareConcedii.resx">
       <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>MeniuGestionareConcedii.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
