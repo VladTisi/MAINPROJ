@@ -25,6 +25,10 @@ namespace MAINPROJ
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            var otherform = new CerereConcediu();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
 
         }
         ///Meniu Navigare
