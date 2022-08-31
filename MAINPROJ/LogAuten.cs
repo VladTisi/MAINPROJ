@@ -190,8 +190,23 @@ namespace MAINPROJ
             }
            
 
+            if (parola == password)
+            {
+                OleDbConnection conn2 = Common.GetConnection();
+                cmd2 = new OleDbCommand($"SELECT AngajatId FROM Login WHERE Email='{email}'");
+                cmd2.Connection = conn2;
+                conn2.Open();
+                angajatId = (int)cmd2.ExecuteScalar();
+                conn2.Close();
+                this.Hide();
+                var otherform = new HomePage(angajatId);
+                otherform.Closed += (s, args) => this.Close();
+                otherform.Show();
+            }
 
         }
+
+
 
         private void autemail_TextChanged(object sender, EventArgs e)
         {

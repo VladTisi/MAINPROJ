@@ -42,10 +42,8 @@
             this.labelPrenume = new System.Windows.Forms.Label();
             this.btnModificareDate = new System.Windows.Forms.Button();
             this.btnSalvareModificari = new System.Windows.Forms.Button();
-            this.labelId = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefon = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtNume = new System.Windows.Forms.TextBox();
             this.txtPrenume = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
@@ -203,9 +201,9 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(615, 456);
+            this.btnModificareDate.Location = new System.Drawing.Point(686, 482);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(145, 48);
+            this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;
@@ -213,7 +211,7 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(615, 495);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(686, 169);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
             this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
             this.btnSalvareModificari.TabIndex = 34;
@@ -221,19 +219,6 @@
             this.btnSalvareModificari.UseVisualStyleBackColor = true;
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.BackColor = System.Drawing.Color.Transparent;
-            this.labelId.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelId.ForeColor = System.Drawing.Color.White;
-            this.labelId.Location = new System.Drawing.Point(231, 210);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(25, 19);
-            this.labelId.TabIndex = 35;
-            this.labelId.Text = "Id";
-            this.labelId.Click += new System.EventHandler(this.labelId_Click);
             // 
             // txtEmail
             // 
@@ -250,14 +235,6 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(334, 209);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 38;
             // 
             // txtNume
             // 
@@ -507,10 +484,8 @@
             this.Controls.Add(this.txtSex);
             this.Controls.Add(this.txtPrenume);
             this.Controls.Add(this.txtNume);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtTelefon);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.labelId);
             this.Controls.Add(this.btnSalvareModificari);
             this.Controls.Add(this.btnModificareDate);
             this.Controls.Add(this.labelFunctie);
@@ -555,10 +530,8 @@
         private System.Windows.Forms.Label labelPrenume;
         private System.Windows.Forms.Button btnModificareDate;
         private System.Windows.Forms.Button btnSalvareModificari;
-        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtTelefon;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNume;
         private System.Windows.Forms.TextBox txtPrenume;
         private System.Windows.Forms.TextBox txtSex;
