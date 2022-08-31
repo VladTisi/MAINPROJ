@@ -68,7 +68,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(292, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(273, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(329, 107);
             this.pictureBox1.TabIndex = 0;
@@ -87,7 +87,7 @@
             // 
             // dtpDataIncepere
             // 
-            this.dtpDataIncepere.Location = new System.Drawing.Point(561, 195);
+            this.dtpDataIncepere.Location = new System.Drawing.Point(491, 200);
             this.dtpDataIncepere.Name = "dtpDataIncepere";
             this.dtpDataIncepere.Size = new System.Drawing.Size(200, 20);
             this.dtpDataIncepere.TabIndex = 2;
@@ -95,7 +95,7 @@
             // 
             // dtpDataSfarsit
             // 
-            this.dtpDataSfarsit.Location = new System.Drawing.Point(561, 246);
+            this.dtpDataSfarsit.Location = new System.Drawing.Point(491, 251);
             this.dtpDataSfarsit.Name = "dtpDataSfarsit";
             this.dtpDataSfarsit.Size = new System.Drawing.Size(200, 20);
             this.dtpDataSfarsit.TabIndex = 3;
@@ -104,8 +104,9 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Stencil", 10F);
-            this.label1.Location = new System.Drawing.Point(376, 200);
+            this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Snow;
+            this.label1.Location = new System.Drawing.Point(316, 200);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 4;
@@ -114,8 +115,9 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Stencil", 10F);
-            this.label2.Location = new System.Drawing.Point(376, 251);
+            this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Snow;
+            this.label2.Location = new System.Drawing.Point(316, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 20);
             this.label2.TabIndex = 5;
@@ -126,7 +128,7 @@
             this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource;
             this.cmbTipConcediu.DisplayMember = "Nume";
             this.cmbTipConcediu.FormattingEnabled = true;
-            this.cmbTipConcediu.Location = new System.Drawing.Point(561, 300);
+            this.cmbTipConcediu.Location = new System.Drawing.Point(491, 301);
             this.cmbTipConcediu.Name = "cmbTipConcediu";
             this.cmbTipConcediu.Size = new System.Drawing.Size(200, 21);
             this.cmbTipConcediu.TabIndex = 6;
@@ -146,8 +148,9 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Stencil", 10F);
-            this.label3.Location = new System.Drawing.Point(376, 300);
+            this.label3.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Snow;
+            this.label3.Location = new System.Drawing.Point(316, 300);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 23);
             this.label3.TabIndex = 7;
@@ -304,8 +307,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MAINPROJ.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(930, 530);
+            this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
+            this.ClientSize = new System.Drawing.Size(921, 530);
             this.ControlBox = false;
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.button2);
