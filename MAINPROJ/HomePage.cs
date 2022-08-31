@@ -22,23 +22,28 @@ namespace MAINPROJ
         }
         private void HomePage_Load(object sender, EventArgs e)
         {
-            String Nume;
-            String Prenume;
-            String Functie;
-            String Echipa;
-            String Email;
-            int Id;
-            char Sex;
-            String nrTel;
-            int Overtime;
-            int Salariu;
-            String DataA;
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            SqlConnection con = new SqlConnection(constring);
-            con.Open();
-            
-           
+            //OleDbConnection con = Common.GetConnection();
+            //con.Open();
+            //String Nume=$"SELECT Nume from Angajat Where ";
+            //String Prenume= $"SELECT Prenume from Angajat Where "; 
+            //String Functie= $"SELECT Functie from Angajat Where ";
+            //String Echipa = $"SELECT Echipa from Angajat Where ";
+            //String Email = $"SELECT Email from Login Where Login.Id ";
+            //int Id;
+            //String Sex = $"SELECT Sex from Angajat Where ";
+            //String nrTel = $"SELECT Numar_Telefon from Angajat Where ";
+            //int Overtime;
+            //int Salariu;
+            //String DataA;
+          
 
+
+
+
+
+
+
+            //con.Close();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -114,7 +119,10 @@ namespace MAINPROJ
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var otherform = new Echipa();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

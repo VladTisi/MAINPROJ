@@ -48,7 +48,10 @@ namespace MAINPROJ
         }
         private void button4_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var otherform = new Echipa();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -56,6 +59,11 @@ namespace MAINPROJ
             var otherform = new MeniuNavigare();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -78,11 +86,6 @@ namespace MAINPROJ
                     sidebarTimer.Stop();
                 }
             }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
