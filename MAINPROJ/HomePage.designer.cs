@@ -290,7 +290,7 @@
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
-            this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
+            //this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
             // txtSalariu
             // 
