@@ -16,13 +16,16 @@ namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
+        private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
         public int UserId { get; set; }
-        public HomePage()
+        public HomePage(int angajatId)
+
+
         {
             InitializeComponent();
-            
+            this.angajatId = angajatId;
         }
 
         private void HomePage_Load(object sender, EventArgs e)
@@ -142,7 +145,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare();
+            var otherform = new MeniuNavigare(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -150,7 +153,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale();
+            var otherform = new ConcediiPersonale(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -158,7 +161,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa();
+            var otherform = new Echipa(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -166,7 +169,7 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

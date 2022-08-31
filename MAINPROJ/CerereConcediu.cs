@@ -14,11 +14,12 @@ using System.Windows.Forms;
 namespace MAINPROJ
 {
     public partial class CerereConcediu : Form
-    {
-        int angajatIdTemp = 5;
+    { 
+       
+        private int angajatId;
         OleDbCommand cmd = new OleDbCommand();
         bool sidebarExpand;
-        public CerereConcediu()
+        public CerereConcediu(int angajatId)
         {
             InitializeComponent();
         }
@@ -88,7 +89,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -96,7 +97,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -104,7 +105,7 @@ namespace MAINPROJ
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -112,7 +113,7 @@ namespace MAINPROJ
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare();
+            var otherform = new MeniuNavigare(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

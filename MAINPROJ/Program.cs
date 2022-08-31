@@ -7,8 +7,10 @@ using System.Windows.Forms;
 
 namespace MAINPROJ
 {
+    
     internal static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,7 +19,7 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomePage());
+            Application.Run(new HomePage(angajatId));
             
         }
     }
