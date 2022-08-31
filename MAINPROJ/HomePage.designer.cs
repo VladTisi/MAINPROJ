@@ -190,9 +190,10 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(790, 121);
+            this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificareDate.Location = new System.Drawing.Point(757, 121);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(112, 23);
+            this.btnModificareDate.Size = new System.Drawing.Size(145, 48);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;
@@ -200,9 +201,10 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(790, 416);
+            this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvareModificari.Location = new System.Drawing.Point(757, 413);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
-            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
+            this.btnSalvareModificari.Size = new System.Drawing.Size(145, 48);
             this.btnSalvareModificari.TabIndex = 34;
             this.btnSalvareModificari.Text = "Salvare modificari";
             this.btnSalvareModificari.UseVisualStyleBackColor = true;
@@ -290,7 +292,6 @@
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
-            //this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
             // txtSalariu
             // 
@@ -322,9 +323,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(673, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(625, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(207, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(255, 92);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
