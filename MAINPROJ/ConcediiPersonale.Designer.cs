@@ -219,7 +219,7 @@
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(891, 0);
+            this.button6.Location = new System.Drawing.Point(888, 0);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(33, 23);
             this.button6.TabIndex = 51;
