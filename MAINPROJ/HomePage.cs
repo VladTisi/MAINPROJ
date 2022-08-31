@@ -9,36 +9,73 @@ using System.Text;
 using System.Threading.Tasks;
 using MAINPROJ;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
         bool sidebarExpand;
-        public HomePage()
+        OleDbCommand cmd = new OleDbCommand();
+        public int UserId { get; set; }
+        public HomePage(int userId)
         {
             InitializeComponent();
+            UserId = userId;
         }
         
         private void button2_Click(object sender, EventArgs e)
-        {
+        { 
             btnUpdatePoza.Visible = false;
 
-            btnSalvare.Visible = false;
+            btnSalvareModificari.Visible = false;
 
             txtEmail.Enabled = false;
 
             txtTelefon.Enabled = false;
+
+            //Accesibile de utilizator
+
+            OleDbConnection con = Common.GetConnection();
+            con.Open();
+            
+            string numartelefon = txtTelefon.Text;
+            string email = txtEmail.Text;
+            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+            cmd = new OleDbCommand(modifTel, con);
+            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
+
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            //Accesibile de admin/manager
+
+           //OleDbConnection con = Common.GetConnection();
+           // con.Open();
+
+           // string numartelefon = txtTelefon.Text;
+           // string email = txtEmail.Text;
+           // string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+           // cmd = new OleDbCommand(modifTel, con);
+           // string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
+
+
+           //cmd.ExecuteNonQuery();
+           //con.Close();
+
+
+
         }
 
-        
+
         private void button6_Click(object sender, EventArgs e)
         {
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
 
-            btnSalvare.Visible = true;
+            btnSalvareModificari.Visible = true;
 
             btnUpdatePoza.Visible = true;
         }
@@ -87,9 +124,15 @@ namespace MAINPROJ
         private void HomePage_Load(object sender, EventArgs e)
         {
 
+            //UserId = int =      $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOvertime_TextChanged(object sender, EventArgs e)
         {
 
         }
