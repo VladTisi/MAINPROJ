@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MAINPROJ;
 
 namespace MAINPROJ
 {
@@ -59,7 +60,7 @@ namespace MAINPROJ
             string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
             using (SqlConnection con = new SqlConnection(constring))
             {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {3}", con))
+                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {1}", con))
                 {
 
                     cmd.CommandType = CommandType.Text;
@@ -68,7 +69,7 @@ namespace MAINPROJ
                         using (DataTable dt = new DataTable())
                         {
                             sda.Fill(dt);
-                            tablelConcedii.DataSource = dt;
+                            dataGridView1.DataSource = dt;
                         }
                     }
                 }
@@ -143,11 +144,10 @@ namespace MAINPROJ
         private void ConcediiPersonale_Load(object sender, EventArgs e)
         {
             showTable();
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
             showTableREF();
         }
+
+    
+     
     }
 }
