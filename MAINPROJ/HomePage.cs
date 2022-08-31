@@ -45,7 +45,7 @@ namespace PrisonBreakProj
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void labelFunctie(object sender, EventArgs e)
         {
 
         }
