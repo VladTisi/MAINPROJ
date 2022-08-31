@@ -33,33 +33,30 @@ namespace MAINPROJ
         {
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
-
-            string numeAngajat = $"SELECT Nume FROM Angajat WHERE Id = '{angajatId}'";
-            OleDbCommand cmd2 = new OleDbCommand(numeAngajat, con3);
+            OleDbCommand cmd = new OleDbCommand();
             
-            numeAngajat =(string) cmd2.ExecuteScalar();
-            
-            txtNume.Text = numeAngajat;
-
+            string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+           
+            while (rdr.Read())
+            {
+                txtNume.Text = rdr.GetString(0);
+                txtPrenume.Text = rdr.GetString(1);
+                txtSalariu.Text = rdr.GetValue(2).ToString();
+                txtOvertime.Text = rdr.GetValue(3).ToString();
+                txtTelefon.Text = rdr.GetValue(4).ToString();
+                txtSex.Text = rdr.GetValue(5).ToString();
+                txtDataAngajare.Text = rdr.GetValue(6).ToString();
+                txtFunctie.Text = rdr.GetValue(7).ToString();
+                txtEchipa.Text = rdr.GetValue(8).ToString();
+                txtEmail.Text = rdr.GetValue(9).ToString();
+            }
             con3.Close();
 
 
 
 
-            //OleDbConnection con = Common.GetConnection();
-            //con.Open();
-            //String Nume=$"SELECT Nume from Angajat Where ";
-            //String Prenume= $"SELECT Prenume from Angajat Where "; 
-            //String Functie= $"SELECT Functie from Angajat Where ";
-            //String Echipa = $"SELECT Echipa from Angajat Where ";
-            //String Email = $"SELECT Email from Login Where Login.Id ";
-            //int Id;
-            //String Sex = $"SELECT Sex from Angajat Where ";
-            //String nrTel = $"SELECT Numar_Telefon from Angajat Where ";
-            //int Overtime;
-            //int Salariu;
-            //String DataA;
-            Console.WriteLine(angajatId);
 
 
 
@@ -68,7 +65,14 @@ namespace MAINPROJ
 
 
 
-            //con.Close();
+
+
+
+
+
+
+
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
