@@ -19,7 +19,7 @@ namespace MAINPROJ
         private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
-        private int angajatId;
+        
 
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -31,6 +31,21 @@ namespace MAINPROJ
 
         private void HomePage_Load(object sender, EventArgs e)
         {
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+
+            string numeAngajat = $"SELECT Nume FROM Angajat WHERE Id = '{angajatId}'";
+            OleDbCommand cmd2 = new OleDbCommand(numeAngajat, con3);
+            
+            numeAngajat =(string) cmd2.ExecuteScalar();
+            
+            txtNume.Text = numeAngajat;
+
+            con3.Close();
+
+
+
+
             //OleDbConnection con = Common.GetConnection();
             //con.Open();
             //String Nume=$"SELECT Nume from Angajat Where ";
@@ -174,6 +189,48 @@ namespace MAINPROJ
             var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void txtNume_TextChanged(object sender, EventArgs e)
+        {
+
+          
+
+        }
+
+        private void txtPrenume_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSex_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFunctie_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOvertime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEchipa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSalariu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDataAngajare_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

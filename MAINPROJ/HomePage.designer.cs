@@ -42,10 +42,8 @@
             this.labelPrenume = new System.Windows.Forms.Label();
             this.btnModificareDate = new System.Windows.Forms.Button();
             this.btnSalvareModificari = new System.Windows.Forms.Button();
-            this.labelId = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefon = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtNume = new System.Windows.Forms.TextBox();
             this.txtPrenume = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
@@ -209,16 +207,6 @@
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
             // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelId.Location = new System.Drawing.Point(371, 27);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(20, 16);
-            this.labelId.TabIndex = 35;
-            this.labelId.Text = "Id";
-            // 
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
@@ -235,14 +223,6 @@
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
             // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(442, 25);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 38;
-            // 
             // txtNume
             // 
             this.txtNume.Enabled = false;
@@ -250,6 +230,7 @@
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(100, 20);
             this.txtNume.TabIndex = 39;
+            this.txtNume.TextChanged += new System.EventHandler(this.txtNume_TextChanged);
             // 
             // txtPrenume
             // 
@@ -258,6 +239,7 @@
             this.txtPrenume.Name = "txtPrenume";
             this.txtPrenume.Size = new System.Drawing.Size(100, 20);
             this.txtPrenume.TabIndex = 40;
+            this.txtPrenume.TextChanged += new System.EventHandler(this.txtPrenume_TextChanged);
             // 
             // txtSex
             // 
@@ -266,6 +248,7 @@
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 41;
+            this.txtSex.TextChanged += new System.EventHandler(this.txtSex_TextChanged);
             // 
             // txtFunctie
             // 
@@ -274,6 +257,7 @@
             this.txtFunctie.Name = "txtFunctie";
             this.txtFunctie.Size = new System.Drawing.Size(100, 20);
             this.txtFunctie.TabIndex = 42;
+            this.txtFunctie.TextChanged += new System.EventHandler(this.txtFunctie_TextChanged);
             // 
             // txtEchipa
             // 
@@ -282,6 +266,7 @@
             this.txtEchipa.Name = "txtEchipa";
             this.txtEchipa.Size = new System.Drawing.Size(100, 20);
             this.txtEchipa.TabIndex = 43;
+            this.txtEchipa.TextChanged += new System.EventHandler(this.txtEchipa_TextChanged);
             // 
             // txtOvertime
             // 
@@ -290,7 +275,7 @@
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
-            //this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
+            this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
             // txtSalariu
             // 
@@ -299,6 +284,7 @@
             this.txtSalariu.Name = "txtSalariu";
             this.txtSalariu.Size = new System.Drawing.Size(100, 20);
             this.txtSalariu.TabIndex = 45;
+            this.txtSalariu.TextChanged += new System.EventHandler(this.txtSalariu_TextChanged);
             // 
             // txtDataAngajare
             // 
@@ -307,6 +293,7 @@
             this.txtDataAngajare.Name = "txtDataAngajare";
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 46;
+            this.txtDataAngajare.TextChanged += new System.EventHandler(this.txtDataAngajare_TextChanged);
             // 
             // btnUpdatePoza
             // 
@@ -492,10 +479,8 @@
             this.Controls.Add(this.txtSex);
             this.Controls.Add(this.txtPrenume);
             this.Controls.Add(this.txtNume);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtTelefon);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.labelId);
             this.Controls.Add(this.btnSalvareModificari);
             this.Controls.Add(this.btnModificareDate);
             this.Controls.Add(this.labelFunctie);
@@ -540,10 +525,8 @@
         private System.Windows.Forms.Label labelPrenume;
         private System.Windows.Forms.Button btnModificareDate;
         private System.Windows.Forms.Button btnSalvareModificari;
-        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtTelefon;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNume;
         private System.Windows.Forms.TextBox txtPrenume;
         private System.Windows.Forms.TextBox txtSex;
