@@ -163,6 +163,12 @@
     <Content Include="Barbed_wire151.png" />
     <Content Include="istockphoto-1199229384-612x612.jpg" />
     <Content Include="Prison_Break_logo.png" />
+    <None Include="Resources\image %281%29.png" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\reback.jpg" />
+    <None Include="Resources\istockphoto-1199229384-612x612.jpg" />
+    <None Include="Resources\image %281%29.jpg" />
+    <None Include="Resources\image.jpg" />
     <None Include="Resources\lock-icon-11.png" />
     <None Include="Resources\Sample_User_Icon.png" />
     <None Include="Resources\rsz_menu_icon_icon-iconscom_71858.png" />

@@ -115,6 +115,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Snow;
             this.label1.Location = new System.Drawing.Point(81, 213);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 19);
@@ -137,7 +138,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(366, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(355, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(211, 504);
             this.pictureBox2.TabIndex = 6;
@@ -156,6 +157,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(80, 252);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 19);
@@ -278,6 +280,7 @@
             this.checkLog.AutoSize = true;
             this.checkLog.BackColor = System.Drawing.Color.Transparent;
             this.checkLog.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkLog.ForeColor = System.Drawing.Color.White;
             this.checkLog.Location = new System.Drawing.Point(80, 303);
             this.checkLog.Name = "checkLog";
             this.checkLog.Size = new System.Drawing.Size(120, 17);
@@ -302,7 +305,7 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = global::MAINPROJ.Properties.Resources.Sample_User_Icon;
+            this.pictureBox7.Image = global::MAINPROJ.Properties.Resources.image1;
             this.pictureBox7.Location = new System.Drawing.Point(49, 228);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(28, 24);
@@ -313,7 +316,7 @@
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = global::MAINPROJ.Properties.Resources.lock_icon_11;
+            this.pictureBox8.Image = global::MAINPROJ.Properties.Resources.image__1_1;
             this.pictureBox8.Location = new System.Drawing.Point(49, 269);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(28, 25);
@@ -358,7 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox10);
@@ -385,8 +388,8 @@
             this.Controls.Add(this.AUTENTIFICARE);
             this.Controls.Add(this.logare);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox6);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LogAuten";
