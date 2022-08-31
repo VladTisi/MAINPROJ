@@ -123,6 +123,16 @@ namespace MAINPROJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap king {
+            get {
+                object obj = ResourceManager.GetObject("king", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lock_icon_11 {
             get {
                 object obj = ResourceManager.GetObject("lock-icon-11", resourceCulture);
@@ -186,6 +196,16 @@ namespace MAINPROJ.Properties {
         internal static System.Drawing.Bitmap rsz_menu_icon_icon_iconscom_71858 {
             get {
                 object obj = ResourceManager.GetObject("rsz_menu_icon_icon-iconscom_71858", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rsz_sheriff {
+            get {
+                object obj = ResourceManager.GetObject("rsz_sheriff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

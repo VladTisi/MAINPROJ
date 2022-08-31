@@ -126,6 +126,11 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+
+        private void sidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }
