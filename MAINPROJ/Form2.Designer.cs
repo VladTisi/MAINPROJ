@@ -178,9 +178,9 @@
             // 
             this.autemail.Location = new System.Drawing.Point(647, 231);
             this.autemail.Name = "autemail";
-            this.autemail.PasswordChar = '*';
             this.autemail.Size = new System.Drawing.Size(135, 20);
             this.autemail.TabIndex = 10;
+            this.autemail.TextChanged += new System.EventHandler(this.autemail_TextChanged);
             // 
             // label4
             // 
@@ -390,6 +390,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LogAuten";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

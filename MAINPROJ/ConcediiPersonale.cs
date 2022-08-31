@@ -12,6 +12,7 @@ namespace MAINPROJ
 {
     public partial class ConcediiPersonale : Form
     {
+        bool sidebarExpand;
         public ConcediiPersonale()
         {
             InitializeComponent();
@@ -24,11 +25,67 @@ namespace MAINPROJ
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var CerereConcediu = new CerereConcediu();
-            CerereConcediu.Closed += (s, args) => this.Close();
-            CerereConcediu.Show();
 
+        }
+        ///Meniu Navigare
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new ConcediiPersonale();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new Echipa();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuNavigare();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
         }
     }
 }
