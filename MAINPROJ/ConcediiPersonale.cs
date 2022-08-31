@@ -25,7 +25,9 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new CerereConcediu();
+            var CerereConcediu = new CerereConcediu();
+            CerereConcediu.Closed += (s, args) => this.Close();
+            CerereConcediu.Show();
 
         }
     }

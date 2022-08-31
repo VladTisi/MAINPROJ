@@ -76,7 +76,7 @@ namespace MAINPROJ
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Cerere de concediu adaugata!");
-            dtpDataIncepere.Value=DateTime.Now;
+            dtpDataIncepere.Value=DateTime.Now.AddDays(1);
             dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
         }
 
