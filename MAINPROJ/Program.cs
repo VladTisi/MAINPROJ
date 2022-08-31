@@ -1,4 +1,4 @@
-﻿using PrisonBreakProj;
+﻿using MAINPROJ;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +17,7 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomePage());
-            Application.Run(new MeniuNavigare());
+            Application.Run(new LogAuten());
         }
     }
 }
