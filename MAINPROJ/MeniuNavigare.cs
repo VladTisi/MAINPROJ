@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using PrisonBreakProj;
+using MAINPROJ;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,15 +61,6 @@ namespace MAINPROJ
         
     private void showTable()
         {
-
-            DataGridViewButtonColumn uninstallButtonColumn = new DataGridViewButtonColumn();
-            uninstallButtonColumn.Name = "Profil";
-            uninstallButtonColumn.Text = "*";
-            int columnIndex = 0;
-            if (tabelAngajati.Columns["Profil"] == null)
-            {
-                tabelAngajati.Columns.Insert(columnIndex, uninstallButtonColumn);
-            }
             string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
             using (SqlConnection con = new SqlConnection(constring))
             {
@@ -86,17 +77,33 @@ namespace MAINPROJ
                     }
                 }
             }
-            tabelAngajati.CellClick += dataGridViewSoftware_CellClick;
-        }
-        private void dataGridViewSoftware_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == tabelAngajati.Columns["Profil"].Index)
-            {
-                //Do something with your button.
-            }
         }
 
-        private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }

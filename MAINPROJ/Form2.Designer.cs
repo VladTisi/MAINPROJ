@@ -1,4 +1,4 @@
-﻿namespace PrisonBreakProj
+﻿namespace MAINPROJ
 {
     partial class LogAuten
     {
