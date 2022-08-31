@@ -217,6 +217,7 @@
             this.tabelAngajati.Name = "tabelAngajati";
             this.tabelAngajati.Size = new System.Drawing.Size(563, 298);
             this.tabelAngajati.TabIndex = 7;
+
             // 
             // MeniuNavigare
             // 
