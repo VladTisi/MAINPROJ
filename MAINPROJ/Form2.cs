@@ -29,32 +29,79 @@ namespace MAINPROJ
            
 
         }
+        private int validateEmail(string email)
+            {
+            if (email.Contains("@") && email.Contains(".") && email.Length > 8)
+            {
+                return 1;
+            }
+            else return 0;
+            }
 
+        private int validatePassword(string password, string confirmpassword)
+        {
+            bool specialchar = false;
+            bool majuscula = false;
+            bool digit = false;
+
+            if(password == confirmpassword && password.Length>=8)
+            {
+                char[] mychars = password.ToCharArray();    
+                for(int i=0; i<mychars.Length; i++)
+                {
+                    char c = mychars[i];
+                    if(char.IsDigit(c) && digit == false)
+                    {
+                        digit = true;   
+                    }
+                    if (!char.IsLetterOrDigit(c) && specialchar == false && !char.IsWhiteSpace(c))
+                    {
+                        specialchar = true;
+                    }
+                    if (char.IsUpper(c) && majuscula == false)
+                    {
+                        majuscula = true;
+                    }
+                }
+                if(digit && specialchar && majuscula)
+                {
+                    return 1;
+                }
+                
+                
+            } return 0;
+        }
         private void AUTENTIFICARE_Click(object sender, EventArgs e)
         {
-           if(autemail.Text =="" && autpass.Text=="" && conpass.Text =="")
+            int passvalid = validatePassword(autpass.Text, conpass.Text);
+            int emailvalid = validateEmail(autemail.Text);
+
+            if(passvalid==0)
             {
-                MessageBox.Show("Campurile nu sunt completate");
+                MessageBox.Show("Parola invalida");
+
             }
-           else if(autpass.Text == conpass.Text && autemail.Text!="")
+            if(emailvalid==0)
+            {
+                MessageBox.Show("Email invalid");
+            }
+            if(passvalid ==1 && emailvalid ==1)
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
-                string register = "INSERT INTO Login(Email,Parola) VALUES('" + autpass.Text + "','" + autpass.Text + "')" ;
+                string register = "INSERT INTO Login(Email,Parola) VALUES('" + autpass.Text + "','" + autpass.Text + "')";
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
 
                 MessageBox.Show("Contul tau a fost creat!");
+            }
 
-            }
-           else
-            {
-                MessageBox.Show("Parolele nu se potrivesc!");
-            }
-          
+
+
+
         }
-
+       
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -127,6 +174,11 @@ namespace MAINPROJ
             Console.WriteLine(logpass.Text);
             conn.Close();
 
+
+        }
+
+        private void autemail_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
