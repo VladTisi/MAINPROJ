@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using MAINPROJ;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Data.SqlClient;
 
 namespace MAINPROJ
 {
@@ -23,7 +24,31 @@ namespace MAINPROJ
             InitializeComponent();
             UserId = userId;
         }
-        
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+            //OleDbConnection con = Common.GetConnection();
+            //con.Open();
+            //String Nume=$"SELECT Nume from Angajat Where ";
+            //String Prenume= $"SELECT Prenume from Angajat Where "; 
+            //String Functie= $"SELECT Functie from Angajat Where ";
+            //String Echipa = $"SELECT Echipa from Angajat Where ";
+            //String Email = $"SELECT Email from Login Where Login.Id ";
+            //int Id;
+            //String Sex = $"SELECT Sex from Angajat Where ";
+            //String nrTel = $"SELECT Numar_Telefon from Angajat Where ";
+            //int Overtime;
+            //int Salariu;
+            //String DataA;
+          
+
+
+
+
+
+
+
+            //con.Close();
+        }
         private void button2_Click(object sender, EventArgs e)
         { 
             btnUpdatePoza.Visible = false;
@@ -121,20 +146,28 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void HomePage_Load(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
-
-            //UserId = int =      $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
+            this.Hide();
+            var otherform = new ConcediiPersonale();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var otherform = new Echipa();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
 
-        private void txtOvertime_TextChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }

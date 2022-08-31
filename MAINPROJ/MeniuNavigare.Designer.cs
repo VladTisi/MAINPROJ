@@ -231,6 +231,7 @@
             this.Controls.Add(this.sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MeniuNavigare";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MeniuNavigare";
             this.Load += new System.EventHandler(this.MeniuNavigare_Load);
             this.sidebar.ResumeLayout(false);

@@ -17,7 +17,8 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomePage(1));
+            Application.Run(new MeniuNavigare());
+            
         }
     }
 }
