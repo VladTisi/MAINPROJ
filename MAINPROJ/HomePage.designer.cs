@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelNume = new System.Windows.Forms.Label();
+            this.labelFunctie = new System.Windows.Forms.Label();
+            this.labelEchipa = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelNumarTelefon = new System.Windows.Forms.Label();
+            this.labelDataAngajare = new System.Windows.Forms.Label();
+            this.labelSalariu = new System.Windows.Forms.Label();
+            this.labelOvertime = new System.Windows.Forms.Label();
+            this.labelSex = new System.Windows.Forms.Label();
             this.pozaAngajat = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelPrenume = new System.Windows.Forms.Label();
             this.btnModificareDate = new System.Windows.Forms.Button();
-            this.btnSalvare = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
+            this.btnSalvareModificari = new System.Windows.Forms.Button();
+            this.labelId = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefon = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtNume = new System.Windows.Forms.TextBox();
+            this.txtPrenume = new System.Windows.Forms.TextBox();
+            this.txtSex = new System.Windows.Forms.TextBox();
+            this.txtFunctie = new System.Windows.Forms.TextBox();
+            this.txtEchipa = new System.Windows.Forms.TextBox();
+            this.txtOvertime = new System.Windows.Forms.TextBox();
+            this.txtSalariu = new System.Windows.Forms.TextBox();
+            this.txtDataAngajare = new System.Windows.Forms.TextBox();
             this.btnUpdatePoza = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -80,104 +80,93 @@
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // labelNume
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(199, 266);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nume";
+            this.labelNume.AutoSize = true;
+            this.labelNume.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNume.Location = new System.Drawing.Point(371, 54);
+            this.labelNume.Name = "labelNume";
+            this.labelNume.Size = new System.Drawing.Size(43, 16);
+            this.labelNume.TabIndex = 1;
+            this.labelNume.Text = "Nume";
             // 
-            // label2
+            // labelFunctie
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label2.Location = new System.Drawing.Point(480, 233);
+            this.label2.Location = new System.Drawing.Point(255, 187);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Functie";
             // 
-            // label3
+            // labelEchipa
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label3.Location = new System.Drawing.Point(480, 295);
+            this.label3.Location = new System.Drawing.Point(255, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Echipa";
             // 
-            // label4
+            // labelEmail
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label4.Location = new System.Drawing.Point(480, 358);
+            this.label4.Location = new System.Drawing.Point(255, 312);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 19);
             this.label4.TabIndex = 4;
             this.label4.Text = "Email";
             // 
-            // label5
+            // labelNumarTelefon
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label5.Location = new System.Drawing.Point(478, 420);
+            this.label5.Location = new System.Drawing.Point(255, 373);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(159, 19);
             this.label5.TabIndex = 5;
             this.label5.Text = "Numar de telefon";
             // 
-            // label6
+            // labelDataAngajare
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label6.Location = new System.Drawing.Point(652, 420);
+            this.label6.Location = new System.Drawing.Point(455, 312);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(133, 19);
             this.label6.TabIndex = 6;
             this.label6.Text = "data Angajare";
             // 
-            // label7
+            // labelSalariu
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label7.Location = new System.Drawing.Point(652, 357);
+            this.label7.Location = new System.Drawing.Point(455, 249);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 19);
             this.label7.TabIndex = 7;
             this.label7.Text = "Salariu";
             // 
-            // label8
+            // labelOvertime
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label8.Location = new System.Drawing.Point(652, 295);
+            this.label8.Location = new System.Drawing.Point(455, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 19);
             this.label8.TabIndex = 8;
             this.label8.Text = "Overtime";
             // 
-            // label9
+            // labelSex
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Snow;
-            this.label9.Location = new System.Drawing.Point(199, 317);
+            this.label9.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(371, 105);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 18);
+            this.label9.Size = new System.Drawing.Size(30, 16);
             this.label9.TabIndex = 9;
             this.label9.Text = "sex";
             // 
@@ -190,15 +179,13 @@
             this.pozaAngajat.TabStop = false;
             this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
             // 
-            // label10
+            // labelPrenume
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Snow;
-            this.label10.Location = new System.Drawing.Point(199, 292);
+            this.label10.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(371, 80);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 18);
+            this.label10.Size = new System.Drawing.Size(68, 16);
             this.label10.TabIndex = 15;
             this.label10.Text = "Prenume";
             // 
@@ -212,9 +199,9 @@
             this.btnModificareDate.UseVisualStyleBackColor = true;
             this.btnModificareDate.Click += new System.EventHandler(this.button6_Click);
             // 
-            // btnSalvare
+            // btnSalvareModificari
             // 
-            this.btnSalvare.Location = new System.Drawing.Point(797, 478);
+            this.btnSalvare.Location = new System.Drawing.Point(790, 416);
             this.btnSalvare.Name = "btnSalvare";
             this.btnSalvare.Size = new System.Drawing.Size(112, 23);
             this.btnSalvare.TabIndex = 34;
@@ -223,15 +210,13 @@
             this.btnSalvare.Visible = false;
             this.btnSalvare.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label21
+            // labelId
             // 
             this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Snow;
-            this.label21.Location = new System.Drawing.Point(199, 239);
+            this.label21.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(371, 27);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(24, 18);
+            this.label21.Size = new System.Drawing.Size(20, 16);
             this.label21.TabIndex = 35;
             this.label21.Text = "Id";
             // 
@@ -251,77 +236,78 @@
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
             // 
-            // textBox1
+            // txtId
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(275, 239);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 38;
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(442, 25);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 38;
             // 
-            // textBox2
+            // txtNume
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(275, 266);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 39;
+            this.txtNume.Enabled = false;
+            this.txtNume.Location = new System.Drawing.Point(442, 52);
+            this.txtNume.Name = "txtNume";
+            this.txtNume.Size = new System.Drawing.Size(100, 20);
+            this.txtNume.TabIndex = 39;
             // 
-            // textBox3
+            // txtPrenume
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(275, 292);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 40;
+            this.txtPrenume.Enabled = false;
+            this.txtPrenume.Location = new System.Drawing.Point(442, 78);
+            this.txtPrenume.Name = "txtPrenume";
+            this.txtPrenume.Size = new System.Drawing.Size(100, 20);
+            this.txtPrenume.TabIndex = 40;
             // 
-            // textBox4
+            // txtSex
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(275, 317);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 41;
+            this.txtSex.Enabled = false;
+            this.txtSex.Location = new System.Drawing.Point(442, 103);
+            this.txtSex.Name = "txtSex";
+            this.txtSex.Size = new System.Drawing.Size(100, 20);
+            this.txtSex.TabIndex = 41;
             // 
-            // textBox5
+            // txtFunctie
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(482, 258);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 42;
+            this.txtFunctie.Enabled = false;
+            this.txtFunctie.Location = new System.Drawing.Point(259, 212);
+            this.txtFunctie.Name = "txtFunctie";
+            this.txtFunctie.Size = new System.Drawing.Size(100, 20);
+            this.txtFunctie.TabIndex = 42;
             // 
-            // textBox6
+            // txtEchipa
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(484, 317);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 43;
+            this.txtEchipa.Enabled = false;
+            this.txtEchipa.Location = new System.Drawing.Point(259, 271);
+            this.txtEchipa.Name = "txtEchipa";
+            this.txtEchipa.Size = new System.Drawing.Size(100, 20);
+            this.txtEchipa.TabIndex = 43;
             // 
-            // textBox7
+            // txtOvertime
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(656, 320);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 44;
+            this.txtOvertime.Enabled = false;
+            this.txtOvertime.Location = new System.Drawing.Point(459, 212);
+            this.txtOvertime.Name = "txtOvertime";
+            this.txtOvertime.Size = new System.Drawing.Size(100, 20);
+            this.txtOvertime.TabIndex = 44;
+            //this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
-            // textBox8
+            // txtSalariu
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(656, 379);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 45;
+            this.txtSalariu.Enabled = false;
+            this.txtSalariu.Location = new System.Drawing.Point(459, 271);
+            this.txtSalariu.Name = "txtSalariu";
+            this.txtSalariu.Size = new System.Drawing.Size(100, 20);
+            this.txtSalariu.TabIndex = 45;
             // 
-            // textBox9
+            // txtDataAngajare
             // 
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(656, 442);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 46;
+            this.txtDataAngajare.Enabled = false;
+            this.txtDataAngajare.Location = new System.Drawing.Point(459, 334);
+            this.txtDataAngajare.Name = "txtDataAngajare";
+            this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
+            this.txtDataAngajare.TabIndex = 46;
             // 
             // btnUpdatePoza
             // 
@@ -408,6 +394,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "      Home";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -429,6 +416,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "       Concediile \r\n      mele";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // panel4
             // 
@@ -450,6 +438,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "        Echipa";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel5
             // 
@@ -496,33 +485,34 @@
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnUpdatePoza);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDataAngajare);
+            this.Controls.Add(this.txtSalariu);
+            this.Controls.Add(this.txtOvertime);
+            this.Controls.Add(this.txtEchipa);
+            this.Controls.Add(this.txtFunctie);
+            this.Controls.Add(this.txtSex);
+            this.Controls.Add(this.txtPrenume);
+            this.Controls.Add(this.txtNume);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtTelefon);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.btnSalvare);
+            this.Controls.Add(this.labelId);
+            this.Controls.Add(this.btnSalvareModificari);
             this.Controls.Add(this.btnModificareDate);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.labelFunctie);
+            this.Controls.Add(this.labelPrenume);
             this.Controls.Add(this.pozaAngajat);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelSex);
+            this.Controls.Add(this.labelOvertime);
+            this.Controls.Add(this.labelSalariu);
+            this.Controls.Add(this.labelDataAngajare);
+            this.Controls.Add(this.labelNumarTelefon);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.labelEchipa);
+            this.Controls.Add(this.labelNume);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -538,31 +528,31 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelNume;
+        private System.Windows.Forms.Label labelFunctie;
+        private System.Windows.Forms.Label labelEchipa;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelNumarTelefon;
+        private System.Windows.Forms.Label labelDataAngajare;
+        private System.Windows.Forms.Label labelSalariu;
+        private System.Windows.Forms.Label labelOvertime;
+        private System.Windows.Forms.Label labelSex;
         private System.Windows.Forms.PictureBox pozaAngajat;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelPrenume;
         private System.Windows.Forms.Button btnModificareDate;
-        private System.Windows.Forms.Button btnSalvare;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnSalvareModificari;
+        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtTelefon;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.TextBox txtNume;
+        private System.Windows.Forms.TextBox txtPrenume;
+        private System.Windows.Forms.TextBox txtSex;
+        private System.Windows.Forms.TextBox txtFunctie;
+        private System.Windows.Forms.TextBox txtEchipa;
+        private System.Windows.Forms.TextBox txtOvertime;
+        private System.Windows.Forms.TextBox txtSalariu;
+        private System.Windows.Forms.TextBox txtDataAngajare;
         private System.Windows.Forms.Button btnUpdatePoza;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

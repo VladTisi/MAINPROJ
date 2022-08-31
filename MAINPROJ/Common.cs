@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace MAINPROJ
 {
     public static class Common
+        
     {
         public static OleDbConnection Connection;
         public static OleDbConnection GetConnection()

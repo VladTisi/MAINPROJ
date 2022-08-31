@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="ConcediiPersonale.cs">
       <SubType>Form</SubType>
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="CerereConcediu.Designer.cs">
       <DependentUpon>CerereConcediu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Echipa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Echipa.Designer.cs">
+      <DependentUpon>Echipa.cs</DependentUpon>
     </Compile>
     <Compile Include="MeniuGestionareConcedii.cs">
       <SubType>Form</SubType>
@@ -107,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConcediiPersonale.resx">
       <DependentUpon>ConcediiPersonale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Echipa.resx">
+      <DependentUpon>Echipa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>

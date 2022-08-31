@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MAINPROJ;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using System.Data.SqlClient;
 
 namespace MAINPROJ
@@ -16,49 +17,95 @@ namespace MAINPROJ
     public partial class HomePage : Form
     {
         bool sidebarExpand;
-        public HomePage()
+        OleDbCommand cmd = new OleDbCommand();
+        private int angajatId;
+
+        public int UserId { get; set; }
+        public HomePage(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
+
         }
+
         private void HomePage_Load(object sender, EventArgs e)
         {
-            String Nume;
-            String Prenume;
-            String Functie;
-            String Echipa;
-            String Email;
-            int Id;
-            char Sex;
-            String nrTel;
-            int Overtime;
-            int Salariu;
-            String DataA;
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            SqlConnection con = new SqlConnection(constring);
-            con.Open();
-            
-           
+            //OleDbConnection con = Common.GetConnection();
+            //con.Open();
+            //String Nume=$"SELECT Nume from Angajat Where ";
+            //String Prenume= $"SELECT Prenume from Angajat Where "; 
+            //String Functie= $"SELECT Functie from Angajat Where ";
+            //String Echipa = $"SELECT Echipa from Angajat Where ";
+            //String Email = $"SELECT Email from Login Where Login.Id ";
+            //int Id;
+            //String Sex = $"SELECT Sex from Angajat Where ";
+            //String nrTel = $"SELECT Numar_Telefon from Angajat Where ";
+            //int Overtime;
+            //int Salariu;
+            //String DataA;
+            Console.WriteLine(angajatId);
+          
 
+
+
+
+
+
+
+            //con.Close();
         }
         private void button2_Click(object sender, EventArgs e)
-        {
+        { 
             btnUpdatePoza.Visible = false;
 
-            btnSalvare.Visible = false;
+            btnSalvareModificari.Visible = false;
 
             txtEmail.Enabled = false;
 
             txtTelefon.Enabled = false;
+
+            //Accesibile de utilizator
+
+            OleDbConnection con = Common.GetConnection();
+            con.Open();
+            
+            string numartelefon = txtTelefon.Text;
+            string email = txtEmail.Text;
+            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+            cmd = new OleDbCommand(modifTel, con);
+            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
+
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            //Accesibile de admin/manager
+
+           //OleDbConnection con = Common.GetConnection();
+           // con.Open();
+
+           // string numartelefon = txtTelefon.Text;
+           // string email = txtEmail.Text;
+           // string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+           // cmd = new OleDbCommand(modifTel, con);
+           // string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
+
+
+           //cmd.ExecuteNonQuery();
+           //con.Close();
+
+
+
         }
 
-        
+
         private void button6_Click(object sender, EventArgs e)
         {
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
 
-            btnSalvare.Visible = true;
+            btnSalvareModificari.Visible = true;
 
             btnUpdatePoza.Visible = true;
         }
@@ -99,7 +146,31 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare();
+            var otherform = new MeniuNavigare(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new ConcediiPersonale(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new Echipa(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
