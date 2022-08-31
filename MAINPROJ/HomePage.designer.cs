@@ -205,7 +205,7 @@
             // 
             this.btnModificareDate.Location = new System.Drawing.Point(615, 456);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(112, 23);
+            this.btnModificareDate.Size = new System.Drawing.Size(145, 48);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;

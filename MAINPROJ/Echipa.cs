@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MAINPROJ
 {
     public partial class Echipa : Form
@@ -80,12 +81,20 @@ namespace MAINPROJ
 
         private void Echipa_Load(object sender, EventArgs e)
         {
-
+           
+                // Toggle between True and False.  
+                monthCalendar1.ShowToday = !monthCalendar1.ShowToday;
+     
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
         }
     }
 }
