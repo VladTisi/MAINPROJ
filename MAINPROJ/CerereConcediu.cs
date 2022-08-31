@@ -88,7 +88,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage(1);
+            var otherform = new HomePage();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -96,7 +96,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage(1);
+            var otherform = new HomePage();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -104,7 +104,7 @@ namespace MAINPROJ
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage(1);
+            var otherform = new HomePage();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

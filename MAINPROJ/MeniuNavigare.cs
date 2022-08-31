@@ -82,7 +82,7 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage(1);
+            var otherform = new HomePage();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
