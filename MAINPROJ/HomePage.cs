@@ -7,9 +7,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MAINPROJ;
 using System.Windows.Forms;
 
-namespace PrisonBreakProj
+namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
@@ -19,37 +20,6 @@ namespace PrisonBreakProj
             InitializeComponent();
         }
         
-        
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelFunctie(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
@@ -71,16 +41,6 @@ namespace PrisonBreakProj
             btnSalvare.Visible = true;
 
             btnUpdatePoza.Visible = true;
-        }
-
-        private void btnUpdatePoza_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void menuButton_Click(object sender, EventArgs e)
@@ -113,6 +73,15 @@ namespace PrisonBreakProj
                     sidebarTimer.Stop();
                 }
             }
+        }
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuNavigare();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }

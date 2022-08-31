@@ -1,4 +1,4 @@
-﻿namespace PrisonBreakProj
+﻿namespace MAINPROJ
 {
     partial class HomePage
     {
@@ -89,7 +89,6 @@
             this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nume";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -100,7 +99,6 @@
             this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Functie";
-//this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -276,7 +274,6 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 42;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox6
             // 
@@ -319,7 +316,6 @@
             this.btnUpdatePoza.Text = "Update";
             this.btnUpdatePoza.UseVisualStyleBackColor = true;
             this.btnUpdatePoza.Visible = false;
-            this.btnUpdatePoza.Click += new System.EventHandler(this.btnUpdatePoza_Click);
             // 
             // pictureBox1
             // 
@@ -459,6 +455,7 @@
             this.button4.TabIndex = 1;
             this.button4.Text = "           Lista Angajati";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
