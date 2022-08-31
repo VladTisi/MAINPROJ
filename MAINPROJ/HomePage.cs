@@ -19,10 +19,10 @@ namespace MAINPROJ
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
         public int UserId { get; set; }
-        public HomePage(int userId)
+        public HomePage()
         {
             InitializeComponent();
-            UserId = userId;
+            
         }
         private void HomePage_Load(object sender, EventArgs e)
         {
