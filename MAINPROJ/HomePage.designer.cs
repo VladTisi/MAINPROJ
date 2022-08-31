@@ -83,115 +83,127 @@
             // labelNume
             // 
             this.labelNume.AutoSize = true;
-            this.labelNume.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNume.Location = new System.Drawing.Point(371, 54);
+            this.labelNume.BackColor = System.Drawing.Color.Transparent;
+            this.labelNume.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNume.ForeColor = System.Drawing.Color.White;
+            this.labelNume.Location = new System.Drawing.Point(231, 237);
             this.labelNume.Name = "labelNume";
-            this.labelNume.Size = new System.Drawing.Size(43, 16);
+            this.labelNume.Size = new System.Drawing.Size(53, 19);
             this.labelNume.TabIndex = 1;
             this.labelNume.Text = "Nume";
             // 
             // labelFunctie
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label2.Location = new System.Drawing.Point(255, 187);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Functie";
+            this.labelFunctie.AutoSize = true;
+            this.labelFunctie.BackColor = System.Drawing.Color.Transparent;
+            this.labelFunctie.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelFunctie.Location = new System.Drawing.Point(500, 201);
+            this.labelFunctie.Name = "labelFunctie";
+            this.labelFunctie.Size = new System.Drawing.Size(74, 19);
+            this.labelFunctie.TabIndex = 2;
+            this.labelFunctie.Text = "Functie";
             // 
             // labelEchipa
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label3.Location = new System.Drawing.Point(255, 249);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Echipa";
+            this.labelEchipa.AutoSize = true;
+            this.labelEchipa.BackColor = System.Drawing.Color.Transparent;
+            this.labelEchipa.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelEchipa.Location = new System.Drawing.Point(500, 263);
+            this.labelEchipa.Name = "labelEchipa";
+            this.labelEchipa.Size = new System.Drawing.Size(65, 19);
+            this.labelEchipa.TabIndex = 3;
+            this.labelEchipa.Text = "Echipa";
             // 
             // labelEmail
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label4.Location = new System.Drawing.Point(255, 312);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 19);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Email";
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.BackColor = System.Drawing.Color.Transparent;
+            this.labelEmail.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelEmail.Location = new System.Drawing.Point(500, 326);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(56, 19);
+            this.labelEmail.TabIndex = 4;
+            this.labelEmail.Text = "Email";
             // 
             // labelNumarTelefon
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label5.Location = new System.Drawing.Point(255, 373);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 19);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Numar de telefon";
+            this.labelNumarTelefon.AutoSize = true;
+            this.labelNumarTelefon.BackColor = System.Drawing.Color.Transparent;
+            this.labelNumarTelefon.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelNumarTelefon.Location = new System.Drawing.Point(500, 387);
+            this.labelNumarTelefon.Name = "labelNumarTelefon";
+            this.labelNumarTelefon.Size = new System.Drawing.Size(159, 19);
+            this.labelNumarTelefon.TabIndex = 5;
+            this.labelNumarTelefon.Text = "Numar de telefon";
             // 
             // labelDataAngajare
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label6.Location = new System.Drawing.Point(455, 312);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 19);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "data Angajare";
+            this.labelDataAngajare.AutoSize = true;
+            this.labelDataAngajare.BackColor = System.Drawing.Color.Transparent;
+            this.labelDataAngajare.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelDataAngajare.Location = new System.Drawing.Point(694, 387);
+            this.labelDataAngajare.Name = "labelDataAngajare";
+            this.labelDataAngajare.Size = new System.Drawing.Size(133, 19);
+            this.labelDataAngajare.TabIndex = 6;
+            this.labelDataAngajare.Text = "data Angajare";
             // 
             // labelSalariu
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label7.Location = new System.Drawing.Point(455, 249);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 19);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Salariu";
+            this.labelSalariu.AutoSize = true;
+            this.labelSalariu.BackColor = System.Drawing.Color.Transparent;
+            this.labelSalariu.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelSalariu.Location = new System.Drawing.Point(694, 324);
+            this.labelSalariu.Name = "labelSalariu";
+            this.labelSalariu.Size = new System.Drawing.Size(75, 19);
+            this.labelSalariu.TabIndex = 7;
+            this.labelSalariu.Text = "Salariu";
             // 
             // labelOvertime
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.label8.Location = new System.Drawing.Point(455, 187);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 19);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Overtime";
+            this.labelOvertime.AutoSize = true;
+            this.labelOvertime.BackColor = System.Drawing.Color.Transparent;
+            this.labelOvertime.Font = new System.Drawing.Font("Stencil", 11.75F);
+            this.labelOvertime.Location = new System.Drawing.Point(694, 262);
+            this.labelOvertime.Name = "labelOvertime";
+            this.labelOvertime.Size = new System.Drawing.Size(87, 19);
+            this.labelOvertime.TabIndex = 8;
+            this.labelOvertime.Text = "Overtime";
             // 
             // labelSex
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(371, 105);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 16);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "sex";
+            this.labelSex.AutoSize = true;
+            this.labelSex.BackColor = System.Drawing.Color.Transparent;
+            this.labelSex.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSex.ForeColor = System.Drawing.Color.White;
+            this.labelSex.Location = new System.Drawing.Point(231, 288);
+            this.labelSex.Name = "labelSex";
+            this.labelSex.Size = new System.Drawing.Size(37, 19);
+            this.labelSex.TabIndex = 9;
+            this.labelSex.Text = "sex";
             // 
             // pozaAngajat
             // 
-            this.pozaAngajat.Location = new System.Drawing.Point(202, 96);
+            this.pozaAngajat.Location = new System.Drawing.Point(234, 53);
             this.pozaAngajat.Name = "pozaAngajat";
             this.pozaAngajat.Size = new System.Drawing.Size(90, 110);
             this.pozaAngajat.TabIndex = 11;
             this.pozaAngajat.TabStop = false;
-            this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
             // 
             // labelPrenume
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(371, 80);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 16);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Prenume";
+            this.labelPrenume.AutoSize = true;
+            this.labelPrenume.BackColor = System.Drawing.Color.Transparent;
+            this.labelPrenume.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrenume.ForeColor = System.Drawing.Color.White;
+            this.labelPrenume.Location = new System.Drawing.Point(231, 263);
+            this.labelPrenume.Name = "labelPrenume";
+            this.labelPrenume.Size = new System.Drawing.Size(83, 19);
+            this.labelPrenume.TabIndex = 15;
+            this.labelPrenume.Text = "Prenume";
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(797, 439);
+            this.btnModificareDate.Location = new System.Drawing.Point(615, 456);
             this.btnModificareDate.Name = "btnModificareDate";
             this.btnModificareDate.Size = new System.Drawing.Size(112, 23);
             this.btnModificareDate.TabIndex = 33;
@@ -201,29 +213,32 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvare.Location = new System.Drawing.Point(790, 416);
-            this.btnSalvare.Name = "btnSalvare";
-            this.btnSalvare.Size = new System.Drawing.Size(112, 23);
-            this.btnSalvare.TabIndex = 34;
-            this.btnSalvare.Text = "Salvare modificari";
-            this.btnSalvare.UseVisualStyleBackColor = true;
-            this.btnSalvare.Visible = false;
-            this.btnSalvare.Click += new System.EventHandler(this.button2_Click);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(615, 495);
+            this.btnSalvareModificari.Name = "btnSalvareModificari";
+            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
+            this.btnSalvareModificari.TabIndex = 34;
+            this.btnSalvareModificari.Text = "Salvare modificari";
+            this.btnSalvareModificari.UseVisualStyleBackColor = true;
+            this.btnSalvareModificari.Visible = false;
+            this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
             // 
             // labelId
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(371, 27);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(20, 16);
-            this.label21.TabIndex = 35;
-            this.label21.Text = "Id";
+            this.labelId.AutoSize = true;
+            this.labelId.BackColor = System.Drawing.Color.Transparent;
+            this.labelId.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelId.ForeColor = System.Drawing.Color.White;
+            this.labelId.Location = new System.Drawing.Point(231, 210);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(25, 19);
+            this.labelId.TabIndex = 35;
+            this.labelId.Text = "Id";
+            this.labelId.Click += new System.EventHandler(this.labelId_Click);
             // 
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
-            this.txtEmail.Location = new System.Drawing.Point(484, 380);
+            this.txtEmail.Location = new System.Drawing.Point(504, 348);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 36;
@@ -231,7 +246,7 @@
             // txtTelefon
             // 
             this.txtTelefon.Enabled = false;
-            this.txtTelefon.Location = new System.Drawing.Point(482, 442);
+            this.txtTelefon.Location = new System.Drawing.Point(504, 409);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
@@ -239,7 +254,7 @@
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(442, 25);
+            this.txtId.Location = new System.Drawing.Point(334, 209);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 38;
@@ -247,7 +262,7 @@
             // txtNume
             // 
             this.txtNume.Enabled = false;
-            this.txtNume.Location = new System.Drawing.Point(442, 52);
+            this.txtNume.Location = new System.Drawing.Point(334, 236);
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(100, 20);
             this.txtNume.TabIndex = 39;
@@ -255,7 +270,7 @@
             // txtPrenume
             // 
             this.txtPrenume.Enabled = false;
-            this.txtPrenume.Location = new System.Drawing.Point(442, 78);
+            this.txtPrenume.Location = new System.Drawing.Point(334, 262);
             this.txtPrenume.Name = "txtPrenume";
             this.txtPrenume.Size = new System.Drawing.Size(100, 20);
             this.txtPrenume.TabIndex = 40;
@@ -263,7 +278,7 @@
             // txtSex
             // 
             this.txtSex.Enabled = false;
-            this.txtSex.Location = new System.Drawing.Point(442, 103);
+            this.txtSex.Location = new System.Drawing.Point(334, 287);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 41;
@@ -271,7 +286,7 @@
             // txtFunctie
             // 
             this.txtFunctie.Enabled = false;
-            this.txtFunctie.Location = new System.Drawing.Point(259, 212);
+            this.txtFunctie.Location = new System.Drawing.Point(504, 226);
             this.txtFunctie.Name = "txtFunctie";
             this.txtFunctie.Size = new System.Drawing.Size(100, 20);
             this.txtFunctie.TabIndex = 42;
@@ -279,7 +294,7 @@
             // txtEchipa
             // 
             this.txtEchipa.Enabled = false;
-            this.txtEchipa.Location = new System.Drawing.Point(259, 271);
+            this.txtEchipa.Location = new System.Drawing.Point(504, 285);
             this.txtEchipa.Name = "txtEchipa";
             this.txtEchipa.Size = new System.Drawing.Size(100, 20);
             this.txtEchipa.TabIndex = 43;
@@ -287,16 +302,15 @@
             // txtOvertime
             // 
             this.txtOvertime.Enabled = false;
-            this.txtOvertime.Location = new System.Drawing.Point(459, 212);
+            this.txtOvertime.Location = new System.Drawing.Point(698, 287);
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
-            //this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
             // txtSalariu
             // 
             this.txtSalariu.Enabled = false;
-            this.txtSalariu.Location = new System.Drawing.Point(459, 271);
+            this.txtSalariu.Location = new System.Drawing.Point(698, 346);
             this.txtSalariu.Name = "txtSalariu";
             this.txtSalariu.Size = new System.Drawing.Size(100, 20);
             this.txtSalariu.TabIndex = 45;
@@ -304,14 +318,14 @@
             // txtDataAngajare
             // 
             this.txtDataAngajare.Enabled = false;
-            this.txtDataAngajare.Location = new System.Drawing.Point(459, 334);
+            this.txtDataAngajare.Location = new System.Drawing.Point(698, 409);
             this.txtDataAngajare.Name = "txtDataAngajare";
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 46;
             // 
             // btnUpdatePoza
             // 
-            this.btnUpdatePoza.Location = new System.Drawing.Point(202, 206);
+            this.btnUpdatePoza.Location = new System.Drawing.Point(234, 169);
             this.btnUpdatePoza.Name = "btnUpdatePoza";
             this.btnUpdatePoza.Size = new System.Drawing.Size(90, 23);
             this.btnUpdatePoza.TabIndex = 47;
@@ -323,9 +337,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(325, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(329, -7);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(244, 79);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
@@ -467,7 +481,7 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(891, 0);
+            this.button5.Location = new System.Drawing.Point(888, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 23);
             this.button5.TabIndex = 50;
@@ -480,7 +494,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(921, 530);
+            this.ClientSize = new System.Drawing.Size(918, 530);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.pictureBox1);
@@ -571,4 +585,3 @@
         private System.Windows.Forms.Button button5;
     }
 }
-

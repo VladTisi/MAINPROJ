@@ -217,7 +217,7 @@
             this.tabelAngajati.Name = "tabelAngajati";
             this.tabelAngajati.Size = new System.Drawing.Size(451, 298);
             this.tabelAngajati.TabIndex = 7;
-            this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
+           // this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
             // 
             // MeniuNavigare
             // 

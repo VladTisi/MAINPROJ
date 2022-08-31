@@ -24,7 +24,7 @@ namespace MAINPROJ
         public HomePage(int angajatId)
         {
             InitializeComponent();
-            this.angajatId=angajatId;
+            this.angajatId = angajatId;
 
         }
 
@@ -44,7 +44,7 @@ namespace MAINPROJ
             //int Salariu;
             //String DataA;
             Console.WriteLine(angajatId);
-          
+
 
 
 
@@ -55,7 +55,7 @@ namespace MAINPROJ
             //con.Close();
         }
         private void button2_Click(object sender, EventArgs e)
-        { 
+        {
             btnUpdatePoza.Visible = false;
 
             btnSalvareModificari.Visible = false;
@@ -68,7 +68,7 @@ namespace MAINPROJ
 
             OleDbConnection con = Common.GetConnection();
             con.Open();
-            
+
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
             string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
@@ -81,18 +81,18 @@ namespace MAINPROJ
 
             //Accesibile de admin/manager
 
-           //OleDbConnection con = Common.GetConnection();
-           // con.Open();
+            //OleDbConnection con = Common.GetConnection();
+            // con.Open();
 
-           // string numartelefon = txtTelefon.Text;
-           // string email = txtEmail.Text;
-           // string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
-           // cmd = new OleDbCommand(modifTel, con);
-           // string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
+            // string numartelefon = txtTelefon.Text;
+            // string email = txtEmail.Text;
+            // string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+            // cmd = new OleDbCommand(modifTel, con);
+            // string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
 
 
-           //cmd.ExecuteNonQuery();
-           //con.Close();
+            //cmd.ExecuteNonQuery();
+            //con.Close();
 
 
 
@@ -175,7 +175,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void pozaAngajat_Click(object sender, EventArgs e)
+        private void labelId_Click(object sender, EventArgs e)
         {
 
         }
