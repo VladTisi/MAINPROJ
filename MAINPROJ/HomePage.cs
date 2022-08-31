@@ -16,9 +16,10 @@ namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
+        private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
-        private int angajatId;
+        
 
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -30,20 +31,28 @@ namespace MAINPROJ
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            //OleDbConnection con = Common.GetConnection();
-            //con.Open();
-            //String Nume=$"SELECT Nume from Angajat Where ";
-            //String Prenume= $"SELECT Prenume from Angajat Where "; 
-            //String Functie= $"SELECT Functie from Angajat Where ";
-            //String Echipa = $"SELECT Echipa from Angajat Where ";
-            //String Email = $"SELECT Email from Login Where Login.Id ";
-            //int Id;
-            //String Sex = $"SELECT Sex from Angajat Where ";
-            //String nrTel = $"SELECT Numar_Telefon from Angajat Where ";
-            //int Overtime;
-            //int Salariu;
-            //String DataA;
-            Console.WriteLine(angajatId);
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            
+            string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+           
+            while (rdr.Read())
+            {
+                txtNume.Text = rdr.GetString(0);
+                txtPrenume.Text = rdr.GetString(1);
+                txtSalariu.Text = rdr.GetValue(2).ToString();
+                txtOvertime.Text = rdr.GetValue(3).ToString();
+                txtTelefon.Text = rdr.GetValue(4).ToString();
+                txtSex.Text = rdr.GetValue(5).ToString();
+                txtDataAngajare.Text = rdr.GetValue(6).ToString();
+                txtFunctie.Text = rdr.GetValue(7).ToString();
+                txtEchipa.Text = rdr.GetValue(8).ToString();
+                txtEmail.Text = rdr.GetValue(9).ToString();
+            }
+            con3.Close();
 
 
 
@@ -52,7 +61,18 @@ namespace MAINPROJ
 
 
 
-            //con.Close();
+
+
+
+
+
+
+
+
+
+
+
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -154,7 +174,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

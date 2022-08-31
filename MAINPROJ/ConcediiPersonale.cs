@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MAINPROJ;
 
 namespace MAINPROJ
 {
-    public partial class ConcediiPersonale : Form
+    public partial class ConcediiRefuzate : Form
     {
         bool sidebarExpand;
         private int angajatId;
-        public ConcediiPersonale(int angajatId)
+        public ConcediiRefuzate(int angajatId)
         {
             InitializeComponent();
             this.angajatId=angajatId;
@@ -33,6 +35,46 @@ namespace MAINPROJ
             otherform.Show();
 
         }
+        private void showTable()
+        {
+            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {2}", con))
+                {
+                    
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            tablelConcedii.DataSource = dt;
+                        }
+                    }
+                }
+            }
+        }
+        private void showTableREF()
+        {
+            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {1}", con))
+                {
+
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+            }
+        }
         ///Meniu Navigare
         private void menuButton_Click(object sender, EventArgs e)
         {
@@ -48,7 +90,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -93,5 +135,19 @@ namespace MAINPROJ
                 }
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ConcediiPersonale_Load(object sender, EventArgs e)
+        {
+            showTable();
+            showTableREF();
+        }
+
+    
+     
     }
 }

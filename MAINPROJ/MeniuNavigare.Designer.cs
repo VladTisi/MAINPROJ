@@ -185,9 +185,9 @@
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
             this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.Logo.Location = new System.Drawing.Point(339, 15);
+            this.Logo.Location = new System.Drawing.Point(304, 4);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(223, 57);
+            this.Logo.Size = new System.Drawing.Size(294, 80);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Logo.TabIndex = 1;
             this.Logo.TabStop = false;
@@ -217,7 +217,7 @@
             this.tabelAngajati.Name = "tabelAngajati";
             this.tabelAngajati.Size = new System.Drawing.Size(451, 298);
             this.tabelAngajati.TabIndex = 7;
-           // this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
+            this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
             // 
             // MeniuNavigare
             // 
