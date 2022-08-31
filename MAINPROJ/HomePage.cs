@@ -19,7 +19,9 @@ namespace MAINPROJ
         public HomePage()
         {
             InitializeComponent();
+
         }
+
         private void HomePage_Load(object sender, EventArgs e)
         {
             String Nume;
