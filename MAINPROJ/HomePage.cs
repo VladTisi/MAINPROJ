@@ -178,7 +178,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

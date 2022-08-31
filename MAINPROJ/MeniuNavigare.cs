@@ -93,7 +93,7 @@ namespace MAINPROJ
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -112,6 +112,11 @@ namespace MAINPROJ
             var otherform = new MeniuNavigare(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
         //////////////////////////////////////////////////////////
     }
