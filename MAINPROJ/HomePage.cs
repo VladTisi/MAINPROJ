@@ -24,6 +24,7 @@ namespace MAINPROJ
             InitializeComponent();
             
         }
+
         private void HomePage_Load(object sender, EventArgs e)
         {
             //OleDbConnection con = Common.GetConnection();
