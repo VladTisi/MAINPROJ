@@ -12,7 +12,7 @@ using System.Data.OleDb;
 
 
 
-namespace PrisonBreakProj
+namespace MAINPROJ
 {
     public partial class LogAuten : Form
     {
@@ -108,7 +108,24 @@ namespace PrisonBreakProj
 
         private void logare_Click(object sender, EventArgs e)
         {
-           //string username,password;
+            string email = logmail.Text;
+
+            OleDbConnection conn = Common.GetConnection();
+            cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
+            cmd.Connection = conn;
+            conn.Open();
+            string parola = logpass.Text;
+            string password = (string)cmd.ExecuteScalar();
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Email invalid");
+            }
+            if(password != logpass.Text)
+            {
+                MessageBox.Show("Parola invalida");
+            }
+            Console.WriteLine(logpass.Text);
+            conn.Close();
 
 
         }
