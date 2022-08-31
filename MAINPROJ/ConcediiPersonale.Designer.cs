@@ -68,7 +68,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button1.Location = new System.Drawing.Point(815, 453);
+            this.button1.Location = new System.Drawing.Point(782, 453);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 46);
             this.button1.TabIndex = 2;
@@ -213,7 +213,7 @@
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(900, 0);
+            this.button6.Location = new System.Drawing.Point(888, 0);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(33, 23);
             this.button6.TabIndex = 51;
@@ -226,7 +226,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(930, 530);
+            this.ClientSize = new System.Drawing.Size(918, 530);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.button1);
