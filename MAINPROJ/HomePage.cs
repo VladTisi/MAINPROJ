@@ -19,13 +19,14 @@ namespace MAINPROJ
         private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
+        private int angajatId;
+
         public int UserId { get; set; }
         public HomePage(int angajatId)
-
-
         {
             InitializeComponent();
-            this.angajatId = angajatId;
+            this.angajatId=angajatId;
+
         }
 
         private void HomePage_Load(object sender, EventArgs e)
@@ -43,6 +44,7 @@ namespace MAINPROJ
             //int Overtime;
             //int Salariu;
             //String DataA;
+            Console.WriteLine(angajatId);
           
 
 

@@ -13,9 +13,11 @@ namespace MAINPROJ
     public partial class ConcediiPersonale : Form
     {
         bool sidebarExpand;
+        private int angajatId;
         public ConcediiPersonale(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

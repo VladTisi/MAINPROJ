@@ -13,9 +13,11 @@ namespace MAINPROJ
     public partial class Echipa : Form
     {
         bool sidebarExpand;
+        private int angajatId;
         public Echipa(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)

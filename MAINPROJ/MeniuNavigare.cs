@@ -14,12 +14,15 @@ using System.Windows.Forms;
 
 namespace MAINPROJ
 {
+    
     public partial class MeniuNavigare : Form
     {
+        private int angajatId;
         bool sidebarExpand;
         public MeniuNavigare(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
             showTable();
         }
 

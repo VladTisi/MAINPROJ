@@ -14,14 +14,14 @@ using System.Windows.Forms;
 namespace MAINPROJ
 {
     public partial class CerereConcediu : Form
-    { 
-       
+    {
         private int angajatId;
         OleDbCommand cmd = new OleDbCommand();
         bool sidebarExpand;
         public CerereConcediu(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
         }
 
         private void CerereConcediu_Load(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace MAINPROJ
             con.Open();
             //string sss = $"asdasd{dtpDataIncepere.Value},{dtpDataIncepere.Value}";
             //Console.WriteLine(sss);
-            string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatIdTemp})";
+            string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId})";
             //cmd.Parameters.AddWithValue("@TipConcediuId", cmbTipConcediu.SelectedValue);
             //cmd.Parameters.AddWithValue("@Data_inceput", dtpDataIncepere.Value);
             //cmd.Parameters.AddWithValue("@Data_sfarsit", dtpDataSfarsit.Value);
