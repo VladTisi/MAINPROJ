@@ -201,9 +201,9 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(615, 456);
+            this.btnModificareDate.Location = new System.Drawing.Point(686, 482);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(145, 48);
+            this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;
@@ -211,7 +211,7 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(615, 495);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(686, 169);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
             this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
             this.btnSalvareModificari.TabIndex = 34;
@@ -219,19 +219,6 @@
             this.btnSalvareModificari.UseVisualStyleBackColor = true;
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.BackColor = System.Drawing.Color.Transparent;
-            this.labelId.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelId.ForeColor = System.Drawing.Color.White;
-            this.labelId.Location = new System.Drawing.Point(231, 210);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(25, 19);
-            this.labelId.TabIndex = 35;
-            this.labelId.Text = "Id";
-            this.labelId.Click += new System.EventHandler(this.labelId_Click);
             // 
             // txtEmail
             // 
@@ -249,14 +236,6 @@
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
             // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(334, 209);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 38;
-            // 
             // txtNume
             // 
             this.txtNume.Enabled = false;
@@ -264,7 +243,6 @@
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(100, 20);
             this.txtNume.TabIndex = 39;
-            this.txtNume.TextChanged += new System.EventHandler(this.txtNume_TextChanged);
             // 
             // txtPrenume
             // 
@@ -273,7 +251,6 @@
             this.txtPrenume.Name = "txtPrenume";
             this.txtPrenume.Size = new System.Drawing.Size(100, 20);
             this.txtPrenume.TabIndex = 40;
-            this.txtPrenume.TextChanged += new System.EventHandler(this.txtPrenume_TextChanged);
             // 
             // txtSex
             // 
@@ -282,7 +259,6 @@
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 41;
-            this.txtSex.TextChanged += new System.EventHandler(this.txtSex_TextChanged);
             // 
             // txtFunctie
             // 
@@ -291,7 +267,6 @@
             this.txtFunctie.Name = "txtFunctie";
             this.txtFunctie.Size = new System.Drawing.Size(100, 20);
             this.txtFunctie.TabIndex = 42;
-            this.txtFunctie.TextChanged += new System.EventHandler(this.txtFunctie_TextChanged);
             // 
             // txtEchipa
             // 
@@ -300,7 +275,6 @@
             this.txtEchipa.Name = "txtEchipa";
             this.txtEchipa.Size = new System.Drawing.Size(100, 20);
             this.txtEchipa.TabIndex = 43;
-            this.txtEchipa.TextChanged += new System.EventHandler(this.txtEchipa_TextChanged);
             // 
             // txtOvertime
             // 
@@ -317,7 +291,6 @@
             this.txtSalariu.Name = "txtSalariu";
             this.txtSalariu.Size = new System.Drawing.Size(100, 20);
             this.txtSalariu.TabIndex = 45;
-            this.txtSalariu.TextChanged += new System.EventHandler(this.txtSalariu_TextChanged);
             // 
             // txtDataAngajare
             // 
@@ -326,7 +299,6 @@
             this.txtDataAngajare.Name = "txtDataAngajare";
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 46;
-            this.txtDataAngajare.TextChanged += new System.EventHandler(this.txtDataAngajare_TextChanged);
             // 
             // btnUpdatePoza
             // 
