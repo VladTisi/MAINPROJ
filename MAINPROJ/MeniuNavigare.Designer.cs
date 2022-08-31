@@ -63,12 +63,12 @@
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Controls.Add(this.panel5);
-            this.sidebar.Location = new System.Drawing.Point(-4, 0);
+            this.sidebar.Location = new System.Drawing.Point(-5, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
-            this.sidebar.MaximumSize = new System.Drawing.Size(200, 450);
-            this.sidebar.MinimumSize = new System.Drawing.Size(60, 450);
+            this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
+            this.sidebar.MinimumSize = new System.Drawing.Size(61, 535);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(60, 450);
+            this.sidebar.Size = new System.Drawing.Size(61, 535);
             this.sidebar.TabIndex = 0;
             // 
             // panel1
@@ -113,6 +113,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "      Home";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -134,6 +135,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "       Concediile \r\n      mele";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel4
             // 
@@ -155,6 +157,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "        Echipa";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel5
             // 
@@ -176,12 +179,13 @@
             this.button4.TabIndex = 1;
             this.button4.Text = "           Lista Angajati";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
             this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.Logo.Location = new System.Drawing.Point(360, 37);
+            this.Logo.Location = new System.Drawing.Point(468, 33);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(169, 50);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -198,7 +202,7 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(767, 0);
+            this.button5.Location = new System.Drawing.Point(900, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 23);
             this.button5.TabIndex = 6;
@@ -209,9 +213,9 @@
             // tabelAngajati
             // 
             this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelAngajati.Location = new System.Drawing.Point(175, 115);
+            this.tabelAngajati.Location = new System.Drawing.Point(270, 118);
             this.tabelAngajati.Name = "tabelAngajati";
-            this.tabelAngajati.Size = new System.Drawing.Size(527, 298);
+            this.tabelAngajati.Size = new System.Drawing.Size(563, 298);
             this.tabelAngajati.TabIndex = 7;
             // 
             // MeniuNavigare
@@ -219,7 +223,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(930, 530);
             this.Controls.Add(this.tabelAngajati);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.Logo);

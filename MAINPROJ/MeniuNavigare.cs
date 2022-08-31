@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using PrisonBreakProj;
+using MAINPROJ;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,9 +23,6 @@ namespace MAINPROJ
             showTable();
         }
 
-        
-    
-
         private void menuButton_Click_1(object sender, EventArgs e)
         {
             sidebarTimer.Start();
@@ -34,8 +31,6 @@ namespace MAINPROJ
         {
             if (sidebarExpand)
             {
-                Logo.Location = new Point(330, 37);
-                tabelAngajati.Location = new Point(175, 115);
                 sidebar.Width -= 10;
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
@@ -45,8 +40,6 @@ namespace MAINPROJ
             }
             else
             {
-                Logo.Location = new Point(360, 37);
-                tabelAngajati.Location = new Point(205, 115);
                 sidebar.Width += 10;
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
@@ -65,13 +58,13 @@ namespace MAINPROJ
         {
             Application.Exit();
         }
-
-        private void showTable()
+        
+    private void showTable()
         {
             string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
             using (SqlConnection con = new SqlConnection(constring))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT Angajat.Poza, Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia],Angajat.Data_Angajarii as [Data angajarii] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia],Angajat.Data_Angajarii as [Data angajarii] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id", con))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
@@ -86,6 +79,33 @@ namespace MAINPROJ
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

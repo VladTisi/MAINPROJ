@@ -33,8 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,17 +51,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="ConcediiPersonale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConcediiPersonale.Designer.cs">
+      <DependentUpon>ConcediiPersonale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="CerereConcediu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CerereConcediu.Designer.cs">
+      <DependentUpon>CerereConcediu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeniuGestionareConcedii.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MeniuGestionareConcedii.Designer.cs">
-      <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeniuGestionareConcedii.resx</DependentUpon>
     </Compile>
     <Compile Include="MeniuNavigare.cs">
       <SubType>Form</SubType>
@@ -79,6 +102,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CerereConcediu.resx">
+      <DependentUpon>CerereConcediu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConcediiPersonale.resx">
+      <DependentUpon>ConcediiPersonale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MeniuGestionareConcedii.resx">
       <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>MeniuGestionareConcedii.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
@@ -101,6 +133,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
