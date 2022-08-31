@@ -15,12 +15,13 @@ namespace MAINPROJ
 {
     public partial class CerereConcediu : Form
     {
-        int angajatIdTemp = 5;
+        private int angajatId;
         OleDbCommand cmd = new OleDbCommand();
         bool sidebarExpand;
-        public CerereConcediu()
+        public CerereConcediu(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
         }
 
         private void CerereConcediu_Load(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace MAINPROJ
             con.Open();
             //string sss = $"asdasd{dtpDataIncepere.Value},{dtpDataIncepere.Value}";
             //Console.WriteLine(sss);
-            string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatIdTemp})";
+            string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId})";
             //cmd.Parameters.AddWithValue("@TipConcediuId", cmbTipConcediu.SelectedValue);
             //cmd.Parameters.AddWithValue("@Data_inceput", dtpDataIncepere.Value);
             //cmd.Parameters.AddWithValue("@Data_sfarsit", dtpDataSfarsit.Value);
@@ -88,7 +89,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -96,7 +97,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -104,7 +105,7 @@ namespace MAINPROJ
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -112,7 +113,7 @@ namespace MAINPROJ
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare();
+            var otherform = new MeniuNavigare(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

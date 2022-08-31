@@ -185,9 +185,9 @@
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
             this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.Logo.Location = new System.Drawing.Point(468, 33);
+            this.Logo.Location = new System.Drawing.Point(339, 15);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(169, 50);
+            this.Logo.Size = new System.Drawing.Size(223, 57);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Logo.TabIndex = 1;
             this.Logo.TabStop = false;
@@ -213,17 +213,17 @@
             // tabelAngajati
             // 
             this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelAngajati.Location = new System.Drawing.Point(270, 118);
+            this.tabelAngajati.Location = new System.Drawing.Point(236, 115);
             this.tabelAngajati.Name = "tabelAngajati";
-            this.tabelAngajati.Size = new System.Drawing.Size(563, 298);
+            this.tabelAngajati.Size = new System.Drawing.Size(451, 298);
             this.tabelAngajati.TabIndex = 7;
-
+            this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
             // 
             // MeniuNavigare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MAINPROJ.Properties.Resources.background;
+            this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(930, 530);
             this.Controls.Add(this.tabelAngajati);
             this.Controls.Add(this.button5);

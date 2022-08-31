@@ -14,9 +14,11 @@ namespace MAINPROJ
     public partial class Echipa : Form
     {
         bool sidebarExpand;
-        public Echipa()
+        private int angajatId;
+        public Echipa(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -49,14 +51,14 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale();
+            var otherform = new ConcediiPersonale(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -64,7 +66,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa();
+            var otherform = new Echipa(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -72,7 +74,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare();
+            var otherform = new MeniuNavigare(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

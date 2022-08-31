@@ -14,12 +14,15 @@ using System.Windows.Forms;
 
 namespace MAINPROJ
 {
+    
     public partial class MeniuNavigare : Form
     {
+        private int angajatId;
         bool sidebarExpand;
-        public MeniuNavigare()
+        public MeniuNavigare(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
             showTable();
         }
 
@@ -82,7 +85,7 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage();
+            var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -90,7 +93,7 @@ namespace MAINPROJ
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale();
+            var otherform = new ConcediiPersonale(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -98,7 +101,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa();
+            var otherform = new Echipa(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -106,7 +109,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare();
+            var otherform = new MeniuNavigare(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
