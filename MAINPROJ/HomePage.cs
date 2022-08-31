@@ -103,5 +103,10 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+
+        private void pozaAngajat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

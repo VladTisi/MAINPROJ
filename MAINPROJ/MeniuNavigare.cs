@@ -107,5 +107,10 @@ namespace MAINPROJ
         {
 
         }
+
+        private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
