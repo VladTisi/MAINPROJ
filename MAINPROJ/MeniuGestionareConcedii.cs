@@ -13,9 +13,11 @@ namespace MAINPROJ
 {
     public partial class MeniuGestionareConcedii : Form
     {
-        public MeniuGestionareConcedii()
+        private int angajatId;
+        public MeniuGestionareConcedii(int angajatId)
         {
             InitializeComponent();
+            this.angajatId=angajatId;
             showTable();
         }
 
