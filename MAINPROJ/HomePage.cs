@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MAINPROJ;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace MAINPROJ
 {
@@ -19,7 +20,26 @@ namespace MAINPROJ
         {
             InitializeComponent();
         }
-        
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+            String Nume;
+            String Prenume;
+            String Functie;
+            String Echipa;
+            String Email;
+            int Id;
+            char Sex;
+            String nrTel;
+            int Overtime;
+            int Salariu;
+            String DataA;
+            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
+            SqlConnection con = new SqlConnection(constring);
+            con.Open();
+            
+           
+
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
