@@ -322,6 +322,7 @@
             this.MinimizeBox = false;
             this.Name = "CerereConcediu";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.CerereConcediu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

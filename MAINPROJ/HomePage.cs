@@ -103,5 +103,26 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new ConcediiPersonale();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }
