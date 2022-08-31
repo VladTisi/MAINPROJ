@@ -1,4 +1,5 @@
-﻿using PrisonBreakProj;
+﻿using MAINPROJ;
+using PrisonBreakProj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
+            Application.Run(new HomePage());
         }
     }
 }
