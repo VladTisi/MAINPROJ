@@ -11,6 +11,7 @@ using MAINPROJ;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace MAINPROJ
 {
@@ -38,7 +39,7 @@ namespace MAINPROJ
             string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
             cmd = new OleDbCommand(dateAngajat, con3);
             var rdr = cmd.ExecuteReader();
-           
+            showImage();
             while (rdr.Read())
             {
                 txtNume.Text = rdr.GetString(0);
@@ -183,9 +184,22 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void labelId_Click(object sender, EventArgs e)
+        private void showImage()
         {
 
+            OleDbConnection con = Common.GetConnection();
+            string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
+            cmd = new OleDbCommand(selectpoza, con);
+            string Poza =(string) cmd.ExecuteScalar();
+            byte[] imgBytes = Convert.FromBase64String(Poza);
+
+            MemoryStream ms = new MemoryStream(imgBytes);
+
+            Image returnImage = Image.FromStream(ms);
+            pozaAngajat.Image = returnImage;
+            cmd.ExecuteNonQuery();
+      
         }
+      
     }
 }

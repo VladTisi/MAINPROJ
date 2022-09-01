@@ -87,6 +87,11 @@
     </Compile>
     <Compile Include="MeniuModificareDateAngajat.Designer.cs">
       <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
+    <Compile Include="GestionareConcedii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionareConcedii.Designer.cs">
+      <DependentUpon>GestionareConcedii.cs</DependentUpon>
     </Compile>
     <Compile Include="MeniuNavigare.cs">
       <SubType>Form</SubType>
@@ -116,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Echipa.resx">
       <DependentUpon>Echipa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionareConcedii.resx">
+      <DependentUpon>GestionareConcedii.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
