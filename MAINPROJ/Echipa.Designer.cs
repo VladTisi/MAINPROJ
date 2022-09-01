@@ -83,9 +83,8 @@
             this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
             this.sidebar.MinimumSize = new System.Drawing.Size(61, 535);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(200, 535);
+            this.sidebar.Size = new System.Drawing.Size(61, 535);
             this.sidebar.TabIndex = 50;
-            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
             // 
             // panel1
             // 
@@ -217,6 +216,7 @@
             this.button7.TabIndex = 1;
             this.button7.Text = "          Gestionare \r\n        Concedii";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panel7
             // 
@@ -238,13 +238,14 @@
             this.button8.TabIndex = 1;
             this.button8.Text = "         Alterare Date";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(888, 0);
+            this.button5.Location = new System.Drawing.Point(884, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 23);
             this.button5.TabIndex = 51;
@@ -295,7 +296,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(918, 530);
+            this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.tabelEchipa);

@@ -127,7 +127,15 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void sidebar_Paint(object sender, PaintEventArgs e)
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
         {
 
         }
