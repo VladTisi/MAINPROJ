@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -166,6 +167,23 @@ namespace MAINPROJ
         {
             showTable();
             showTableREF();
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            var cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin != true && manager != 3)
+                {
+                    button10.Visible = false;
+                    button9.Visible = false;
+                }
+            }
+            con3.Close();
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -181,6 +199,14 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             showTableREF();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
