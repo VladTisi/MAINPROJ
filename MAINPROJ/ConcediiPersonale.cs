@@ -60,6 +60,27 @@ namespace MAINPROJ
             string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
             using (SqlConnection con = new SqlConnection(constring))
             {
+                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {3}", con))
+                {
+
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void showTablePEND()
+        {
+            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
+            using (SqlConnection con = new SqlConnection(constring))
+            {
                 using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {1}", con))
                 {
 
@@ -147,7 +168,19 @@ namespace MAINPROJ
             showTableREF();
         }
 
-    
-     
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            showTablePEND();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            showTableREF();
+        }
     }
 }
