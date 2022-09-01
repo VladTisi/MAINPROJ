@@ -52,6 +52,10 @@ namespace MAINPROJ
                 txtEchipa.Text = rdr.GetValue(8).ToString();
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
+            Console.WriteLine(txtNume.Text);
+            Console.WriteLine(txtPrenume.Text);
+            Console.WriteLine(txtEmail.Text);
+
             con3.Close();
 
 
