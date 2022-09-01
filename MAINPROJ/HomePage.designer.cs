@@ -68,6 +68,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -76,6 +80,8 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNume
@@ -335,6 +341,8 @@
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Controls.Add(this.panel5);
+            this.sidebar.Controls.Add(this.panel6);
+            this.sidebar.Controls.Add(this.panel7);
             this.sidebar.Location = new System.Drawing.Point(-5, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
             this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
@@ -466,6 +474,50 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button7);
+            this.panel6.Location = new System.Drawing.Point(3, 353);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(197, 63);
+            this.panel6.TabIndex = 8;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Image = global::MAINPROJ.Properties.Resources.rsz_sheriff;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(-2, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(199, 57);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "          Gestionare \r\n        Concedii";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button8);
+            this.panel7.Location = new System.Drawing.Point(3, 422);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(197, 63);
+            this.panel7.TabIndex = 9;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.White;
+            this.button8.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Image = global::MAINPROJ.Properties.Resources.king;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(-2, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(199, 57);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "         Alterare Date";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,6 +563,8 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,5 +610,9 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button8;
     }
 }

@@ -53,7 +53,21 @@ namespace MAINPROJ
                 txtEchipa.Text = rdr.GetValue(8).ToString();
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
-          
+
+            string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            cmd = new OleDbCommand(dateAdmin, con3);
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin != true && manager != 3)
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+            }
             con3.Close();
 
         }
@@ -181,6 +195,18 @@ namespace MAINPROJ
             cmd.ExecuteNonQuery();
       
         }
-      
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -106,7 +106,27 @@ namespace MAINPROJ
            
                 // Toggle between True and False.  
                 monthCalendar1.ShowToday = !monthCalendar1.ShowToday;
-     
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+
+            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin != true && manager != 3)
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+            }
+
+            con3.Close();
+
         }
 
         private void button5_Click(object sender, EventArgs e)
