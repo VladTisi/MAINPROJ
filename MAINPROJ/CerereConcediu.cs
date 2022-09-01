@@ -134,7 +134,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
