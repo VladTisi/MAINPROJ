@@ -50,6 +50,8 @@
             this.tabelEchipa = new System.Windows.Forms.DataGridView();
             this.button6 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -255,7 +257,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(224, 117);
+            this.monthCalendar1.Location = new System.Drawing.Point(129, 216);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 52;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
@@ -263,16 +265,17 @@
             // tabelEchipa
             // 
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelEchipa.Location = new System.Drawing.Point(497, 117);
+            this.tabelEchipa.Location = new System.Drawing.Point(546, 216);
             this.tabelEchipa.Name = "tabelEchipa";
-            this.tabelEchipa.Size = new System.Drawing.Size(323, 162);
+            this.tabelEchipa.Size = new System.Drawing.Size(321, 162);
             this.tabelEchipa.TabIndex = 53;
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.BackColor = System.Drawing.Color.Black;
             this.button6.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button6.Location = new System.Drawing.Point(348, 302);
+            this.button6.ForeColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(189, 420);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(103, 46);
             this.button6.TabIndex = 54;
@@ -284,12 +287,35 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(301, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(273, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(348, 94);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 55;
             this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(188, 185);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 22);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "CALENDAR";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(655, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 22);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "ECHIPA TA";
             // 
             // Echipa
             // 
@@ -297,6 +323,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.tabelEchipa);
@@ -319,6 +347,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -345,5 +374,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
