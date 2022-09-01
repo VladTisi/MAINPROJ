@@ -17,7 +17,7 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CerereConcediu(3));
+            Application.Run(new CerereConcediu(5));
             
         }
     }

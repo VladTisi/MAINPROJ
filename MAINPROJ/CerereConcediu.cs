@@ -18,10 +18,18 @@ namespace MAINPROJ
         private int angajatId;
         OleDbCommand cmd = new OleDbCommand();
         bool sidebarExpand;
+        private System.Windows.Forms.Timer tmr;
         public CerereConcediu(int angajatId)
         {
             InitializeComponent();
             this.angajatId=angajatId;
+
+            tmr = new System.Windows.Forms.Timer();
+            tmr.Tick += delegate {
+                this.Close();
+            };
+            tmr.Interval = (int)TimeSpan.FromMinutes(5).TotalMilliseconds;
+            tmr.Start();
         }
 
         private void CerereConcediu_Load(object sender, EventArgs e)
@@ -47,8 +55,13 @@ namespace MAINPROJ
                 }
             }
 
+            string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId})  select @numar - sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2";
+            cmd= new OleDbCommand(comanda, con3);
+            OleDbDataReader reader=cmd.ExecuteReader();
+            reader.Read();
+            label5.Text = reader["Zile"].ToString();
             con3.Close();
-
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,6 +182,11 @@ namespace MAINPROJ
         }
 
         private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

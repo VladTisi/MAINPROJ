@@ -36,8 +36,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTipConcediu = new System.Windows.Forms.ComboBox();
-            this.tipConcediuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipConcediuBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new MAINPROJ.DataSet1();
+            this.tipConcediuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.tipConcediuTableAdapter = new MAINPROJ.DataSet1TableAdapters.TipConcediuTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
@@ -57,10 +58,12 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.tipConcediuBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource)).BeginInit();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,7 +72,6 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -143,15 +145,20 @@
             this.cmbTipConcediu.ValueMember = "Id";
             this.cmbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // tipConcediuBindingSource
+            // tipConcediuBindingSource1
             // 
-            this.tipConcediuBindingSource.DataMember = "TipConcediu";
-            this.tipConcediuBindingSource.DataSource = this.dataSet1;
+            this.tipConcediuBindingSource1.DataMember = "TipConcediu";
+            this.tipConcediuBindingSource1.DataSource = this.dataSet1;
             // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet1";
             this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tipConcediuBindingSource
+            // 
+            this.tipConcediuBindingSource.DataMember = "TipConcediu";
+            this.tipConcediuBindingSource.DataSource = this.dataSet1;
             // 
             // label3
             // 
@@ -357,10 +364,28 @@
             this.sidebarTimer.Interval = 10;
             this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
             // 
-            // tipConcediuBindingSource1
+            // label4
             // 
-            this.tipConcediuBindingSource1.DataMember = "TipConcediu";
-            this.tipConcediuBindingSource1.DataSource = this.dataSet1;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(316, 357);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 19);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "ZILE RAMASE";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(331, 392);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 22);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "1";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // CerereConcediu
             // 
@@ -369,6 +394,8 @@
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
             this.ControlBox = false;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
@@ -388,8 +415,9 @@
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.CerereConcediu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource)).EndInit();
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -398,8 +426,8 @@
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -434,5 +462,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.BindingSource tipConcediuBindingSource1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
