@@ -17,7 +17,7 @@ namespace MAINPROJ
         {
             var from = "vlad.tisianu@totalsoft.ro";
             var username = "vlad.tisianu@totalsoft.ro"; 
-            var password = "Thew0lf2234*"; 
+            var password = "*"; 
             var host = "mailer14.totalsoft.local";
             var port = 587;
 
