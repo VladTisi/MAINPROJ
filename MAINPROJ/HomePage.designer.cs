@@ -67,11 +67,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -207,9 +207,10 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(730, 419);
+            this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 10.25F);
+            this.btnModificareDate.Location = new System.Drawing.Point(741, 409);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
+            this.btnModificareDate.Size = new System.Drawing.Size(118, 33);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;
@@ -217,9 +218,10 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(718, 118);
+            this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvareModificari.Location = new System.Drawing.Point(741, 108);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
-            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
+            this.btnSalvareModificari.Size = new System.Drawing.Size(118, 33);
             this.btnSalvareModificari.TabIndex = 34;
             this.btnSalvareModificari.Text = "Salvare modificari";
             this.btnSalvareModificari.UseVisualStyleBackColor = true;
@@ -233,6 +235,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 36;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtTelefon
             // 
@@ -289,6 +292,7 @@
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
+            this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
             // txtSalariu
             // 
@@ -305,16 +309,21 @@
             this.txtDataAngajare.Name = "txtDataAngajare";
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 46;
+            this.txtDataAngajare.TextChanged += new System.EventHandler(this.txtDataAngajare_TextChanged);
             // 
             // btnUpdatePoza
             // 
+            this.btnUpdatePoza.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnUpdatePoza.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePoza.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnUpdatePoza.Location = new System.Drawing.Point(235, 194);
             this.btnUpdatePoza.Name = "btnUpdatePoza";
-            this.btnUpdatePoza.Size = new System.Drawing.Size(90, 23);
+            this.btnUpdatePoza.Size = new System.Drawing.Size(90, 33);
             this.btnUpdatePoza.TabIndex = 47;
             this.btnUpdatePoza.Text = "Update";
-            this.btnUpdatePoza.UseVisualStyleBackColor = true;
+            this.btnUpdatePoza.UseVisualStyleBackColor = false;
             this.btnUpdatePoza.Visible = false;
+            this.btnUpdatePoza.Click += new System.EventHandler(this.btnUpdatePoza_Click);
             // 
             // pictureBox1
             // 
@@ -461,19 +470,6 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(884, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(33, 23);
-            this.button5.TabIndex = 50;
-            this.button5.Text = "X";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button7);
@@ -517,6 +513,19 @@
             this.button8.Text = "         Alterare Date";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(884, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(33, 23);
+            this.button5.TabIndex = 50;
+            this.button5.Text = "X";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // HomePage
             // 

@@ -31,17 +31,17 @@ namespace MAINPROJ
         OleDbCommand cmd2 = new OleDbCommand();
         private void Form2_Load(object sender, EventArgs e)
         {
-           
+
 
         }
         private int validateEmail(string email)
-            {
+        {
             if (email.Contains("@") && email.Contains(".") && email.Length > 8)
             {
                 return 1;
             }
             else return 0;
-            }
+        }
 
         private int validatePassword(string password, string confirmpassword)
         {
@@ -49,15 +49,15 @@ namespace MAINPROJ
             bool majuscula = false;
             bool digit = false;
 
-            if(password == confirmpassword && password.Length>=8)
+            if (password == confirmpassword && password.Length >= 8)
             {
-                char[] mychars = password.ToCharArray();    
-                for(int i=0; i<mychars.Length; i++)
+                char[] mychars = password.ToCharArray();
+                for (int i = 0; i < mychars.Length; i++)
                 {
                     char c = mychars[i];
-                    if(char.IsDigit(c) && digit == false)
+                    if (char.IsDigit(c) && digit == false)
                     {
-                        digit = true;   
+                        digit = true;
                     }
                     if (!char.IsLetterOrDigit(c) && specialchar == false && !char.IsWhiteSpace(c))
                     {
@@ -68,29 +68,30 @@ namespace MAINPROJ
                         majuscula = true;
                     }
                 }
-                if(digit && specialchar && majuscula)
+                if (digit && specialchar && majuscula)
                 {
                     return 1;
                 }
-                
-                
-            } return 0;
+
+
+            }
+            return 0;
         }
         private void AUTENTIFICARE_Click(object sender, EventArgs e)
         {
             int passvalid = validatePassword(autpass.Text, conpass.Text);
             int emailvalid = validateEmail(autemail.Text);
 
-            if(passvalid==0)
+            if (passvalid == 0)
             {
                 MessageBox.Show("Parola invalida");
 
             }
-            if(emailvalid==0)
+            if (emailvalid == 0)
             {
                 MessageBox.Show("Email invalid");
             }
-            if(passvalid ==1 && emailvalid ==1)
+            if (passvalid == 1 && emailvalid == 1)
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
@@ -101,13 +102,13 @@ namespace MAINPROJ
 
                 MessageBox.Show("Contul tau a fost creat!");
             }
-             
+
 
 
 
 
         }
-       
+
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -122,7 +123,7 @@ namespace MAINPROJ
         {
             if (checkLog.Checked)
             {
-               logpass.PasswordChar = '\0';
+                logpass.PasswordChar = '\0';
             }
             else
             {
@@ -142,7 +143,7 @@ namespace MAINPROJ
 
         private void checkAut_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkAut.Checked)
+            if (checkAut.Checked)
             {
                 autpass.PasswordChar = '\0';
                 conpass.PasswordChar = '\0';
@@ -173,12 +174,12 @@ namespace MAINPROJ
             {
                 MessageBox.Show("Email invalid");
             }
-            if(password != logpass.Text)
+            if (password != logpass.Text)
             {
                 MessageBox.Show("Parola invalida");
             }
             conn.Close();
-                     
+
 
             if (parola == password)
             {
@@ -252,7 +253,7 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
 
-            
+
             DialogResult dialogResult = MessageBox.Show("Doriti sa resetati parola?", "Resetare parola", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -269,15 +270,15 @@ namespace MAINPROJ
                 {
                     Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", "denisa.marica@totalsoft.ro");
                     String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                    if (Int32.Parse(s)==x)
+                    if (Int32.Parse(s) == x)
                     {
                         string selectId = $"SELECT AngajatId FROM Login WHERE Email='{email}'";
                         cmd.CommandText = selectId;
-                        int angajatId = (int) cmd.ExecuteScalar();
+                        int angajatId = (int)cmd.ExecuteScalar();
                         string generated_pass = Membership.GeneratePassword(8, 0);
                         Console.WriteLine(generated_pass);
                         string updatePasswordQuery = $"UPDATE Login SET Parola='{generated_pass}' WHERE AngajatId={angajatId}";
-                        cmd.CommandText=updatePasswordQuery;
+                        cmd.CommandText = updatePasswordQuery;
                         cmd.ExecuteNonQuery();
                         Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", "denisa.marica@totalsoft.ro");
                     }
@@ -296,5 +297,6 @@ namespace MAINPROJ
             }
 
 
+        }
     }
 }

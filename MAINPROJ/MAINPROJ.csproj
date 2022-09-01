@@ -66,6 +66,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +92,9 @@
     <Compile Include="MeniuModificareDateAngajat.cs">
       <SubType>Form</SubType>
     </Compile>
-	  <Compile Include="MeniuModificareDateAngajat.Designer.cs">
-		  <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="MeniuModificareDateAngajat.Designer.cs">
+      <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionareConcedii.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +118,11 @@
     </Compile>
     <Compile Include="LogAuten.Designer.cs">
       <DependentUpon>LogAuten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrisonBreakDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrisonBreakDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,7 +172,29 @@
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="PrisonBreakDataSet.xsc">
+      <DependentUpon>PrisonBreakDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PrisonBreakDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrisonBreakDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PrisonBreakDataSet.xss">
+      <DependentUpon>PrisonBreakDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboListaAngajati = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnUpdatePoza = new System.Windows.Forms.Button();
-            this.txtDataAngajare = new System.Windows.Forms.TextBox();
             this.txtSalariu = new System.Windows.Forms.TextBox();
             this.txtOvertime = new System.Windows.Forms.TextBox();
-            this.txtEchipa = new System.Windows.Forms.TextBox();
-            this.txtFunctie = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
             this.txtPrenume = new System.Windows.Forms.TextBox();
             this.txtNume = new System.Windows.Forms.TextBox();
@@ -54,8 +52,22 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelEchipa = new System.Windows.Forms.Label();
             this.labelNume = new System.Windows.Forms.Label();
+            this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
+            this.comboFunctie = new System.Windows.Forms.ComboBox();
+            this.dataSet2 = new MAINPROJ.DataSet2();
+            this.functieBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.functieTableAdapter = new MAINPROJ.DataSet2TableAdapters.FunctieTableAdapter();
+            this.comboEchipa = new System.Windows.Forms.ComboBox();
+            this.prisonBreakDataSet = new MAINPROJ.PrisonBreakDataSet();
+            this.echipaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.echipaTableAdapter = new MAINPROJ.PrisonBreakDataSetTableAdapters.EchipaTableAdapter();
+            this.txtDataAngajare = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.functieBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.echipaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboListaAngajati
@@ -88,18 +100,10 @@
             this.btnUpdatePoza.UseVisualStyleBackColor = true;
             this.btnUpdatePoza.Visible = false;
             // 
-            // txtDataAngajare
-            // 
-            this.txtDataAngajare.Enabled = false;
-            this.txtDataAngajare.Location = new System.Drawing.Point(729, 384);
-            this.txtDataAngajare.Name = "txtDataAngajare";
-            this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
-            this.txtDataAngajare.TabIndex = 71;
-            // 
             // txtSalariu
             // 
             this.txtSalariu.Enabled = false;
-            this.txtSalariu.Location = new System.Drawing.Point(729, 321);
+            this.txtSalariu.Location = new System.Drawing.Point(705, 322);
             this.txtSalariu.Name = "txtSalariu";
             this.txtSalariu.Size = new System.Drawing.Size(100, 20);
             this.txtSalariu.TabIndex = 70;
@@ -107,26 +111,10 @@
             // txtOvertime
             // 
             this.txtOvertime.Enabled = false;
-            this.txtOvertime.Location = new System.Drawing.Point(729, 262);
+            this.txtOvertime.Location = new System.Drawing.Point(705, 263);
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 69;
-            // 
-            // txtEchipa
-            // 
-            this.txtEchipa.Enabled = false;
-            this.txtEchipa.Location = new System.Drawing.Point(535, 260);
-            this.txtEchipa.Name = "txtEchipa";
-            this.txtEchipa.Size = new System.Drawing.Size(100, 20);
-            this.txtEchipa.TabIndex = 68;
-            // 
-            // txtFunctie
-            // 
-            this.txtFunctie.Enabled = false;
-            this.txtFunctie.Location = new System.Drawing.Point(535, 201);
-            this.txtFunctie.Name = "txtFunctie";
-            this.txtFunctie.Size = new System.Drawing.Size(100, 20);
-            this.txtFunctie.TabIndex = 67;
             // 
             // txtSex
             // 
@@ -177,6 +165,7 @@
             this.btnSalvareModificari.Text = "Salvare modificari";
             this.btnSalvareModificari.UseVisualStyleBackColor = true;
             this.btnSalvareModificari.Visible = false;
+            this.btnSalvareModificari.Click += new System.EventHandler(this.btnSalvareModificari_Click);
             // 
             // btnModificareDate
             // 
@@ -186,6 +175,7 @@
             this.btnModificareDate.TabIndex = 60;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;
+            this.btnModificareDate.Click += new System.EventHandler(this.btnModificareDate_Click);
             // 
             // labelFunctie
             // 
@@ -235,7 +225,7 @@
             this.labelOvertime.AutoSize = true;
             this.labelOvertime.BackColor = System.Drawing.Color.Transparent;
             this.labelOvertime.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelOvertime.Location = new System.Drawing.Point(725, 237);
+            this.labelOvertime.Location = new System.Drawing.Point(701, 238);
             this.labelOvertime.Name = "labelOvertime";
             this.labelOvertime.Size = new System.Drawing.Size(87, 19);
             this.labelOvertime.TabIndex = 56;
@@ -246,7 +236,7 @@
             this.labelSalariu.AutoSize = true;
             this.labelSalariu.BackColor = System.Drawing.Color.Transparent;
             this.labelSalariu.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelSalariu.Location = new System.Drawing.Point(725, 299);
+            this.labelSalariu.Location = new System.Drawing.Point(701, 300);
             this.labelSalariu.Name = "labelSalariu";
             this.labelSalariu.Size = new System.Drawing.Size(75, 19);
             this.labelSalariu.TabIndex = 55;
@@ -257,7 +247,7 @@
             this.labelDataAngajare.AutoSize = true;
             this.labelDataAngajare.BackColor = System.Drawing.Color.Transparent;
             this.labelDataAngajare.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelDataAngajare.Location = new System.Drawing.Point(725, 362);
+            this.labelDataAngajare.Location = new System.Drawing.Point(701, 363);
             this.labelDataAngajare.Name = "labelDataAngajare";
             this.labelDataAngajare.Size = new System.Drawing.Size(133, 19);
             this.labelDataAngajare.TabIndex = 54;
@@ -308,19 +298,91 @@
             this.labelNume.TabIndex = 49;
             this.labelNume.Text = "Nume";
             // 
+            // dtpDataAngajare
+            // 
+            this.dtpDataAngajare.Enabled = false;
+            this.dtpDataAngajare.Location = new System.Drawing.Point(814, 384);
+            this.dtpDataAngajare.Name = "dtpDataAngajare";
+            this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
+            this.dtpDataAngajare.TabIndex = 74;
+            this.dtpDataAngajare.ValueChanged += new System.EventHandler(this.dtpDataAngajare_ValueChanged);
+            // 
+            // comboFunctie
+            // 
+            this.comboFunctie.DataSource = this.functieBindingSource;
+            this.comboFunctie.DisplayMember = "Nume";
+            this.comboFunctie.Enabled = false;
+            this.comboFunctie.FormattingEnabled = true;
+            this.comboFunctie.Location = new System.Drawing.Point(535, 198);
+            this.comboFunctie.Name = "comboFunctie";
+            this.comboFunctie.Size = new System.Drawing.Size(121, 21);
+            this.comboFunctie.TabIndex = 75;
+            this.comboFunctie.ValueMember = "Id";
+            this.comboFunctie.SelectedIndexChanged += new System.EventHandler(this.comboFunctie_SelectedIndexChanged);
+            // 
+            // dataSet2
+            // 
+            this.dataSet2.DataSetName = "DataSet2";
+            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // functieBindingSource
+            // 
+            this.functieBindingSource.DataMember = "Functie";
+            this.functieBindingSource.DataSource = this.dataSet2;
+            // 
+            // functieTableAdapter
+            // 
+            this.functieTableAdapter.ClearBeforeFill = true;
+            // 
+            // comboEchipa
+            // 
+            this.comboEchipa.DataSource = this.echipaBindingSource;
+            this.comboEchipa.DisplayMember = "Nume";
+            this.comboEchipa.Enabled = false;
+            this.comboEchipa.FormattingEnabled = true;
+            this.comboEchipa.Location = new System.Drawing.Point(535, 264);
+            this.comboEchipa.Name = "comboEchipa";
+            this.comboEchipa.Size = new System.Drawing.Size(121, 21);
+            this.comboEchipa.TabIndex = 76;
+            this.comboEchipa.ValueMember = "Id";
+            this.comboEchipa.SelectedIndexChanged += new System.EventHandler(this.comboEchipa_SelectedIndexChanged);
+            // 
+            // prisonBreakDataSet
+            // 
+            this.prisonBreakDataSet.DataSetName = "PrisonBreakDataSet";
+            this.prisonBreakDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // echipaBindingSource
+            // 
+            this.echipaBindingSource.DataMember = "Echipa";
+            this.echipaBindingSource.DataSource = this.prisonBreakDataSet;
+            // 
+            // echipaTableAdapter
+            // 
+            this.echipaTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtDataAngajare
+            // 
+            this.txtDataAngajare.Enabled = false;
+            this.txtDataAngajare.Location = new System.Drawing.Point(705, 385);
+            this.txtDataAngajare.Name = "txtDataAngajare";
+            this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
+            this.txtDataAngajare.TabIndex = 77;
+            // 
             // MeniuModificareDateAngajat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.txtDataAngajare);
+            this.Controls.Add(this.comboEchipa);
+            this.Controls.Add(this.comboFunctie);
+            this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnUpdatePoza);
-            this.Controls.Add(this.txtDataAngajare);
             this.Controls.Add(this.txtSalariu);
             this.Controls.Add(this.txtOvertime);
-            this.Controls.Add(this.txtEchipa);
-            this.Controls.Add(this.txtFunctie);
             this.Controls.Add(this.txtSex);
             this.Controls.Add(this.txtPrenume);
             this.Controls.Add(this.txtNume);
@@ -342,8 +404,13 @@
             this.Controls.Add(this.comboListaAngajati);
             this.Name = "MeniuModificareDateAngajat";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.MeniuModificareDateAngajat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.functieBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.echipaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,11 +421,8 @@
         private System.Windows.Forms.ComboBox comboListaAngajati;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnUpdatePoza;
-        private System.Windows.Forms.TextBox txtDataAngajare;
         private System.Windows.Forms.TextBox txtSalariu;
         private System.Windows.Forms.TextBox txtOvertime;
-        private System.Windows.Forms.TextBox txtEchipa;
-        private System.Windows.Forms.TextBox txtFunctie;
         private System.Windows.Forms.TextBox txtSex;
         private System.Windows.Forms.TextBox txtPrenume;
         private System.Windows.Forms.TextBox txtNume;
@@ -377,5 +441,15 @@
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelEchipa;
         private System.Windows.Forms.Label labelNume;
+        private System.Windows.Forms.DateTimePicker dtpDataAngajare;
+        private System.Windows.Forms.ComboBox comboFunctie;
+        private DataSet2 dataSet2;
+        private System.Windows.Forms.BindingSource functieBindingSource;
+        private DataSet2TableAdapters.FunctieTableAdapter functieTableAdapter;
+        private System.Windows.Forms.ComboBox comboEchipa;
+        private PrisonBreakDataSet prisonBreakDataSet;
+        private System.Windows.Forms.BindingSource echipaBindingSource;
+        private PrisonBreakDataSetTableAdapters.EchipaTableAdapter echipaTableAdapter;
+        private System.Windows.Forms.TextBox txtDataAngajare;
     }
 }
