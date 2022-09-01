@@ -82,11 +82,11 @@
     <Compile Include="Echipa.Designer.cs">
       <DependentUpon>Echipa.cs</DependentUpon>
     </Compile>
-    <Compile Include="MeniuGestionareConcedii.cs" />
-    <Compile Include="MeniuGestionareConcedii.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MeniuGestionareConcedii.resx</DependentUpon>
+    <Compile Include="MeniuModificareDateAngajat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuModificareDateAngajat.Designer.cs">
+      <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
     </Compile>
     <Compile Include="MeniuNavigare.cs">
       <SubType>Form</SubType>
@@ -124,11 +124,8 @@
     <EmbeddedResource Include="LogAuten.resx">
       <DependentUpon>LogAuten.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuGestionareConcedii.resx">
-      <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>MeniuGestionareConcedii.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="MeniuModificareDateAngajat.resx">
+      <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
