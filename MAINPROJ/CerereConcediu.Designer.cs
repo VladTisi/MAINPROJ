@@ -52,11 +52,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
-            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.panel6 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
+            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
+            this.tipConcediuBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -68,6 +69,7 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -131,7 +133,7 @@
             // 
             // cmbTipConcediu
             // 
-            this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource;
+            this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource1;
             this.cmbTipConcediu.DisplayMember = "Nume";
             this.cmbTipConcediu.FormattingEnabled = true;
             this.cmbTipConcediu.Location = new System.Drawing.Point(491, 301);
@@ -306,11 +308,6 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // sidebarTimer
-            // 
-            this.sidebarTimer.Interval = 10;
-            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button7);
@@ -355,6 +352,16 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // sidebarTimer
+            // 
+            this.sidebarTimer.Interval = 10;
+            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
+            // 
+            // tipConcediuBindingSource1
+            // 
+            this.tipConcediuBindingSource1.DataMember = "TipConcediu";
+            this.tipConcediuBindingSource1.DataSource = this.dataSet1;
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +398,7 @@
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -425,5 +433,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.BindingSource tipConcediuBindingSource1;
     }
 }
