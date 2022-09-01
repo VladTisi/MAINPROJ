@@ -127,6 +127,12 @@
     <EmbeddedResource Include="LogAuten.resx">
       <DependentUpon>LogAuten.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MeniuGestionareConcedii.resx">
+      <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>MeniuGestionareConcedii.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,8 +176,6 @@
     <Content Include="Barbed_wire151.png" />
     <Content Include="istockphoto-1199229384-612x612.jpg" />
     <Content Include="Prison_Break_logo.png" />
-    <None Include="Resources\king.png" />
-    <None Include="Resources\rsz_sheriff.png" />
     <None Include="Resources\image %281%29.png" />
     <None Include="Resources\image.png" />
     <None Include="Resources\reback.jpg" />

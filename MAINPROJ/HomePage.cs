@@ -52,10 +52,7 @@ namespace MAINPROJ
                 txtEchipa.Text = rdr.GetValue(8).ToString();
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
-            Console.WriteLine(txtNume.Text);
-            Console.WriteLine(txtPrenume.Text);
-            Console.WriteLine(txtEmail.Text);
-
+          
             con3.Close();
 
 
@@ -93,33 +90,20 @@ namespace MAINPROJ
             OleDbConnection con = Common.GetConnection();
             con.Open();
 
+
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
-            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
             cmd = new OleDbCommand(modifTel, con);
-            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
-
-
             cmd.ExecuteNonQuery();
+            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
+            cmd.CommandText = modifEmail;
+            cmd.ExecuteNonQuery();
+
+           
             con.Close();
 
-            //Accesibile de admin/manager
-
-            //OleDbConnection con = Common.GetConnection();
-            // con.Open();
-
-            // string numartelefon = txtTelefon.Text;
-            // string email = txtEmail.Text;
-            // string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
-            // cmd = new OleDbCommand(modifTel, con);
-            // string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
-
-
-            //cmd.ExecuteNonQuery();
-            //con.Close();
-
-
-
+           
         }
 
 
