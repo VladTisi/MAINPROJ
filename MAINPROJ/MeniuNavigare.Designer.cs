@@ -202,7 +202,7 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(900, 0);
+            this.button5.Location = new System.Drawing.Point(884, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 23);
             this.button5.TabIndex = 6;
@@ -217,14 +217,13 @@
             this.tabelAngajati.Name = "tabelAngajati";
             this.tabelAngajati.Size = new System.Drawing.Size(451, 298);
             this.tabelAngajati.TabIndex = 7;
-            this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
             // 
             // MeniuNavigare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(930, 530);
+            this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.tabelAngajati);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.Logo);

@@ -113,11 +113,6 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-
-        private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         //////////////////////////////////////////////////////////
     }
 }

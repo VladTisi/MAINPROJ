@@ -201,7 +201,7 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(686, 482);
+            this.btnModificareDate.Location = new System.Drawing.Point(698, 470);
             this.btnModificareDate.Name = "btnModificareDate";
             this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
             this.btnModificareDate.TabIndex = 33;
@@ -458,7 +458,7 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(888, 0);
+            this.button5.Location = new System.Drawing.Point(884, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 23);
             this.button5.TabIndex = 50;
@@ -471,7 +471,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(918, 530);
+            this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.pictureBox1);
