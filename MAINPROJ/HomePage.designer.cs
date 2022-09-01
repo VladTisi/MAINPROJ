@@ -192,6 +192,7 @@
             this.pozaAngajat.Size = new System.Drawing.Size(90, 110);
             this.pozaAngajat.TabIndex = 11;
             this.pozaAngajat.TabStop = false;
+            this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
             // 
             // labelPrenume
             // 

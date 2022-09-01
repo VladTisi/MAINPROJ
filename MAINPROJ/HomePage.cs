@@ -228,5 +228,10 @@ namespace MAINPROJ
         {
 
         }
+
+        private void pozaAngajat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
