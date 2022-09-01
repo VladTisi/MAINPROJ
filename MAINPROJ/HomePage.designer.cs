@@ -95,7 +95,7 @@
             this.labelFunctie.AutoSize = true;
             this.labelFunctie.BackColor = System.Drawing.Color.Transparent;
             this.labelFunctie.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelFunctie.Location = new System.Drawing.Point(500, 201);
+            this.labelFunctie.Location = new System.Drawing.Point(532, 150);
             this.labelFunctie.Name = "labelFunctie";
             this.labelFunctie.Size = new System.Drawing.Size(74, 19);
             this.labelFunctie.TabIndex = 2;
@@ -106,7 +106,7 @@
             this.labelEchipa.AutoSize = true;
             this.labelEchipa.BackColor = System.Drawing.Color.Transparent;
             this.labelEchipa.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelEchipa.Location = new System.Drawing.Point(500, 263);
+            this.labelEchipa.Location = new System.Drawing.Point(532, 212);
             this.labelEchipa.Name = "labelEchipa";
             this.labelEchipa.Size = new System.Drawing.Size(65, 19);
             this.labelEchipa.TabIndex = 3;
@@ -117,7 +117,7 @@
             this.labelEmail.AutoSize = true;
             this.labelEmail.BackColor = System.Drawing.Color.Transparent;
             this.labelEmail.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelEmail.Location = new System.Drawing.Point(500, 326);
+            this.labelEmail.Location = new System.Drawing.Point(532, 275);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(56, 19);
             this.labelEmail.TabIndex = 4;
@@ -128,7 +128,7 @@
             this.labelNumarTelefon.AutoSize = true;
             this.labelNumarTelefon.BackColor = System.Drawing.Color.Transparent;
             this.labelNumarTelefon.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelNumarTelefon.Location = new System.Drawing.Point(500, 387);
+            this.labelNumarTelefon.Location = new System.Drawing.Point(532, 336);
             this.labelNumarTelefon.Name = "labelNumarTelefon";
             this.labelNumarTelefon.Size = new System.Drawing.Size(159, 19);
             this.labelNumarTelefon.TabIndex = 5;
@@ -139,7 +139,7 @@
             this.labelDataAngajare.AutoSize = true;
             this.labelDataAngajare.BackColor = System.Drawing.Color.Transparent;
             this.labelDataAngajare.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelDataAngajare.Location = new System.Drawing.Point(694, 387);
+            this.labelDataAngajare.Location = new System.Drawing.Point(726, 336);
             this.labelDataAngajare.Name = "labelDataAngajare";
             this.labelDataAngajare.Size = new System.Drawing.Size(133, 19);
             this.labelDataAngajare.TabIndex = 6;
@@ -150,7 +150,7 @@
             this.labelSalariu.AutoSize = true;
             this.labelSalariu.BackColor = System.Drawing.Color.Transparent;
             this.labelSalariu.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelSalariu.Location = new System.Drawing.Point(694, 324);
+            this.labelSalariu.Location = new System.Drawing.Point(726, 273);
             this.labelSalariu.Name = "labelSalariu";
             this.labelSalariu.Size = new System.Drawing.Size(75, 19);
             this.labelSalariu.TabIndex = 7;
@@ -161,7 +161,7 @@
             this.labelOvertime.AutoSize = true;
             this.labelOvertime.BackColor = System.Drawing.Color.Transparent;
             this.labelOvertime.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelOvertime.Location = new System.Drawing.Point(694, 262);
+            this.labelOvertime.Location = new System.Drawing.Point(726, 211);
             this.labelOvertime.Name = "labelOvertime";
             this.labelOvertime.Size = new System.Drawing.Size(87, 19);
             this.labelOvertime.TabIndex = 8;
@@ -181,7 +181,7 @@
             // 
             // pozaAngajat
             // 
-            this.pozaAngajat.Location = new System.Drawing.Point(234, 53);
+            this.pozaAngajat.Location = new System.Drawing.Point(235, 78);
             this.pozaAngajat.Name = "pozaAngajat";
             this.pozaAngajat.Size = new System.Drawing.Size(90, 110);
             this.pozaAngajat.TabIndex = 11;
@@ -201,7 +201,7 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(698, 470);
+            this.btnModificareDate.Location = new System.Drawing.Point(730, 419);
             this.btnModificareDate.Name = "btnModificareDate";
             this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
             this.btnModificareDate.TabIndex = 33;
@@ -211,7 +211,7 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(686, 169);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(718, 118);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
             this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
             this.btnSalvareModificari.TabIndex = 34;
@@ -223,7 +223,7 @@
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
-            this.txtEmail.Location = new System.Drawing.Point(504, 348);
+            this.txtEmail.Location = new System.Drawing.Point(536, 297);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 36;
@@ -231,7 +231,7 @@
             // txtTelefon
             // 
             this.txtTelefon.Enabled = false;
-            this.txtTelefon.Location = new System.Drawing.Point(504, 409);
+            this.txtTelefon.Location = new System.Drawing.Point(536, 358);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
@@ -263,7 +263,7 @@
             // txtFunctie
             // 
             this.txtFunctie.Enabled = false;
-            this.txtFunctie.Location = new System.Drawing.Point(504, 226);
+            this.txtFunctie.Location = new System.Drawing.Point(536, 175);
             this.txtFunctie.Name = "txtFunctie";
             this.txtFunctie.Size = new System.Drawing.Size(100, 20);
             this.txtFunctie.TabIndex = 42;
@@ -271,7 +271,7 @@
             // txtEchipa
             // 
             this.txtEchipa.Enabled = false;
-            this.txtEchipa.Location = new System.Drawing.Point(504, 285);
+            this.txtEchipa.Location = new System.Drawing.Point(536, 234);
             this.txtEchipa.Name = "txtEchipa";
             this.txtEchipa.Size = new System.Drawing.Size(100, 20);
             this.txtEchipa.TabIndex = 43;
@@ -279,7 +279,7 @@
             // txtOvertime
             // 
             this.txtOvertime.Enabled = false;
-            this.txtOvertime.Location = new System.Drawing.Point(698, 287);
+            this.txtOvertime.Location = new System.Drawing.Point(730, 236);
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
@@ -287,7 +287,7 @@
             // txtSalariu
             // 
             this.txtSalariu.Enabled = false;
-            this.txtSalariu.Location = new System.Drawing.Point(698, 346);
+            this.txtSalariu.Location = new System.Drawing.Point(730, 295);
             this.txtSalariu.Name = "txtSalariu";
             this.txtSalariu.Size = new System.Drawing.Size(100, 20);
             this.txtSalariu.TabIndex = 45;
@@ -295,14 +295,14 @@
             // txtDataAngajare
             // 
             this.txtDataAngajare.Enabled = false;
-            this.txtDataAngajare.Location = new System.Drawing.Point(698, 409);
+            this.txtDataAngajare.Location = new System.Drawing.Point(730, 358);
             this.txtDataAngajare.Name = "txtDataAngajare";
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 46;
             // 
             // btnUpdatePoza
             // 
-            this.btnUpdatePoza.Location = new System.Drawing.Point(234, 169);
+            this.btnUpdatePoza.Location = new System.Drawing.Point(235, 194);
             this.btnUpdatePoza.Name = "btnUpdatePoza";
             this.btnUpdatePoza.Size = new System.Drawing.Size(90, 23);
             this.btnUpdatePoza.TabIndex = 47;
