@@ -101,9 +101,9 @@ namespace MAINPROJ
                 con.Close();
 
                 MessageBox.Show("Contul tau a fost creat!");
-                autemail.Text="";
-                autpass.Text="";
-                conpass.Text="";
+                autemail.Text = "";
+                autpass.Text = "";
+                conpass.Text = "";
             }
 
 
@@ -301,6 +301,6 @@ namespace MAINPROJ
         }
 
 
-        }
     }
+}
 
