@@ -51,6 +51,8 @@
             this.IdConcediu = new MaterialSkin.Controls.MaterialTextBox2();
             this.Aproba = new System.Windows.Forms.Button();
             this.Refuza = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -270,7 +272,7 @@
             this.IdAngajat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.IdAngajat.HideSelection = true;
             this.IdAngajat.LeadingIcon = null;
-            this.IdAngajat.Location = new System.Drawing.Point(295, 391);
+            this.IdAngajat.Location = new System.Drawing.Point(295, 407);
             this.IdAngajat.MaxLength = 32767;
             this.IdAngajat.MouseState = MaterialSkin.MouseState.OUT;
             this.IdAngajat.Name = "IdAngajat";
@@ -298,7 +300,7 @@
             this.IdConcediu.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.IdConcediu.HideSelection = true;
             this.IdConcediu.LeadingIcon = null;
-            this.IdConcediu.Location = new System.Drawing.Point(382, 391);
+            this.IdConcediu.Location = new System.Drawing.Point(382, 407);
             this.IdConcediu.MaxLength = 32767;
             this.IdConcediu.MouseState = MaterialSkin.MouseState.OUT;
             this.IdConcediu.Name = "IdConcediu";
@@ -339,12 +341,34 @@
             this.Refuza.UseVisualStyleBackColor = true;
             this.Refuza.Click += new System.EventHandler(this.Refuza_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(382, 369);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 34);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "ID concediu";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(295, 369);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 34);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Id Angajat";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // GestionareConcedii
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Refuza);
             this.Controls.Add(this.Aproba);
             this.Controls.Add(this.IdConcediu);
@@ -394,5 +418,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 IdConcediu;
         private System.Windows.Forms.Button Aproba;
         private System.Windows.Forms.Button Refuza;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

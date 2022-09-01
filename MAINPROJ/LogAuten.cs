@@ -252,7 +252,7 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
 
-            
+
             DialogResult dialogResult = MessageBox.Show("Doriti sa resetati parola?", "Resetare parola", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -269,15 +269,15 @@ namespace MAINPROJ
                 {
                     Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", "denisa.marica@totalsoft.ro");
                     String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                    if (Int32.Parse(s)==x)
+                    if (Int32.Parse(s) == x)
                     {
                         string selectId = $"SELECT AngajatId FROM Login WHERE Email='{email}'";
                         cmd.CommandText = selectId;
-                        int angajatId = (int) cmd.ExecuteScalar();
+                        int angajatId = (int)cmd.ExecuteScalar();
                         string generated_pass = Membership.GeneratePassword(8, 0);
                         Console.WriteLine(generated_pass);
                         string updatePasswordQuery = $"UPDATE Login SET Parola='{generated_pass}' WHERE AngajatId={angajatId}";
-                        cmd.CommandText=updatePasswordQuery;
+                        cmd.CommandText = updatePasswordQuery;
                         cmd.ExecuteNonQuery();
                         Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", "denisa.marica@totalsoft.ro");
                     }
@@ -294,7 +294,7 @@ namespace MAINPROJ
 
 
             }
-
+        }
 
     }
 }
