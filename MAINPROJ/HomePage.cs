@@ -11,14 +11,16 @@ using MAINPROJ;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
+        private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
-        private int angajatId;
+        
 
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -30,29 +32,44 @@ namespace MAINPROJ
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            //OleDbConnection con = Common.GetConnection();
-            //con.Open();
-            //String Nume=$"SELECT Nume from Angajat Where ";
-            //String Prenume= $"SELECT Prenume from Angajat Where "; 
-            //String Functie= $"SELECT Functie from Angajat Where ";
-            //String Echipa = $"SELECT Echipa from Angajat Where ";
-            //String Email = $"SELECT Email from Login Where Login.Id ";
-            //int Id;
-            //String Sex = $"SELECT Sex from Angajat Where ";
-            //String nrTel = $"SELECT Numar_Telefon from Angajat Where ";
-            //int Overtime;
-            //int Salariu;
-            //String DataA;
-            Console.WriteLine(angajatId);
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            
+            string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+            showImage();
+            while (rdr.Read())
+            {
+                txtNume.Text = rdr.GetString(0);
+                txtPrenume.Text = rdr.GetString(1);
+                txtSalariu.Text = rdr.GetValue(2).ToString();
+                txtOvertime.Text = rdr.GetValue(3).ToString();
+                txtTelefon.Text = rdr.GetValue(4).ToString();
+                txtSex.Text = rdr.GetValue(5).ToString();
+                txtDataAngajare.Text = rdr.GetValue(6).ToString();
+                txtFunctie.Text = rdr.GetValue(7).ToString();
+                txtEchipa.Text = rdr.GetValue(8).ToString();
+                txtEmail.Text = rdr.GetValue(9).ToString();
+            }
 
+            string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            cmd = new OleDbCommand(dateAdmin, con3);
+            rdr = cmd.ExecuteReader();
 
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin != true && manager != 3)
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+            }
+            con3.Close();
 
-
-
-
-
-
-            //con.Close();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -69,33 +86,20 @@ namespace MAINPROJ
             OleDbConnection con = Common.GetConnection();
             con.Open();
 
+
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
-            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
+            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
             cmd = new OleDbCommand(modifTel, con);
-            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
-
-
             cmd.ExecuteNonQuery();
+            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
+            cmd.CommandText = modifEmail;
+            cmd.ExecuteNonQuery();
+
+           
             con.Close();
 
-            //Accesibile de admin/manager
-
-            //OleDbConnection con = Common.GetConnection();
-            // con.Open();
-
-            // string numartelefon = txtTelefon.Text;
-            // string email = txtEmail.Text;
-            // string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = 4 ";
-            // cmd = new OleDbCommand(modifTel, con);
-            // string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = 4 ";
-
-
-            //cmd.ExecuteNonQuery();
-            //con.Close();
-
-
-
+           
         }
 
 
@@ -154,7 +158,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -175,7 +179,32 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void labelId_Click(object sender, EventArgs e)
+        private void showImage()
+        {
+
+            OleDbConnection con = Common.GetConnection();
+            string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
+            cmd = new OleDbCommand(selectpoza, con);
+            string Poza =(string) cmd.ExecuteScalar();
+            byte[] imgBytes = Convert.FromBase64String(Poza);
+
+            MemoryStream ms = new MemoryStream(imgBytes);
+
+            Image returnImage = Image.FromStream(ms);
+            pozaAngajat.Image = returnImage;
+            cmd.ExecuteNonQuery();
+      
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
         {
 
         }

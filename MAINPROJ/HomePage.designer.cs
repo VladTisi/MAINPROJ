@@ -42,10 +42,8 @@
             this.labelPrenume = new System.Windows.Forms.Label();
             this.btnModificareDate = new System.Windows.Forms.Button();
             this.btnSalvareModificari = new System.Windows.Forms.Button();
-            this.labelId = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefon = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtNume = new System.Windows.Forms.TextBox();
             this.txtPrenume = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
@@ -70,6 +68,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -78,6 +80,8 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNume
@@ -203,9 +207,9 @@
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(615, 456);
+            this.btnModificareDate.Location = new System.Drawing.Point(698, 470);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(145, 48);
+            this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = true;
@@ -213,7 +217,7 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(615, 495);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(686, 169);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
             this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
             this.btnSalvareModificari.TabIndex = 34;
@@ -221,19 +225,6 @@
             this.btnSalvareModificari.UseVisualStyleBackColor = true;
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.BackColor = System.Drawing.Color.Transparent;
-            this.labelId.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelId.ForeColor = System.Drawing.Color.White;
-            this.labelId.Location = new System.Drawing.Point(231, 210);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(25, 19);
-            this.labelId.TabIndex = 35;
-            this.labelId.Text = "Id";
-            this.labelId.Click += new System.EventHandler(this.labelId_Click);
             // 
             // txtEmail
             // 
@@ -250,14 +241,6 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 37;
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(334, 209);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 38;
             // 
             // txtNume
             // 
@@ -358,6 +341,8 @@
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Controls.Add(this.panel5);
+            this.sidebar.Controls.Add(this.panel6);
+            this.sidebar.Controls.Add(this.panel7);
             this.sidebar.Location = new System.Drawing.Point(-5, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
             this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
@@ -481,7 +466,7 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(888, 0);
+            this.button5.Location = new System.Drawing.Point(884, 0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(33, 23);
             this.button5.TabIndex = 50;
@@ -489,12 +474,56 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button7);
+            this.panel6.Location = new System.Drawing.Point(3, 353);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(197, 63);
+            this.panel6.TabIndex = 8;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Image = global::MAINPROJ.Properties.Resources.rsz_sheriff;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(-2, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(199, 57);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "          Gestionare \r\n        Concedii";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button8);
+            this.panel7.Location = new System.Drawing.Point(3, 422);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(197, 63);
+            this.panel7.TabIndex = 9;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.White;
+            this.button8.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Image = global::MAINPROJ.Properties.Resources.king;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(-2, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(199, 57);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "         Alterare Date";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(918, 530);
+            this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.pictureBox1);
@@ -507,10 +536,8 @@
             this.Controls.Add(this.txtSex);
             this.Controls.Add(this.txtPrenume);
             this.Controls.Add(this.txtNume);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtTelefon);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.labelId);
             this.Controls.Add(this.btnSalvareModificari);
             this.Controls.Add(this.btnModificareDate);
             this.Controls.Add(this.labelFunctie);
@@ -536,6 +563,8 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,10 +584,8 @@
         private System.Windows.Forms.Label labelPrenume;
         private System.Windows.Forms.Button btnModificareDate;
         private System.Windows.Forms.Button btnSalvareModificari;
-        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtTelefon;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNume;
         private System.Windows.Forms.TextBox txtPrenume;
         private System.Windows.Forms.TextBox txtSex;
@@ -583,5 +610,9 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button8;
     }
 }

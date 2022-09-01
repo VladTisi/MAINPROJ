@@ -1,6 +1,6 @@
 ﻿namespace MAINPROJ
 {
-    partial class MeniuNavigare
+    partial class GestionareConcedii
     {
         /// <summary>
         /// Required designer variable.
@@ -40,24 +40,26 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.Logo = new System.Windows.Forms.PictureBox();
-            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.tabelAngajati = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
+            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.tabelConcedii = new System.Windows.Forms.DataGridView();
+            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebar
@@ -77,8 +79,7 @@
             this.sidebar.MinimumSize = new System.Drawing.Size(61, 535);
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(61, 535);
-            this.sidebar.TabIndex = 0;
-            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
+            this.sidebar.TabIndex = 51;
             // 
             // panel1
             // 
@@ -100,7 +101,7 @@
             this.menuButton.TabIndex = 2;
             this.menuButton.Text = "      Meniu";
             this.menuButton.UseVisualStyleBackColor = false;
-            this.menuButton.Click += new System.EventHandler(this.menuButton_Click_1);
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // panel2
             // 
@@ -190,50 +191,13 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // Logo
-            // 
-            this.Logo.BackColor = System.Drawing.Color.Transparent;
-            this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.Logo.Location = new System.Drawing.Point(304, 4);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(294, 80);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Logo.TabIndex = 1;
-            this.Logo.TabStop = false;
-            // 
-            // sidebarTimer
-            // 
-            this.sidebarTimer.Interval = 10;
-            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick_1);
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(884, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(33, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "X";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // tabelAngajati
-            // 
-            this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelAngajati.Location = new System.Drawing.Point(236, 115);
-            this.tabelAngajati.Name = "tabelAngajati";
-            this.tabelAngajati.Size = new System.Drawing.Size(451, 298);
-            this.tabelAngajati.TabIndex = 7;
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button7);
             this.panel6.Location = new System.Drawing.Point(3, 353);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(197, 63);
-            this.panel6.TabIndex = 8;
+            this.panel6.TabIndex = 6;
             // 
             // button7
             // 
@@ -255,7 +219,7 @@
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
-            this.panel7.TabIndex = 9;
+            this.panel7.TabIndex = 7;
             // 
             // button8
             // 
@@ -271,31 +235,135 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // MeniuNavigare
+            // sidebarTimer
+            // 
+            this.sidebarTimer.Interval = 10;
+            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(884, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(33, 23);
+            this.button5.TabIndex = 52;
+            this.button5.Text = "X";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // tabelConcedii
+            // 
+            this.tabelConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelConcedii.Location = new System.Drawing.Point(223, 63);
+            this.tabelConcedii.Name = "tabelConcedii";
+            this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
+            this.tabelConcedii.TabIndex = 53;
+            // 
+            // materialTextBox21
+            // 
+            this.materialTextBox21.AnimateReadOnly = false;
+            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialTextBox21.Depth = 0;
+            this.materialTextBox21.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox21.HideSelection = true;
+            this.materialTextBox21.LeadingIcon = null;
+            this.materialTextBox21.Location = new System.Drawing.Point(295, 391);
+            this.materialTextBox21.MaxLength = 32767;
+            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialTextBox21.Name = "materialTextBox21";
+            this.materialTextBox21.PasswordChar = '\0';
+            this.materialTextBox21.PrefixSuffixText = null;
+            this.materialTextBox21.ReadOnly = false;
+            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialTextBox21.SelectedText = "";
+            this.materialTextBox21.SelectionLength = 0;
+            this.materialTextBox21.SelectionStart = 0;
+            this.materialTextBox21.ShortcutsEnabled = true;
+            this.materialTextBox21.Size = new System.Drawing.Size(59, 48);
+            this.materialTextBox21.TabIndex = 54;
+            this.materialTextBox21.TabStop = false;
+            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.materialTextBox21.TrailingIcon = null;
+            this.materialTextBox21.UseSystemPasswordChar = false;
+            // 
+            // materialTextBox22
+            // 
+            this.materialTextBox22.AnimateReadOnly = false;
+            this.materialTextBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialTextBox22.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialTextBox22.Depth = 0;
+            this.materialTextBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox22.HideSelection = true;
+            this.materialTextBox22.LeadingIcon = null;
+            this.materialTextBox22.Location = new System.Drawing.Point(382, 391);
+            this.materialTextBox22.MaxLength = 32767;
+            this.materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialTextBox22.Name = "materialTextBox22";
+            this.materialTextBox22.PasswordChar = '\0';
+            this.materialTextBox22.PrefixSuffixText = null;
+            this.materialTextBox22.ReadOnly = false;
+            this.materialTextBox22.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialTextBox22.SelectedText = "";
+            this.materialTextBox22.SelectionLength = 0;
+            this.materialTextBox22.SelectionStart = 0;
+            this.materialTextBox22.ShortcutsEnabled = true;
+            this.materialTextBox22.Size = new System.Drawing.Size(59, 48);
+            this.materialTextBox22.TabIndex = 55;
+            this.materialTextBox22.TabStop = false;
+            this.materialTextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.materialTextBox22.TrailingIcon = null;
+            this.materialTextBox22.UseSystemPasswordChar = false;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(515, 373);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 41);
+            this.button6.TabIndex = 56;
+            this.button6.Text = "Aproba";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(515, 426);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 41);
+            this.button9.TabIndex = 57;
+            this.button9.Text = "refuza";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // GestionareConcedii
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
-            this.Controls.Add(this.tabelAngajati);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.materialTextBox22);
+            this.Controls.Add(this.materialTextBox21);
+            this.Controls.Add(this.tabelConcedii);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.Logo);
             this.Controls.Add(this.sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MeniuNavigare";
+            this.Name = "GestionareConcedii";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MeniuNavigare";
-            this.Load += new System.EventHandler(this.MeniuNavigare_Load);
+            this.Text = "Gestionare";
+            this.Load += new System.EventHandler(this.GestionareConcedii_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,6 +372,7 @@
 
         private System.Windows.Forms.FlowLayoutPanel sidebar;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button menuButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
@@ -312,14 +381,16 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.PictureBox Logo;
-        private System.Windows.Forms.Button menuButton;
-        private System.Windows.Forms.Timer sidebarTimer;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridView tabelAngajati;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Timer sidebarTimer;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView tabelConcedii;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button9;
     }
 }

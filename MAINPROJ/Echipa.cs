@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,12 +15,32 @@ namespace MAINPROJ
 {
     public partial class Echipa : Form
     {
+        private void showTable()
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int");
+            con.Open();
+            string comanda = $"SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id WHERE Angajat.IdEchipa=(SELECT IdEchipa FROM Angajat where Angajat.Id={angajatId})";
+            using (SqlCommand cmd = new SqlCommand(comanda, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            tabelEchipa.DataSource = dt;
+                        }
+                    }
+                }
+            con.Close();
+        }
         bool sidebarExpand;
         private int angajatId;
         public Echipa(int angajatId)
         {
             InitializeComponent();
             this.angajatId=angajatId;
+            showTable();
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -58,7 +80,7 @@ namespace MAINPROJ
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -84,7 +106,27 @@ namespace MAINPROJ
            
                 // Toggle between True and False.  
                 monthCalendar1.ShowToday = !monthCalendar1.ShowToday;
-     
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+
+            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin != true && manager != 3)
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+            }
+
+            con3.Close();
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -96,5 +138,27 @@ namespace MAINPROJ
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new CerereConcediu(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }

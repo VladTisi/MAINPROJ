@@ -54,7 +54,23 @@ namespace MAINPROJ
 
         private void MeniuNavigare_Load(object sender, EventArgs e)
         {
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            var cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
 
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin != true && manager != 3)
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+            }
+            con3.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -93,7 +109,7 @@ namespace MAINPROJ
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiPersonale(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -110,6 +126,24 @@ namespace MAINPROJ
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void sidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
