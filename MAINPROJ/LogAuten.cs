@@ -49,10 +49,10 @@ namespace MAINPROJ
             bool majuscula = false;
             bool digit = false;
 
-            if (password == confirmpassword && password.Length>=8)
+            if (password == confirmpassword && password.Length >= 8)
             {
                 char[] mychars = password.ToCharArray();
-                for (int i = 0; i<mychars.Length; i++)
+                for (int i = 0; i < mychars.Length; i++)
                 {
                     char c = mychars[i];
                     if (char.IsDigit(c) && digit == false)
@@ -82,16 +82,16 @@ namespace MAINPROJ
             int passvalid = validatePassword(autpass.Text, conpass.Text);
             int emailvalid = validateEmail(autemail.Text);
 
-            if (passvalid==0)
+            if (passvalid == 0)
             {
                 MessageBox.Show("Parola invalida");
 
             }
-            if (emailvalid==0)
+            if (emailvalid == 0)
             {
                 MessageBox.Show("Email invalid");
             }
-            if (passvalid ==1 && emailvalid ==1)
+            if (passvalid == 1 && emailvalid == 1)
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
@@ -273,7 +273,7 @@ namespace MAINPROJ
                 {
                     Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", "denisa.marica@totalsoft.ro");
                     String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                    if (Int32.Parse(s)==x)
+                    if (Int32.Parse(s) == x)
                     {
                         string selectId = $"SELECT AngajatId FROM Login WHERE Email='{email}'";
                         cmd.CommandText = selectId;
@@ -281,7 +281,7 @@ namespace MAINPROJ
                         string generated_pass = Membership.GeneratePassword(8, 0);
                         Console.WriteLine(generated_pass);
                         string updatePasswordQuery = $"UPDATE Login SET Parola='{generated_pass}' WHERE AngajatId={angajatId}";
-                        cmd.CommandText=updatePasswordQuery;
+                        cmd.CommandText = updatePasswordQuery;
                         cmd.ExecuteNonQuery();
                         Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", "denisa.marica@totalsoft.ro");
                     }

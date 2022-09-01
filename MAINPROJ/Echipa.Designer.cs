@@ -257,7 +257,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(129, 216);
+            this.monthCalendar1.Location = new System.Drawing.Point(208, 205);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 52;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
@@ -265,7 +265,7 @@
             // tabelEchipa
             // 
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelEchipa.Location = new System.Drawing.Point(546, 216);
+            this.tabelEchipa.Location = new System.Drawing.Point(551, 205);
             this.tabelEchipa.Name = "tabelEchipa";
             this.tabelEchipa.Size = new System.Drawing.Size(321, 162);
             this.tabelEchipa.TabIndex = 53;
@@ -275,7 +275,7 @@
             this.button6.BackColor = System.Drawing.Color.Black;
             this.button6.Font = new System.Drawing.Font("Stencil", 10F);
             this.button6.ForeColor = System.Drawing.SystemColors.Control;
-            this.button6.Location = new System.Drawing.Point(189, 420);
+            this.button6.Location = new System.Drawing.Point(266, 390);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(103, 46);
             this.button6.TabIndex = 54;
@@ -300,7 +300,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(188, 185);
+            this.label1.Location = new System.Drawing.Point(265, 150);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 22);
             this.label1.TabIndex = 56;
@@ -311,7 +311,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(655, 185);
+            this.label2.Location = new System.Drawing.Point(657, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 22);
             this.label2.TabIndex = 57;
