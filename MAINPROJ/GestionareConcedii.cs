@@ -143,5 +143,15 @@ namespace MAINPROJ
                 }
             }
         }
+
+        private void Aproba_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Refuza_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
