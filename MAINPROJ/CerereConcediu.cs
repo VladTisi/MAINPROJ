@@ -99,19 +99,23 @@ namespace MAINPROJ
             con.Open();
             //string sss = $"asdasd{dtpDataIncepere.Value},{dtpDataIncepere.Value}";
             //Console.WriteLine(sss);
-            string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId})";
-            //cmd.Parameters.AddWithValue("@TipConcediuId", cmbTipConcediu.SelectedValue);
-            //cmd.Parameters.AddWithValue("@Data_inceput", dtpDataIncepere.Value);
-            //cmd.Parameters.AddWithValue("@Data_sfarsit", dtpDataSfarsit.Value);
-            //cmd.Parameters.AddWithValue("@stareConcediuId",1);
-            //cmd.Parameters.AddWithValue("@angajatId", angajatIdTemp);
-
-            cmd = new OleDbCommand(register, con);
-            cmd.ExecuteNonQuery();
+            
+            string comanda = $"select datediff(day,'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}')+1";
+            cmd = new OleDbCommand(comanda, con);
+            int nr = (int)cmd.ExecuteScalar();
+            if (nr > Convert.ToInt32(label5.Text))
+                MessageBox.Show("Nu ai destule zile de concediu");
+            else
+            {
+                MessageBox.Show("Cerere de concediu adaugata!");
+                string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId})";
+                cmd = new OleDbCommand(register, con);
+                cmd.ExecuteNonQuery();
+            }
             con.Close();
-            MessageBox.Show("Cerere de concediu adaugata!");
             dtpDataIncepere.Value=DateTime.Now.AddDays(1);
             dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
+            Console.WriteLine(nr);
         }
 
         private void menuButton_Click(object sender, EventArgs e)
