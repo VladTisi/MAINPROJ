@@ -26,6 +26,7 @@ namespace MAINPROJ
 
         private void CerereConcediu_Load(object sender, EventArgs e)
         {
+            this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
             // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
