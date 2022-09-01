@@ -146,12 +146,32 @@ namespace MAINPROJ
 
         private void Aproba_Click(object sender, EventArgs e)
         {
-            
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=2 WHERE angajatId={Convert.ToInt32(IdAngajat.Text)} and Id={Convert.ToInt32(IdConcediu.Text)}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            cmd.ExecuteNonQuery();
+            con3.Close();
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
 
         private void Refuza_Click(object sender, EventArgs e)
         {
-
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=3 WHERE angajatId={Convert.ToInt32(IdAngajat.Text)} and Id={Convert.ToInt32(IdConcediu.Text)}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            cmd.ExecuteNonQuery();
+            con3.Close();
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
