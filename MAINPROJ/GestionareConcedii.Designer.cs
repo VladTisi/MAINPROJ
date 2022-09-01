@@ -47,6 +47,10 @@
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.tabelConcedii = new System.Windows.Forms.DataGridView();
+            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -254,8 +258,104 @@
             this.tabelConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelConcedii.Location = new System.Drawing.Point(223, 63);
             this.tabelConcedii.Name = "tabelConcedii";
-            this.tabelConcedii.Size = new System.Drawing.Size(558, 351);
+            this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
             this.tabelConcedii.TabIndex = 53;
+            // 
+            // materialTextBox21
+            // 
+            this.materialTextBox21.AnimateReadOnly = false;
+            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialTextBox21.Depth = 0;
+            this.materialTextBox21.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox21.HideSelection = true;
+            this.materialTextBox21.LeadingIcon = null;
+            this.materialTextBox21.Location = new System.Drawing.Point(295, 391);
+            this.materialTextBox21.MaxLength = 32767;
+            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialTextBox21.Name = "materialTextBox21";
+            this.materialTextBox21.PasswordChar = '\0';
+            this.materialTextBox21.PrefixSuffixText = null;
+            this.materialTextBox21.ReadOnly = false;
+            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialTextBox21.SelectedText = "";
+            this.materialTextBox21.SelectionLength = 0;
+            this.materialTextBox21.SelectionStart = 0;
+            this.materialTextBox21.ShortcutsEnabled = true;
+            this.materialTextBox21.Size = new System.Drawing.Size(59, 48);
+            this.materialTextBox21.TabIndex = 54;
+            this.materialTextBox21.TabStop = false;
+            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.materialTextBox21.TrailingIcon = null;
+            this.materialTextBox21.UseSystemPasswordChar = false;
+            // 
+            // materialTextBox22
+            // 
+            this.materialTextBox22.AnimateReadOnly = false;
+            this.materialTextBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialTextBox22.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialTextBox22.Depth = 0;
+            this.materialTextBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox22.HideSelection = true;
+            this.materialTextBox22.LeadingIcon = null;
+            this.materialTextBox22.Location = new System.Drawing.Point(382, 391);
+            this.materialTextBox22.MaxLength = 32767;
+            this.materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialTextBox22.Name = "materialTextBox22";
+            this.materialTextBox22.PasswordChar = '\0';
+            this.materialTextBox22.PrefixSuffixText = null;
+            this.materialTextBox22.ReadOnly = false;
+            this.materialTextBox22.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialTextBox22.SelectedText = "";
+            this.materialTextBox22.SelectionLength = 0;
+            this.materialTextBox22.SelectionStart = 0;
+            this.materialTextBox22.ShortcutsEnabled = true;
+            this.materialTextBox22.Size = new System.Drawing.Size(59, 48);
+            this.materialTextBox22.TabIndex = 55;
+            this.materialTextBox22.TabStop = false;
+            this.materialTextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.materialTextBox22.TrailingIcon = null;
+            this.materialTextBox22.UseSystemPasswordChar = false;
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSize = false;
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(483, 377);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(144, 40);
+            this.materialButton1.TabIndex = 56;
+            this.materialButton1.Text = "Aproba";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            // 
+            // materialButton2
+            // 
+            this.materialButton2.AutoSize = false;
+            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton2.Depth = 0;
+            this.materialButton2.HighEmphasis = true;
+            this.materialButton2.Icon = null;
+            this.materialButton2.Location = new System.Drawing.Point(483, 429);
+            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton2.Name = "materialButton2";
+            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton2.Size = new System.Drawing.Size(144, 40);
+            this.materialButton2.TabIndex = 57;
+            this.materialButton2.Text = "Refuza";
+            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton2.UseAccentColor = false;
+            this.materialButton2.UseVisualStyleBackColor = true;
             // 
             // GestionareConcedii
             // 
@@ -263,6 +363,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.materialButton2);
+            this.Controls.Add(this.materialButton1);
+            this.Controls.Add(this.materialTextBox22);
+            this.Controls.Add(this.materialTextBox21);
             this.Controls.Add(this.tabelConcedii);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
@@ -304,5 +408,9 @@
         private System.Windows.Forms.Timer sidebarTimer;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridView tabelConcedii;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton materialButton2;
     }
 }

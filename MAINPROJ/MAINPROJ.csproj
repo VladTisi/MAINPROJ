@@ -127,12 +127,6 @@
     <EmbeddedResource Include="LogAuten.resx">
       <DependentUpon>LogAuten.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuGestionareConcedii.resx">
-      <DependentUpon>MeniuGestionareConcedii.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>MeniuGestionareConcedii.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
     </EmbeddedResource>
