@@ -238,7 +238,7 @@
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
             this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.Logo.Location = new System.Drawing.Point(304, 4);
+            this.Logo.Location = new System.Drawing.Point(304, 1);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(294, 80);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
