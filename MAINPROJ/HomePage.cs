@@ -208,5 +208,25 @@ namespace MAINPROJ
         {
 
         }
+
+        private void btnUpdatePoza_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDataAngajare_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOvertime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
