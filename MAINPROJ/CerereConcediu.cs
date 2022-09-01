@@ -27,7 +27,26 @@ namespace MAINPROJ
         private void CerereConcediu_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
-            this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+
+            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            var rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                bool admin = rdr.GetBoolean(0);
+                int manager = rdr.GetInt32(1);
+                if (admin!=true && manager!=3)
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+            }
+
+            con3.Close();
 
         }
 
@@ -138,6 +157,19 @@ namespace MAINPROJ
                     sidebarTimer.Stop();
                 }
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
