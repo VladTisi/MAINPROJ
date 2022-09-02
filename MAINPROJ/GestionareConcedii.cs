@@ -173,5 +173,10 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+
+        private void tabelConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

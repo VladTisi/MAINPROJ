@@ -46,12 +46,12 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.tabelEchipa = new System.Windows.Forms.DataGridView();
+            this.tabelConcediu = new System.Windows.Forms.DataGridView();
             this.button6 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabelEchipa = new System.Windows.Forms.DataGridView();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,8 +60,9 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelConcediu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebarTimer
@@ -255,27 +256,21 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // monthCalendar1
+            // tabelConcediu
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(208, 205);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 52;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
-            // 
-            // tabelEchipa
-            // 
-            this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelEchipa.Location = new System.Drawing.Point(551, 205);
-            this.tabelEchipa.Name = "tabelEchipa";
-            this.tabelEchipa.Size = new System.Drawing.Size(321, 162);
-            this.tabelEchipa.TabIndex = 53;
+            this.tabelConcediu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelConcediu.Location = new System.Drawing.Point(543, 202);
+            this.tabelConcediu.Name = "tabelConcediu";
+            this.tabelConcediu.Size = new System.Drawing.Size(321, 162);
+            this.tabelConcediu.TabIndex = 53;
+            this.tabelConcediu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick);
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Black;
             this.button6.Font = new System.Drawing.Font("Stencil", 10F);
             this.button6.ForeColor = System.Drawing.SystemColors.Control;
-            this.button6.Location = new System.Drawing.Point(266, 390);
+            this.button6.Location = new System.Drawing.Point(651, 394);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(103, 46);
             this.button6.TabIndex = 54;
@@ -300,22 +295,31 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(265, 150);
+            this.label1.Location = new System.Drawing.Point(269, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 22);
+            this.label1.Size = new System.Drawing.Size(106, 22);
             this.label1.TabIndex = 56;
-            this.label1.Text = "CALENDAR";
+            this.label1.Text = "Echipa ta";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(657, 150);
+            this.label2.Location = new System.Drawing.Point(615, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 22);
+            this.label2.Size = new System.Drawing.Size(169, 22);
             this.label2.TabIndex = 57;
-            this.label2.Text = "ECHIPA TA";
+            this.label2.Text = "Concedii ECHIPA";
+            // 
+            // tabelEchipa
+            // 
+            this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelEchipa.Location = new System.Drawing.Point(202, 202);
+            this.tabelEchipa.Name = "tabelEchipa";
+            this.tabelEchipa.Size = new System.Drawing.Size(240, 162);
+            this.tabelEchipa.TabIndex = 58;
             // 
             // Echipa
             // 
@@ -323,12 +327,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.tabelEchipa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.tabelEchipa);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.tabelConcediu);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -344,8 +348,9 @@
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelConcediu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,8 +371,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.DataGridView tabelEchipa;
+        private System.Windows.Forms.DataGridView tabelConcediu;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel6;
@@ -376,5 +380,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView tabelEchipa;
     }
 }
