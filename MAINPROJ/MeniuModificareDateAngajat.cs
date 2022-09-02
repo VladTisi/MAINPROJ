@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
+using System.Collections;
 
 namespace MAINPROJ
 {
@@ -141,17 +142,26 @@ namespace MAINPROJ
 
             con3.Close();
 
-            OleDbConnection con8 = Common.GetConnection();
+            SqlConnection con8 = Common.GetSqlConnection() ;
             con8.Open();
-            string numeEchipe = "SELECT Nume FROM Echipa";
-            cmd2 = new OleDbCommand(numeEchipe, con8);
-            var rdr2 = cmd2.ExecuteReader();
-            comboEchipa.Items.Clear();
-            while (rdr2.Read())
-            {
+                   
+                     
+                   
+                    string numeEchipe = "SELECT Id,Nume FROM Echipa";
+                    SqlDataAdapter da = new SqlDataAdapter(numeEchipe, con8);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "Fleet");
+                    comboEchipa.DisplayMember = "Nume";
+                    comboEchipa.ValueMember = "Id";
+                    comboEchipa.DataSource = ds.Tables[0];
+                
 
-                comboEchipa.Items.Add(rdr2.GetString(0));
-            }
+              
+                         
+
+
+
+            
             con8.Close();
 
             showImage();
@@ -159,7 +169,7 @@ namespace MAINPROJ
 
         private void btnSalvareModificari_Click(object sender, EventArgs e)
         {
-            btnUpdatePoza.Visible = false;
+            btnUpload.Visible = false;
 
             btnSalvareModificari.Visible = false;
 
@@ -210,6 +220,7 @@ namespace MAINPROJ
             con4.Close();
             OleDbConnection con6 = Common.GetConnection();
             con6.Open();
+
             string echipaNoua = $"UPDATE Angajat SET IdEchipa = '{comboEchipa.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
             cmd = new OleDbCommand(echipaNoua, con6);
             cmd.ExecuteNonQuery();
@@ -237,7 +248,7 @@ namespace MAINPROJ
             
             btnSalvareModificari.Visible = true;
 
-            btnUpdatePoza.Visible = true;
+            btnUpload.Visible = true;
 
             comboEchipa.Enabled = true;
 
@@ -287,30 +298,57 @@ namespace MAINPROJ
             
         }
 
-        private void btnUpdatePoza_Click(object sender, EventArgs e)
-        {
-
-           
-            //OleDbConnection con2 = Common.GetConnection();
-            //con2.Open();
-
-            //byte[] pozaNoua = File.ReadAllBytes("System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)");
- 
-            //string pozaNouaString = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = {angajatIdSelectat}";
-            //cmd = new OleDbCommand(pozaNouaString, con2);
-            //pozaNouaString = (string)cmd.ExecuteScalar();
-            //byte[] imgBytes = Convert.FromBase64String(pozaNouaString);
-
-            //MemoryStream ms = new MemoryStream(imgBytes);
-
-            //Image returnImage = Image.FromStream(ms);
-            //pozaAngajat.Image = returnImage;
-            //cmd.ExecuteNonQuery();
-            //con2.Close();
-        }
+     
 
         private void pozaAngajat_Click(object sender, EventArgs e)
         {
+
+        }
+
+      
+
+      
+
+       
+
+       
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = "Select file";
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.Filter = "All files (*.*)|*.*|Text File (*.txt)|*.txt";
+            openFileDialog1.FilterIndex = 1;
+          
+            
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                byte[] myImage = new byte[fs.Length];
+                fs.Read(myImage, 0, System.Convert.ToInt32(fs.Length));
+                fs.Close();
+                string pozaNoua = Encoding.Default.GetString(myImage);
+
+                pozaNoua = System.Convert.ToBase64String(myImage);
+
+
+                OleDbConnection con6 = Common.GetConnection();
+                con6.Open();
+                string queryUpdate = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatIdSelectat}'";
+                cmd = new OleDbCommand(queryUpdate, con6);
+                cmd.ExecuteNonQuery();
+                con6.Close();
+
+               
+
+            }
+
+           
+
+
+
 
         }
     }
