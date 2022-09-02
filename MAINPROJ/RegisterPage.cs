@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,15 +16,38 @@ namespace MAINPROJ
     {
         string nume;
         string prenume;
-        public RegisterPage(string nume, string prenume)
+        int loginid;
+        OleDbCommand cmd = new OleDbCommand();
+        public RegisterPage(int loginid,string nume, string prenume)
         {
             InitializeComponent();
             this.nume = nume;  
             this.prenume = prenume;
+            this.loginid=loginid;
             cmbSex.Items.Add("Barbat");
             cmbSex.Items.Add("Femeie");
             txtNume.Text=nume;
             txtPrenume.Text=prenume;
+            SqlConnection con8 = Common.GetSqlConnection();
+            con8.Open();
+            string queryEchipa = "SELECT Id,Nume FROM Echipa";
+            SqlDataAdapter da = new SqlDataAdapter(queryEchipa, con8);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Fleet");
+            cmbNumeEchipa.DisplayMember = "Nume";
+            cmbNumeEchipa.ValueMember = "Id";
+            cmbNumeEchipa.DataSource = ds.Tables[0];
+            con8.Close();
+            SqlConnection con9 = Common.GetSqlConnection();
+            con9.Open();
+            string queryFunctie = "SELECT Id,Nume FROM Functie";
+            SqlDataAdapter da2 = new SqlDataAdapter(queryFunctie, con9);
+            DataSet ds2 = new DataSet();
+            da2.Fill(ds2, "Fleet");
+            cmbNumeFunctie.DisplayMember = "Nume";
+            cmbNumeFunctie.ValueMember = "Id";
+            cmbNumeFunctie.DataSource = ds2.Tables[0];
+            con9.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,7 +64,7 @@ namespace MAINPROJ
                 {
                     break;
                 }
-                if (Char.IsLetter(myArray[i]))
+                if (Char.IsNumber(myArray[i]))
                 {
                     break;
                 }
@@ -48,6 +73,54 @@ namespace MAINPROJ
         }
 
             if (hasDigits)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length!=10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        private int validareNrBuletin(string nrbuletin)
+        {
+            bool hasNumbersOnly = false;
+            if (nrbuletin.Length!=6)
+            {
+                return 0;
+            }
+            char[] myCharArray = nrbuletin.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+
+            if (hasNumbersOnly)
             {
                 return 1;
             }
@@ -121,6 +194,65 @@ namespace MAINPROJ
         private void txtSerie_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool cnpvalid = true;
+            bool serievalida = true;
+            bool nrtelefon = true;
+            bool nrbuletin = true;
+            if (validareCNP(txtCNP.Text)==0)
+            {
+                MessageBox.Show("CNP Invalid");
+                cnpvalid=false;
+                txtCNP.Text="";
+            }
+            if (validareSerieBuletin(txtSerie.Text)==0)
+            {
+                MessageBox.Show("Serie Invalida");
+                serievalida=false;
+                txtSerie.Text="";
+            }
+            if (validareNrTelefon(txtTelefon.Text)==0)
+            {
+                MessageBox.Show("Numar telefon Invalid");
+                nrtelefon=false;
+                txtTelefon.Text="";
+            }
+            if (validareNrBuletin(txtNrBuletin.Text)==0)
+            {
+                MessageBox.Show("Numar buletin invalid");
+                nrbuletin=false;
+                txtNrBuletin.Text="";
+            }
+            if (nrbuletin&&nrtelefon&&serievalida&&cnpvalid)
+            {
+                OleDbConnection con = Common.GetConnection();
+                con.Open();
+                string register = $"INSERT INTO Angajat(Nume,Prenume,LoginId,Data_Angajarii,Data_Nasterii,CNP,Serie_buletin,Nr_buletin,Numar_telefon,esteAdmin,Sex,Salariu,Overtime,IdFunctie,IdEchipa)" +
+                    $"VALUES ('{txtNume.Text}','{txtPrenume.Text}',{loginid},'{dtpDataAngajarii.Value}','{dtpDataNasterii.Value}','{txtCNP.Text}','{txtSerie.Text}','{txtNrBuletin.Text}','{txtTelefon.Text}','0','{cmbSex.Text}','0','0','{cmbNumeFunctie.SelectedValue}','{cmbNumeEchipa.SelectedValue}')";
+                cmd = new OleDbCommand(register, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("Profilul tau a fost creat!");
+            }
+
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpDataAngajarii.Value>DateTime.Now)
+            {
+                MessageBox.Show("Data angajarii invalida. Ati fost angajat in viitor?");
+                dtpDataAngajarii.Value = DateTime.Now;
+            }
+        }
+
+        private void cmbNumeEchipa_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

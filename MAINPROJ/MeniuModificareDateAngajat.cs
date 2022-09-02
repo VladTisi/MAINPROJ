@@ -12,12 +12,14 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MAINPROJ
 {
     public partial class MeniuModificareDateAngajat : Form
     {
         private int angajatId;
+        Image start;
 
         OleDbCommand cmd = new OleDbCommand();
         OleDbCommand cmd2 = new OleDbCommand();
@@ -59,6 +61,8 @@ namespace MAINPROJ
 
         private void MeniuModificareDateAngajati_Load(object sender, EventArgs e)
         {
+            showImage();
+            start = pozaAngajat.Image;
             OleDbConnection con1 = Common.GetConnection();
             con1.Open();
             OleDbCommand cmd = new OleDbCommand();
@@ -141,17 +145,28 @@ namespace MAINPROJ
 
             con3.Close();
 
-            OleDbConnection con8 = Common.GetConnection();
+            SqlConnection con8 = Common.GetSqlConnection() ;
             con8.Open();
-            string numeEchipe = "SELECT Nume FROM Echipa";
-            cmd2 = new OleDbCommand(numeEchipe, con8);
-            var rdr2 = cmd2.ExecuteReader();
-            comboEchipa.Items.Clear();
-            while (rdr2.Read())
-            {
+                                                           
+            string numeEchipe = "SELECT Id,Nume FROM Echipa";
+            SqlDataAdapter dc = new SqlDataAdapter(numeEchipe, con8);
+            DataSet dm = new DataSet();
+            dc.Fill(dm, "Fleet");
+            comboEchipa.DisplayMember = "Nume";
+            comboEchipa.ValueMember = "Id";
+            comboEchipa.DataSource = dm.Tables[0];
 
-                comboEchipa.Items.Add(rdr2.GetString(0));
-            }
+           
+
+            string numeFunctii = "SELECT Id,Nume FROM Functie";
+            SqlDataAdapter da = new SqlDataAdapter(numeFunctii, con8);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Fleet");
+            comboFunctie.DisplayMember = "Nume";
+            comboFunctie.ValueMember = "Id";
+            comboFunctie.DataSource = ds.Tables[0];
+
+
             con8.Close();
 
             showImage();
@@ -159,7 +174,7 @@ namespace MAINPROJ
 
         private void btnSalvareModificari_Click(object sender, EventArgs e)
         {
-            btnUpdatePoza.Visible = false;
+            btnUpload.Visible = false;
 
             btnSalvareModificari.Visible = false;
 
@@ -210,9 +225,16 @@ namespace MAINPROJ
             con4.Close();
             OleDbConnection con6 = Common.GetConnection();
             con6.Open();
+
             string echipaNoua = $"UPDATE Angajat SET IdEchipa = '{comboEchipa.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
             cmd = new OleDbCommand(echipaNoua, con6);
             cmd.ExecuteNonQuery();
+            string functieNoua = $"UPDATE Angajat SET IdFunctie = '{comboFunctie.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
+            cmd = new OleDbCommand(functieNoua, con6);
+            cmd.ExecuteNonQuery();
+
+            
+
             con6.Close();
         }
 
@@ -237,7 +259,7 @@ namespace MAINPROJ
             
             btnSalvareModificari.Visible = true;
 
-            btnUpdatePoza.Visible = true;
+            btnUpload.Visible = true;
 
             comboEchipa.Enabled = true;
 
@@ -251,17 +273,8 @@ namespace MAINPROJ
         {
             // TODO: This line of code loads data into the 'prisonBreakDataSet.Echipa' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'dataSet2.Functie' table. You can move, or remove it, as needed.
-            OleDbConnection con7 = Common.GetConnection();
-            con7.Open();
-            string numeFunctii = "SELECT Nume FROM Functie";
-            cmd = new OleDbCommand(numeFunctii, con7);
-            var rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                comboFunctie.Items.Add(rdr.GetString(0));
-            }
-            con7.Close();
            
+            
         }
 
         private void dtpDataAngajare_ValueChanged(object sender, EventArgs e)
@@ -287,30 +300,55 @@ namespace MAINPROJ
             
         }
 
-        private void btnUpdatePoza_Click(object sender, EventArgs e)
-        {
-
-           
-            //OleDbConnection con2 = Common.GetConnection();
-            //con2.Open();
-
-            //byte[] pozaNoua = File.ReadAllBytes("System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)");
- 
-            //string pozaNouaString = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = {angajatIdSelectat}";
-            //cmd = new OleDbCommand(pozaNouaString, con2);
-            //pozaNouaString = (string)cmd.ExecuteScalar();
-            //byte[] imgBytes = Convert.FromBase64String(pozaNouaString);
-
-            //MemoryStream ms = new MemoryStream(imgBytes);
-
-            //Image returnImage = Image.FromStream(ms);
-            //pozaAngajat.Image = returnImage;
-            //cmd.ExecuteNonQuery();
-            //con2.Close();
-        }
+     
 
         private void pozaAngajat_Click(object sender, EventArgs e)
         {
+
+        }
+
+      
+
+      
+
+       
+
+       
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = "Select file";
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.Filter = "All files (*.*)|*.*|Text File (*.txt)|*.txt";
+            openFileDialog1.FilterIndex = 1;
+
+          
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                byte[] myImage = new byte[fs.Length];
+                fs.Read(myImage, 0, System.Convert.ToInt32(fs.Length));
+         
+
+                string pozaNoua = System.Convert.ToBase64String(myImage);
+                pozaAngajat.Image = Image.FromStream(fs);
+                fs.Close();
+                OleDbConnection con6 = Common.GetConnection();
+
+                con6.Open();
+
+                if (pozaAngajat.Image != start)
+                {
+                    string queryUpdate = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatIdSelectat}'";
+                    cmd.CommandText = queryUpdate;
+                    cmd.ExecuteNonQuery();
+                }
+                
+                con6.Close();
+
+            }
 
         }
     }
