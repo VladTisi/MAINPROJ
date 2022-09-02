@@ -190,6 +190,7 @@
             this.pozaAngajat.Location = new System.Drawing.Point(235, 78);
             this.pozaAngajat.Name = "pozaAngajat";
             this.pozaAngajat.Size = new System.Drawing.Size(90, 110);
+            this.pozaAngajat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pozaAngajat.TabIndex = 11;
             this.pozaAngajat.TabStop = false;
             this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
