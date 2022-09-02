@@ -11,6 +11,7 @@ namespace MAINPROJ
     public static class Common
         
     {
+        public static SqlConnection Connection2;
         public static OleDbConnection Connection;
         public static SqlConnection Connection2;
         public static OleDbConnection GetConnection()
@@ -24,8 +25,6 @@ namespace MAINPROJ
         {
             if (Connection2 == null)
                 Connection2 = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int;");
-
-
 
             return Connection2;
         }

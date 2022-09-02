@@ -90,7 +90,7 @@
             this.labelNume.BackColor = System.Drawing.Color.Transparent;
             this.labelNume.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNume.ForeColor = System.Drawing.Color.White;
-            this.labelNume.Location = new System.Drawing.Point(231, 237);
+            this.labelNume.Location = new System.Drawing.Point(216, 308);
             this.labelNume.Name = "labelNume";
             this.labelNume.Size = new System.Drawing.Size(53, 19);
             this.labelNume.TabIndex = 1;
@@ -179,7 +179,7 @@
             this.labelSex.BackColor = System.Drawing.Color.Transparent;
             this.labelSex.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSex.ForeColor = System.Drawing.Color.White;
-            this.labelSex.Location = new System.Drawing.Point(231, 288);
+            this.labelSex.Location = new System.Drawing.Point(216, 359);
             this.labelSex.Name = "labelSex";
             this.labelSex.Size = new System.Drawing.Size(37, 19);
             this.labelSex.TabIndex = 9;
@@ -187,11 +187,15 @@
             // 
             // pozaAngajat
             // 
-            this.pozaAngajat.Location = new System.Drawing.Point(235, 78);
+            this.pozaAngajat.Location = new System.Drawing.Point(220, 78);
+            this.pozaAngajat.MaximumSize = new System.Drawing.Size(175, 175);
+            this.pozaAngajat.MinimumSize = new System.Drawing.Size(90, 110);
             this.pozaAngajat.Name = "pozaAngajat";
-            this.pozaAngajat.Size = new System.Drawing.Size(90, 110);
+            this.pozaAngajat.Size = new System.Drawing.Size(175, 175);
+            this.pozaAngajat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pozaAngajat.TabIndex = 11;
             this.pozaAngajat.TabStop = false;
+            this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
             // 
             // labelPrenume
             // 
@@ -199,7 +203,7 @@
             this.labelPrenume.BackColor = System.Drawing.Color.Transparent;
             this.labelPrenume.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPrenume.ForeColor = System.Drawing.Color.White;
-            this.labelPrenume.Location = new System.Drawing.Point(231, 263);
+            this.labelPrenume.Location = new System.Drawing.Point(216, 334);
             this.labelPrenume.Name = "labelPrenume";
             this.labelPrenume.Size = new System.Drawing.Size(83, 19);
             this.labelPrenume.TabIndex = 15;
@@ -207,24 +211,28 @@
             // 
             // btnModificareDate
             // 
+            this.btnModificareDate.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 10.25F);
-            this.btnModificareDate.Location = new System.Drawing.Point(741, 409);
+            this.btnModificareDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnModificareDate.Location = new System.Drawing.Point(730, 409);
             this.btnModificareDate.Name = "btnModificareDate";
             this.btnModificareDate.Size = new System.Drawing.Size(118, 33);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
-            this.btnModificareDate.UseVisualStyleBackColor = true;
+            this.btnModificareDate.UseVisualStyleBackColor = false;
             this.btnModificareDate.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnSalvareModificari
             // 
+            this.btnSalvareModificari.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvareModificari.Location = new System.Drawing.Point(741, 108);
+            this.btnSalvareModificari.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalvareModificari.Location = new System.Drawing.Point(536, 409);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
             this.btnSalvareModificari.Size = new System.Drawing.Size(118, 33);
             this.btnSalvareModificari.TabIndex = 34;
             this.btnSalvareModificari.Text = "Salvare modificari";
-            this.btnSalvareModificari.UseVisualStyleBackColor = true;
+            this.btnSalvareModificari.UseVisualStyleBackColor = false;
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -248,7 +256,7 @@
             // txtNume
             // 
             this.txtNume.Enabled = false;
-            this.txtNume.Location = new System.Drawing.Point(334, 236);
+            this.txtNume.Location = new System.Drawing.Point(319, 307);
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(100, 20);
             this.txtNume.TabIndex = 39;
@@ -256,7 +264,7 @@
             // txtPrenume
             // 
             this.txtPrenume.Enabled = false;
-            this.txtPrenume.Location = new System.Drawing.Point(334, 262);
+            this.txtPrenume.Location = new System.Drawing.Point(319, 333);
             this.txtPrenume.Name = "txtPrenume";
             this.txtPrenume.Size = new System.Drawing.Size(100, 20);
             this.txtPrenume.TabIndex = 40;
@@ -264,7 +272,7 @@
             // txtSex
             // 
             this.txtSex.Enabled = false;
-            this.txtSex.Location = new System.Drawing.Point(334, 287);
+            this.txtSex.Location = new System.Drawing.Point(319, 358);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 41;
@@ -313,10 +321,10 @@
             // 
             // btnUpdatePoza
             // 
-            this.btnUpdatePoza.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnUpdatePoza.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnUpdatePoza.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdatePoza.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUpdatePoza.Location = new System.Drawing.Point(235, 194);
+            this.btnUpdatePoza.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnUpdatePoza.Location = new System.Drawing.Point(262, 259);
             this.btnUpdatePoza.Name = "btnUpdatePoza";
             this.btnUpdatePoza.Size = new System.Drawing.Size(90, 33);
             this.btnUpdatePoza.TabIndex = 47;

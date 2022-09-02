@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.comboListaAngajati = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnUpdatePoza = new System.Windows.Forms.Button();
             this.txtSalariu = new System.Windows.Forms.TextBox();
             this.txtOvertime = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
@@ -54,20 +52,12 @@
             this.labelNume = new System.Windows.Forms.Label();
             this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
             this.comboFunctie = new System.Windows.Forms.ComboBox();
-            this.dataSet2 = new MAINPROJ.DataSet2();
-            this.functieBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.functieTableAdapter = new MAINPROJ.DataSet2TableAdapters.FunctieTableAdapter();
             this.comboEchipa = new System.Windows.Forms.ComboBox();
-            this.prisonBreakDataSet = new MAINPROJ.PrisonBreakDataSet();
-            this.echipaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.echipaTableAdapter = new MAINPROJ.PrisonBreakDataSetTableAdapters.EchipaTableAdapter();
             this.txtDataAngajare = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnUpload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.functieBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.echipaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboListaAngajati
@@ -89,16 +79,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 73;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnUpdatePoza
-            // 
-            this.btnUpdatePoza.Location = new System.Drawing.Point(234, 220);
-            this.btnUpdatePoza.Name = "btnUpdatePoza";
-            this.btnUpdatePoza.Size = new System.Drawing.Size(90, 23);
-            this.btnUpdatePoza.TabIndex = 72;
-            this.btnUpdatePoza.Text = "Update";
-            this.btnUpdatePoza.UseVisualStyleBackColor = true;
-            this.btnUpdatePoza.Visible = false;
             // 
             // txtSalariu
             // 
@@ -207,6 +187,7 @@
             this.pozaAngajat.Size = new System.Drawing.Size(90, 110);
             this.pozaAngajat.TabIndex = 58;
             this.pozaAngajat.TabStop = false;
+            this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
             // 
             // labelSex
             // 
@@ -309,57 +290,23 @@
             // 
             // comboFunctie
             // 
-            this.comboFunctie.DataSource = this.functieBindingSource;
-            this.comboFunctie.DisplayMember = "Nume";
             this.comboFunctie.Enabled = false;
             this.comboFunctie.FormattingEnabled = true;
             this.comboFunctie.Location = new System.Drawing.Point(535, 198);
             this.comboFunctie.Name = "comboFunctie";
             this.comboFunctie.Size = new System.Drawing.Size(121, 21);
             this.comboFunctie.TabIndex = 75;
-            this.comboFunctie.ValueMember = "Id";
             this.comboFunctie.SelectedIndexChanged += new System.EventHandler(this.comboFunctie_SelectedIndexChanged);
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // functieBindingSource
-            // 
-            this.functieBindingSource.DataMember = "Functie";
-            this.functieBindingSource.DataSource = this.dataSet2;
-            // 
-            // functieTableAdapter
-            // 
-            this.functieTableAdapter.ClearBeforeFill = true;
             // 
             // comboEchipa
             // 
-            this.comboEchipa.DataSource = this.echipaBindingSource;
-            this.comboEchipa.DisplayMember = "Nume";
             this.comboEchipa.Enabled = false;
             this.comboEchipa.FormattingEnabled = true;
             this.comboEchipa.Location = new System.Drawing.Point(535, 264);
             this.comboEchipa.Name = "comboEchipa";
             this.comboEchipa.Size = new System.Drawing.Size(121, 21);
             this.comboEchipa.TabIndex = 76;
-            this.comboEchipa.ValueMember = "Id";
             this.comboEchipa.SelectedIndexChanged += new System.EventHandler(this.comboEchipa_SelectedIndexChanged);
-            // 
-            // prisonBreakDataSet
-            // 
-            this.prisonBreakDataSet.DataSetName = "PrisonBreakDataSet";
-            this.prisonBreakDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // echipaBindingSource
-            // 
-            this.echipaBindingSource.DataMember = "Echipa";
-            this.echipaBindingSource.DataSource = this.prisonBreakDataSet;
-            // 
-            // echipaTableAdapter
-            // 
-            this.echipaTableAdapter.ClearBeforeFill = true;
             // 
             // txtDataAngajare
             // 
@@ -369,18 +316,34 @@
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 77;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Location = new System.Drawing.Point(234, 220);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(90, 23);
+            this.btnUpload.TabIndex = 78;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Visible = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
             // MeniuModificareDateAngajat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.txtDataAngajare);
             this.Controls.Add(this.comboEchipa);
             this.Controls.Add(this.comboFunctie);
             this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnUpdatePoza);
             this.Controls.Add(this.txtSalariu);
             this.Controls.Add(this.txtOvertime);
             this.Controls.Add(this.txtSex);
@@ -407,10 +370,6 @@
             this.Load += new System.EventHandler(this.MeniuModificareDateAngajat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.functieBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.echipaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,7 +379,6 @@
 
         private System.Windows.Forms.ComboBox comboListaAngajati;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnUpdatePoza;
         private System.Windows.Forms.TextBox txtSalariu;
         private System.Windows.Forms.TextBox txtOvertime;
         private System.Windows.Forms.TextBox txtSex;
@@ -443,13 +401,9 @@
         private System.Windows.Forms.Label labelNume;
         private System.Windows.Forms.DateTimePicker dtpDataAngajare;
         private System.Windows.Forms.ComboBox comboFunctie;
-        private DataSet2 dataSet2;
-        private System.Windows.Forms.BindingSource functieBindingSource;
-        private DataSet2TableAdapters.FunctieTableAdapter functieTableAdapter;
         private System.Windows.Forms.ComboBox comboEchipa;
-        private PrisonBreakDataSet prisonBreakDataSet;
-        private System.Windows.Forms.BindingSource echipaBindingSource;
-        private PrisonBreakDataSetTableAdapters.EchipaTableAdapter echipaTableAdapter;
         private System.Windows.Forms.TextBox txtDataAngajare;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnUpload;
     }
 }

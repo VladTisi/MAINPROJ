@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MAINPROJ
 {
@@ -20,7 +21,8 @@ namespace MAINPROJ
         private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
-        
+        string pozaNoua;
+        Image start;
 
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -40,6 +42,7 @@ namespace MAINPROJ
             cmd = new OleDbCommand(dateAngajat, con3);
             var rdr = cmd.ExecuteReader();
             showImage();
+            start = pozaAngajat.Image;
             while (rdr.Read())
             {
                 txtNume.Text = rdr.GetString(0);
@@ -86,17 +89,23 @@ namespace MAINPROJ
             OleDbConnection con = Common.GetConnection();
             con.Open();
 
-
+            //modificare nr telefon
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
             string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
             cmd = new OleDbCommand(modifTel, con);
             cmd.ExecuteNonQuery();
+            //modificare email
             string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
             cmd.CommandText = modifEmail;
             cmd.ExecuteNonQuery();
-
-           
+            //modificare poza
+            if(pozaAngajat.Image!=start)
+            {
+                string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
+                cmd.CommandText = modifPoza;
+                cmd.ExecuteNonQuery();
+            }
             con.Close();
 
            
@@ -185,17 +194,19 @@ namespace MAINPROJ
             OleDbConnection con = Common.GetConnection();
             string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
             cmd = new OleDbCommand(selectpoza, con);
-            string Poza =(string) cmd.ExecuteScalar();
+            string Poza = (string)cmd.ExecuteScalar();
             byte[] imgBytes = Convert.FromBase64String(Poza);
 
             MemoryStream ms = new MemoryStream(imgBytes);
+            if (Poza != "")
+            {
+                Image returnImage = Image.FromStream(ms);
+                pozaAngajat.Image = returnImage;
 
-            Image returnImage = Image.FromStream(ms);
-            pozaAngajat.Image = returnImage;
-            cmd.ExecuteNonQuery();
-      
-        }
+            }
 
+        
+    }
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -211,7 +222,19 @@ namespace MAINPROJ
 
         private void btnUpdatePoza_Click(object sender, EventArgs e)
         {
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                // display image in picture box  
+                pozaAngajat.Image = new Bitmap(open.FileName);
+                byte[] bytes = (byte[])(new ImageConverter()).ConvertTo(pozaAngajat.Image, typeof(byte[]));
+                pozaNoua = Convert.ToBase64String(bytes);
+                
 
+                // image file path  
+            }
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -225,6 +248,11 @@ namespace MAINPROJ
         }
 
         private void txtOvertime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pozaAngajat_Click(object sender, EventArgs e)
         {
 
         }
