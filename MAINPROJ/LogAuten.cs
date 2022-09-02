@@ -77,6 +77,24 @@ namespace MAINPROJ
             }
             return 0;
         }
+
+        private int checkIfEmailExists()
+        {
+            OleDbConnection conn123 = Common.GetConnection();
+            string email = autemail.Text;
+            cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
+            cmd.Connection = conn123;
+            conn123.Open();
+            string found = (string)cmd.ExecuteScalar();
+            conn123.Close();
+
+            if (String.IsNullOrEmpty(found))
+            {
+                return 1;
+            }
+
+            return 0;
+        }
         private void AUTENTIFICARE_Click(object sender, EventArgs e)
         {
             int passvalid = validatePassword(autpass.Text, conpass.Text);
@@ -85,13 +103,24 @@ namespace MAINPROJ
             if (passvalid == 0)
             {
                 MessageBox.Show("Parola invalida");
+                autpass.Text="";
+                conpass.Text="";
 
             }
             if (emailvalid == 0)
             {
                 MessageBox.Show("Email invalid");
+                autemail.Text="";
             }
-            if (passvalid == 1 && emailvalid == 1)
+
+            if (checkIfEmailExists()==0)
+            {
+                MessageBox.Show("Exista deja un cont cu acest email!");
+                autemail.Text="";
+
+            }
+
+            if (passvalid == 1 && emailvalid == 1 && checkIfEmailExists()==1)
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
@@ -101,10 +130,34 @@ namespace MAINPROJ
                 con.Close();
 
                 MessageBox.Show("Contul tau a fost creat!");
+                string[] myArray = autemail.Text.Split('.');
+                Console.WriteLine(myArray[0]);
+                Console.WriteLine(myArray[1].Split('@')[0]);
+
+                OleDbConnection conn1234 = Common.GetConnection();
+                string email = autemail.Text;
+                cmd2 = new OleDbCommand($"SELECT Id FROM Login WHERE Email='{email}'");
+                cmd2.Connection = conn1234;
+                conn1234.Open();
+                int IdLogin = (int)cmd2.ExecuteScalar();
+                conn1234.Close();
+
+
                 autemail.Text="";
                 autpass.Text="";
                 conpass.Text="";
+
+
+
+
+                this.Hide();
+                var otherform = new RegisterPage(IdLogin,myArray[0], myArray[1].Split('@')[0]);
+                otherform.Closed += (s, args) => this.Close();
+                otherform.Show();
+
             }
+
+
 
 
 
@@ -303,4 +356,5 @@ namespace MAINPROJ
 
         }
     }
-}
+
+

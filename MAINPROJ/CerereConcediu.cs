@@ -58,7 +58,6 @@ namespace MAINPROJ
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(cmbTipConcediu.SelectedValue);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
