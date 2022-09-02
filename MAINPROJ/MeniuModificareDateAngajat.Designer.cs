@@ -30,7 +30,6 @@
         {
             this.comboListaAngajati = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnUpdatePoza = new System.Windows.Forms.Button();
             this.txtSalariu = new System.Windows.Forms.TextBox();
             this.txtOvertime = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
@@ -55,16 +54,20 @@
             this.comboFunctie = new System.Windows.Forms.ComboBox();
             this.comboEchipa = new System.Windows.Forms.ComboBox();
             this.txtDataAngajare = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnUpload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             this.SuspendLayout();
             // 
             // comboListaAngajati
             // 
+            this.comboListaAngajati.BackColor = System.Drawing.Color.GhostWhite;
+            this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboListaAngajati.FormattingEnabled = true;
-            this.comboListaAngajati.Location = new System.Drawing.Point(737, 19);
+            this.comboListaAngajati.Location = new System.Drawing.Point(686, 19);
             this.comboListaAngajati.Name = "comboListaAngajati";
-            this.comboListaAngajati.Size = new System.Drawing.Size(121, 21);
+            this.comboListaAngajati.Size = new System.Drawing.Size(148, 21);
             this.comboListaAngajati.TabIndex = 0;
             this.comboListaAngajati.SelectedIndexChanged += new System.EventHandler(this.comboListaAngajati_SelectedIndexChanged);
             // 
@@ -78,17 +81,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 73;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnUpdatePoza
-            // 
-            this.btnUpdatePoza.Location = new System.Drawing.Point(234, 220);
-            this.btnUpdatePoza.Name = "btnUpdatePoza";
-            this.btnUpdatePoza.Size = new System.Drawing.Size(90, 23);
-            this.btnUpdatePoza.TabIndex = 72;
-            this.btnUpdatePoza.Text = "Update";
-            this.btnUpdatePoza.UseVisualStyleBackColor = true;
-            this.btnUpdatePoza.Visible = false;
-            this.btnUpdatePoza.Click += new System.EventHandler(this.btnUpdatePoza_Click);
             // 
             // txtSalariu
             // 
@@ -148,23 +140,29 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(746, 104);
+            this.btnSalvareModificari.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvareModificari.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalvareModificari.Location = new System.Drawing.Point(705, 439);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
-            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
+            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 40);
             this.btnSalvareModificari.TabIndex = 61;
             this.btnSalvareModificari.Text = "Salvare modificari";
-            this.btnSalvareModificari.UseVisualStyleBackColor = true;
+            this.btnSalvareModificari.UseVisualStyleBackColor = false;
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.btnSalvareModificari_Click);
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(746, 438);
+            this.btnModificareDate.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificareDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModificareDate.Location = new System.Drawing.Point(535, 439);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
+            this.btnModificareDate.Size = new System.Drawing.Size(112, 40);
             this.btnModificareDate.TabIndex = 60;
             this.btnModificareDate.Text = "Modificare date";
-            this.btnModificareDate.UseVisualStyleBackColor = true;
+            this.btnModificareDate.UseVisualStyleBackColor = false;
             this.btnModificareDate.Click += new System.EventHandler(this.btnModificareDate_Click);
             // 
             // labelFunctie
@@ -326,18 +324,34 @@
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 77;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Location = new System.Drawing.Point(234, 220);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(90, 23);
+            this.btnUpload.TabIndex = 78;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Visible = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
             // MeniuModificareDateAngajat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.txtDataAngajare);
             this.Controls.Add(this.comboEchipa);
             this.Controls.Add(this.comboFunctie);
             this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnUpdatePoza);
             this.Controls.Add(this.txtSalariu);
             this.Controls.Add(this.txtOvertime);
             this.Controls.Add(this.txtSex);
@@ -373,7 +387,6 @@
 
         private System.Windows.Forms.ComboBox comboListaAngajati;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnUpdatePoza;
         private System.Windows.Forms.TextBox txtSalariu;
         private System.Windows.Forms.TextBox txtOvertime;
         private System.Windows.Forms.TextBox txtSex;
@@ -398,5 +411,7 @@
         private System.Windows.Forms.ComboBox comboFunctie;
         private System.Windows.Forms.ComboBox comboEchipa;
         private System.Windows.Forms.TextBox txtDataAngajare;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnUpload;
     }
 }
