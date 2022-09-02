@@ -18,6 +18,8 @@ namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
+        private string backuptel;
+        private string backupmail;
         private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
@@ -74,6 +76,34 @@ namespace MAINPROJ
             con3.Close();
 
         }
+
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length != 10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i < myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly = true;
+            }
+
+
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
@@ -92,13 +122,32 @@ namespace MAINPROJ
             //modificare nr telefon
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
-            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
-            cmd = new OleDbCommand(modifTel, con);
-            cmd.ExecuteNonQuery();
+            if (validareNrTelefon(numartelefon) == 1)
+            {
+                string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                cmd = new OleDbCommand(modifTel, con);
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                txtTelefon.Text = backuptel;
+                MessageBox.Show("Numar de telefon invalid");
+               
+            }
             //modificare email
+            if(email.Length <=100)
+            {
             string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
             cmd.CommandText = modifEmail;
             cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                txtEmail.Text = backupmail;
+                MessageBox.Show("Email invalid");
+
+            }
+            
             //modificare poza
             if(pozaAngajat.Image!=start)
             {
@@ -114,6 +163,8 @@ namespace MAINPROJ
 
         private void button6_Click(object sender, EventArgs e)
         {
+            backuptel = txtTelefon.Text;
+            backupmail = txtEmail.Text;
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
