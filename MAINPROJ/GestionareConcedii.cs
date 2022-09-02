@@ -39,9 +39,9 @@ namespace MAINPROJ
                 bool admin = rdr.GetBoolean(0);
                 int manager = rdr.GetInt32(1);
                 if (admin)
-                    comanda = "SELECT Angajat.Id as [Id Angajat],Angajat.Nume, Functie.Nume,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1";
+                    comanda = "SELECT Angajat.Id as [Id Angajat],Angajat.Nume, Functie.Nume,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 order by Concediu.Id";
                 else if (manager == 3)
-                    comanda = $"SELECT Angajat.Id as [Id Angajat],Angajat.Nume, Functie.Nume,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 and Functie.Id !=3 and Angajat.ManagerId={angajatId}";
+                    comanda = $"SELECT Angajat.Id as [Id Angajat],Angajat.Nume, Functie.Nume,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 and Functie.Id !=3 and Angajat.ManagerId={angajatId} order by Concediu.Id";
             }
 
             con3.Close();
