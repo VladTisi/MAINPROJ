@@ -19,7 +19,7 @@ namespace MAINPROJ
         {
             SqlConnection con = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int");
             con.Open();
-            string comanda = $"SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id WHERE Angajat.IdEchipa=(SELECT IdEchipa FROM Angajat where Angajat.Id={angajatId})";
+            string comanda = $"SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia], Concediu.Data_inceput, Concediu.Data_sfarsit FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId = Angajat.Id join StareConcediu on StareConcediu.Id = Concediu.stareConcediuId  WHERE Angajat.IdEchipa=(SELECT IdEchipa FROM Angajat where Angajat.Id={angajatId} and StareConcediu.Id = 2 and Concediu.Data_inceput >GETDATE())";
             using (SqlCommand cmd = new SqlCommand(comanda, con))
                 {
                     cmd.CommandType = CommandType.Text;
@@ -28,10 +28,29 @@ namespace MAINPROJ
                         using (DataTable dt = new DataTable())
                         {
                             sda.Fill(dt);
-                            tabelEchipa.DataSource = dt;
+                            tabelConcediu.DataSource = dt;
                         }
                     }
                 }
+            con.Close();
+        }
+        private void showEchipa()
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int");
+            con.Open();
+            string comanda = $"SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id WHERE Angajat.IdEchipa=(SELECT IdEchipa FROM Angajat where Angajat.Id={angajatId})";
+            using (SqlCommand cmd = new SqlCommand(comanda, con))
+            {
+                cmd.CommandType = CommandType.Text;
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        tabelEchipa.DataSource = dt;
+                    }
+                }
+            }
             con.Close();
         }
         bool sidebarExpand;
@@ -41,6 +60,8 @@ namespace MAINPROJ
             InitializeComponent();
             this.angajatId=angajatId;
             showTable();
+            showEchipa();
+
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -105,7 +126,7 @@ namespace MAINPROJ
         {
            
                 // Toggle between True and False.  
-                monthCalendar1.ShowToday = !monthCalendar1.ShowToday;
+                //monthCalendar1.ShowToday = !monthCalendar1.ShowToday;
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
             OleDbCommand cmd = new OleDbCommand();
@@ -134,10 +155,6 @@ namespace MAINPROJ
             Application.Exit();
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -156,6 +173,16 @@ namespace MAINPROJ
         }
 
         private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabelEchipa_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
