@@ -214,7 +214,7 @@
             this.btnModificareDate.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 10.25F);
             this.btnModificareDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnModificareDate.Location = new System.Drawing.Point(730, 409);
+            this.btnModificareDate.Location = new System.Drawing.Point(536, 409);
             this.btnModificareDate.Name = "btnModificareDate";
             this.btnModificareDate.Size = new System.Drawing.Size(118, 33);
             this.btnModificareDate.TabIndex = 33;
@@ -227,7 +227,7 @@
             this.btnSalvareModificari.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvareModificari.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSalvareModificari.Location = new System.Drawing.Point(536, 409);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(741, 410);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
             this.btnSalvareModificari.Size = new System.Drawing.Size(118, 33);
             this.btnSalvareModificari.TabIndex = 34;

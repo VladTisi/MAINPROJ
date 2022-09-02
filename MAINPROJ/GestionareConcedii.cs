@@ -16,7 +16,7 @@ namespace MAINPROJ
     {
         bool sidebarExpand;
         private int angajatId;
-
+        string ValCelula;
         public GestionareConcedii(int angajatId)
         {
             InitializeComponent();
@@ -39,15 +39,16 @@ namespace MAINPROJ
                 bool admin = rdr.GetBoolean(0);
                 int manager = rdr.GetInt32(1);
                 if (admin)
-                    comanda = "SELECT Angajat.Id as [Id Angajat],Angajat.Nume, Functie.Nume,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 order by Concediu.Id";
+                    comanda = "SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 order by Concediu.Id";
                 else if (manager == 3)
-                    comanda = $"SELECT Angajat.Id as [Id Angajat],Angajat.Nume, Functie.Nume,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 and Functie.Id !=3 and Angajat.ManagerId={angajatId} order by Concediu.Id";
+                    comanda = $"SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 and Functie.Id !=3 and Angajat.ManagerId={angajatId} order by Concediu.Id";
             }
 
             con3.Close();
             showTable(comanda);
+            tabelConcedii.Columns["Id Concediu"].Visible = false;  
         }
-
+       
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
             if (sidebarExpand)
@@ -149,7 +150,7 @@ namespace MAINPROJ
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=2 WHERE angajatId={Convert.ToInt32(IdAngajat.Text)} and Id={Convert.ToInt32(IdConcediu.Text)}";
+            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=2 WHERE Id={Convert.ToInt32(ValCelula)} ";
             cmd = new OleDbCommand(dateAngajat, con3);
             cmd.ExecuteNonQuery();
             con3.Close();
@@ -161,10 +162,14 @@ namespace MAINPROJ
 
         private void Refuza_Click(object sender, EventArgs e)
         {
+            if (this.tabelConcedii.SelectedRows.Count > 0)
+            {
+                tabelConcedii.Rows.RemoveAt(this.tabelConcedii.SelectedRows[0].Index);
+            }
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=3 WHERE angajatId={Convert.ToInt32(IdAngajat.Text)} and Id={Convert.ToInt32(IdConcediu.Text)}";
+            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=3 WHERE Id={Convert.ToInt32(ValCelula)}";
             cmd = new OleDbCommand(dateAngajat, con3);
             cmd.ExecuteNonQuery();
             con3.Close();
@@ -176,7 +181,18 @@ namespace MAINPROJ
 
         private void tabelConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
+            //DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
+            //string cellvalue = Convert.ToString(selectedRow.Cells["Id Concediu"].Value);
+            //Console.WriteLine(cellvalue);
+        }
+        
+        private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
+            ValCelula = Convert.ToString(selectedRow.Cells["Id Concediu"].Value);
+            Console.WriteLine(ValCelula);
         }
     }
 }

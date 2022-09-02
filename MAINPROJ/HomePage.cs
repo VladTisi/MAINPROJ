@@ -18,6 +18,8 @@ namespace MAINPROJ
 {
     public partial class HomePage : Form
     {
+        private string backuptel;
+        private string backupmail;
         private int angajatId;
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
@@ -36,8 +38,12 @@ namespace MAINPROJ
         {
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            
+
+            OleDbCommand cmd1 = new OleDbCommand();
+            string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId}) UPDATE Angajat set ZileConcediuRamase= (select @numar - isnull(sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1),0) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2) WHERE Id={angajatId}";
+            cmd1 = new OleDbCommand(comanda, con3);
+            cmd1.ExecuteNonQuery();
+
             string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
             cmd = new OleDbCommand(dateAngajat, con3);
             var rdr = cmd.ExecuteReader();
@@ -74,6 +80,34 @@ namespace MAINPROJ
             con3.Close();
 
         }
+
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length != 10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i < myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly = true;
+            }
+
+
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
@@ -92,13 +126,32 @@ namespace MAINPROJ
             //modificare nr telefon
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
-            string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
-            cmd = new OleDbCommand(modifTel, con);
-            cmd.ExecuteNonQuery();
+            if (validareNrTelefon(numartelefon) == 1)
+            {
+                string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                cmd = new OleDbCommand(modifTel, con);
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                txtTelefon.Text = backuptel;
+                MessageBox.Show("Numar de telefon invalid");
+               
+            }
             //modificare email
+            if(email.Length <=100)
+            {
             string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
             cmd.CommandText = modifEmail;
             cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                txtEmail.Text = backupmail;
+                MessageBox.Show("Email invalid");
+
+            }
+            
             //modificare poza
             if(pozaAngajat.Image!=start)
             {
@@ -114,6 +167,8 @@ namespace MAINPROJ
 
         private void button6_Click(object sender, EventArgs e)
         {
+            backuptel = txtTelefon.Text;
+            backupmail = txtEmail.Text;
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
