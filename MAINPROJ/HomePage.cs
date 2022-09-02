@@ -36,8 +36,12 @@ namespace MAINPROJ
         {
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            
+
+            OleDbCommand cmd1 = new OleDbCommand();
+            string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId}) UPDATE Angajat set ZileConcediuRamase= (select @numar - isnull(sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1),0) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2) WHERE Id={angajatId}";
+            cmd1 = new OleDbCommand(comanda, con3);
+            cmd1.ExecuteNonQuery();
+
             string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
             cmd = new OleDbCommand(dateAngajat, con3);
             var rdr = cmd.ExecuteReader();
