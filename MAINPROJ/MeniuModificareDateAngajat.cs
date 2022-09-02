@@ -29,31 +29,58 @@ namespace MAINPROJ
         public MeniuModificareDateAngajat(int angajatId)
         {
             this.angajatId = angajatId;
-
             InitializeComponent();
             AddItems();
-
-
 
         }
 
         private void AddItems()
         {
+
             OleDbConnection con = Common.GetConnection();
             con.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            string numeprenumeAngajat = "SELECT  Nume, Prenume FROM Angajat";
-            cmd = new OleDbCommand(numeprenumeAngajat, con);
-            var rdr = cmd.ExecuteReader();
 
-            
-
-            while (rdr.Read())
+            OleDbCommand cmdtestadmin = new OleDbCommand();
+            string idadminQuery = $"select esteAdmin FROM Angajat WHERE Id={angajatId}";
+            cmdtestadmin = new OleDbCommand(idadminQuery, con);
+            int idadmintest = Convert.ToInt32(cmdtestadmin.ExecuteScalar());
+            Console.WriteLine(idadmintest);
+            if (idadmintest == 1)
             {
-                comboListaAngajati.Items.Add(rdr.GetString(0) + ' ' + rdr.GetString(1));
-
+                OleDbCommand cmd5 = new OleDbCommand();
+                string numeQuery = $"SELECT Nume,Prenume FROM Angajat";
+                cmd5 = new OleDbCommand(numeQuery, con);
+                var rdr2 = cmd5.ExecuteReader();
+                while (rdr2.Read())
+                {
+                    comboListaAngajati.Items.Add(rdr2.GetString(0) + ' ' + rdr2.GetString(1));
+                }
 
             }
+            else
+            {
+                OleDbCommand cmdid = new OleDbCommand();
+                string idEchipa = $"select IdEchipa FROM Angajat WHERE Id = '{angajatId}'";
+                cmdid = new OleDbCommand(idEchipa, con);
+                var idEchipaQuerry = cmdid.ExecuteScalar();
+
+
+
+                OleDbCommand cmd = new OleDbCommand();
+                string numeprenumeAngajat = $"select Angajat.Nume , Angajat.Prenume from Angajat JOIN Echipa on Angajat.IdEchipa = Echipa.Id  where Angajat.IdEchipa = '{idEchipaQuerry}' ";
+                cmd = new OleDbCommand(numeprenumeAngajat, con);
+                var rdr = cmd.ExecuteReader();
+
+
+
+                while (rdr.Read())
+                {
+                    comboListaAngajati.Items.Add(rdr.GetString(0) + ' ' + rdr.GetString(1));
+
+
+                }
+            }
+            
 
             con.Close();
         }
