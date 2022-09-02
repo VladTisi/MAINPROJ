@@ -55,7 +55,7 @@ namespace MAINPROJ
                 }
             }
 
-            string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId})  select @numar - sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2";
+            string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId})  select @numar - isnull(sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1),0) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2";
             cmd= new OleDbCommand(comanda, con3);
             OleDbDataReader reader=cmd.ExecuteReader();
             reader.Read();
@@ -142,7 +142,7 @@ namespace MAINPROJ
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new HomePage(angajatId);
+            var otherform = new Echipa(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
