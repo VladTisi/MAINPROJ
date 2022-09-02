@@ -22,6 +22,7 @@ namespace MAINPROJ
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
         string pozaNoua;
+        Image start;
 
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -41,6 +42,7 @@ namespace MAINPROJ
             cmd = new OleDbCommand(dateAngajat, con3);
             var rdr = cmd.ExecuteReader();
             showImage();
+            start = pozaAngajat.Image;
             while (rdr.Read())
             {
                 txtNume.Text = rdr.GetString(0);
@@ -87,24 +89,23 @@ namespace MAINPROJ
             OleDbConnection con = Common.GetConnection();
             con.Open();
 
-
+            //modificare nr telefon
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
             string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
             cmd = new OleDbCommand(modifTel, con);
             cmd.ExecuteNonQuery();
+            //modificare email
             string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
             cmd.CommandText = modifEmail;
             cmd.ExecuteNonQuery();
-            if (pozaNoua != "")
+            //modificare poza
+            if(pozaAngajat.Image!=start)
             {
                 string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
                 cmd.CommandText = modifPoza;
                 cmd.ExecuteNonQuery();
             }
-            con.Close();
-
-
             con.Close();
 
            
@@ -193,17 +194,19 @@ namespace MAINPROJ
             OleDbConnection con = Common.GetConnection();
             string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
             cmd = new OleDbCommand(selectpoza, con);
-            string Poza =(string) cmd.ExecuteScalar();
+            string Poza = (string)cmd.ExecuteScalar();
             byte[] imgBytes = Convert.FromBase64String(Poza);
 
             MemoryStream ms = new MemoryStream(imgBytes);
+            if (Poza != "")
+            {
+                Image returnImage = Image.FromStream(ms);
+                pozaAngajat.Image = returnImage;
 
-            Image returnImage = Image.FromStream(ms);
-            pozaAngajat.Image = returnImage;
-            cmd.ExecuteNonQuery();
-      
-        }
+            }
 
+        
+    }
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
