@@ -112,6 +112,12 @@
     <Compile Include="MeniuModificareDateAngajat.Designer.cs">
       <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Recrutare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recrutare.Designer.cs">
+      <DependentUpon>Recrutare.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Angajat.cs" />
     <Compile Include="Models\Concediu.cs" />
     <Compile Include="Models\Echipa.cs" />
@@ -195,6 +201,9 @@
     </Compile>
     <EmbeddedResource Include="Recrutam.resx">
       <DependentUpon>Recrutam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recrutare.resx">
+      <DependentUpon>Recrutare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterPage.resx">
       <DependentUpon>RegisterPage.cs</DependentUpon>

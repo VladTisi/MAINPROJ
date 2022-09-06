@@ -461,9 +461,12 @@ namespace MAINPROJ
             }
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    Application.Exit();
-        //}
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new Recrutam(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }
