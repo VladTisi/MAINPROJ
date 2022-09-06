@@ -101,6 +101,15 @@
     <Compile Include="MeniuModificareDateAngajat.Designer.cs">
       <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Angajat.cs" />
+    <Compile Include="Models\Concediu.cs" />
+    <Compile Include="Models\Echipa.cs" />
+    <Compile Include="Models\Functie.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\StareConcediu.cs" />
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\TipConcediu.cs" />
     <Compile Include="RegisterPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,5 +253,6 @@
     <None Include="Resources\rsz_calendaricon.png" />
     <None Include="Resources\rsz_homeicon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
