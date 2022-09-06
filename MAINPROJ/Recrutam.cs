@@ -18,6 +18,7 @@ namespace MAINPROJ
         string nume;
         string prenume;
         int loginid;
+        bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
         public Recrutam(int angajatId)
         {
@@ -307,6 +308,28 @@ namespace MAINPROJ
             var otherform = new MeniuModificareDateAngajat(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
         }
     }
 }

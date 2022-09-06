@@ -86,7 +86,7 @@
             // 
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Stencil", 12F);
-            this.label13.Location = new System.Drawing.Point(161, 358);
+            this.label13.Location = new System.Drawing.Point(194, 357);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(82, 22);
             this.label13.TabIndex = 53;
@@ -96,7 +96,7 @@
             // 
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Stencil", 12F);
-            this.label12.Location = new System.Drawing.Point(161, 310);
+            this.label12.Location = new System.Drawing.Point(194, 309);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(113, 22);
             this.label12.TabIndex = 52;
@@ -105,17 +105,17 @@
             // cmbNumeFunctie
             // 
             this.cmbNumeFunctie.FormattingEnabled = true;
-            this.cmbNumeFunctie.Location = new System.Drawing.Point(290, 358);
+            this.cmbNumeFunctie.Location = new System.Drawing.Point(319, 357);
             this.cmbNumeFunctie.Name = "cmbNumeFunctie";
-            this.cmbNumeFunctie.Size = new System.Drawing.Size(159, 21);
+            this.cmbNumeFunctie.Size = new System.Drawing.Size(141, 21);
             this.cmbNumeFunctie.TabIndex = 51;
             // 
             // cmbNumeEchipa
             // 
             this.cmbNumeEchipa.FormattingEnabled = true;
-            this.cmbNumeEchipa.Location = new System.Drawing.Point(290, 310);
+            this.cmbNumeEchipa.Location = new System.Drawing.Point(319, 309);
             this.cmbNumeEchipa.Name = "cmbNumeEchipa";
-            this.cmbNumeEchipa.Size = new System.Drawing.Size(159, 21);
+            this.cmbNumeEchipa.Size = new System.Drawing.Size(141, 21);
             this.cmbNumeEchipa.TabIndex = 50;
             // 
             // label11
@@ -154,17 +154,17 @@
             // 
             this.cmbSex.Enabled = false;
             this.cmbSex.FormattingEnabled = true;
-            this.cmbSex.Location = new System.Drawing.Point(290, 274);
+            this.cmbSex.Location = new System.Drawing.Point(319, 273);
             this.cmbSex.Name = "cmbSex";
-            this.cmbSex.Size = new System.Drawing.Size(159, 21);
+            this.cmbSex.Size = new System.Drawing.Size(141, 21);
             this.cmbSex.TabIndex = 46;
             // 
             // dtpDataNasterii
             // 
             this.dtpDataNasterii.Enabled = false;
-            this.dtpDataNasterii.Location = new System.Drawing.Point(290, 232);
+            this.dtpDataNasterii.Location = new System.Drawing.Point(319, 231);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
-            this.dtpDataNasterii.Size = new System.Drawing.Size(159, 20);
+            this.dtpDataNasterii.Size = new System.Drawing.Size(141, 20);
             this.dtpDataNasterii.TabIndex = 45;
             this.dtpDataNasterii.ValueChanged += new System.EventHandler(this.dtpDataNasterii_ValueChanged);
             // 
@@ -249,9 +249,9 @@
             this.label6.BackColor = System.Drawing.Color.Black;
             this.label6.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(394, 87);
+            this.label6.Location = new System.Drawing.Point(413, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 22);
+            this.label6.Size = new System.Drawing.Size(100, 22);
             this.label6.TabIndex = 36;
             this.label6.Text = "Recrutare";
             // 
@@ -261,7 +261,7 @@
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(160, 275);
+            this.label5.Location = new System.Drawing.Point(193, 274);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 19);
             this.label5.TabIndex = 35;
@@ -272,7 +272,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(160, 233);
+            this.label4.Location = new System.Drawing.Point(193, 232);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 19);
             this.label4.TabIndex = 34;
@@ -281,9 +281,9 @@
             // txtPrenume
             // 
             this.txtPrenume.Enabled = false;
-            this.txtPrenume.Location = new System.Drawing.Point(290, 183);
+            this.txtPrenume.Location = new System.Drawing.Point(319, 182);
             this.txtPrenume.Name = "txtPrenume";
-            this.txtPrenume.Size = new System.Drawing.Size(159, 20);
+            this.txtPrenume.Size = new System.Drawing.Size(141, 20);
             this.txtPrenume.TabIndex = 33;
             // 
             // label3
@@ -291,7 +291,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(160, 184);
+            this.label3.Location = new System.Drawing.Point(193, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 19);
             this.label3.TabIndex = 32;
@@ -303,7 +303,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(160, 142);
+            this.label2.Location = new System.Drawing.Point(193, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 19);
             this.label2.TabIndex = 31;
@@ -312,9 +312,9 @@
             // txtNume
             // 
             this.txtNume.Enabled = false;
-            this.txtNume.Location = new System.Drawing.Point(290, 142);
+            this.txtNume.Location = new System.Drawing.Point(319, 141);
             this.txtNume.Name = "txtNume";
-            this.txtNume.Size = new System.Drawing.Size(159, 20);
+            this.txtNume.Size = new System.Drawing.Size(141, 20);
             this.txtNume.TabIndex = 30;
             // 
             // pictureBox1
@@ -514,8 +514,9 @@
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 10;
+            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
             // 
-            // Form2
+            // Recrutam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -551,7 +552,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Recrutam";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
