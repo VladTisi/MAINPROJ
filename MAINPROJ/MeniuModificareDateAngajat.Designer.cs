@@ -56,6 +56,7 @@
             this.txtDataAngajare = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnUpload = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             this.SuspendLayout();
@@ -340,12 +341,24 @@
             this.btnUpload.Visible = false;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(885, -1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 23);
+            this.button1.TabIndex = 79;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MeniuModificareDateAngajat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.txtDataAngajare);
             this.Controls.Add(this.comboEchipa);
@@ -373,6 +386,7 @@
             this.Controls.Add(this.labelEchipa);
             this.Controls.Add(this.labelNume);
             this.Controls.Add(this.comboListaAngajati);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MeniuModificareDateAngajat";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.MeniuModificareDateAngajat_Load);
@@ -413,5 +427,6 @@
         private System.Windows.Forms.TextBox txtDataAngajare;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Button button1;
     }
 }

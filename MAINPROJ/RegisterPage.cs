@@ -254,5 +254,15 @@ namespace MAINPROJ
         private void cmbNumeEchipa_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+
+        private void txtNume_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDataNasterii_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

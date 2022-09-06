@@ -89,6 +89,12 @@
     <Compile Include="Echipa.Designer.cs">
       <DependentUpon>Echipa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Recrutam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recrutam.Designer.cs">
+      <DependentUpon>Recrutam.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeniuModificareDateAngajat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Recrutam.resx">
+      <DependentUpon>Recrutam.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegisterPage.resx">
       <DependentUpon>RegisterPage.cs</DependentUpon>
     </EmbeddedResource>

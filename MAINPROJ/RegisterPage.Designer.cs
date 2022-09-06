@@ -87,6 +87,7 @@
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(200, 20);
             this.txtNume.TabIndex = 2;
+            this.txtNume.TextChanged += new System.EventHandler(this.txtNume_TextChanged);
             // 
             // label2
             // 
@@ -238,6 +239,7 @@
             this.dtpDataNasterii.Name = "dtpDataNasterii";
             this.dtpDataNasterii.Size = new System.Drawing.Size(200, 20);
             this.dtpDataNasterii.TabIndex = 19;
+            this.dtpDataNasterii.ValueChanged += new System.EventHandler(this.dtpDataNasterii_ValueChanged);
             // 
             // cmbSex
             // 
@@ -251,7 +253,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button1.Location = new System.Drawing.Point(864, 12);
+            this.button1.Location = new System.Drawing.Point(876, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(45, 32);
             this.button1.TabIndex = 21;
