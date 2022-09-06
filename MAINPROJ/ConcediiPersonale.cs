@@ -208,5 +208,13 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuModificareDateAngajat(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }
