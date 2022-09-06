@@ -16,6 +16,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 using System.Security.Cryptography;
 using System.IO;
+using System.Net.Http;
+using Newtonsoft.Json;
+using RandomProj.Models;
 
 namespace MAINPROJ
 {
@@ -78,20 +81,29 @@ namespace MAINPROJ
             return 0;
         }
 
-        private int checkIfEmailExists()
+        private async ValueTask<int> checkIfEmailExists()
         {
-            OleDbConnection conn123 = Common.GetConnection();
-            string email = autemail.Text;
-            cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
-            cmd.Connection = conn123;
-            conn123.Open();
-            string found = (string)cmd.ExecuteScalar();
-            conn123.Close();
+            string email = "test4.test4@yahoo.com";
 
-            if (String.IsNullOrEmpty(found))
-            {
-                return 1;
-            }
+            //OleDbConnection conn123 = Common.GetConnection();
+            //cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
+            //cmd.Connection = conn123;
+            //conn123.Open();
+            //string found = (string)cmd.ExecuteScalar();
+            //conn123.Close();
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/LogAuten/GetPassword?email={email}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+            //foreach(Login obj in listaParole)
+            //{
+            //    Console.WriteLine(obj.Parola);
+            //}
+            Console.WriteLine(listaParole[0].Parola);
+            //if (String.IsNullOrEmpty("s"))
+            //{
+            //    return 1;
+            //}
 
             return 0;
         }
@@ -113,14 +125,14 @@ namespace MAINPROJ
                 autemail.Text="";
             }
 
-            if (checkIfEmailExists()==0)
+            if (checkIfEmailExists().Result==0)
             {
                 MessageBox.Show("Exista deja un cont cu acest email!");
                 autemail.Text="";
 
             }
 
-            if (passvalid == 1 && emailvalid == 1 && checkIfEmailExists()==1)
+            if (passvalid == 1 && emailvalid == 1 && checkIfEmailExists().Result==1)
             {
                 OleDbConnection con = Common.GetConnection();
                 con.Open();
@@ -353,8 +365,11 @@ namespace MAINPROJ
             }
         }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            checkIfEmailExists();
         }
+    }
     }
 
 
