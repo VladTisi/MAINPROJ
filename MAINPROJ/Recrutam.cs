@@ -12,15 +12,17 @@ using System.Windows.Forms;
 
 namespace MAINPROJ
 {
-    public partial class Form2 : Form
+    public partial class Recrutam : Form
     {
+        private int angajatId;
         string nume;
         string prenume;
         int loginid;
         OleDbCommand cmd = new OleDbCommand();
-        public Form2()
+        public Recrutam(int angajatId)
         {
             InitializeComponent();
+            this.angajatId = angajatId;
             this.nume = nume;
             this.prenume = prenume;
             this.loginid = loginid;
@@ -252,6 +254,59 @@ namespace MAINPROJ
                 MessageBox.Show("Data angajarii invalida. Ati fost angajat in viitor?");
                 dtpDataAngajarii.Value = DateTime.Now;
             }
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new ConcediiRefuzate(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new Echipa(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuNavigare(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuModificareDateAngajat(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
