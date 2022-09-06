@@ -249,9 +249,9 @@
             this.label6.BackColor = System.Drawing.Color.Black;
             this.label6.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(413, 87);
+            this.label6.Location = new System.Drawing.Point(393, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 22);
+            this.label6.Size = new System.Drawing.Size(120, 22);
             this.label6.TabIndex = 36;
             this.label6.Text = "Recrutare";
             // 
