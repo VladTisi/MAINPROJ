@@ -461,9 +461,12 @@ namespace MAINPROJ
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            var otherform = new Recrutam();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }

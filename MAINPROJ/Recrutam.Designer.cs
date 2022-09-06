@@ -1,6 +1,6 @@
 ﻿namespace MAINPROJ
 {
-    partial class Form2
+    partial class Recrutam
     {
         /// <summary>
         /// Required designer variable.
@@ -312,12 +312,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // Form2
+            // Recrutam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(905, 443);
+            this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label13);
@@ -345,8 +345,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNume);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form2";
+            this.Name = "Recrutam";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

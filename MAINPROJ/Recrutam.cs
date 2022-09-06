@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace MAINPROJ
 {
-    public partial class Form2 : Form
+    public partial class Recrutam : Form
     {
         string nume;
         string prenume;
         int loginid;
         OleDbCommand cmd = new OleDbCommand();
-        public Form2()
+        public Recrutam()
         {
             InitializeComponent();
             this.nume = nume;
@@ -252,6 +252,11 @@ namespace MAINPROJ
                 MessageBox.Show("Data angajarii invalida. Ati fost angajat in viitor?");
                 dtpDataAngajarii.Value = DateTime.Now;
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
