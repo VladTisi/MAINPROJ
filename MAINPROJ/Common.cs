@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace MAINPROJ
     {
         public static SqlConnection Connection2;
         public static OleDbConnection Connection;
+        public static readonly HttpClient client = new HttpClient();
         public static OleDbConnection GetConnection()
         {
             if(Connection == null)

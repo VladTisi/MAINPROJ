@@ -296,6 +296,7 @@ namespace MAINPROJ
            
 
         }
+             
 
         private void MeniuModificareDateAngajat_Load(object sender, EventArgs e)
         {
@@ -460,5 +461,12 @@ namespace MAINPROJ
             }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new Recrutam();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }
