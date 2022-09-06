@@ -74,6 +74,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -557,12 +558,23 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(333, 439);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 40);
+            this.button6.TabIndex = 81;
+            this.button6.Text = "Recrutare";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // MeniuModificareDateAngajat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnUpload);
@@ -659,5 +671,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button6;
     }
 }
