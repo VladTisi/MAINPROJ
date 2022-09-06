@@ -62,10 +62,12 @@
             // 
             // comboListaAngajati
             // 
+            this.comboListaAngajati.BackColor = System.Drawing.Color.GhostWhite;
+            this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboListaAngajati.FormattingEnabled = true;
-            this.comboListaAngajati.Location = new System.Drawing.Point(737, 19);
+            this.comboListaAngajati.Location = new System.Drawing.Point(686, 19);
             this.comboListaAngajati.Name = "comboListaAngajati";
-            this.comboListaAngajati.Size = new System.Drawing.Size(121, 21);
+            this.comboListaAngajati.Size = new System.Drawing.Size(148, 21);
             this.comboListaAngajati.TabIndex = 0;
             this.comboListaAngajati.SelectedIndexChanged += new System.EventHandler(this.comboListaAngajati_SelectedIndexChanged);
             // 
@@ -138,23 +140,29 @@
             // 
             // btnSalvareModificari
             // 
-            this.btnSalvareModificari.Location = new System.Drawing.Point(746, 104);
+            this.btnSalvareModificari.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvareModificari.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalvareModificari.Location = new System.Drawing.Point(705, 439);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
-            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 23);
+            this.btnSalvareModificari.Size = new System.Drawing.Size(112, 40);
             this.btnSalvareModificari.TabIndex = 61;
             this.btnSalvareModificari.Text = "Salvare modificari";
-            this.btnSalvareModificari.UseVisualStyleBackColor = true;
+            this.btnSalvareModificari.UseVisualStyleBackColor = false;
             this.btnSalvareModificari.Visible = false;
             this.btnSalvareModificari.Click += new System.EventHandler(this.btnSalvareModificari_Click);
             // 
             // btnModificareDate
             // 
-            this.btnModificareDate.Location = new System.Drawing.Point(746, 438);
+            this.btnModificareDate.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificareDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModificareDate.Location = new System.Drawing.Point(535, 439);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(112, 24);
+            this.btnModificareDate.Size = new System.Drawing.Size(112, 40);
             this.btnModificareDate.TabIndex = 60;
             this.btnModificareDate.Text = "Modificare date";
-            this.btnModificareDate.UseVisualStyleBackColor = true;
+            this.btnModificareDate.UseVisualStyleBackColor = false;
             this.btnModificareDate.Click += new System.EventHandler(this.btnModificareDate_Click);
             // 
             // labelFunctie

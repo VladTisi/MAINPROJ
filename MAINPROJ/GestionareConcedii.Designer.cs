@@ -47,12 +47,10 @@
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.tabelConcedii = new System.Windows.Forms.DataGridView();
-            this.IdAngajat = new MaterialSkin.Controls.MaterialTextBox2();
-            this.IdConcediu = new MaterialSkin.Controls.MaterialTextBox2();
             this.Aproba = new System.Windows.Forms.Button();
             this.Refuza = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -257,110 +255,63 @@
             // 
             // tabelConcedii
             // 
+            this.tabelConcedii.AllowUserToAddRows = false;
+            this.tabelConcedii.AllowUserToDeleteRows = false;
             this.tabelConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelConcedii.Location = new System.Drawing.Point(223, 63);
             this.tabelConcedii.Name = "tabelConcedii";
+            this.tabelConcedii.ReadOnly = true;
             this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
             this.tabelConcedii.TabIndex = 53;
-            this.tabelConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellContentClick);
-            // 
-            // IdAngajat
-            // 
-            this.IdAngajat.AnimateReadOnly = false;
-            this.IdAngajat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.IdAngajat.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.IdAngajat.Depth = 0;
-            this.IdAngajat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.IdAngajat.HideSelection = true;
-            this.IdAngajat.LeadingIcon = null;
-            this.IdAngajat.Location = new System.Drawing.Point(295, 407);
-            this.IdAngajat.MaxLength = 32767;
-            this.IdAngajat.MouseState = MaterialSkin.MouseState.OUT;
-            this.IdAngajat.Name = "IdAngajat";
-            this.IdAngajat.PasswordChar = '\0';
-            this.IdAngajat.PrefixSuffixText = null;
-            this.IdAngajat.ReadOnly = false;
-            this.IdAngajat.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.IdAngajat.SelectedText = "";
-            this.IdAngajat.SelectionLength = 0;
-            this.IdAngajat.SelectionStart = 0;
-            this.IdAngajat.ShortcutsEnabled = true;
-            this.IdAngajat.Size = new System.Drawing.Size(59, 48);
-            this.IdAngajat.TabIndex = 54;
-            this.IdAngajat.TabStop = false;
-            this.IdAngajat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.IdAngajat.TrailingIcon = null;
-            this.IdAngajat.UseSystemPasswordChar = false;
-            // 
-            // IdConcediu
-            // 
-            this.IdConcediu.AnimateReadOnly = false;
-            this.IdConcediu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.IdConcediu.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.IdConcediu.Depth = 0;
-            this.IdConcediu.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.IdConcediu.HideSelection = true;
-            this.IdConcediu.LeadingIcon = null;
-            this.IdConcediu.Location = new System.Drawing.Point(382, 407);
-            this.IdConcediu.MaxLength = 32767;
-            this.IdConcediu.MouseState = MaterialSkin.MouseState.OUT;
-            this.IdConcediu.Name = "IdConcediu";
-            this.IdConcediu.PasswordChar = '\0';
-            this.IdConcediu.PrefixSuffixText = null;
-            this.IdConcediu.ReadOnly = false;
-            this.IdConcediu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.IdConcediu.SelectedText = "";
-            this.IdConcediu.SelectionLength = 0;
-            this.IdConcediu.SelectionStart = 0;
-            this.IdConcediu.ShortcutsEnabled = true;
-            this.IdConcediu.Size = new System.Drawing.Size(59, 48);
-            this.IdConcediu.TabIndex = 55;
-            this.IdConcediu.TabStop = false;
-            this.IdConcediu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.IdConcediu.TrailingIcon = null;
-            this.IdConcediu.UseSystemPasswordChar = false;
+            this.tabelConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellClick);
             // 
             // Aproba
             // 
+            this.Aproba.BackColor = System.Drawing.Color.Black;
             this.Aproba.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aproba.Location = new System.Drawing.Point(515, 373);
+            this.Aproba.ForeColor = System.Drawing.Color.White;
+            this.Aproba.Location = new System.Drawing.Point(590, 366);
             this.Aproba.Name = "Aproba";
             this.Aproba.Size = new System.Drawing.Size(120, 41);
             this.Aproba.TabIndex = 56;
             this.Aproba.Text = "Aproba";
-            this.Aproba.UseVisualStyleBackColor = true;
+            this.Aproba.UseVisualStyleBackColor = false;
             this.Aproba.Click += new System.EventHandler(this.Aproba_Click);
             // 
             // Refuza
             // 
+            this.Refuza.BackColor = System.Drawing.Color.Black;
             this.Refuza.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Refuza.Location = new System.Drawing.Point(515, 426);
+            this.Refuza.ForeColor = System.Drawing.Color.White;
+            this.Refuza.Location = new System.Drawing.Point(590, 435);
             this.Refuza.Name = "Refuza";
             this.Refuza.Size = new System.Drawing.Size(120, 41);
             this.Refuza.TabIndex = 57;
             this.Refuza.Text = "refuza";
-            this.Refuza.UseVisualStyleBackColor = true;
+            this.Refuza.UseVisualStyleBackColor = false;
             this.Refuza.Click += new System.EventHandler(this.Refuza_Click);
             // 
-            // label1
+            // button9
             // 
-            this.label1.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(382, 369);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 34);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "ID concediu";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button9.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(295, 366);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 41);
+            this.button9.TabIndex = 59;
+            this.button9.Text = "In Asteptare";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // label2
+            // button10
             // 
-            this.label2.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(295, 369);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 34);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "Id Angajat";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button10.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(295, 435);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(120, 41);
+            this.button10.TabIndex = 60;
+            this.button10.Text = "Sterge";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // GestionareConcedii
             // 
@@ -368,12 +319,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.Refuza);
             this.Controls.Add(this.Aproba);
-            this.Controls.Add(this.IdConcediu);
-            this.Controls.Add(this.IdAngajat);
             this.Controls.Add(this.tabelConcedii);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
@@ -415,11 +364,9 @@
         private System.Windows.Forms.Timer sidebarTimer;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridView tabelConcedii;
-        private MaterialSkin.Controls.MaterialTextBox2 IdAngajat;
-        private MaterialSkin.Controls.MaterialTextBox2 IdConcediu;
         private System.Windows.Forms.Button Aproba;
         private System.Windows.Forms.Button Refuza;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
