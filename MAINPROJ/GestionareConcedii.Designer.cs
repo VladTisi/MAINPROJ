@@ -49,6 +49,8 @@
             this.tabelConcedii = new System.Windows.Forms.DataGridView();
             this.Aproba = new System.Windows.Forms.Button();
             this.Refuza = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -262,29 +264,54 @@
             this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
             this.tabelConcedii.TabIndex = 53;
             this.tabelConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellClick);
-            this.tabelConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellContentClick);
             // 
             // Aproba
             // 
+            this.Aproba.BackColor = System.Drawing.Color.Black;
             this.Aproba.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aproba.Location = new System.Drawing.Point(515, 373);
+            this.Aproba.ForeColor = System.Drawing.Color.White;
+            this.Aproba.Location = new System.Drawing.Point(590, 366);
             this.Aproba.Name = "Aproba";
             this.Aproba.Size = new System.Drawing.Size(120, 41);
             this.Aproba.TabIndex = 56;
             this.Aproba.Text = "Aproba";
-            this.Aproba.UseVisualStyleBackColor = true;
+            this.Aproba.UseVisualStyleBackColor = false;
             this.Aproba.Click += new System.EventHandler(this.Aproba_Click);
             // 
             // Refuza
             // 
+            this.Refuza.BackColor = System.Drawing.Color.Black;
             this.Refuza.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Refuza.Location = new System.Drawing.Point(515, 426);
+            this.Refuza.ForeColor = System.Drawing.Color.White;
+            this.Refuza.Location = new System.Drawing.Point(590, 435);
             this.Refuza.Name = "Refuza";
             this.Refuza.Size = new System.Drawing.Size(120, 41);
             this.Refuza.TabIndex = 57;
             this.Refuza.Text = "refuza";
-            this.Refuza.UseVisualStyleBackColor = true;
+            this.Refuza.UseVisualStyleBackColor = false;
             this.Refuza.Click += new System.EventHandler(this.Refuza_Click);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(295, 366);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 41);
+            this.button9.TabIndex = 59;
+            this.button9.Text = "In Asteptare";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(295, 435);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(120, 41);
+            this.button10.TabIndex = 60;
+            this.button10.Text = "Sterge";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // GestionareConcedii
             // 
@@ -292,6 +319,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.Refuza);
             this.Controls.Add(this.Aproba);
             this.Controls.Add(this.tabelConcedii);
@@ -337,5 +366,7 @@
         private System.Windows.Forms.DataGridView tabelConcedii;
         private System.Windows.Forms.Button Aproba;
         private System.Windows.Forms.Button Refuza;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

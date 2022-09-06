@@ -8,7 +8,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MAINPROJ
 {
@@ -82,7 +84,7 @@ namespace MAINPROJ
         private int validareNrTelefon(string telefon)
         {
             bool hasNumbersOnly = false;
-            if (telefon.Length!=10)
+            if (telefon.Length!=15)
             {
                 return 0;
             }
@@ -234,9 +236,23 @@ namespace MAINPROJ
                     $"VALUES ('{txtNume.Text}','{txtPrenume.Text}',{loginid},'{dtpDataAngajarii.Value}','{dtpDataNasterii.Value}','{txtCNP.Text}','{txtSerie.Text}','{txtNrBuletin.Text}','{txtTelefon.Text}','0','{cmbSex.Text}','0','0','{cmbNumeFunctie.SelectedValue}','{cmbNumeEchipa.SelectedValue}')";
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Profilul tau a fost creat!");
+
+                //$"SELECT Id FROM Angajat WHERE Nume='{nume}' AND Prenume='{prenume}"
+                string selectangajatid = $"SELECT Id FROM Angajat WHERE Nume='{nume}' AND Prenume='{prenume}'";
+                cmd.CommandText = selectangajatid;
+                int angajatid = (int)cmd.ExecuteScalar();
+                string updateAngajatId = $"UPDATE Login SET AngajatId={angajatid} WHERE Id={loginid}";
+                cmd.CommandText=updateAngajatId;
+                cmd.ExecuteNonQuery();
                 con.Close();
 
-                MessageBox.Show("Profilul tau a fost creat!");
+                this.Hide();
+                var otherform = new HomePage(angajatid);
+                otherform.Closed += (s, args) => this.Close();
+                otherform.Show();
+
+
             }
 
 

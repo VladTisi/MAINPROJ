@@ -39,9 +39,9 @@ namespace MAINPROJ
                 bool admin = rdr.GetBoolean(0);
                 int manager = rdr.GetInt32(1);
                 if (admin)
-                    comanda = "SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 order by Concediu.Id";
+                    comanda = "SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,StareConcediu.Nume as Stare,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  order by Concediu.Id";
                 else if (manager == 3)
-                    comanda = $"SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId WHERE Concediu.stareConcediuId=1 and Functie.Id !=3 and Angajat.ManagerId={angajatId} order by Concediu.Id";
+                    comanda = $"SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit, StareConcediu.Nume as Stare, TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id WHERE  Functie.Id !=3 and Angajat.ManagerId={angajatId} order by Concediu.Id";
             }
 
             con3.Close();
@@ -118,7 +118,10 @@ namespace MAINPROJ
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var otherform = new MeniuModificareDateAngajat(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -179,20 +182,42 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void tabelConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
-            //DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
-            //string cellvalue = Convert.ToString(selectedRow.Cells["Id Concediu"].Value);
-            //Console.WriteLine(cellvalue);
-        }
-        
         private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
             ValCelula = Convert.ToString(selectedRow.Cells["Id Concediu"].Value);
             Console.WriteLine(ValCelula);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=1 WHERE Id={Convert.ToInt32(ValCelula)} ";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            cmd.ExecuteNonQuery();
+            con3.Close();
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            OleDbConnection con3 = Common.GetConnection();
+            con3.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            string dateAngajat = $"Delete from Concediu WHERE Id={Convert.ToInt32(ValCelula)} ";
+            cmd = new OleDbCommand(dateAngajat, con3);
+            cmd.ExecuteNonQuery();
+            con3.Close();
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
