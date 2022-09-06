@@ -13,7 +13,6 @@ namespace MAINPROJ
     {
         public static SqlConnection Connection2;
         public static OleDbConnection Connection;
-        public static SqlConnection Connection2;
         public static OleDbConnection GetConnection()
         {
             if(Connection == null)

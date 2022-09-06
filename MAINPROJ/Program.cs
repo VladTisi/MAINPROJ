@@ -17,7 +17,7 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegisterPage(1,"Tisianu","Vlad"));
+            Application.Run(new LogAuten());
             
         }
     }
