@@ -253,11 +253,11 @@ namespace MAINPROJ
                 //conn2.Open();
                 //angajatId = (int)cmd2.ExecuteScalar();
                 //conn2.Close();
-                HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
-                response.EnsureSuccessStatusCode();
+                HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
+                response2.EnsureSuccessStatusCode();
                 string responseBody2 = await response2.Content.ReadAsStringAsync();
                 List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                int angajatId = listaParole2[0].Id;
+                int angajatId = (int)listaParole2[0].AngajatId;
                 this.Hide();
                 var otherform = new HomePage(angajatId);
                 otherform.Closed += (s, args) => this.Close();
