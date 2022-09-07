@@ -27,7 +27,8 @@ namespace MAINPROJ
         private string backupmail;
         private int angajatId;
         bool sidebarExpand;
-        OleDbCommand cmd = new OleDbCommand();
+        bool admin;
+        bool manager;
         string pozaNoua;
         string local = "http://localhost:5031/";
         System.Drawing.Image start;
@@ -36,10 +37,10 @@ namespace MAINPROJ
         {
             InitializeComponent();
             this.angajatId = angajatId;
-            //AddItems();
+            
 
         }
-
+        OleDbCommand cmd = new OleDbCommand();
         private async void HomePage_Load(object sender, EventArgs e)
         {
             OleDbConnection con3 = Common.GetConnection();
@@ -49,6 +50,43 @@ namespace MAINPROJ
             string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId}) UPDATE Angajat set ZileConcediuRamase= (select @numar - isnull(sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1),0) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2) WHERE Id={angajatId}";
             cmd1 = new OleDbCommand(comanda, con3);
             cmd1.ExecuteNonQuery();
+
+            //HttpResponseMessage response5 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetDateAngajat?Id={angajatId}");
+            //response5.EnsureSuccessStatusCode();
+            //string response5Body = await response5.Content.ReadAsStringAsync();
+
+
+
+            //List<Angajat> listaAngajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5Body);
+
+
+
+            //txtNume.Text = listaAngajati3[0].Nume;
+
+
+
+            //txtPrenume.Text = listaAngajati3[0].Prenume;
+
+
+
+            //txtDataAngajare.Text = listaAngajati3[0].DataAngajarii.ToString();
+
+
+
+            //txtOvertime.Text = listaAngajati3[0].Overtime.ToString();
+
+
+
+            //txtSalariu.Text = listaAngajati3[0].Salariu.ToString();
+
+
+
+            //txtTelefon.Text = listaAngajati3[0].NumarTelefon.ToString();
+
+
+
+            //txtSex.Text = listaAngajati3[0].Sex;
+
 
             string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
             cmd = new OleDbCommand(dateAngajat, con3);
@@ -68,38 +106,24 @@ namespace MAINPROJ
                 txtEchipa.Text = rdr.GetValue(8).ToString();
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
-            HttpResponseMessage response = await Common.client.GetAsync(local+$"GetAdminFunctieFromAngajat?angajatid={angajatId}");
+
+            var response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            List<Angajat> listaadmin = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-            bool admin =(bool)listaadmin[0].EsteAdmin;
-            int idfunctie = (int)listaadmin[0].IdFunctie;
-            bool manager = false;
-            if (idfunctie==3)
-            {
-                manager = true;
-            }
-            //string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            //cmd = new OleDbCommand(dateAdmin, con3);
-            //rdr = cmd.ExecuteReader();
+            admin = Convert.ToBoolean(responseBody);
 
-            //while (rdr.Read())
-            //{
-            //    bool admin = rdr.GetBoolean(0);
-            //    int manager = rdr.GetInt32(1);
-            //    if (admin != true && manager != 3)
-            //    {
-            //        button7.Visible = false;
-            //        button8.Visible = false;
-            //    }
-            //}
-            con3.Close();
-
+            response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            responseBody = await response.Content.ReadAsStringAsync();
+            manager = Convert.ToBoolean(responseBody);
+            
             if (admin != true && manager != true)
-            {
-                button7.Visible = false;
-                button8.Visible = false;
-            }
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+
+            con3.Close();
 
         }
         private int validareNrTelefon(string telefon)
@@ -152,7 +176,7 @@ namespace MAINPROJ
                 //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
                 //cmd = new OleDbCommand(modifTel, con);
                 //cmd.ExecuteNonQuery();
-                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelfPoza?numarTelefon={numartelefon}&Id={angajatId}",null);
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
             }
             else
             {
@@ -179,26 +203,25 @@ namespace MAINPROJ
             //modificare poza
             if(pozaAngajat.Image!=start)
             {
-                //dynamic obj = new JObject();
-                //obj.id = angajatId;
-                //obj.nume = 
+                //Console.WriteLine("Da");
+                //var abc = pozaNoua.Length;
+                var updatePoza = new Angajat
+                {
+                    Poza = pozaNoua,
+                    Id = angajatId
+                };
 
-                //string jsonbody = JsonConvert.SerializeObject(obj);
+                string poza2 = JsonConvert.SerializeObject(updatePoza);
+                var requestContent = new StringContent(poza2, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdatePoza",requestContent);
 
-                //var requestContent = new StringContent(jsonbody, Encoding.UTF8, "application/json");
+                //string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
+                //cmd.CommandText = modifPoza;
+                //cmd.ExecuteNonQuery();
 
-                //HttpResponseMessage response = await Common.client.PostAsync($"http://localhost:5031/UpdatePoza", requestContent);
-                //response.EnsureSuccessStatusCode();
+                
 
-                //string responseBody = await response.Content.ReadAsStringAsync();
 
-                //{
-
-                //}
-
-                string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
-                cmd.CommandText = modifPoza;
-                cmd.ExecuteNonQuery();
             }
             con.Close();
 
@@ -255,7 +278,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -263,7 +286,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -271,7 +294,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -337,7 +360,7 @@ namespace MAINPROJ
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -345,7 +368,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
