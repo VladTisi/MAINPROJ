@@ -84,7 +84,7 @@ namespace MAINPROJ
         private int validareNrTelefon(string telefon)
         {
             bool hasNumbersOnly = false;
-            if (telefon.Length!=15)
+            if (telefon.Length!=10)
             {
                 return 0;
             }
