@@ -16,6 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Net.Http;
 using Newtonsoft.Json;
 using RandomProj.Models;
+using Newtonsoft.Json.Linq;
 
 namespace MAINPROJ
 {
@@ -34,7 +35,7 @@ namespace MAINPROJ
         {
             InitializeComponent();
             this.angajatId = angajatId;
-            AddItems();
+            //AddItems();
 
         }
 
@@ -112,7 +113,7 @@ namespace MAINPROJ
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
 
@@ -159,6 +160,23 @@ namespace MAINPROJ
             //modificare poza
             if(pozaAngajat.Image!=start)
             {
+                //dynamic obj = new JObject();
+                //obj.id = angajatId;
+                //obj.nume = 
+
+                //string jsonbody = JsonConvert.SerializeObject(obj);
+
+                //var requestContent = new StringContent(jsonbody, Encoding.UTF8, "application/json");
+
+                //HttpResponseMessage response = await Common.client.PostAsync($"http://localhost:5031/UpdatePoza", requestContent);
+                //response.EnsureSuccessStatusCode();
+
+                //string responseBody = await response.Content.ReadAsStringAsync();
+
+                //{
+
+                //}
+
                 string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
                 cmd.CommandText = modifPoza;
                 cmd.ExecuteNonQuery();
@@ -247,19 +265,38 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void showImage()
+        private async void showImage()
         {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/GetPoza?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
 
-            OleDbConnection con = Common.GetConnection();
-            string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
-            cmd = new OleDbCommand(selectpoza, con);
-            string Poza = (string)cmd.ExecuteScalar();
+
+            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+
+            string Poza = listaAngajati[0].Poza.ToString();
+
             byte[] imgBytes = Convert.FromBase64String(Poza);
 
+
             MemoryStream ms = new MemoryStream(imgBytes);
+
+            //System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+            //pozaAngajat.Image = returnImage;
+
+
+            //OleDbConnection con = Common.GetConnection();
+            //string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
+            //cmd = new OleDbCommand(selectpoza, con);
+            //string Poza = (string)cmd.ExecuteScalar();
+            //byte[] imgBytes = Convert.FromBase64String(Poza);
+
+            //MemoryStream ms = new MemoryStream(imgBytes);
             if (Poza != "")
             {
-                Image returnImage = Image.FromStream(ms);
+                System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
                 pozaAngajat.Image = returnImage;
 
             }
