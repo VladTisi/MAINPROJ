@@ -247,10 +247,13 @@ namespace MAINPROJ
         {
 
             OleDbConnection con = Common.GetConnection();
+            con.Open();
             string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
             cmd = new OleDbCommand(selectpoza, con);
             string Poza = (string)cmd.ExecuteScalar();
+            Console.WriteLine(Poza);
             byte[] imgBytes = Convert.FromBase64String(Poza);
+            con.Close();
 
             MemoryStream ms = new MemoryStream(imgBytes);
             if (Poza != "")

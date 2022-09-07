@@ -32,6 +32,7 @@ namespace MAINPROJ
         }
         OleDbCommand cmd = new OleDbCommand();
         OleDbCommand cmd2 = new OleDbCommand();
+        String url = "http://localhost:5031/";
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -84,7 +85,7 @@ namespace MAINPROJ
         private async ValueTask<int> checkIfEmailExists()
         {
             string email = autemail.Text;
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/LogAuten/GetPassword?email={email}");
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
@@ -130,35 +131,33 @@ namespace MAINPROJ
                 //cmd.ExecuteNonQuery();
                 //con.Close();
 
-                HttpResponseMessage response = await Common.client.PostAsync($"http://localhost:5031/api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}",null);
+                HttpResponseMessage response = await Common.client.PostAsync(url+$"api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}",null);
 
 
                 MessageBox.Show("Contul tau a fost creat!");
                 string[] myArray = autemail.Text.Split('.');
                 Console.WriteLine(myArray[0]);
                 Console.WriteLine(myArray[1].Split('@')[0]);
-
-                OleDbConnection conn1234 = Common.GetConnection();
                 string email = autemail.Text;
-                cmd2 = new OleDbCommand($"SELECT Id FROM Login WHERE Email='{email}'");
-                cmd2.Connection = conn1234;
-                conn1234.Open();
-                int IdLogin = (int)cmd2.ExecuteScalar();
-                conn1234.Close();
 
-
+                //OleDbConnection conn1234 = Common.GetConnection();
+                //cmd2 = new OleDbCommand($"SELECT Id FROM Login WHERE Email='{email}'");
+                //cmd2.Connection = conn1234;
+                //conn1234.Open();
+                //int IdLogin = (int)cmd2.ExecuteScalar();
+                //conn1234.Close();
+                HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
+                newresponse.EnsureSuccessStatusCode();
+                string responseBody2 = await newresponse.Content.ReadAsStringAsync();
+                List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                int IdLogin = listaParole[0].Id;
                 autemail.Text="";
                 autpass.Text="";
                 conpass.Text="";
-
-
-
-
                 this.Hide();
                 var otherform = new RegisterPage(IdLogin,myArray[0], myArray[1].Split('@')[0]);
                 otherform.Closed += (s, args) => this.Close();
                 otherform.Show();
-
             }
 
 
@@ -220,16 +219,21 @@ namespace MAINPROJ
 
         }
 
-        private void logare_Click(object sender, EventArgs e)
+        private async void logare_Click(object sender, EventArgs e)
         {
             string email = logmail.Text;
 
-            OleDbConnection conn = Common.GetConnection();
-            cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
-            cmd.Connection = conn;
-            conn.Open();
+            //OleDbConnection conn = Common.GetConnection();
+            //cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
+            //cmd.Connection = conn;
+            //conn.Open();
             string parola = logpass.Text;
-            string password = Decrypt((string)cmd.ExecuteScalar());
+            //string password = Decrypt((string)cmd.ExecuteScalar());
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+            string password = Decrypt(listaParole[0].Parola);
             if (string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Email invalid");
@@ -238,17 +242,22 @@ namespace MAINPROJ
             {
                 MessageBox.Show("Parola invalida");
             }
-            conn.Close();
+            //conn.Close();
 
 
             if (parola == password)
             {
-                OleDbConnection conn2 = Common.GetConnection();
-                cmd2 = new OleDbCommand($"SELECT AngajatId FROM Login WHERE Email='{email}'");
-                cmd2.Connection = conn2;
-                conn2.Open();
-                angajatId = (int)cmd2.ExecuteScalar();
-                conn2.Close();
+                //OleDbConnection conn2 = Common.GetConnection();
+                //cmd2 = new OleDbCommand($"SELECT AngajatId FROM Login WHERE Email='{email}'");
+                //cmd2.Connection = conn2;
+                //conn2.Open();
+                //angajatId = (int)cmd2.ExecuteScalar();
+                //conn2.Close();
+                HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
+                response.EnsureSuccessStatusCode();
+                string responseBody2 = await response2.Content.ReadAsStringAsync();
+                List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                int angajatId = listaParole2[0].Id;
                 this.Hide();
                 var otherform = new HomePage(angajatId);
                 otherform.Closed += (s, args) => this.Close();
@@ -329,7 +338,7 @@ namespace MAINPROJ
                 string password = (string)cmd.ExecuteScalar();
                 if (!String.IsNullOrEmpty(password))
                 {
-                    Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", "denisa.marica@totalsoft.ro");
+                    Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
                     String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
                     if (Int32.Parse(s) == x)
                     {
@@ -338,10 +347,10 @@ namespace MAINPROJ
                         int angajatId = (int)cmd.ExecuteScalar();
                         string generated_pass = Membership.GeneratePassword(8, 0);
                         Console.WriteLine(generated_pass);
-                        string updatePasswordQuery = $"UPDATE Login SET Parola='{generated_pass}' WHERE AngajatId={angajatId}";
+                        string updatePasswordQuery = $"UPDATE Login SET Parola='{Encrypt(generated_pass)}' WHERE AngajatId={angajatId}";
                         cmd.CommandText = updatePasswordQuery;
                         cmd.ExecuteNonQuery();
-                        Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", "denisa.marica@totalsoft.ro");
+                        Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
                     }
                     else
                     {
