@@ -40,7 +40,7 @@ namespace MAINPROJ
             
 
         }
-
+        OleDbCommand cmd = new OleDbCommand();
         private async void HomePage_Load(object sender, EventArgs e)
         {
             OleDbConnection con3 = Common.GetConnection();
