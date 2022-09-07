@@ -300,12 +300,12 @@ namespace MAINPROJ
             byte[] imgBytes = Convert.FromBase64String(Poza);
 
 
-            HttpResponseMessage response = await Common.client.GetAsync(local+$"GetPoza?Id={angajatId}");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-            string Poza =  listaParole[0].Poza;
-            byte[] imgBytes = Convert.FromBase64String(Poza);
+            //HttpResponseMessage response = await Common.client.GetAsync(local+$"GetPoza?Id={angajatId}");
+            //response.EnsureSuccessStatusCode();
+            //string responseBody = await response.Content.ReadAsStringAsync();
+            //List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            //string Poza =  listaParole[0].Poza;
+            //byte[] imgBytes = Convert.FromBase64String(Poza);
           /*  OleDbConnection con = Common.GetConnection();
             string selectpoza = $"GetPoza WHERE Angajat.Id={angajatId}";
             cmd = new OleDbCommand(selectpoza, con);
