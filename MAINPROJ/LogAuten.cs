@@ -85,25 +85,14 @@ namespace MAINPROJ
         {
             string email = "test4.test4@yahoo.com";
 
-            //OleDbConnection conn123 = Common.GetConnection();
-            //cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
-            //cmd.Connection = conn123;
-            //conn123.Open();
-            //string found = (string)cmd.ExecuteScalar();
-            //conn123.Close();
+       
             HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/LogAuten/GetPassword?email={email}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
-            //foreach(Login obj in listaParole)
-            //{
-            //    Console.WriteLine(obj.Parola);
-            //}
+         
             Console.WriteLine(listaParole[0].Parola);
-            //if (String.IsNullOrEmpty("s"))
-            //{
-            //    return 1;
-            //}
+       
 
             return 0;
         }
