@@ -16,6 +16,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 using System.Security.Cryptography;
 using System.IO;
+using System.Net.Http;
+using Newtonsoft.Json;
+using RandomProj.Models;
 
 namespace MAINPROJ
 {
@@ -78,24 +81,22 @@ namespace MAINPROJ
             return 0;
         }
 
-        private int checkIfEmailExists()
+        private async ValueTask<int> checkIfEmailExists()
         {
-            OleDbConnection conn123 = Common.GetConnection();
             string email = autemail.Text;
-            cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
-            cmd.Connection = conn123;
-            conn123.Open();
-            string found = (string)cmd.ExecuteScalar();
-            conn123.Close();
-
-            if (String.IsNullOrEmpty(found))
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/LogAuten/GetPassword?email={email}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+            if (listaParole.Count>0)
             {
-                return 1;
+                return 0;
             }
+            
 
-            return 0;
+            return 1;
         }
-        private void AUTENTIFICARE_Click(object sender, EventArgs e)
+        private async void AUTENTIFICARE_Click(object sender, EventArgs e)
         {
             int passvalid = validatePassword(autpass.Text, conpass.Text);
             int emailvalid = validateEmail(autemail.Text);
@@ -113,21 +114,24 @@ namespace MAINPROJ
                 autemail.Text="";
             }
 
-            if (checkIfEmailExists()==0)
+            if ((await checkIfEmailExists())==0)
             {
                 MessageBox.Show("Exista deja un cont cu acest email!");
                 autemail.Text="";
 
             }
 
-            if (passvalid == 1 && emailvalid == 1 && checkIfEmailExists()==1)
+            if (passvalid == 1 && emailvalid == 1 && (await checkIfEmailExists())==1)
             {
-                OleDbConnection con = Common.GetConnection();
-                con.Open();
-                string register = "INSERT INTO Login(Email,Parola) VALUES('" + autemail.Text + "','" + Encrypt(autpass.Text) + "')";
-                cmd = new OleDbCommand(register, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                //OleDbConnection con = Common.GetConnection();
+                //con.Open();
+                //string register = "INSERT INTO Login(Email,Parola) VALUES('" + autemail.Text + "','" + Encrypt(autpass.Text) + "')";
+                //cmd = new OleDbCommand(register, con);
+                //cmd.ExecuteNonQuery();
+                //con.Close();
+
+                HttpResponseMessage response = await Common.client.PostAsync($"http://localhost:5031/api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}",null);
+
 
                 MessageBox.Show("Contul tau a fost creat!");
                 string[] myArray = autemail.Text.Split('.');
@@ -310,6 +314,7 @@ namespace MAINPROJ
         {
 
 
+
             DialogResult dialogResult = MessageBox.Show("Doriti sa resetati parola?", "Resetare parola", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -353,8 +358,11 @@ namespace MAINPROJ
             }
         }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            checkIfEmailExists();
         }
+    }
     }
 
 
