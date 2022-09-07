@@ -361,7 +361,7 @@ namespace MAINPROJ
                         //cmd.CommandText = updatePasswordQuery;
                         //cmd.ExecuteNonQuery();
                         ///api/LogAuten/UpdatePassword?password=Vlad1234%2A&angajatid=32
-                        HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}",null);
+                        HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/UpdatePassword?password={Encrypt(generated_pass)}&angajatid={angajatId}",null);
                         Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
                     }
                     else
