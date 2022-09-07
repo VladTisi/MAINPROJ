@@ -13,10 +13,11 @@ using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Net.Http;
 using Newtonsoft.Json;
+using System.Net.Http;
 using RandomProj.Models;
-using Newtonsoft.Json.Linq;
+using Microsoft.VisualBasic;
+using static System.Net.WebRequestMethods;
 
 namespace MAINPROJ
 {
@@ -28,8 +29,8 @@ namespace MAINPROJ
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
         string pozaNoua;
+        string local = "http://localhost:5031/";
         System.Drawing.Image start;
-
         public int UserId { get; set; }
         public HomePage(int angajatId)
         {
@@ -39,7 +40,7 @@ namespace MAINPROJ
 
         }
 
-        private void HomePage_Load(object sender, EventArgs e)
+        private async void HomePage_Load(object sender, EventArgs e)
         {
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
@@ -67,25 +68,40 @@ namespace MAINPROJ
                 txtEchipa.Text = rdr.GetValue(8).ToString();
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
-
-            string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            cmd = new OleDbCommand(dateAdmin, con3);
-            rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            HttpResponseMessage response = await Common.client.GetAsync(local+$"GetAdminFunctieFromAngajat?angajatid={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Angajat> listaadmin = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            bool admin =(bool)listaadmin[0].EsteAdmin;
+            int idfunctie = (int)listaadmin[0].IdFunctie;
+            bool manager = false;
+            if (idfunctie==3)
             {
-                bool admin = rdr.GetBoolean(0);
-                int manager = rdr.GetInt32(1);
-                if (admin != true && manager != 3)
-                {
-                    button7.Visible = false;
-                    button8.Visible = false;
-                }
+                manager = true;
             }
+            //string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
+            //cmd = new OleDbCommand(dateAdmin, con3);
+            //rdr = cmd.ExecuteReader();
+
+            //while (rdr.Read())
+            //{
+            //    bool admin = rdr.GetBoolean(0);
+            //    int manager = rdr.GetInt32(1);
+            //    if (admin != true && manager != 3)
+            //    {
+            //        button7.Visible = false;
+            //        button8.Visible = false;
+            //    }
+            //}
             con3.Close();
 
-        }
+            if (admin != true && manager != true)
+            {
+                button7.Visible = false;
+                button8.Visible = false;
+            }
 
+        }
         private int validareNrTelefon(string telefon)
         {
             bool hasNumbersOnly = false;
@@ -133,9 +149,10 @@ namespace MAINPROJ
             string email = txtEmail.Text;
             if (validareNrTelefon(numartelefon) == 1)
             {
-                string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
-                cmd = new OleDbCommand(modifTel, con);
-                cmd.ExecuteNonQuery();
+                //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                //cmd = new OleDbCommand(modifTel, con);
+                //cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelfPoza?numarTelefon={numartelefon}&Id={angajatId}",null);
             }
             else
             {
@@ -146,9 +163,11 @@ namespace MAINPROJ
             //modificare email
             if(email.Length <=100)
             {
-            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
-            cmd.CommandText = modifEmail;
-            cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateEmail?email={email}&Id={angajatId}", null);
+
+                //string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
+                //cmd.CommandText = modifEmail;
+                //cmd.ExecuteNonQuery();
             }
             else
             {
@@ -281,6 +300,18 @@ namespace MAINPROJ
             byte[] imgBytes = Convert.FromBase64String(Poza);
 
 
+            HttpResponseMessage response = await Common.client.GetAsync(local+$"GetPoza?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            string Poza =  listaParole[0].Poza;
+            byte[] imgBytes = Convert.FromBase64String(Poza);
+          /*  OleDbConnection con = Common.GetConnection();
+            string selectpoza = $"GetPoza WHERE Angajat.Id={angajatId}";
+            cmd = new OleDbCommand(selectpoza, con);
+            string Poza = (string)cmd.ExecuteScalar();
+            
+          */
             MemoryStream ms = new MemoryStream(imgBytes);
 
             //System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
