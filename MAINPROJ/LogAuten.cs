@@ -247,6 +247,13 @@ namespace MAINPROJ
 
             if (parola == password)
             {
+                String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
+                Random r = new Random();
+                int x = r.Next(100000, 999999);
+                if (Convert.ToInt32(s)==x)
+                {
+
+                }
                 //OleDbConnection conn2 = Common.GetConnection();
                 //cmd2 = new OleDbCommand($"SELECT AngajatId FROM Login WHERE Email='{email}'");
                 //cmd2.Connection = conn2;
