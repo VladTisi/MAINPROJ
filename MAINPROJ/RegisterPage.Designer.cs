@@ -234,6 +234,7 @@
             // 
             // dtpDataNasterii
             // 
+            this.dtpDataNasterii.CalendarFont = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataNasterii.Enabled = false;
             this.dtpDataNasterii.Location = new System.Drawing.Point(182, 269);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
@@ -275,6 +276,7 @@
             // 
             // dtpDataAngajarii
             // 
+            this.dtpDataAngajarii.CalendarFont = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataAngajarii.Location = new System.Drawing.Point(635, 351);
             this.dtpDataAngajarii.Name = "dtpDataAngajarii";
             this.dtpDataAngajarii.Size = new System.Drawing.Size(200, 20);

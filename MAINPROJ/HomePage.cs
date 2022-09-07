@@ -13,6 +13,11 @@ using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Newtonsoft.Json;
+using System.Net.Http;
+using RandomProj.Models;
+using Microsoft.VisualBasic;
+using static System.Net.WebRequestMethods;
 
 namespace MAINPROJ
 {
@@ -25,10 +30,9 @@ namespace MAINPROJ
         bool admin;
         bool manager;
         string pozaNoua;
-        Image start;
-
-
-        OleDbCommand cmd = new OleDbCommand();
+        string local = "http://localhost:5031/";
+        System.Drawing.Image start;
+        public int UserId { get; set; }
         public HomePage(int angajatId)
         {
             InitializeComponent();
@@ -85,7 +89,6 @@ namespace MAINPROJ
             con3.Close();
 
         }
-
         private int validareNrTelefon(string telefon)
         {
             bool hasNumbersOnly = false;
@@ -113,7 +116,7 @@ namespace MAINPROJ
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             btnUpdatePoza.Visible = false;
 
@@ -133,9 +136,10 @@ namespace MAINPROJ
             string email = txtEmail.Text;
             if (validareNrTelefon(numartelefon) == 1)
             {
-                string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
-                cmd = new OleDbCommand(modifTel, con);
-                cmd.ExecuteNonQuery();
+                //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                //cmd = new OleDbCommand(modifTel, con);
+                //cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelfPoza?numarTelefon={numartelefon}&Id={angajatId}",null);
             }
             else
             {
@@ -146,9 +150,11 @@ namespace MAINPROJ
             //modificare email
             if(email.Length <=100)
             {
-            string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
-            cmd.CommandText = modifEmail;
-            cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateEmail?email={email}&Id={angajatId}", null);
+
+                //string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
+                //cmd.CommandText = modifEmail;
+                //cmd.ExecuteNonQuery();
             }
             else
             {
@@ -160,6 +166,7 @@ namespace MAINPROJ
             //modificare poza
             if(pozaAngajat.Image!=start)
             {
+                //HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdateTelfPoza?numarTelefon={numartelefon}&Id={angajatId}", null);
                 string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
                 cmd.CommandText = modifPoza;
                 cmd.ExecuteNonQuery();
@@ -248,19 +255,24 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void showImage()
+        private async void showImage()
         {
-
-            OleDbConnection con = Common.GetConnection();
-            string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
+            HttpResponseMessage response = await Common.client.GetAsync(local+$"GetPoza?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            string Poza =  listaParole[0].Poza;
+            byte[] imgBytes = Convert.FromBase64String(Poza);
+          /*  OleDbConnection con = Common.GetConnection();
+            string selectpoza = $"GetPoza WHERE Angajat.Id={angajatId}";
             cmd = new OleDbCommand(selectpoza, con);
             string Poza = (string)cmd.ExecuteScalar();
-            byte[] imgBytes = Convert.FromBase64String(Poza);
-
+            
+          */
             MemoryStream ms = new MemoryStream(imgBytes);
             if (Poza != "")
             {
-                Image returnImage = Image.FromStream(ms);
+                System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
                 pozaAngajat.Image = returnImage;
 
             }
