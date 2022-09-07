@@ -16,7 +16,7 @@ namespace MAINPROJ
         public static void sendMail(string subject,string body,string to)
         {
             var from = "vlad.tisianu@totalsoft.ro";
-            var username = "vlad.tisianu@totalsoft.ro"; 
+            var username = "vlad.tisianu@totalsoft.ro";
             var password = "*"; 
             var host = "mailer14.totalsoft.local";
             var port = 587;

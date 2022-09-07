@@ -27,7 +27,8 @@ namespace MAINPROJ
         private string backupmail;
         private int angajatId;
         bool sidebarExpand;
-        OleDbCommand cmd = new OleDbCommand();
+        bool admin;
+        bool manager;
         string pozaNoua;
         string local = "http://localhost:5031/";
         System.Drawing.Image start;
@@ -36,9 +37,10 @@ namespace MAINPROJ
         {
             InitializeComponent();
             this.angajatId = angajatId;
+            
 
         }
-
+        OleDbCommand cmd = new OleDbCommand();
         private async void HomePage_Load(object sender, EventArgs e)
         {
             OleDbConnection con3 = Common.GetConnection();
@@ -104,38 +106,24 @@ namespace MAINPROJ
                 txtEchipa.Text = rdr.GetValue(8).ToString();
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
-            HttpResponseMessage response = await Common.client.GetAsync(local+$"GetAdminFunctieFromAngajat?angajatid={angajatId}");
+
+            var response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            List<Angajat> listaadmin = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-            bool admin =(bool)listaadmin[0].EsteAdmin;
-            int idfunctie = (int)listaadmin[0].IdFunctie;
-            bool manager = false;
-            if (idfunctie==3)
-            {
-                manager = true;
-            }
-            //string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            //cmd = new OleDbCommand(dateAdmin, con3);
-            //rdr = cmd.ExecuteReader();
+            admin = Convert.ToBoolean(responseBody);
 
-            //while (rdr.Read())
-            //{
-            //    bool admin = rdr.GetBoolean(0);
-            //    int manager = rdr.GetInt32(1);
-            //    if (admin != true && manager != 3)
-            //    {
-            //        button7.Visible = false;
-            //        button8.Visible = false;
-            //    }
-            //}
-            con3.Close();
-
+            response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            responseBody = await response.Content.ReadAsStringAsync();
+            manager = Convert.ToBoolean(responseBody);
+            
             if (admin != true && manager != true)
-            {
-                button7.Visible = false;
-                button8.Visible = false;
-            }
+                {
+                    button7.Visible = false;
+                    button8.Visible = false;
+                }
+
+            con3.Close();
 
         }
         private int validareNrTelefon(string telefon)
@@ -290,7 +278,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -298,7 +286,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -306,7 +294,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -346,7 +334,7 @@ namespace MAINPROJ
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -354,7 +342,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
