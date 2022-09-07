@@ -51,6 +51,43 @@ namespace MAINPROJ
             cmd1 = new OleDbCommand(comanda, con3);
             cmd1.ExecuteNonQuery();
 
+            //HttpResponseMessage response5 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetDateAngajat?Id={angajatId}");
+            //response5.EnsureSuccessStatusCode();
+            //string response5Body = await response5.Content.ReadAsStringAsync();
+
+
+
+            //List<Angajat> listaAngajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5Body);
+
+
+
+            //txtNume.Text = listaAngajati3[0].Nume;
+
+
+
+            //txtPrenume.Text = listaAngajati3[0].Prenume;
+
+
+
+            //txtDataAngajare.Text = listaAngajati3[0].DataAngajarii.ToString();
+
+
+
+            //txtOvertime.Text = listaAngajati3[0].Overtime.ToString();
+
+
+
+            //txtSalariu.Text = listaAngajati3[0].Salariu.ToString();
+
+
+
+            //txtTelefon.Text = listaAngajati3[0].NumarTelefon.ToString();
+
+
+
+            //txtSex.Text = listaAngajati3[0].Sex;
+
+
             string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
             cmd = new OleDbCommand(dateAngajat, con3);
             var rdr = cmd.ExecuteReader();
@@ -139,7 +176,7 @@ namespace MAINPROJ
                 //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
                 //cmd = new OleDbCommand(modifTel, con);
                 //cmd.ExecuteNonQuery();
-                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelfPoza?numarTelefon={numartelefon}&Id={angajatId}",null);
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
             }
             else
             {
@@ -166,10 +203,25 @@ namespace MAINPROJ
             //modificare poza
             if(pozaAngajat.Image!=start)
             {
-                //HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdateTelfPoza?numarTelefon={numartelefon}&Id={angajatId}", null);
-                string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
-                cmd.CommandText = modifPoza;
-                cmd.ExecuteNonQuery();
+                //Console.WriteLine("Da");
+                //var abc = pozaNoua.Length;
+                var updatePoza = new Angajat
+                {
+                    Poza = pozaNoua,
+                    Id = angajatId
+                };
+
+                string poza2 = JsonConvert.SerializeObject(updatePoza);
+                var requestContent = new StringContent(poza2, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdatePoza",requestContent);
+
+                //string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
+                //cmd.CommandText = modifPoza;
+                //cmd.ExecuteNonQuery();
+
+                
+
+
             }
             con.Close();
 
