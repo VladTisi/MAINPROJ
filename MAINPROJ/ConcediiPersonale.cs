@@ -6,10 +6,13 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAINPROJ;
+using Newtonsoft.Json;
+using RandomProj;
 
 namespace MAINPROJ
 {
@@ -77,25 +80,47 @@ namespace MAINPROJ
             }
         }
 
-        private void showTablePEND()
+        private async void showTablePEND()
         {
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {1}", con))
-                {
+            //string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
+            //using (SqlConnection con = new SqlConnection(constring))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {1}", con))
+            //    {
 
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridView1.DataSource = dt;
-                        }
-                    }
-                }
+            //        cmd.CommandType = CommandType.Text;
+            //        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            //        {
+            //            using (DataTable dt = new DataTable())
+            //            {
+            //                sda.Fill(dt);
+            //                dataGridView1.DataSource = dt;
+            //            }
+            //        }
+            //    }
+            //}
+            //Crearea tabelului de concedii
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn();
+            
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de concedii
+            List<AngajatConcediu> listaConcedii = new List<AngajatConcediu>();
+            listaConcedii = await GetConcedii();
+            foreach (AngajatConcediu myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["DataInceput"] = myObject.DataInceput;
+                r["DataSfarsit"] = myObject.DataSfarsit;
+                dt.Rows.Add(r);
             }
+            tablelConcedii.DataSource = dt;
+            dt = null;
+            listaConcedii = null;
         }
         ///Meniu Navigare
         private void menuButton_Click(object sender, EventArgs e)
@@ -156,6 +181,14 @@ namespace MAINPROJ
                     sidebarTimer.Stop();
                 }
             }
+        }
+        private async ValueTask<List<AngajatConcediu>> GetConcedii()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/ApprovedHolidays?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<AngajatConcediu> listaParole = JsonConvert.DeserializeObject<List<AngajatConcediu>>(responseBody);
+            return listaParole;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

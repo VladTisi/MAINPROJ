@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,9 +7,13 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using RandomProj.Models;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using RandomProj;
 
 namespace MAINPROJ
 {
@@ -21,32 +26,58 @@ namespace MAINPROJ
         {
             InitializeComponent();
             this.angajatId = angajatId;
+
         }
-
-        private void GestionareConcedii_Load(object sender, EventArgs e)
+        private void UpdateFont()
         {
-            string comanda="";
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-
-            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            var rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            //Change cell font
+            foreach (DataGridViewColumn c in tabelConcedii.Columns)
             {
-                bool admin = rdr.GetBoolean(0);
-                int manager = rdr.GetInt32(1);
-                if (admin)
-                    comanda = "SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit,StareConcediu.Nume as Stare,TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  order by Concediu.Id";
-                else if (manager == 3)
-                    comanda = $"SELECT Angajat.Nume as Nume, Functie.Nume as Functia,Concediu.Id as[Id Concediu], Concediu.Data_inceput,Concediu.Data_sfarsit, StareConcediu.Nume as Stare, TipConcediu.Nume as[Tip Concediu] FROM Angajat JOIN Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId=Angajat.Id join TipConcediu on TipConcediu.Id=Concediu.TipConcediuId join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id WHERE  Functie.Id !=3 and Angajat.ManagerId={angajatId} order by Concediu.Id";
+                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
             }
+        }
+        private async void GestionareConcedii_Load(object sender, EventArgs e)
+        {
+            //Crearea tabelului de concedii
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
+            c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("Status");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
 
-            con3.Close();
-            showTable(comanda);
-            tabelConcedii.Columns["Id Concediu"].Visible = false;  
+            
+
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcedii();
+            foreach (Dto myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["Id"] = myObject.Id;
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functie;
+                r["Status"] = myObject.Status;
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
+            }
+            tabelConcedii.DataSource = dt;
+            UpdateFont();
+
+            this.tabelConcedii.Columns["Id"].Visible = false;
+            dt = null;
+            listaConcedii = null;
         }
        
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -128,27 +159,16 @@ namespace MAINPROJ
         {
             Application.Exit();
         }
-        private void showTable(string comanda)
+        private async ValueTask<List<Dto>> GetConcedii()
         {
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand(comanda, con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            tabelConcedii.DataSource = dt;
-                        }
-                    }
-                }
-            }
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetConcedii?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
         }
 
-        private void Aproba_Click(object sender, EventArgs e)
+        private async void Aproba_Click(object sender, EventArgs e)
         {
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
@@ -186,38 +206,8 @@ namespace MAINPROJ
         {
             int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
-            ValCelula = Convert.ToString(selectedRow.Cells["Id Concediu"].Value);
+            ValCelula = Convert.ToString(selectedRow.Cells["Id"].Value);
             Console.WriteLine(ValCelula);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=1 WHERE Id={Convert.ToInt32(ValCelula)} ";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            cmd.ExecuteNonQuery();
-            con3.Close();
-            this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            string dateAngajat = $"Delete from Concediu WHERE Id={Convert.ToInt32(ValCelula)} ";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            cmd.ExecuteNonQuery();
-            con3.Close();
-            this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
         }
     }
 }
