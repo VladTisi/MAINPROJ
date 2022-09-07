@@ -6,10 +6,13 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MAINPROJ;
+using Newtonsoft.Json;
+using RandomProj;
 
 namespace MAINPROJ
 {
@@ -17,10 +20,14 @@ namespace MAINPROJ
     {
         bool sidebarExpand;
         private int angajatId;
-        public ConcediiRefuzate(int angajatId)
+        bool admin;
+        bool manager;
+        public ConcediiRefuzate(int angajatId,bool admin,bool manager)
         {
             InitializeComponent();
             this.angajatId=angajatId;
+            this.admin = admin;
+            this.manager = manager;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -31,71 +38,86 @@ namespace MAINPROJ
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new CerereConcediu(angajatId);
+            var otherform = new CerereConcediu(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
 
         }
-        private void showTable()
+        private async void showTable()
         {
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            using (SqlConnection con = new SqlConnection(constring))
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn();
+
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcediiAcceptate();
+            foreach (Dto myObject in listaConcedii)
             {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {2}", con))
-                {
-                    
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            tablelConcedii.DataSource = dt;
-                        }
-                    }
-                }
+                DataRow r = dt.NewRow();
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
             }
+            tablelConcedii.DataSource = dt;
+            dt = null;
+            listaConcedii = null;
+            UpdateFont(tablelConcedii);
         }
-        private void showTableREF()
+        private async void showTableREF()
         {
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {3}", con))
-                {
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn();
 
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridView1.DataSource = dt;
-                        }
-                    }
-                }
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcediiRefuzate();
+            foreach (Dto myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
             }
+            dataGridView1.DataSource = dt;
+            dt = null;
+            listaConcedii = null;
+            UpdateFont(dataGridView1);
         }
 
-        private void showTablePEND()
-        {
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Concediu.Data_inceput as [Data de inceput],Concediu.Data_sfarsit as [Data de finalizare] FROM Concediu join Angajat on Concediu.angajatId={angajatId} and Angajat.Id={angajatId} WHERE Concediu.stareConcediuId = {1}", con))
-                {
+        private async void showTablePEND()
+        {         
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn();        
+            
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
 
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridView1.DataSource = dt;
-                        }
-                    }
-                }
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcediiAsteptare();
+            foreach (Dto myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
             }
+            dataGridView1.DataSource = dt;
+            dt = null;
+            listaConcedii = null;
+            UpdateFont(dataGridView1);
         }
         ///Meniu Navigare
         private void menuButton_Click(object sender, EventArgs e)
@@ -112,21 +134,21 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -157,33 +179,51 @@ namespace MAINPROJ
                 }
             }
         }
+        private async ValueTask<List<Dto>> GetConcediiAsteptare()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/PendingHolidays?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
+        }
+        private async ValueTask<List<Dto>> GetConcediiRefuzate()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/DisapprovedHolidays?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
+        }
+        private async ValueTask<List<Dto>> GetConcediiAcceptate()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/ApprovedHolidays?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void ConcediiPersonale_Load(object sender, EventArgs e)
+        private async void ConcediiPersonale_Load(object sender, EventArgs e)
         {
+           
+
             showTable();
             showTableREF();
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            var cmd = new OleDbCommand(dateAngajat, con3);
-            var rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
-            {
-                bool admin = rdr.GetBoolean(0);
-                int manager = rdr.GetInt32(1);
-                if (admin != true && manager != 3)
+
+            if (!admin && !manager )
                 {
                     button10.Visible = false;
                     button9.Visible = false;
                 }
-            }
-            con3.Close();
+
+
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -204,7 +244,7 @@ namespace MAINPROJ
         private void button9_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -212,9 +252,17 @@ namespace MAINPROJ
         private void button10_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId, admin, manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+        private void UpdateFont(DataGridView date)
+        {
+            //Change cell font
+            foreach (DataGridViewColumn c in date.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+            }
         }
     }
 }
