@@ -319,7 +319,7 @@ namespace MAINPROJ
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
 
 
@@ -327,15 +327,20 @@ namespace MAINPROJ
             DialogResult dialogResult = MessageBox.Show("Doriti sa resetati parola?", "Resetare parola", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                OleDbConnection conn = Common.GetConnection();
+                //OleDbConnection conn = Common.GetConnection();
                 Random r = new Random();
                 int x = r.Next(100000, 999999);
                 Console.WriteLine(x);
                 string email = logmail.Text;
-                cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
-                cmd.Connection = conn;
-                conn.Open();
-                string password = (string)cmd.ExecuteScalar();
+                //cmd = new OleDbCommand($"SELECT Parola FROM Login WHERE Email='{email}'");
+                //cmd.Connection = conn;
+                //conn.Open();
+                //string password = (string)cmd.ExecuteScalar();
+                HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+                string password=listaParole[0].Parola;
                 if (!String.IsNullOrEmpty(password))
                 {
                     Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
@@ -361,7 +366,7 @@ namespace MAINPROJ
                 {
                     MessageBox.Show("Nu exista un cont cu acest email");
                 }
-                conn.Close();
+                //conn.Close();
 
 
             }
