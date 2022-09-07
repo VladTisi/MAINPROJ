@@ -14,7 +14,10 @@ namespace MAINPROJ
             get { return Nume; }
             set { Nume = value; }
         }
-        string Prenume { get; set; }
+        string Prenume {
+            get { return Nume; }
+            set { Nume = value; }
+        }
         string Functie { get; set; }
         string Echipa { get; set; }
         string Sex { get; set; }

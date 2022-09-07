@@ -13,19 +13,24 @@ using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Net.Http;
+using Newtonsoft.Json;
+using RandomProj.Models;
 
 namespace MAINPROJ
 {
     public partial class MeniuModificareDateAngajat : Form
     {
         private int angajatId;
-        Image start;
+        System.Drawing.Image start;
         bool sidebarExpand;
 
         OleDbCommand cmd = new OleDbCommand();
         OleDbCommand cmd2 = new OleDbCommand();
 
         int angajatIdSelectat;
+
+
 
         public MeniuModificareDateAngajat(int angajatId)
         {
@@ -35,104 +40,203 @@ namespace MAINPROJ
 
         }
 
-        private void AddItems()
+        private async void AddItems()
         {
 
-            OleDbConnection con = Common.GetConnection();
-            con.Open();
 
-            OleDbCommand cmdtestadmin = new OleDbCommand();
-            string idadminQuery = $"select esteAdmin FROM Angajat WHERE Id={angajatId}";
-            cmdtestadmin = new OleDbCommand(idadminQuery, con);
-            int idadmintest = Convert.ToInt32(cmdtestadmin.ExecuteScalar());
-            Console.WriteLine(idadmintest);
-            if (idadmintest == 1)
+            HttpResponseMessage  response =  await  Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/CheckAdmin?Id={angajatId}");
+            response.EnsureSuccessStatusCode(); 
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            bool checkAdm = Convert.ToBoolean(responseBody);
+
+            if (checkAdm == true)
             {
-                OleDbCommand cmd5 = new OleDbCommand();
-                string numeQuery = $"SELECT Nume,Prenume FROM Angajat";
-                cmd5 = new OleDbCommand(numeQuery, con);
-                var rdr2 = cmd5.ExecuteReader();
-                while (rdr2.Read())
+                HttpResponseMessage response2 = await Common.client.GetAsync("http://localhost:5031/api/MeniuModificareDateAngajat/GetAllNames\r\n");
+                response2.EnsureSuccessStatusCode();
+                string response2Body = await response2.Content.ReadAsStringAsync();
+
+                List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(response2Body);
+
+                foreach (Angajat angajat in listaAngajati)
                 {
-                    comboListaAngajati.Items.Add(rdr2.GetString(0) + ' ' + rdr2.GetString(1));
+                    comboListaAngajati.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
                 }
 
+               
             }
             else
             {
-                OleDbCommand cmdid = new OleDbCommand();
-                string idEchipa = $"select IdEchipa FROM Angajat WHERE Id = '{angajatId}'";
-                cmdid = new OleDbCommand(idEchipa, con);
-                var idEchipaQuerry = cmdid.ExecuteScalar();
+                HttpResponseMessage response3 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
+                response3.EnsureSuccessStatusCode();
+                string response3Body = await response3.Content.ReadAsStringAsync();
 
+                List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(response3Body);
 
+                int echipaId = (int) listaAngajati[0].IdEchipa;
 
-                OleDbCommand cmd = new OleDbCommand();
-                string numeprenumeAngajat = $"select Angajat.Nume , Angajat.Prenume from Angajat JOIN Echipa on Angajat.IdEchipa = Echipa.Id  where Angajat.IdEchipa = '{idEchipaQuerry}' ";
-                cmd = new OleDbCommand(numeprenumeAngajat, con);
-                var rdr = cmd.ExecuteReader();
+                //Console.WriteLine(echipaId);
 
+                HttpResponseMessage response4 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
+                response4.EnsureSuccessStatusCode();
+                string response4Body = await response4.Content.ReadAsStringAsync();
 
+                List<Angajat> listaAngajati2 = JsonConvert.DeserializeObject<List<Angajat>>(response4Body);
 
-                while (rdr.Read())
+                foreach (Angajat angajat in listaAngajati2)
                 {
-                    comboListaAngajati.Items.Add(rdr.GetString(0) + ' ' + rdr.GetString(1));
-
-
+                    comboListaAngajati.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
                 }
-            }
-            
 
-            con.Close();
+
+
+
+            }
+
+            //List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+
+            //OleDbConnection con = Common.GetConnection();
+            //con.Open();
+
+            //OleDbCommand cmdtestadmin = new OleDbCommand();
+            //string idadminQuery = $"select esteAdmin FROM Angajat WHERE Id={angajatId}";
+            //cmdtestadmin = new OleDbCommand(idadminQuery, con);
+            //int idadmintest = Convert.ToInt32(cmdtestadmin.ExecuteScalar());
+            //Console.WriteLine(idadmintest);
+            //if (idadmintest == 1)
+            //{
+            //    OleDbCommand cmd5 = new OleDbCommand();
+            //    string numeQuery = $"SELECT Nume,Prenume FROM Angajat";
+            //    cmd5 = new OleDbCommand(numeQuery, con);
+            //    var rdr2 = cmd5.ExecuteReader();
+            //    while (rdr2.Read())
+            //    {
+            //        comboListaAngajati.Items.Add(rdr2.GetString(0) + ' ' + rdr2.GetString(1));
+            //    }
+
+            //}
+            //else
+            //{
+            //    OleDbCommand cmdid = new OleDbCommand();
+            //    string idEchipa = $"select IdEchipa FROM Angajat WHERE Id = '{angajatId}'";
+            //    cmdid = new OleDbCommand(idEchipa, con);
+            //    var idEchipaQuerry = cmdid.ExecuteScalar();
+
+
+
+            //    OleDbCommand cmd = new OleDbCommand();
+            //    string numeprenumeAngajat = $"select Angajat.Nume , Angajat.Prenume from Angajat JOIN Echipa on Angajat.IdEchipa = Echipa.Id  where Angajat.IdEchipa = '{idEchipaQuerry}' ";
+            //    cmd = new OleDbCommand(numeprenumeAngajat, con);
+            //    var rdr = cmd.ExecuteReader();
+
+
+
+            //    while (rdr.Read())
+            //    {
+            //        comboListaAngajati.Items.Add(rdr.GetString(0) + ' ' + rdr.GetString(1));
+
+
+            //    }
+            //}
+
+
+            //con.Close();
         }
               
 
-        private void MeniuModificareDateAngajati_Load(object sender, EventArgs e)
+        private async void MeniuModificareDateAngajati_Load(object sender, EventArgs e)
         {
             showImage();
             start = pozaAngajat.Image;
-            OleDbConnection con1 = Common.GetConnection();
-            con1.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            
+            //OleDbConnection con1 = Common.GetConnection();
+            //con1.Open();
+            //OleDbCommand cmd = new OleDbCommand();
 
-            string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
-            cmd = new OleDbCommand(dateAngajat, con1);
-            var rdr = cmd.ExecuteReader();
-            
-            while (rdr.Read())
-            {
-                txtNume.Text = rdr.GetString(0);
-                txtPrenume.Text = rdr.GetString(1);
-                txtSalariu.Text = rdr.GetValue(2).ToString();
-                txtOvertime.Text = rdr.GetValue(3).ToString();
-                txtTelefon.Text = rdr.GetValue(4).ToString();
-                txtSex.Text = rdr.GetValue(5).ToString();
-                txtDataAngajare.Text = rdr.GetValue(6).ToString();
-                comboEchipa.Text = rdr.GetValue(8).ToString();
-                comboFunctie.Text = rdr.GetValue(7).ToString();
-                txtEmail.Text = rdr.GetValue(9).ToString();
-            }
+            HttpResponseMessage response5 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetDateAngajat?Id={angajatId}");
+            response5.EnsureSuccessStatusCode();
+            string response5Body = await response5.Content.ReadAsStringAsync();
 
-            con1.Close();
+            List<Angajat> listaAngajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5Body);
+
+            txtNume.Text = listaAngajati3[0].Nume;
+
+            txtPrenume.Text = listaAngajati3[0].Prenume;
+
+            txtDataAngajare.Text = listaAngajati3[0].DataAngajarii.ToString();
+
+            txtOvertime.Text = listaAngajati3[0].Overtime.ToString();
+
+            txtSalariu.Text = listaAngajati3[0].Salariu.ToString(); 
+
+            txtTelefon.Text = listaAngajati3[0].NumarTelefon.ToString();
+
+            txtSex.Text = listaAngajati3[0].Sex;
+
+            comboEchipa.Text = listaAngajati3[0].Echipa.ToString();
+
+            comboFunctie.Text = listaAngajati3[0].Functie.ToString();
+
+            //HttpResponseMessage response7 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetEchipe");
+            //response5.EnsureSuccessStatusCode();
+            //string response7Body = await response7.Content.ReadAsStringAsync();
+
+            //List<Angajat> listaAngajati5 = JsonConvert.DeserializeObject<List<Angajat>>(response7Body);
+
+            //comboEchipa.Text = listaAngajati5[0].Nume.ToString();
+
+
+
+
+
+
+
+
+
+
+
+            //string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
+            //cmd = new OleDbCommand(dateAngajat, con1);
+            //var rdr = cmd.ExecuteReader();
+
+            //while (rdr.Read())
+            //{
+            //    txtNume.Text = rdr.GetString(0);
+            //    txtPrenume.Text = rdr.GetString(1);
+            //    txtSalariu.Text = rdr.GetValue(2).ToString();
+            //    txtOvertime.Text = rdr.GetValue(3).ToString();
+            //    txtTelefon.Text = rdr.GetValue(4).ToString();
+            //    txtSex.Text = rdr.GetValue(5).ToString();
+            //    txtDataAngajare.Text = rdr.GetValue(6).ToString();
+            //    comboEchipa.Text = rdr.GetValue(8).ToString();
+            //    comboFunctie.Text = rdr.GetValue(7).ToString();
+            //    txtEmail.Text = rdr.GetValue(9).ToString();
+            //}
+
+            //con1.Close();
 
         }
-        private void showImage()
+        private async void showImage()
         {
-            
-            OleDbConnection con2 = Common.GetConnection();
-            con2.Open();
-            string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatIdSelectat}";
-            cmd = new OleDbCommand(selectpoza, con2);
-            string Poza = (string)cmd.ExecuteScalar();
+            HttpResponseMessage response6 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetPozaAngajat?Id={angajatIdSelectat}");
+            response6.EnsureSuccessStatusCode();
+            string response6Body = await response6.Content.ReadAsStringAsync();
+
+            List<Angajat> listaAngajati4 = JsonConvert.DeserializeObject<List<Angajat>>(response6Body);
+
+
+
+            string Poza = listaAngajati4[0].Poza.ToString();
+
             byte[] imgBytes = Convert.FromBase64String(Poza);
+                     
 
             MemoryStream ms = new MemoryStream(imgBytes);
 
-            Image returnImage = Image.FromStream(ms);
+            System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
             pozaAngajat.Image = returnImage;
-            cmd.ExecuteNonQuery();
-            con2.Close();
+           
 
         }
 
@@ -362,7 +466,7 @@ namespace MAINPROJ
          
 
                 string pozaNoua = System.Convert.ToBase64String(myImage);
-                pozaAngajat.Image = Image.FromStream(fs);
+                pozaAngajat.Image = System.Drawing.Image.FromStream(fs);
                 fs.Close();
                 OleDbConnection con6 = Common.GetConnection();
 

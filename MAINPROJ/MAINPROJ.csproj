@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Angajat.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="ConcediiPersonale.cs">
       <SubType>Form</SubType>

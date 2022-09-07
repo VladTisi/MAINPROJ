@@ -13,6 +13,9 @@ using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Net.Http;
+using Newtonsoft.Json;
+using RandomProj.Models;
 
 namespace MAINPROJ
 {
@@ -24,13 +27,14 @@ namespace MAINPROJ
         bool sidebarExpand;
         OleDbCommand cmd = new OleDbCommand();
         string pozaNoua;
-        Image start;
+        System.Drawing.Image start;
 
         public int UserId { get; set; }
         public HomePage(int angajatId)
         {
             InitializeComponent();
             this.angajatId = angajatId;
+            AddItems();
 
         }
 
