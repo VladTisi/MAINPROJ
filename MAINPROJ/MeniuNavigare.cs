@@ -19,10 +19,14 @@ namespace MAINPROJ
     {
         private int angajatId;
         bool sidebarExpand;
-        public MeniuNavigare(int angajatId)
+        bool admin;
+        bool manager;
+        public MeniuNavigare(int angajatId,bool admin,bool manager)
         {
             InitializeComponent();
             this.angajatId=angajatId;
+            this.admin = admin;
+            this.manager = manager;
             showTable();
         }
 
@@ -54,23 +58,14 @@ namespace MAINPROJ
 
         private void MeniuNavigare_Load(object sender, EventArgs e)
         {
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            var cmd = new OleDbCommand(dateAngajat, con3);
-            var rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
-            {
-                bool admin = rdr.GetBoolean(0);
-                int manager = rdr.GetInt32(1);
-                if (admin != true && manager != 3)
+            
+                if (admin != true && manager != true)
                 {
                     button7.Visible = false;
                     button8.Visible = false;
                 }
-            }
-            con3.Close();
+            
+         
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -109,7 +104,7 @@ namespace MAINPROJ
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -117,7 +112,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -125,7 +120,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -138,7 +133,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -146,7 +141,7 @@ namespace MAINPROJ
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

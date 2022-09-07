@@ -22,19 +22,22 @@ namespace MAINPROJ
         private string backupmail;
         private int angajatId;
         bool sidebarExpand;
-        OleDbCommand cmd = new OleDbCommand();
+        bool admin;
+        bool manager;
         string pozaNoua;
         Image start;
 
-        public int UserId { get; set; }
+
+        OleDbCommand cmd = new OleDbCommand();
         public HomePage(int angajatId)
         {
             InitializeComponent();
             this.angajatId = angajatId;
+            
 
         }
 
-        private void HomePage_Load(object sender, EventArgs e)
+        private async void HomePage_Load(object sender, EventArgs e)
         {
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
@@ -63,20 +66,22 @@ namespace MAINPROJ
                 txtEmail.Text = rdr.GetValue(9).ToString();
             }
 
-            string dateAdmin = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            cmd = new OleDbCommand(dateAdmin, con3);
-            rdr = cmd.ExecuteReader();
+            var response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            admin = Convert.ToBoolean(responseBody);
 
-            while (rdr.Read())
-            {
-                bool admin = rdr.GetBoolean(0);
-                int manager = rdr.GetInt32(1);
-                if (admin != true && manager != 3)
+            response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            responseBody = await response.Content.ReadAsStringAsync();
+            manager = Convert.ToBoolean(responseBody);
+            
+            if (admin != true && manager != true)
                 {
                     button7.Visible = false;
                     button8.Visible = false;
                 }
-            }
+
             con3.Close();
 
         }
@@ -214,7 +219,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -222,7 +227,7 @@ namespace MAINPROJ
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -230,7 +235,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -265,7 +270,7 @@ namespace MAINPROJ
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -273,7 +278,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }

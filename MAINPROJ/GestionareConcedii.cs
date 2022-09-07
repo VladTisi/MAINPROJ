@@ -22,11 +22,16 @@ namespace MAINPROJ
         bool sidebarExpand;
         private int angajatId;
         string ValCelula;
-        public GestionareConcedii(int angajatId)
+        bool admin;
+        bool manager;
+        public GestionareConcedii(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
             this.angajatId = angajatId;
-
+            this.admin = admin;
+            this.manager = manager;
+            this.admin = admin;
+            this.manager = manager;
         }
         private void UpdateFont()
         {
@@ -118,7 +123,7 @@ namespace MAINPROJ
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -126,7 +131,7 @@ namespace MAINPROJ
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -134,7 +139,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -142,7 +147,7 @@ namespace MAINPROJ
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId, admin, manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -150,7 +155,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -170,34 +175,20 @@ namespace MAINPROJ
 
         private async void Aproba_Click(object sender, EventArgs e)
         {
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=2 WHERE Id={Convert.ToInt32(ValCelula)} ";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            cmd.ExecuteNonQuery();
-            con3.Close();
+            var response = await Common.client.PutAsync($"http://localhost:5031/api/GestionareConcedii/UpdateStareConcediu?concediuId={ValCelula}",null);
+            response.EnsureSuccessStatusCode();
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
 
-        private void Refuza_Click(object sender, EventArgs e)
+        private async void Refuza_Click(object sender, EventArgs e)
         {
-            if (this.tabelConcedii.SelectedRows.Count > 0)
-            {
-                tabelConcedii.Rows.RemoveAt(this.tabelConcedii.SelectedRows[0].Index);
-            }
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            string dateAngajat = $"UPDATE Concediu SET stareConcediuId=3 WHERE Id={Convert.ToInt32(ValCelula)}";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            cmd.ExecuteNonQuery();
-            con3.Close();
+            var response = await Common.client.PutAsync($"http://localhost:5031/api/GestionareConcedii/UpdateStareConcediu?concediuId={ValCelula}", null);
+            response.EnsureSuccessStatusCode();
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
