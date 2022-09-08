@@ -451,7 +451,7 @@ namespace MAINPROJ
                         dt.Rows.Add(r);
                     }
                 }
-                else if(manager)
+                else 
                 {
                     foreach (Functie f in listaFunctii)
                     {
