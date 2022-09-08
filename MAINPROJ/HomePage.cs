@@ -308,9 +308,23 @@ namespace MAINPROJ
             HttpResponseMessage response = await Common.client.GetAsync(local+$"HomePage/GetPoza?Id={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-            string Poza =  listaParole[0].Poza;
+
+
+            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+
+            string Poza = listaAngajati[0].Poza.ToString();
+
             byte[] imgBytes = Convert.FromBase64String(Poza);
+
+
+            //HttpResponseMessage response = await Common.client.GetAsync(local+$"GetPoza?Id={angajatId}");
+            //response.EnsureSuccessStatusCode();
+            //string responseBody = await response.Content.ReadAsStringAsync();
+            //List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            //string Poza =  listaParole[0].Poza;
+            //byte[] imgBytes = Convert.FromBase64String(Poza);
           /*  OleDbConnection con = Common.GetConnection();
             string selectpoza = $"GetPoza WHERE Angajat.Id={angajatId}";
             cmd = new OleDbCommand(selectpoza, con);
@@ -318,6 +332,18 @@ namespace MAINPROJ
             
           */
             MemoryStream ms = new MemoryStream(imgBytes);
+
+            //System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+            //pozaAngajat.Image = returnImage;
+
+
+            //OleDbConnection con = Common.GetConnection();
+            //string selectpoza = $"SELECT Angajat.Poza FROM Angajat WHERE Angajat.Id={angajatId}";
+            //cmd = new OleDbCommand(selectpoza, con);
+            //string Poza = (string)cmd.ExecuteScalar();
+            //byte[] imgBytes = Convert.FromBase64String(Poza);
+
+            //MemoryStream ms = new MemoryStream(imgBytes);
             if (Poza != "")
             {
                 System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
