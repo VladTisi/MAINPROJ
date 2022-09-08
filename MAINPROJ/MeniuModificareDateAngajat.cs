@@ -15,6 +15,7 @@ using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Net.Http;
 using Newtonsoft.Json;
+using RandomProj;
 using RandomProj.Models;
 
 namespace MAINPROJ
@@ -22,6 +23,8 @@ namespace MAINPROJ
     public partial class MeniuModificareDateAngajat : Form
     {
         private int angajatId;
+        private string backuptel;
+        private string backupmail;
         System.Drawing.Image start;
         bool sidebarExpand;
         bool admin;
@@ -43,6 +46,31 @@ namespace MAINPROJ
 
         }
 
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length != 10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i < myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly = true;
+            }
+
+
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
         private async void AddItems()
         {
 
@@ -120,6 +148,9 @@ namespace MAINPROJ
 
             txtOvertime.Text = angajatulMEU.Overtime.ToString();
 
+
+            // myObj.Overtime = (int)(ang.Overtime.HasValue ? ang.Overtime : myObj.Overtime); 
+
             txtSalariu.Text = angajatulMEU.Salariu.ToString(); 
 
             txtTelefon.Text = angajatulMEU.NumarTelefon.ToString();
@@ -145,17 +176,21 @@ namespace MAINPROJ
 
             string Poza = listaAngajati4[0].Poza.ToString();
 
-            if (string.IsNullOrEmpty(Poza))
-            { return; 
-            }
+         
 
             byte[] imgBytes = Convert.FromBase64String(Poza);
                      
 
             MemoryStream ms = new MemoryStream(imgBytes);
 
-            System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
-            pozaAngajat.Image = returnImage;
+            if (Poza != "")
+            {
+                System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+                pozaAngajat.Image = returnImage;
+
+            }
+
+            
            
 
         }
@@ -201,7 +236,7 @@ namespace MAINPROJ
             respEch.EnsureSuccessStatusCode();
             string respEchBody = await respEch.Content.ReadAsStringAsync();
 
-            List<RandomProj.Models.Echipa> listaEchipe = JsonConvert.DeserializeObject<List<RandomProj.Models.Echipa>>(respEchBody);
+            List<Echipe> listaEchipe = JsonConvert.DeserializeObject<List<Echipe>>(respEchBody);
                       
             var bindingSourceEchipa = new BindingSource();
             bindingSourceEchipa.DataSource = listaEchipe;
@@ -273,7 +308,7 @@ namespace MAINPROJ
 
             angajatulMEU.IdEchipa = (int)comboEchipa.SelectedValue;
 
-            int loginId = angajatulMEU.LoginId;
+            int loginId = (int)angajatulMEU.LoginId;
 
             string emailnou = txtEmail.Text;
                         
@@ -284,49 +319,10 @@ namespace MAINPROJ
             HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdateDate", myangj);
 
 
-            //OleDbConnection con4 = Common.GetConnection();
-            //con4.Open();
 
-            //dtpDataAngajare.Enabled = false;
-
-            //string numartelefon = txtTelefon.Text;
-            //string email = txtEmail.Text;
-            //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd = new OleDbCommand(modifTel, con4);
-            //cmd.ExecuteNonQuery();
-            //string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifEmail;
-            //cmd.ExecuteNonQuery();
-            //string modifNume = $"UPDATE Angajat SET Nume = '{txtNume.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifNume;
-            //cmd.ExecuteNonQuery();
-            //string modifPrenume = $"UPDATE Angajat SET Prenume = '{txtPrenume.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifPrenume;
-            //cmd.ExecuteNonQuery();
-            //string modifSalariu = $"UPDATE Angajat SET Salariu = '{txtSalariu.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifSalariu;
-            //cmd.ExecuteNonQuery();
-            //string modifOvertime = $"UPDATE Angajat SET Overtime = '{txtOvertime.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifOvertime;
-            //cmd.ExecuteNonQuery();
-            
-            //con4.Close();
-            //OleDbConnection con6 = Common.GetConnection();
-            //con6.Open();
-
-            //string echipaNoua = $"UPDATE Angajat SET IdEchipa = '{comboEchipa.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
-            //cmd = new OleDbCommand(echipaNoua, con6);
-            //cmd.ExecuteNonQuery();
-            //string functieNoua = $"UPDATE Angajat SET IdFunctie = '{comboFunctie.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
-            //cmd = new OleDbCommand(functieNoua, con6);
-            //cmd.ExecuteNonQuery();
-
-            
-
-            //con6.Close();
         }
 
-        private void btnModificareDate_Click(object sender, EventArgs e)
+        private async void btnModificareDate_Click(object sender, EventArgs e)
         {
             txtEmail.Enabled = true;
 
@@ -353,7 +349,23 @@ namespace MAINPROJ
 
             comboFunctie.Enabled = true;
 
-           
+            string numartelefon = txtTelefon.Text;
+            string email = txtEmail.Text;
+            if (validareNrTelefon(numartelefon) == 1)
+            {
+                //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                //cmd = new OleDbCommand(modifTel, con);
+                //cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(local + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}", null);
+            }
+            else
+            {
+                txtTelefon.Text = backuptel;
+                MessageBox.Show("Numar de telefon invalid");
+
+            }
+
+
 
         }
              
