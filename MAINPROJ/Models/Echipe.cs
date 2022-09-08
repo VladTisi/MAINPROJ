@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace RandomProj.Models
 {
-    public partial class Echipa
+    public partial class Echipe
     {
-        public Echipa()
+        public Echipe()
         {
             Angajats = new HashSet<Angajat>();
         }
