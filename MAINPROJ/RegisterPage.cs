@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MAINPROJ
@@ -28,7 +29,8 @@ namespace MAINPROJ
         bool sidebarExpand;
         int angajatId;
         OleDbCommand cmd = new OleDbCommand();
-        public RegisterPage(int loginid,string nume, string prenume,bool admin,bool manager, int angajatId)
+        String local= "http://localhost:5031/api/";
+        public  RegisterPage(int loginid,string nume, string prenume,bool admin,bool manager, int angajatId)
         {
             InitializeComponent();
             this.nume = nume;  
@@ -41,27 +43,8 @@ namespace MAINPROJ
             cmbSex.Items.Add("Femeie");
             txtNume.Text=nume;
             txtPrenume.Text=prenume;
-            //SqlConnection con8 = Common.GetSqlConnection();
-            //con8.Open();
-            //string queryEchipa = "SELECT Id,Nume FROM Echipa";
-            //SqlDataAdapter da = new SqlDataAdapter(queryEchipa, con8);
-            //DataSet ds = new DataSet();
-            //da.Fill(ds, "Fleet");
-
-            //cmbNumeEchipa.DisplayMember = "Nume";
-            //cmbNumeEchipa.ValueMember = "Id";
-            //cmbNumeEchipa.DataSource = ds.Tables[0];
-            //con8.Close();
-            SqlConnection con9 = Common.GetSqlConnection();
-            con9.Open();
-            string queryFunctie = "SELECT Id,Nume FROM Functie";
-            SqlDataAdapter da2 = new SqlDataAdapter(queryFunctie, con9);
-            DataSet ds2 = new DataSet();
-            da2.Fill(ds2, "Fleet");
-            cmbNumeFunctie.DisplayMember = "Nume";
-            cmbNumeFunctie.ValueMember = "Id";
-            cmbNumeFunctie.DataSource = ds2.Tables[0];
-            con9.Close();
+            GetEchipe();
+            GetFunctii();
         }
         private void RegisterPage_Load(object sender, EventArgs e)
         {
@@ -72,6 +55,8 @@ namespace MAINPROJ
             }
             else
             {
+                txtPrenume.Enabled = true;
+                txtNume.Enabled = true;
                 button2.Visible = false;
             }
         }
@@ -444,13 +429,72 @@ namespace MAINPROJ
         }
         ///////////////////////////////////////////////////////////////////////////
 
-        public async ValueTask<List<Functie>> GetFunctii()
+        public async void GetFunctii()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/MeniuNavigare/GetNumePrenumeFunctiaDataAngajarii");
+            HttpResponseMessage response = await Common.client.GetAsync(local+"RegisterPage/GetIdNumeFromFunctie");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            List<Functie> listaAngajati = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
-            return listaAngajati;
+            List<Functie> listaFunctii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
+            c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+           
+                if (admin)
+                {
+                    foreach (Functie f in listaFunctii)
+                    {
+                        DataRow r = dt.NewRow();
+                        r["Id"] = f.Id;
+                        r["Nume"] = f.Nume;
+                        dt.Rows.Add(r);
+                    }
+                }
+                else if(manager)
+                {
+                    foreach (Functie f in listaFunctii)
+                    {
+                        if (f.Id != 3)
+                        {
+                             DataRow r = dt.NewRow();
+                            r["Id"] = f.Id;
+                            r["Nume"] = f.Nume;
+                            dt.Rows.Add(r);
+                        }
+                    }
+                }
+            cmbNumeFunctie.DisplayMember = "Nume";
+            cmbNumeFunctie.ValueMember = "Id";
+            cmbNumeFunctie.DataSource = dt;
+
+            return;
+        }
+        public async void GetEchipe()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync(local + "RegisterPage/GetIdNumeFromEchipa");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Functie> listaFunctii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
+            c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+
+            foreach (Functie f in listaFunctii)
+            {
+                DataRow r = dt.NewRow();
+                r["Id"] = f.Id;
+                r["Nume"] = f.Nume;
+                dt.Rows.Add(r);
+            }
+
+            cmbNumeEchipa.DisplayMember = "Nume";
+            cmbNumeEchipa.ValueMember = "Id";
+            cmbNumeEchipa.DataSource = dt;
+
+            return;
         }
     }
 }

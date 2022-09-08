@@ -62,8 +62,9 @@ namespace MAINPROJ
         private void MeniuNavigare_Load(object sender, EventArgs e)
         {
             
-                if (admin != true && manager != true)
+                if (admin == false && manager == false)
                 {
+                    button6.Visible = false;
                     button7.Visible = false;
                     button8.Visible = false;
                 }

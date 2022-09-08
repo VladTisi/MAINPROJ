@@ -233,10 +233,10 @@
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefon.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefon.Location = new System.Drawing.Point(589, 264);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(200, 25);
+            this.txtTelefon.Size = new System.Drawing.Size(200, 21);
             this.txtTelefon.TabIndex = 18;
             // 
             // txtNrBuletin
@@ -267,12 +267,12 @@
             // 
             // dtpDataNasterii
             // 
-            this.dtpDataNasterii.CalendarFont = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataNasterii.CalendarFont = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataNasterii.Enabled = false;
-            this.dtpDataNasterii.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataNasterii.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataNasterii.Location = new System.Drawing.Point(309, 228);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
-            this.dtpDataNasterii.Size = new System.Drawing.Size(147, 23);
+            this.dtpDataNasterii.Size = new System.Drawing.Size(147, 21);
             this.dtpDataNasterii.TabIndex = 19;
             this.dtpDataNasterii.ValueChanged += new System.EventHandler(this.dtpDataNasterii_ValueChanged);
             // 
@@ -313,11 +313,11 @@
             // 
             // dtpDataAngajarii
             // 
-            this.dtpDataAngajarii.CalendarFont = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataAngajarii.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataAngajarii.CalendarFont = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataAngajarii.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataAngajarii.Location = new System.Drawing.Point(589, 311);
             this.dtpDataAngajarii.Name = "dtpDataAngajarii";
-            this.dtpDataAngajarii.Size = new System.Drawing.Size(200, 23);
+            this.dtpDataAngajarii.Size = new System.Drawing.Size(200, 21);
             this.dtpDataAngajarii.TabIndex = 23;
             this.dtpDataAngajarii.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 

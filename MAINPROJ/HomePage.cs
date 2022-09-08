@@ -104,7 +104,7 @@ namespace MAINPROJ
             string responseBody = await response.Content.ReadAsStringAsync();
             admin = Convert.ToBoolean(responseBody);
 
-            response = await Common.client.GetAsync(local + $"GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            response = await Common.client.GetAsync(local + $"GestionareConcedii/GetManager?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             responseBody = await response.Content.ReadAsStringAsync();
             manager = Convert.ToBoolean(responseBody);
