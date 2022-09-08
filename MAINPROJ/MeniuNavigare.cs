@@ -179,5 +179,13 @@ namespace MAINPROJ
                 c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new RegisterPage(0,"","",admin,manager,angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace MAINPROJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogAuten()) ;
+            Application.Run(new Echipa(13,true,false)) ;
             
         }
     }
