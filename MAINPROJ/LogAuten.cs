@@ -155,7 +155,7 @@ namespace MAINPROJ
                 autpass.Text="";
                 conpass.Text="";
                 this.Hide();
-                var otherform = new RegisterPage(IdLogin,myArray[0], myArray[1].Split('@')[0]);
+                var otherform = new RegisterPage(IdLogin,myArray[0], myArray[1].Split('@')[0],false,false,0);
                 otherform.Closed += (s, args) => this.Close();
                 otherform.Show();
             }

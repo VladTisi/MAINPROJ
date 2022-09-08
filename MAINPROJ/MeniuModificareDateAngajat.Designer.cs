@@ -557,17 +557,7 @@
             this.button8.Text = "         Alterare Date";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(333, 439);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 40);
-            this.button6.TabIndex = 81;
-            this.button6.Text = "Recrutare";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+
             // 
             // MeniuModificareDateAngajat
             // 

@@ -71,6 +71,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,9 +95,10 @@
             // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.White;
+            this.label12.BackColor = System.Drawing.Color.Black;
             this.label12.Font = new System.Drawing.Font("Stencil", 12F);
-            this.label12.Location = new System.Drawing.Point(194, 309);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(492, 141);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(113, 22);
             this.label12.TabIndex = 52;
@@ -113,9 +115,9 @@
             // cmbNumeEchipa
             // 
             this.cmbNumeEchipa.FormattingEnabled = true;
-            this.cmbNumeEchipa.Location = new System.Drawing.Point(319, 309);
+            this.cmbNumeEchipa.Location = new System.Drawing.Point(652, 139);
             this.cmbNumeEchipa.Name = "cmbNumeEchipa";
-            this.cmbNumeEchipa.Size = new System.Drawing.Size(141, 21);
+            this.cmbNumeEchipa.Size = new System.Drawing.Size(200, 21);
             this.cmbNumeEchipa.TabIndex = 50;
             // 
             // label11
@@ -123,7 +125,7 @@
             this.label11.BackColor = System.Drawing.Color.Black;
             this.label11.Font = new System.Drawing.Font("Stencil", 12F);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(492, 312);
+            this.label11.Location = new System.Drawing.Point(492, 316);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(136, 19);
             this.label11.TabIndex = 49;
@@ -131,7 +133,7 @@
             // 
             // dtpDataAngajarii
             // 
-            this.dtpDataAngajarii.Location = new System.Drawing.Point(652, 312);
+            this.dtpDataAngajarii.Location = new System.Drawing.Point(652, 316);
             this.dtpDataAngajarii.Name = "dtpDataAngajarii";
             this.dtpDataAngajarii.Size = new System.Drawing.Size(200, 20);
             this.dtpDataAngajarii.TabIndex = 48;
@@ -142,7 +144,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Stencil", 10F);
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(754, 376);
+            this.button2.Location = new System.Drawing.Point(699, 376);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 55);
             this.button2.TabIndex = 47;
@@ -162,7 +164,7 @@
             // dtpDataNasterii
             // 
             this.dtpDataNasterii.Enabled = false;
-            this.dtpDataNasterii.Location = new System.Drawing.Point(319, 231);
+            this.dtpDataNasterii.Location = new System.Drawing.Point(319, 314);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
             this.dtpDataNasterii.Size = new System.Drawing.Size(141, 20);
             this.dtpDataNasterii.TabIndex = 45;
@@ -191,9 +193,9 @@
             // 
             // txtCNP
             // 
-            this.txtCNP.Location = new System.Drawing.Point(652, 144);
+            this.txtCNP.Location = new System.Drawing.Point(319, 231);
             this.txtCNP.Name = "txtCNP";
-            this.txtCNP.Size = new System.Drawing.Size(200, 20);
+            this.txtCNP.Size = new System.Drawing.Size(141, 20);
             this.txtCNP.TabIndex = 41;
             // 
             // label7
@@ -235,10 +237,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Black;
+            this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(492, 143);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(191, 232);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 19);
             this.label10.TabIndex = 37;
@@ -272,7 +274,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(193, 232);
+            this.label4.Location = new System.Drawing.Point(193, 314);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 19);
             this.label4.TabIndex = 34;
@@ -516,12 +518,24 @@
             this.sidebarTimer.Interval = 10;
             this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button9.Font = new System.Drawing.Font("Stencil", 10F);
+            this.button9.Location = new System.Drawing.Point(535, 376);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(127, 55);
+            this.button9.TabIndex = 82;
+            this.button9.Text = "Salvare";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
             // Recrutam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
@@ -552,6 +566,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Recrutam";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Recrutam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -610,5 +625,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Timer sidebarTimer;
+        private System.Windows.Forms.Button button9;
     }
 }

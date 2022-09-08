@@ -55,9 +55,14 @@ namespace MAINPROJ
             cmbNumeFunctie.ValueMember = "Id";
             cmbNumeFunctie.DataSource = ds2.Tables[0];
             con9.Close();
-            this.admin = admin;
         }
-
+        private void Recrutam_Load(object sender, EventArgs e)
+        {
+            if(!admin || !manager)
+            {
+                label6.Visible = false;
+            }
+        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {

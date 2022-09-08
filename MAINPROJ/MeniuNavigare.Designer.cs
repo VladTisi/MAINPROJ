@@ -48,6 +48,7 @@
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.tabelAngajati = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -271,12 +272,24 @@
             this.tabelAngajati.Size = new System.Drawing.Size(460, 298);
             this.tabelAngajati.TabIndex = 7;
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(408, 426);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 40);
+            this.button6.TabIndex = 82;
+            this.button6.Text = "Recrutare";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // MeniuNavigare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.tabelAngajati);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.Logo);
@@ -321,5 +334,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button6;
     }
 }

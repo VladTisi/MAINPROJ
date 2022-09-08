@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RandomProj;
+using RandomProj.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +9,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -19,27 +23,35 @@ namespace MAINPROJ
         string nume;
         string prenume;
         int loginid;
+        bool admin;
+        bool manager;
+        bool sidebarExpand;
+        int angajatId;
         OleDbCommand cmd = new OleDbCommand();
-        public RegisterPage(int loginid,string nume, string prenume)
+        public RegisterPage(int loginid,string nume, string prenume,bool admin,bool manager, int angajatId)
         {
             InitializeComponent();
             this.nume = nume;  
             this.prenume = prenume;
             this.loginid=loginid;
+            this.admin = admin;
+            this.manager = manager;
+            this.angajatId = angajatId;
             cmbSex.Items.Add("Barbat");
             cmbSex.Items.Add("Femeie");
             txtNume.Text=nume;
             txtPrenume.Text=prenume;
-            SqlConnection con8 = Common.GetSqlConnection();
-            con8.Open();
-            string queryEchipa = "SELECT Id,Nume FROM Echipa";
-            SqlDataAdapter da = new SqlDataAdapter(queryEchipa, con8);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "Fleet");
-            cmbNumeEchipa.DisplayMember = "Nume";
-            cmbNumeEchipa.ValueMember = "Id";
-            cmbNumeEchipa.DataSource = ds.Tables[0];
-            con8.Close();
+            //SqlConnection con8 = Common.GetSqlConnection();
+            //con8.Open();
+            //string queryEchipa = "SELECT Id,Nume FROM Echipa";
+            //SqlDataAdapter da = new SqlDataAdapter(queryEchipa, con8);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds, "Fleet");
+
+            //cmbNumeEchipa.DisplayMember = "Nume";
+            //cmbNumeEchipa.ValueMember = "Id";
+            //cmbNumeEchipa.DataSource = ds.Tables[0];
+            //con8.Close();
             SqlConnection con9 = Common.GetSqlConnection();
             con9.Open();
             string queryFunctie = "SELECT Id,Nume FROM Functie";
@@ -50,6 +62,18 @@ namespace MAINPROJ
             cmbNumeFunctie.ValueMember = "Id";
             cmbNumeFunctie.DataSource = ds2.Tables[0];
             con9.Close();
+        }
+        private void RegisterPage_Load(object sender, EventArgs e)
+        {
+            if (!admin && !manager)
+            {
+                sidebar.Visible = false;
+                button3.Visible = false;
+            }
+            else
+            {
+                button2.Visible = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -279,6 +303,154 @@ namespace MAINPROJ
         private void dtpDataNasterii_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            bool cnpvalid = true;
+            bool serievalida = true;
+            bool nrtelefon = true;
+            bool nrbuletin = true;
+            if (validareCNP(txtCNP.Text) == 0)
+            {
+                MessageBox.Show("CNP Invalid");
+                cnpvalid = false;
+                txtCNP.Text = "";
+            }
+            if (validareSerieBuletin(txtSerie.Text) == 0)
+            {
+                MessageBox.Show("Serie Invalida");
+                serievalida = false;
+                txtSerie.Text = "";
+            }
+            if (validareNrTelefon(txtTelefon.Text) == 0)
+            {
+                MessageBox.Show("Numar telefon Invalid");
+                nrtelefon = false;
+                txtTelefon.Text = "";
+            }
+            if (validareNrBuletin(txtNrBuletin.Text) == 0)
+            {
+                MessageBox.Show("Numar buletin invalid");
+                nrbuletin = false;
+                txtNrBuletin.Text = "";
+            }
+            if (nrbuletin && nrtelefon && serievalida && cnpvalid)
+            {
+                OleDbConnection con = Common.GetConnection();
+                con.Open();
+                string register = $"INSERT INTO Angajat(Nume,Prenume,LoginId,Data_Angajarii,Data_Nasterii,CNP,Serie_buletin,Nr_buletin,Numar_telefon,esteAdmin,Sex,Salariu,Overtime,IdFunctie,IdEchipa)" +
+                    $"VALUES ('{txtNume.Text}','{txtPrenume.Text}',{loginid},'{dtpDataAngajarii.Value}','{dtpDataNasterii.Value}','{txtCNP.Text}','{txtSerie.Text}','{txtNrBuletin.Text}','{txtTelefon.Text}','0','{cmbSex.Text}','0','0','{cmbNumeFunctie.SelectedValue}','{cmbNumeEchipa.SelectedValue}')";
+                cmd = new OleDbCommand(register, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("Profilul tau a fost creat!");
+            }
+
+
+
+        }
+
+        private void cmbNumeFunctie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrenume_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbSex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
+        }
+
+        // Butoane meniu navigare
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new HomePage(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new ConcediiRefuzate(angajatId, admin, manager);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new Echipa(angajatId, admin, manager);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuNavigare(angajatId, admin, manager);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId, admin, manager);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new MeniuModificareDateAngajat(angajatId, admin, manager);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+        ///////////////////////////////////////////////////////////////////////////
+
+        public async ValueTask<List<Functie>> GetFunctii()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/MeniuNavigare/GetNumePrenumeFunctiaDataAngajarii");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Functie> listaAngajati = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
+            return listaAngajati;
         }
     }
 }
