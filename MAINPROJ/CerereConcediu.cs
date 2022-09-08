@@ -1,4 +1,6 @@
 ﻿using MAINPROJ;
+using Newtonsoft.Json;
+using RandomProj.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,8 +42,32 @@ namespace MAINPROJ
             this.manager = manager;
         }
 
-        private void CerereConcediu_Load(object sender, EventArgs e)
+        private async void CerereConcediu_Load(object sender, EventArgs e)
         {
+
+
+            HttpResponseMessage response3 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
+            response3.EnsureSuccessStatusCode();
+
+            string result = await response3.Content.ReadAsStringAsync();
+
+            var ceva = JsonConvert.DeserializeObject(result);
+
+            int echipaId = Convert.ToInt32(ceva);
+
+
+
+            HttpResponseMessage response4 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
+            response4.EnsureSuccessStatusCode();
+            string response4Body = await response4.Content.ReadAsStringAsync();
+
+            List<Angajat> listaAngajati2 = JsonConvert.DeserializeObject<List<Angajat>>(response4Body);
+
+            foreach (Angajat angajat in listaAngajati2)
+            {
+                cmbInlocuitor.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
+            }
+
             this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
             // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
             OleDbConnection con3 = Common.GetConnection();
@@ -69,8 +96,10 @@ namespace MAINPROJ
             label5.Text = reader["Zile"].ToString();
             con3.Close();
           
+             
         }
 
+      
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -202,6 +231,10 @@ namespace MAINPROJ
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void cmbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

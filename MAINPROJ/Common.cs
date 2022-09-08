@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace MAINPROJ
 {
     public static class Common
-        
+
+
     {
         public static SqlConnection Connection2;
         public static OleDbConnection Connection;
