@@ -17,9 +17,9 @@ namespace RandomProj.Models
         public int Id { get; set; }
         public string Nume { get; set; } 
         public string Prenume { get; set; } 
-        public int LoginId { get; set; }
-        public DateTime DataAngajarii { get; set; }
-        public DateTime DataNasterii { get; set; }
+        public int? LoginId { get; set; }
+        public DateTime? DataAngajarii { get; set; }
+        public DateTime? DataNasterii { get; set; }
         public string Cnp { get; set; }
         public string SerieBuletin { get; set; } 
         public string NrBuletin { get; set; } 

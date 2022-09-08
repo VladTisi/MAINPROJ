@@ -200,12 +200,16 @@ namespace MAINPROJ
                 var updatePoza = new Angajat
                 {
                     Poza = pozaNoua,
-                    Id = angajatId
+                    Id = angajatId,
+                    Functie = null,
+                    Login = null,
+                    Concedius = null
+
                 };
 
                 string poza2 = JsonConvert.SerializeObject(updatePoza);
                 var requestContent = new StringContent(poza2, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await Common.client.PostAsync(local + $"HomePage/UpdatePoza",requestContent);
+                HttpResponseMessage response = await Common.client.PutAsync(local+$"HomePage/UpdatePoza",requestContent);
                // response.EnsureSuccessStatusCode();
                 //string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
                 //cmd.CommandText = modifPoza;
