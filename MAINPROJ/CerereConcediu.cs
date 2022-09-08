@@ -140,6 +140,7 @@ namespace MAINPROJ
             int nr = (int)cmd.ExecuteScalar();
             if (nr > Convert.ToInt32(label5.Text))
                 MessageBox.Show("Nu ai destule zile de concediu");
+            
             else
             {
                 MessageBox.Show("Cerere de concediu adaugata!");

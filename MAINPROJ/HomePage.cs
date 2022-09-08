@@ -388,9 +388,8 @@ namespace MAINPROJ
                 response3.EnsureSuccessStatusCode();
                 string response3Body = await response3.Content.ReadAsStringAsync();
 
-                List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(response3Body);
+                int echipaId = JsonConvert.DeserializeObject<int>(response3Body);
 
-                int echipaId = (int)listaAngajati[0].IdEchipa;
 
                 //Console.WriteLine(echipaId);
 
