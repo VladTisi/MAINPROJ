@@ -18,7 +18,7 @@ namespace RandomProj.Models
         public string Nume { get; set; } 
         public string Prenume { get; set; } 
         public int LoginId { get; set; }
-        public DateTime DataAngajarii { get; set; }
+        public DateTime? DataAngajarii { get; set; }
         public DateTime DataNasterii { get; set; }
         public string Cnp { get; set; }
         public string SerieBuletin { get; set; } 
@@ -27,16 +27,16 @@ namespace RandomProj.Models
         public bool? EsteAdmin { get; set; }
         public int? ManagerId { get; set; }
         public string Sex { get; set; } 
-        public int Salariu { get; set; }
-        public int? Overtime { get; set; }
+        public string Salariu { get; set; }
+        public string Overtime { get; set; }
         public bool? SexVizbil { get; set; }
 
         public bool? SalariuVizibil { get; set; }
 
         public int? IdFunctie { get; set; }
         public int? IdEchipa { get; set; }
-        public int ZileConcediu { get; set; }
-        public int ZileConcediuRamase { get; set; }
+        public int? ZileConcediu { get; set; } 
+        public int? ZileConcediuRamase { get; set; }
         public string Poza { get; set; }
 
         public virtual Echipa Echipa { get; set; }

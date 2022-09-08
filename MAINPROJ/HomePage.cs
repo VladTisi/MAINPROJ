@@ -30,7 +30,7 @@ namespace MAINPROJ
         bool admin;
         bool manager;
         string pozaNoua;
-        string local = "http://localhost:5031/";
+        string local = "http://localhost:5031/api";
         System.Drawing.Image start;
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -309,7 +309,7 @@ namespace MAINPROJ
 
         private async void showImage()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/GetPoza?Id={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(local + $"/HomePage/GetPoza?Id={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
 
