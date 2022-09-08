@@ -325,7 +325,7 @@ namespace MAINPROJ
         private async void btnModificareDate_Click(object sender, EventArgs e)
         {
 
-            
+
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
@@ -360,26 +360,26 @@ namespace MAINPROJ
 
                 comboFunctie.Enabled = true;
 
-            string numartelefon = txtTelefon.Text;
-            string email = txtEmail.Text;
-            if (validareNrTelefon(numartelefon) == 1)
-            {
-                //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
-                //cmd = new OleDbCommand(modifTel, con);
-                //cmd.ExecuteNonQuery();
-                HttpResponseMessage response = await Common.client.PostAsync(local + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}", null);
-            }
-            else
-            {
-                txtTelefon.Text = backuptel;
-                MessageBox.Show("Numar de telefon invalid");
+                string numartelefon = txtTelefon.Text;
+                string email = txtEmail.Text;
+                if (validareNrTelefon(numartelefon) == 1)
+                {
+                    //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                    //cmd = new OleDbCommand(modifTel, con);
+                    //cmd.ExecuteNonQuery();
+                    HttpResponseMessage response = await Common.client.PostAsync(local + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}", null);
+                }
+                else
+                {
+                    txtTelefon.Text = backuptel;
+                    MessageBox.Show("Numar de telefon invalid");
+
+                }
+
+
 
             }
-
-
-
         }
-             
 
         private void MeniuModificareDateAngajat_Load(object sender, EventArgs e)
         {

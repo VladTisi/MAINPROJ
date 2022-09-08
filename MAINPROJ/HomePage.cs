@@ -146,9 +146,7 @@ namespace MAINPROJ
             //modificare poza
             if (pozaAngajat.Image != start)
             {
-
                 Angj.Poza = pozaNoua;
-               
             }
             if(txtNume.Text!=Angj.Nume && txtNume.Text!="")
             {
@@ -158,6 +156,15 @@ namespace MAINPROJ
             {
                 Angj.Prenume = txtPrenume.Text;
             }
+            if(txtOvertime.Text!=Angj.Overtime && txtOvertime.Text!= "")
+            {
+                Angj.Overtime=txtOvertime.Text;
+            }
+            if (txtSalariu.Text != Angj.Salariu && txtSalariu.Text != "")
+            {
+                Angj.Salariu = txtSalariu.Text;
+            }
+
             string JsonAngajat = JsonConvert.SerializeObject(Angj);
 
             var myAngj = new StringContent(JsonAngajat, Encoding.UTF8, "application/json");
