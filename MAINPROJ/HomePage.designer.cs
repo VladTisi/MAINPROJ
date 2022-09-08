@@ -557,12 +557,15 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(267, 408);
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(262, 409);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 34);
+            this.button6.Size = new System.Drawing.Size(85, 50);
             this.button6.TabIndex = 79;
             this.button6.Text = "Resetare\r\nParola";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // HomePage
             // 

@@ -401,13 +401,13 @@ namespace MAINPROJ
                 response3.EnsureSuccessStatusCode();
                 string response3Body = await response3.Content.ReadAsStringAsync();
 
-                List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(response3Body);
+                int idechipa = Convert.ToInt32(response3Body);
 
-                int echipaId = (int)listaAngajati[0].IdEchipa;
+     
 
                 //Console.WriteLine(echipaId);
 
-                HttpResponseMessage response4 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
+                HttpResponseMessage response4 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetMembriEchipa?echipaId={idechipa}");
                 response4.EnsureSuccessStatusCode();
                 string response4Body = await response4.Content.ReadAsStringAsync();
 
@@ -451,6 +451,14 @@ namespace MAINPROJ
             string response8body = await response8.Content.ReadAsStringAsync();
             List<Login> listaemail = JsonConvert.DeserializeObject<List<Login>>(response8body);
             txtEmail.Text = listaemail[0].Email;
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new SchimbareParola(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
