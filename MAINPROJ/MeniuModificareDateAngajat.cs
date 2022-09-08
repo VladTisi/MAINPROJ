@@ -201,7 +201,7 @@ namespace MAINPROJ
             respEch.EnsureSuccessStatusCode();
             string respEchBody = await respEch.Content.ReadAsStringAsync();
 
-            List<RandomProj.Models.Echipa> listaEchipe = JsonConvert.DeserializeObject<List<RandomProj.Models.Echipa>>(respEchBody);
+            List<Echipe> listaEchipe = JsonConvert.DeserializeObject<List<Echipe>>(respEchBody);
                       
             var bindingSourceEchipa = new BindingSource();
             bindingSourceEchipa.DataSource = listaEchipe;
@@ -273,7 +273,7 @@ namespace MAINPROJ
 
             angajatulMEU.IdEchipa = (int)comboEchipa.SelectedValue;
 
-            int loginId = angajatulMEU.LoginId;
+            int loginId = (int)angajatulMEU.LoginId;
 
             string emailnou = txtEmail.Text;
                         
@@ -328,32 +328,43 @@ namespace MAINPROJ
 
         private void btnModificareDate_Click(object sender, EventArgs e)
         {
+
+            
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
 
-            txtDataAngajare.Enabled = true;
-
-            txtNume.Enabled = true;
-
-            txtPrenume.Enabled = true;
-
-            txtOvertime.Enabled = true;
-
-            txtSalariu.Enabled = true;
-
-            dtpDataAngajare.Enabled = true;
-
-            
             btnSalvareModificari.Visible = true;
 
             btnUpload.Visible = true;
 
-            comboEchipa.Enabled = true;
+            if (admin || manager)
+            {
 
-            comboFunctie.Enabled = true;
+                txtTelefon.Enabled = true;
 
-           
+                txtDataAngajare.Enabled = true;
+
+                txtNume.Enabled = true;
+
+                txtPrenume.Enabled = true;
+
+                txtOvertime.Enabled = true;
+
+                txtSalariu.Enabled = true;
+
+                dtpDataAngajare.Enabled = true;
+
+
+                btnSalvareModificari.Visible = true;
+
+                btnUpload.Visible = true;
+
+                comboEchipa.Enabled = true;
+
+                comboFunctie.Enabled = true;
+
+            }
 
         }
              
