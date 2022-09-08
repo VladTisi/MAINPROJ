@@ -554,6 +554,16 @@
             this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
             this.dtpDataAngajare.TabIndex = 78;
             // 
+            // ResetParola
+            // 
+            this.ResetParola.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetParola.Location = new System.Drawing.Point(220, 408);
+            this.ResetParola.Name = "ResetParola";
+            this.ResetParola.Size = new System.Drawing.Size(175, 33);
+            this.ResetParola.TabIndex = 51;
+            this.ResetParola.Text = "Schimbare Parola";
+            this.ResetParola.UseVisualStyleBackColor = true;
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +574,7 @@
             this.Controls.Add(this.comboEchipa);
             this.Controls.Add(this.comboFunctie);
             this.Controls.Add(this.comboListaAngajati);
+            this.Controls.Add(this.ResetParola);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.pictureBox1);
@@ -654,5 +665,6 @@
         private System.Windows.Forms.ComboBox comboFunctie;
         private System.Windows.Forms.ComboBox comboEchipa;
         private System.Windows.Forms.DateTimePicker dtpDataAngajare;
+        private System.Windows.Forms.Button ResetParola;
     }
 }

@@ -15,6 +15,7 @@ using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Net.Http;
 using Newtonsoft.Json;
+using RandomProj;
 using RandomProj.Models;
 
 namespace MAINPROJ
@@ -22,6 +23,8 @@ namespace MAINPROJ
     public partial class MeniuModificareDateAngajat : Form
     {
         private int angajatId;
+        private string backuptel;
+        private string backupmail;
         System.Drawing.Image start;
         bool sidebarExpand;
         bool admin;
@@ -43,6 +46,31 @@ namespace MAINPROJ
 
         }
 
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length != 10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i < myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly = true;
+            }
+
+
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
         private async void AddItems()
         {
 
@@ -120,6 +148,9 @@ namespace MAINPROJ
 
             txtOvertime.Text = angajatulMEU.Overtime.ToString();
 
+
+            // myObj.Overtime = (int)(ang.Overtime.HasValue ? ang.Overtime : myObj.Overtime); 
+
             txtSalariu.Text = angajatulMEU.Salariu.ToString(); 
 
             txtTelefon.Text = angajatulMEU.NumarTelefon.ToString();
@@ -145,17 +176,21 @@ namespace MAINPROJ
 
             string Poza = listaAngajati4[0].Poza.ToString();
 
-            if (string.IsNullOrEmpty(Poza))
-            { return; 
-            }
+         
 
             byte[] imgBytes = Convert.FromBase64String(Poza);
                      
 
             MemoryStream ms = new MemoryStream(imgBytes);
 
-            System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
-            pozaAngajat.Image = returnImage;
+            if (Poza != "")
+            {
+                System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+                pozaAngajat.Image = returnImage;
+
+            }
+
+            
            
 
         }
@@ -282,9 +317,12 @@ namespace MAINPROJ
             string jsonangajat = JsonConvert.SerializeObject(angajatulMEU);
             var myangj = new StringContent(jsonangajat, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdateDate", myangj);
+
+
+
         }
 
-        private void btnModificareDate_Click(object sender, EventArgs e)
+        private async void btnModificareDate_Click(object sender, EventArgs e)
         {
 
             
@@ -322,7 +360,23 @@ namespace MAINPROJ
 
                 comboFunctie.Enabled = true;
 
+            string numartelefon = txtTelefon.Text;
+            string email = txtEmail.Text;
+            if (validareNrTelefon(numartelefon) == 1)
+            {
+                //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
+                //cmd = new OleDbCommand(modifTel, con);
+                //cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(local + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}", null);
             }
+            else
+            {
+                txtTelefon.Text = backuptel;
+                MessageBox.Show("Numar de telefon invalid");
+
+            }
+
+
 
         }
              
