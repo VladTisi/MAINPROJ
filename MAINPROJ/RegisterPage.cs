@@ -48,10 +48,10 @@ namespace MAINPROJ
             //DataSet ds = new DataSet();
             //da.Fill(ds, "Fleet");
 
-            cmbNumeEchipa.DisplayMember = "Nume";
-            cmbNumeEchipa.ValueMember = "Id";
-            cmbNumeEchipa.DataSource = ds.Tables[0];
-            con8.Close();
+            //cmbNumeEchipa.DisplayMember = "Nume";
+            //cmbNumeEchipa.ValueMember = "Id";
+            //cmbNumeEchipa.DataSource = ds.Tables[0];
+            //con8.Close();
             SqlConnection con9 = Common.GetSqlConnection();
             con9.Open();
             string queryFunctie = "SELECT Id,Nume FROM Functie";
