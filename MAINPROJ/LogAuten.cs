@@ -84,20 +84,25 @@ namespace MAINPROJ
 
         private async ValueTask<int> checkIfEmailExists()
         {
-            string email = autemail.Text;
-            HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
-            if (listaParole.Count>0)
+            if (!String.IsNullOrEmpty(autemail.Text))
             {
-                return 0;
-            }
-            
+                string email = autemail.Text;
+                HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+                if (listaParole.Count>0)
+                {
+                    return 0;
+                }
 
+
+                return 1;
+            }
             return 1;
+            
         }
-        private async void AUTENTIFICARE_Click(object sender, EventArgs e)
+        private async void btnInregistrare_Click(object sender, EventArgs e)
         {
             int passvalid = validatePassword(autpass.Text, conpass.Text);
             int emailvalid = validateEmail(autemail.Text);
@@ -168,15 +173,12 @@ namespace MAINPROJ
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnIesire_click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void checkLog_CheckedChanged(object sender, EventArgs e)
         {
@@ -190,15 +192,8 @@ namespace MAINPROJ
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void conpass_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
+      
 
         private void checkAut_CheckedChanged(object sender, EventArgs e)
         {
@@ -214,53 +209,52 @@ namespace MAINPROJ
             }
         }
 
-        private void autpass_TextChanged(object sender, EventArgs e)
+
+        private async void btnAutentificare_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private async void logare_Click(object sender, EventArgs e)
-        {
-            string email = logmail.Text;
-
-            string parola = logpass.Text;
-            HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
-            string password = Decrypt(listaParole[0].Parola);
-            if (string.IsNullOrEmpty(password))
+            if (!String.IsNullOrEmpty(logmail.Text)&&!String.IsNullOrEmpty(logpass.Text))
             {
-                MessageBox.Show("Email invalid");
-            }
-            if (password != logpass.Text)
-            {
-                MessageBox.Show("Parola invalida");
-            }
+                string email = logmail.Text;
 
-
-            if (parola == password)
-            {
-                Random r = new Random();
-                int x = r.Next(100000, 999999);
-                Console.WriteLine(x);
-                Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat logarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
-                String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                if (Convert.ToInt32(codstring)==x)
+                string parola = logpass.Text;
+                HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+                if (listaParole.Count==0)
                 {
-
-                    HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
-                    response2.EnsureSuccessStatusCode();
-                    string responseBody2 = await response2.Content.ReadAsStringAsync();
-                    List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                    int angajatId = (int)listaParole2[0].AngajatId;
-                    this.Hide();
-                    var otherform = new HomePage(angajatId);
-                    otherform.Closed += (s, args) => this.Close();
-                    otherform.Show();
+                    MessageBox.Show("Nu exista acest cont.");
+                    return;
                 }
-                
+                string password = Decrypt(listaParole[0].Parola);
+                if (parola == password)
+                {
+                    Random r = new Random();
+                    int x = r.Next(100000, 999999);
+                    Console.WriteLine(x);
+                    Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat logarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
+                    String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
+                    if (Convert.ToInt32(codstring)==x)
+                    {
+
+                        HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
+                        response2.EnsureSuccessStatusCode();
+                        string responseBody2 = await response2.Content.ReadAsStringAsync();
+                        List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                        int angajatId = (int)listaParole2[0].AngajatId;
+                        this.Hide();
+                        var otherform = new HomePage(angajatId);
+                        otherform.Closed += (s, args) => this.Close();
+                        otherform.Show();
+                    }
+
+                }
             }
+            else
+            {
+                MessageBox.Show("Cont invalid");
+            }
+            
 
         }
 
@@ -312,56 +306,66 @@ namespace MAINPROJ
             return cipherText;
         }
 
-        private void autemail_TextChanged(object sender, EventArgs e)
+       
+
+        private async void btnUitareParola_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-
-
-
-            DialogResult dialogResult = MessageBox.Show("Doriti sa resetati parola?", "Resetare parola", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (!String.IsNullOrEmpty(logmail.Text))
             {
-                Random r = new Random();
-                int x = r.Next(100000, 999999);
-                Console.WriteLine(x);
-                string email = logmail.Text;
-                HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
-                string password=listaParole[0].Parola;
-                if (!String.IsNullOrEmpty(password))
+                DialogResult dialogResult = MessageBox.Show("Doriti sa resetati parola?", "Resetare parola", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
-                    String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                    if (Int32.Parse(s) == x)
+                    Random r = new Random();
+                    int x = r.Next(100000, 999999);
+                    Console.WriteLine(x);
+                    string email = logmail.Text;
+                    HttpResponseMessage response = await Common.client.GetAsync(url+$"api/LogAuten/GetPassword?email={email}");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+                    if (listaParole.Count==0)
                     {
-                        HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
-                        response2.EnsureSuccessStatusCode();
-                        string responseBody2 = await response2.Content.ReadAsStringAsync();
-                        List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                        int angajatId = (int)listaParole2[0].AngajatId;
-                        string generated_pass = Membership.GeneratePassword(8, 0);
-                        Console.WriteLine(generated_pass);
-                        HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/UpdatePassword?password={Encrypt(generated_pass)}&angajatid={angajatId}",null);
-                        Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
+                        MessageBox.Show("Nu a fost gasit un cont cu acest email.");
+                        return;
+                    }
+                    string password = listaParole[0].Parola;
+                    if (!String.IsNullOrEmpty(password))
+                    {
+                        Class1.sendMail("Mail resetare parola", $"Ati solicitat schimbarea parolei. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
+                        String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
+                        if (Int32.Parse(s) == x)
+                        {
+                            HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
+                            response2.EnsureSuccessStatusCode();
+                            string responseBody2 = await response2.Content.ReadAsStringAsync();
+                            List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                            int angajatId = (int)listaParole2[0].AngajatId;
+                            string generated_pass = Membership.GeneratePassword(8, 0);
+                            Console.WriteLine(generated_pass);
+                            HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/UpdatePassword?password={Encrypt(generated_pass)}&angajatid={angajatId}", null);
+                            Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid code");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid code");
+                        MessageBox.Show("Nu exista un cont cu acest email");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Nu exista un cont cu acest email");
-                }
 
 
+                }
             }
+            else
+            {
+                MessageBox.Show("Trebuie sa introduceti un email.");
+            }
+
+
+
+           
         }
 
         
