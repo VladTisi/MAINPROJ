@@ -155,7 +155,7 @@
             this.label4.BackColor = System.Drawing.Color.Black;
             this.label4.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(590, 127);
+            this.label4.Location = new System.Drawing.Point(478, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 36);
             this.label4.TabIndex = 7;
@@ -166,7 +166,7 @@
             this.label5.BackColor = System.Drawing.Color.Black;
             this.label5.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(590, 181);
+            this.label5.Location = new System.Drawing.Point(478, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 25);
             this.label5.TabIndex = 8;
@@ -189,7 +189,7 @@
             this.label7.BackColor = System.Drawing.Color.Black;
             this.label7.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(591, 271);
+            this.label7.Location = new System.Drawing.Point(479, 285);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 18);
             this.label7.TabIndex = 14;
@@ -201,7 +201,7 @@
             this.label8.BackColor = System.Drawing.Color.Black;
             this.label8.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(592, 219);
+            this.label8.Location = new System.Drawing.Point(480, 233);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 36);
             this.label8.TabIndex = 13;
@@ -234,7 +234,7 @@
             // txtTelefon
             // 
             this.txtTelefon.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefon.Location = new System.Drawing.Point(702, 264);
+            this.txtTelefon.Location = new System.Drawing.Point(590, 278);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(200, 21);
             this.txtTelefon.TabIndex = 18;
@@ -242,7 +242,7 @@
             // txtNrBuletin
             // 
             this.txtNrBuletin.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNrBuletin.Location = new System.Drawing.Point(702, 228);
+            this.txtNrBuletin.Location = new System.Drawing.Point(590, 242);
             this.txtNrBuletin.Name = "txtNrBuletin";
             this.txtNrBuletin.Size = new System.Drawing.Size(200, 25);
             this.txtNrBuletin.TabIndex = 17;
@@ -270,7 +270,7 @@
             this.dtpDataNasterii.CalendarFont = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataNasterii.Enabled = false;
             this.dtpDataNasterii.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataNasterii.Location = new System.Drawing.Point(702, 138);
+            this.dtpDataNasterii.Location = new System.Drawing.Point(590, 152);
             this.dtpDataNasterii.Name = "dtpDataNasterii";
             this.dtpDataNasterii.Size = new System.Drawing.Size(205, 21);
             this.dtpDataNasterii.TabIndex = 19;
@@ -281,7 +281,7 @@
             this.cmbSex.Enabled = false;
             this.cmbSex.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSex.FormattingEnabled = true;
-            this.cmbSex.Location = new System.Drawing.Point(702, 181);
+            this.cmbSex.Location = new System.Drawing.Point(590, 195);
             this.cmbSex.Name = "cmbSex";
             this.cmbSex.Size = new System.Drawing.Size(205, 26);
             this.cmbSex.TabIndex = 20;
@@ -315,7 +315,7 @@
             // 
             this.dtpDataAngajarii.CalendarFont = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataAngajarii.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataAngajarii.Location = new System.Drawing.Point(702, 311);
+            this.dtpDataAngajarii.Location = new System.Drawing.Point(590, 325);
             this.dtpDataAngajarii.Name = "dtpDataAngajarii";
             this.dtpDataAngajarii.Size = new System.Drawing.Size(200, 21);
             this.dtpDataAngajarii.TabIndex = 23;
@@ -327,7 +327,7 @@
             this.label11.BackColor = System.Drawing.Color.Black;
             this.label11.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(592, 300);
+            this.label11.Location = new System.Drawing.Point(480, 314);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 36);
             this.label11.TabIndex = 24;

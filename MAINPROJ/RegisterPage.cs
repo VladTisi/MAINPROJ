@@ -8,14 +8,19 @@ using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Login = RandomProj.Models.Login;
 
 namespace MAINPROJ
 {
@@ -29,7 +34,7 @@ namespace MAINPROJ
         bool sidebarExpand;
         int angajatId;
         OleDbCommand cmd = new OleDbCommand();
-        String local= "http://localhost:5031/api/";
+        String url= "http://localhost:5031/api/";
         public  RegisterPage(int loginid,string nume, string prenume,bool admin,bool manager, int angajatId)
         {
             InitializeComponent();
@@ -290,8 +295,45 @@ namespace MAINPROJ
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public static string Encrypt(string encryptString)
         {
+            string EncryptionKey = "0ram@1234xxxxxxxxxxtttttuuuuuiiiiio";  //we can change the code converstion key as per our requirement    
+            byte[] clearBytes = Encoding.Unicode.GetBytes(encryptString);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] {
+            0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
+        });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    encryptString = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            return encryptString;
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            string email = $"{txtNume.Text}.{txtPrenume.Text}@totalsoft.ro";
+            string generated_pass = Membership.GeneratePassword(8, 0);
+            Console.WriteLine(generated_pass);
+            await Common.client.PostAsync(url+$"RegisterPage/InsertLogin?email={email}&parola={Encrypt(generated_pass)}",null);
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"RegisterPage/GetIdLogin?email={email}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Login> ids = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+            int loginid = ids[0].Id;
+            Console.WriteLine($"userid is {loginid}");
+
+
+
             bool cnpvalid = true;
             bool serievalida = true;
             bool nrtelefon = true;
@@ -329,6 +371,16 @@ namespace MAINPROJ
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
+
+                int angajatid = 0;
+                HttpResponseMessage response2 = await Common.client.GetAsync(url+$"RegisterPage/GetAngajatIdFromLoginId?loginid={loginid}");
+                response2.EnsureSuccessStatusCode();
+                string responseBody2 = await response2.Content.ReadAsStringAsync();
+                List<Login> listaid = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                angajatid=listaid[0].Id;
+
+
+                await Common.client.PostAsync(url+$"RegisterPage/UpdateAngajatId?id={loginid}&angajatid={angajatid}",null);
 
                 MessageBox.Show("Profilul tau a fost creat!");
             }
@@ -431,7 +483,7 @@ namespace MAINPROJ
 
         public async void GetFunctii()
         {
-            HttpResponseMessage response = await Common.client.GetAsync(local+"RegisterPage/GetIdNumeFromFunctie");
+            HttpResponseMessage response = await Common.client.GetAsync(url+"RegisterPage/GetIdNumeFromFunctie");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Functie> listaFunctii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
@@ -472,7 +524,7 @@ namespace MAINPROJ
         }
         public async void GetEchipe()
         {
-            HttpResponseMessage response = await Common.client.GetAsync(local + "RegisterPage/GetIdNumeFromEchipa");
+            HttpResponseMessage response = await Common.client.GetAsync(url + "RegisterPage/GetIdNumeFromEchipa");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Functie> listaFunctii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);

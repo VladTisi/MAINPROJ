@@ -74,6 +74,7 @@
             this.comboFunctie = new System.Windows.Forms.ComboBox();
             this.comboEchipa = new System.Windows.Forms.ComboBox();
             this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -554,9 +555,14 @@
             this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
             this.dtpDataAngajare.TabIndex = 78;
             // 
-            // ResetParola
+            // button6
             // 
-          
+            this.button6.Location = new System.Drawing.Point(267, 408);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 34);
+            this.button6.TabIndex = 79;
+            this.button6.Text = "Resetare\r\nParola";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // HomePage
             // 
@@ -564,6 +570,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.comboEchipa);
             this.Controls.Add(this.comboFunctie);
@@ -659,5 +666,6 @@
         private System.Windows.Forms.ComboBox comboEchipa;
         private System.Windows.Forms.DateTimePicker dtpDataAngajare;
         private System.Windows.Forms.Button ResetParola;
+        private System.Windows.Forms.Button button6;
     }
 }

@@ -325,7 +325,7 @@ namespace MAINPROJ
         private async void btnModificareDate_Click(object sender, EventArgs e)
         {
 
-            
+
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
@@ -378,8 +378,8 @@ namespace MAINPROJ
 
             }
 
+            }
         }
-             
 
         private void MeniuModificareDateAngajat_Load(object sender, EventArgs e)
         {

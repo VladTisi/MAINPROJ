@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogAuten));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.logare = new System.Windows.Forms.Button();
-            this.AUTENTIFICARE = new System.Windows.Forms.Button();
+            this.btnAutentificare = new System.Windows.Forms.Button();
+            this.btnInregistrare = new System.Windows.Forms.Button();
             this.logmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnIesire = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.logpass = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUitareParola = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -80,28 +80,28 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // logare
+            // btnAutentificare
             // 
-            this.logare.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logare.Location = new System.Drawing.Point(80, 325);
-            this.logare.Name = "logare";
-            this.logare.Size = new System.Drawing.Size(179, 34);
-            this.logare.TabIndex = 1;
-            this.logare.Text = "AUTENTIFICARE";
-            this.logare.UseVisualStyleBackColor = true;
-            this.logare.Click += new System.EventHandler(this.logare_Click);
+            this.btnAutentificare.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutentificare.Location = new System.Drawing.Point(80, 325);
+            this.btnAutentificare.Name = "btnAutentificare";
+            this.btnAutentificare.Size = new System.Drawing.Size(179, 34);
+            this.btnAutentificare.TabIndex = 1;
+            this.btnAutentificare.Text = "AUTENTIFICARE";
+            this.btnAutentificare.UseVisualStyleBackColor = true;
+            this.btnAutentificare.Click += new System.EventHandler(this.btnAutentificare_Click);
             // 
-            // AUTENTIFICARE
+            // btnInregistrare
             // 
-            this.AUTENTIFICARE.AutoSize = true;
-            this.AUTENTIFICARE.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AUTENTIFICARE.Location = new System.Drawing.Point(647, 368);
-            this.AUTENTIFICARE.Name = "AUTENTIFICARE";
-            this.AUTENTIFICARE.Size = new System.Drawing.Size(171, 35);
-            this.AUTENTIFICARE.TabIndex = 2;
-            this.AUTENTIFICARE.Text = "INREGISTRARE";
-            this.AUTENTIFICARE.UseVisualStyleBackColor = true;
-            this.AUTENTIFICARE.Click += new System.EventHandler(this.AUTENTIFICARE_Click);
+            this.btnInregistrare.AutoSize = true;
+            this.btnInregistrare.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInregistrare.Location = new System.Drawing.Point(647, 368);
+            this.btnInregistrare.Name = "btnInregistrare";
+            this.btnInregistrare.Size = new System.Drawing.Size(171, 35);
+            this.btnInregistrare.TabIndex = 2;
+            this.btnInregistrare.Text = "INREGISTRARE";
+            this.btnInregistrare.UseVisualStyleBackColor = true;
+            this.btnInregistrare.Click += new System.EventHandler(this.btnInregistrare_Click);
             // 
             // logmail
             // 
@@ -109,7 +109,6 @@
             this.logmail.Name = "logmail";
             this.logmail.Size = new System.Drawing.Size(142, 20);
             this.logmail.TabIndex = 3;
-            this.logmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -123,17 +122,17 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "email";
             // 
-            // button2
+            // btnIesire
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(881, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(33, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnIesire.BackColor = System.Drawing.Color.Transparent;
+            this.btnIesire.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIesire.Location = new System.Drawing.Point(881, 0);
+            this.btnIesire.Name = "btnIesire";
+            this.btnIesire.Size = new System.Drawing.Size(33, 23);
+            this.btnIesire.TabIndex = 5;
+            this.btnIesire.Text = "X";
+            this.btnIesire.UseVisualStyleBackColor = false;
+            this.btnIesire.Click += new System.EventHandler(this.btnIesire_click);
             // 
             // pictureBox2
             // 
@@ -175,7 +174,6 @@
             this.label3.Size = new System.Drawing.Size(192, 19);
             this.label3.TabIndex = 9;
             this.label3.Text = "[Evadeaza in vacanta]";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // autemail
             // 
@@ -213,7 +211,6 @@
             this.autpass.PasswordChar = '*';
             this.autpass.Size = new System.Drawing.Size(135, 20);
             this.autpass.TabIndex = 13;
-            this.autpass.TextChanged += new System.EventHandler(this.autpass_TextChanged);
             // 
             // label6
             // 
@@ -233,7 +230,6 @@
             this.conpass.PasswordChar = '*';
             this.conpass.Size = new System.Drawing.Size(135, 20);
             this.conpass.TabIndex = 15;
-            this.conpass.TextChanged += new System.EventHandler(this.conpass_TextChanged);
             // 
             // pictureBox3
             // 
@@ -357,19 +353,19 @@
             this.pictureBox11.TabIndex = 27;
             this.pictureBox11.TabStop = false;
             // 
-            // button1
+            // btnUitareParola
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(80, 368);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Ati uitat parola?";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnUitareParola.BackColor = System.Drawing.Color.Transparent;
+            this.btnUitareParola.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUitareParola.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnUitareParola.ForeColor = System.Drawing.Color.White;
+            this.btnUitareParola.Location = new System.Drawing.Point(80, 368);
+            this.btnUitareParola.Name = "btnUitareParola";
+            this.btnUitareParola.Size = new System.Drawing.Size(179, 23);
+            this.btnUitareParola.TabIndex = 28;
+            this.btnUitareParola.Text = "Ati uitat parola?";
+            this.btnUitareParola.UseVisualStyleBackColor = false;
+            this.btnUitareParola.Click += new System.EventHandler(this.btnUitareParola_Click);
             // 
             // LogAuten
             // 
@@ -377,7 +373,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUitareParola);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
@@ -397,11 +393,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.logpass);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnIesire);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logmail);
-            this.Controls.Add(this.AUTENTIFICARE);
-            this.Controls.Add(this.logare);
+            this.Controls.Add(this.btnInregistrare);
+            this.Controls.Add(this.btnAutentificare);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox6);
@@ -430,11 +426,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button logare;
-        private System.Windows.Forms.Button AUTENTIFICARE;
+        private System.Windows.Forms.Button btnAutentificare;
+        private System.Windows.Forms.Button btnInregistrare;
         private System.Windows.Forms.TextBox logmail;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnIesire;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox logpass;
         private System.Windows.Forms.Label label2;
@@ -456,6 +452,6 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUitareParola;
     }
 }
