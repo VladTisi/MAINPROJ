@@ -324,30 +324,41 @@ namespace MAINPROJ
 
         private async void btnModificareDate_Click(object sender, EventArgs e)
         {
+
+            
             txtEmail.Enabled = true;
 
             txtTelefon.Enabled = true;
 
-            txtDataAngajare.Enabled = true;
-
-            txtNume.Enabled = true;
-
-            txtPrenume.Enabled = true;
-
-            txtOvertime.Enabled = true;
-
-            txtSalariu.Enabled = true;
-
-            dtpDataAngajare.Enabled = true;
-
-            
             btnSalvareModificari.Visible = true;
 
             btnUpload.Visible = true;
 
-            comboEchipa.Enabled = true;
+            if (admin || manager)
+            {
 
-            comboFunctie.Enabled = true;
+                txtTelefon.Enabled = true;
+
+                txtDataAngajare.Enabled = true;
+
+                txtNume.Enabled = true;
+
+                txtPrenume.Enabled = true;
+
+                txtOvertime.Enabled = true;
+
+                txtSalariu.Enabled = true;
+
+                dtpDataAngajare.Enabled = true;
+
+
+                btnSalvareModificari.Visible = true;
+
+                btnUpload.Visible = true;
+
+                comboEchipa.Enabled = true;
+
+                comboFunctie.Enabled = true;
 
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;

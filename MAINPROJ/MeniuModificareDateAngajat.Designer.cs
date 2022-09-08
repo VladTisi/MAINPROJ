@@ -74,7 +74,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -446,7 +445,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "      Home";
             this.button1.UseVisualStyleBackColor = false;
-           // this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -557,7 +555,6 @@
             this.button8.Text = "         Alterare Date";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-
             // 
             // MeniuModificareDateAngajat
             // 
@@ -565,7 +562,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnUpload);
@@ -662,6 +658,5 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
     }
 }
