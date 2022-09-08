@@ -247,21 +247,31 @@ namespace MAINPROJ
 
             if (parola == password)
             {
+                Random r = new Random();
+                int x = r.Next(100000, 999999);
+                Console.WriteLine(x);
+                Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat logarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
+                String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
+                if (Convert.ToInt32(codstring)==x)
+                {
+
+                    HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
+                    response2.EnsureSuccessStatusCode();
+                    string responseBody2 = await response2.Content.ReadAsStringAsync();
+                    List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                    int angajatId = (int)listaParole2[0].AngajatId;
+                    this.Hide();
+                    var otherform = new HomePage(angajatId);
+                    otherform.Closed += (s, args) => this.Close();
+                    otherform.Show();
+                }
                 //OleDbConnection conn2 = Common.GetConnection();
                 //cmd2 = new OleDbCommand($"SELECT AngajatId FROM Login WHERE Email='{email}'");
                 //cmd2.Connection = conn2;
                 //conn2.Open();
                 //angajatId = (int)cmd2.ExecuteScalar();
                 //conn2.Close();
-                HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
-                response2.EnsureSuccessStatusCode();
-                string responseBody2 = await response2.Content.ReadAsStringAsync();
-                List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                int angajatId = (int)listaParole2[0].AngajatId;
-                this.Hide();
-                var otherform = new HomePage(angajatId);
-                otherform.Closed += (s, args) => this.Close();
-                otherform.Show();
+                
             }
 
         }
@@ -361,7 +371,7 @@ namespace MAINPROJ
                         //cmd.CommandText = updatePasswordQuery;
                         //cmd.ExecuteNonQuery();
                         ///api/LogAuten/UpdatePassword?password=Vlad1234%2A&angajatid=32
-                        HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}",null);
+                        HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/UpdatePassword?password={Encrypt(generated_pass)}&angajatid={angajatId}",null);
                         Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
                     }
                     else
