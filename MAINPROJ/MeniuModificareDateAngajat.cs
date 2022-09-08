@@ -282,48 +282,6 @@ namespace MAINPROJ
             string jsonangajat = JsonConvert.SerializeObject(angajatulMEU);
             var myangj = new StringContent(jsonangajat, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdateDate", myangj);
-
-
-            //OleDbConnection con4 = Common.GetConnection();
-            //con4.Open();
-
-            //dtpDataAngajare.Enabled = false;
-
-            //string numartelefon = txtTelefon.Text;
-            //string email = txtEmail.Text;
-            //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd = new OleDbCommand(modifTel, con4);
-            //cmd.ExecuteNonQuery();
-            //string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifEmail;
-            //cmd.ExecuteNonQuery();
-            //string modifNume = $"UPDATE Angajat SET Nume = '{txtNume.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifNume;
-            //cmd.ExecuteNonQuery();
-            //string modifPrenume = $"UPDATE Angajat SET Prenume = '{txtPrenume.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifPrenume;
-            //cmd.ExecuteNonQuery();
-            //string modifSalariu = $"UPDATE Angajat SET Salariu = '{txtSalariu.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifSalariu;
-            //cmd.ExecuteNonQuery();
-            //string modifOvertime = $"UPDATE Angajat SET Overtime = '{txtOvertime.Text}' WHERE Id = '{angajatIdSelectat}' ";
-            //cmd.CommandText = modifOvertime;
-            //cmd.ExecuteNonQuery();
-            
-            //con4.Close();
-            //OleDbConnection con6 = Common.GetConnection();
-            //con6.Open();
-
-            //string echipaNoua = $"UPDATE Angajat SET IdEchipa = '{comboEchipa.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
-            //cmd = new OleDbCommand(echipaNoua, con6);
-            //cmd.ExecuteNonQuery();
-            //string functieNoua = $"UPDATE Angajat SET IdFunctie = '{comboFunctie.SelectedValue}' WHERE Id = '{angajatIdSelectat}'";
-            //cmd = new OleDbCommand(functieNoua, con6);
-            //cmd.ExecuteNonQuery();
-
-            
-
-            //con6.Close();
         }
 
         private void btnModificareDate_Click(object sender, EventArgs e)

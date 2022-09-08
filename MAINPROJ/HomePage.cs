@@ -114,25 +114,28 @@ namespace MAINPROJ
             comboFunctie.Enabled = false;
             //Accesibile de utilizator
 
-            OleDbConnection con = Common.GetConnection();
-            
+            HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
 
+            Angajat Angj = JsonConvert.DeserializeObject<Angajat>(responseBody);
             //modificare nr telefon
             string numartelefon = txtTelefon.Text;
             string email = txtEmail.Text;
             if (validareNrTelefon(numartelefon) == 1)
             {
-                HttpResponseMessage response = await Common.client.PostAsync(local+$"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
+                HttpResponseMessage response1 = await Common.client.PostAsync(local+$"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
             }
             else
             {
                 txtTelefon.Text = backuptel;
                 MessageBox.Show("Numar de telefon invalid");
             }
+            Angj.NumarTelefon = txtTelefon.Text;
             //modificare email
             if(email.Length <=100)
             {
-                HttpResponseMessage response = await Common.client.PostAsync(local+$"HomePage/UpdateEmail?email={email}&Id={angajatId}", null);
+                HttpResponseMessage response2 = await Common.client.PostAsync(local+$"HomePage/UpdateEmail?email={email}&Id={angajatId}", null);
             }
             else
             {
@@ -143,20 +146,23 @@ namespace MAINPROJ
             //modificare poza
             if (pozaAngajat.Image != start)
             {
-         
-                HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatId}");
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
 
-
-                Angajat listaAngajati = JsonConvert.DeserializeObject<Angajat>(responseBody);
-                listaAngajati.Poza = pozaNoua;
-                string JsonAngajat=JsonConvert.SerializeObject(listaAngajati);
-                var myAngj = new StringContent(JsonAngajat, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response2 = await Common.client.PutAsync(local + $"HomePage/UpdatePoza", myAngj);
-                response2.EnsureSuccessStatusCode();
+                Angj.Poza = pozaNoua;
+               
             }
+            if(txtNume.Text!=Angj.Nume && txtNume.Text!="")
+            {
+                Angj.Nume = txtNume.Text;
+            }
+            if (txtPrenume.Text != Angj.Prenume && txtPrenume.Text != "")
+            {
+                Angj.Prenume = txtPrenume.Text;
+            }
+            string JsonAngajat = JsonConvert.SerializeObject(Angj);
+
+            var myAngj = new StringContent(JsonAngajat, Encoding.UTF8, "application/json");
+            HttpResponseMessage response3 = await Common.client.PutAsync(local + $"HomePage/UpdatePoza", myAngj);
+            response3.EnsureSuccessStatusCode();
         }
 
         private void button6_Click(object sender, EventArgs e)
