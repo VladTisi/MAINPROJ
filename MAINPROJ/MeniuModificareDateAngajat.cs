@@ -376,9 +376,9 @@ namespace MAINPROJ
 
                 }
 
-
-
             }
+
+            
         }
 
         private void MeniuModificareDateAngajat_Load(object sender, EventArgs e)
@@ -545,3 +545,4 @@ namespace MAINPROJ
         }
     }
 }
+
