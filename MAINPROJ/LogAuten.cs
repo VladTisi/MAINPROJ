@@ -247,6 +247,13 @@ namespace MAINPROJ
 
             if (parola == password)
             {
+                String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
+                Random r = new Random();
+                int x = r.Next(100000, 999999);
+                if (Convert.ToInt32(s)==x)
+                {
+
+                }
                 //OleDbConnection conn2 = Common.GetConnection();
                 //cmd2 = new OleDbCommand($"SELECT AngajatId FROM Login WHERE Email='{email}'");
                 //cmd2.Connection = conn2;
@@ -347,14 +354,21 @@ namespace MAINPROJ
                     String s = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
                     if (Int32.Parse(s) == x)
                     {
-                        string selectId = $"SELECT AngajatId FROM Login WHERE Email='{email}'";
-                        cmd.CommandText = selectId;
-                        int angajatId = (int)cmd.ExecuteScalar();
+                        HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
+                        response2.EnsureSuccessStatusCode();
+                        string responseBody2 = await response2.Content.ReadAsStringAsync();
+                        List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                        int angajatId = (int)listaParole2[0].AngajatId;
+                        //string selectId = $"SELECT AngajatId FROM Login WHERE Email='{email}'";
+                        //cmd.CommandText = selectId;
+                        //int angajatId = (int)cmd.ExecuteScalar();
                         string generated_pass = Membership.GeneratePassword(8, 0);
                         Console.WriteLine(generated_pass);
-                        string updatePasswordQuery = $"UPDATE Login SET Parola='{Encrypt(generated_pass)}' WHERE AngajatId={angajatId}";
-                        cmd.CommandText = updatePasswordQuery;
-                        cmd.ExecuteNonQuery();
+                        //string updatePasswordQuery = $"UPDATE Login SET Parola='{Encrypt(generated_pass)}' WHERE AngajatId={angajatId}";
+                        //cmd.CommandText = updatePasswordQuery;
+                        //cmd.ExecuteNonQuery();
+                        ///api/LogAuten/UpdatePassword?password=Vlad1234%2A&angajatid=32
+                        HttpResponseMessage abcd = await Common.client.PostAsync(url+$"api/LogAuten/UpdatePassword?password={Encrypt(generated_pass)}&angajatid={angajatId}",null);
                         Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
                     }
                     else

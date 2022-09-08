@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RandomProj;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +8,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,43 +18,68 @@ namespace MAINPROJ
 {
     public partial class Echipa : Form
     {
-        private void showTable()
+        private async void showTable()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int");
-            con.Open();
-            string comanda = $"SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia], Concediu.Data_inceput, Concediu.Data_sfarsit FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id join Concediu on Concediu.angajatId = Angajat.Id join StareConcediu on StareConcediu.Id = Concediu.stareConcediuId  WHERE Angajat.IdEchipa=(SELECT IdEchipa FROM Angajat where Angajat.Id={angajatId} and StareConcediu.Id = 2 and Concediu.Data_inceput >GETDATE())";
-            using (SqlCommand cmd = new SqlCommand(comanda, con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            tabelConcediu.DataSource = dt;
-                        }
-                    }
-                }
-            con.Close();
-        }
-        private void showEchipa()
-        {
-            SqlConnection con = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int");
-            con.Open();
-            string comanda = $"SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id WHERE Angajat.IdEchipa=(SELECT IdEchipa FROM Angajat where Angajat.Id={angajatId})";
-            using (SqlCommand cmd = new SqlCommand(comanda, con))
+            DataTable dt = new DataTable();
+
+            DataColumn c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("Status");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+
+
+            //Popularea tabelului de angajati
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcedii();
+            foreach (Dto myObject in listaConcedii)
             {
-                cmd.CommandType = CommandType.Text;
-                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                {
-                    using (DataTable dt = new DataTable())
-                    {
-                        sda.Fill(dt);
-                        tabelEchipa.DataSource = dt;
-                    }
-                }
+                DataRow r = dt.NewRow();
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functie;
+                r["Status"] = myObject.Status;
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
             }
-            con.Close();
+            tabelConcediu.DataSource = dt;
+            UpdateFont(tabelConcediu);
+        }
+        private async void showEchipa()
+        {
+            DataTable dt = new DataTable();
+
+            DataColumn c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataAngajarii");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de angajati
+            List<Member> listaConcedii = new List<Member>();
+            listaConcedii = await GetAngajati();
+            foreach (Member myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functia;
+                r["DataAngajarii"] = myObject.DataAngajarii.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
+            }
+            tabelEchipa.DataSource = dt;
+            UpdateFont(tabelEchipa);
         }
         bool sidebarExpand;
         private int angajatId;
@@ -128,21 +156,11 @@ namespace MAINPROJ
 
         private void Echipa_Load(object sender, EventArgs e)
         {
-           
-                // Toggle between True and False.  
-                //monthCalendar1.ShowToday = !monthCalendar1.ShowToday;
-
-
-           
                 if (admin != true && manager != true)
                 {
                     button7.Visible = false;
                     button8.Visible = false;
                 }
-            
-
-
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -183,6 +201,30 @@ namespace MAINPROJ
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        private async ValueTask<List<Member>> GetAngajati()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/Echipa/GetEchipa?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
+            return listaAngajati;
+        }
+        private async ValueTask<List<Dto>> GetConcedii()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/Echipa/GetConcediiEchipa?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
+        }
+        private void UpdateFont(DataGridView a)
+        {
+            //Change cell font
+            foreach (DataGridViewColumn c in a.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+            }
         }
     }
 
