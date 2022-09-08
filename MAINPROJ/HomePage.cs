@@ -143,18 +143,19 @@ namespace MAINPROJ
             //modificare poza
             if (pozaAngajat.Image != start)
             {
-                var updatePoza = new Angajat
-                {
-                    Poza = pozaNoua,
-                    Id = angajatId,
-                    Functie = null,
-                    Login = null,
-                    Concedius = null
-                };
+         
+                HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatId}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
 
-                string poza2 = JsonConvert.SerializeObject(updatePoza);
-                var requestContent = new StringContent(poza2, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await Common.client.PutAsync(local + $"HomePage/UpdatePoza", requestContent);
+
+                Angajat listaAngajati = JsonConvert.DeserializeObject<Angajat>(responseBody);
+                listaAngajati.Poza = pozaNoua;
+                string JsonAngajat=JsonConvert.SerializeObject(listaAngajati);
+                var myAngj = new StringContent(JsonAngajat, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response2 = await Common.client.PutAsync(local + $"HomePage/UpdatePoza", myAngj);
+                response2.EnsureSuccessStatusCode();
             }
         }
 
