@@ -24,6 +24,7 @@ namespace MAINPROJ
         string ValCelula;
         bool admin;
         bool manager;
+        String local = "http://localhost:5031/api/";
         public GestionareConcedii(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
@@ -166,7 +167,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Dto>> GetConcedii()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetConcedii?angajatId={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(local+$"GestionareConcedii/GetConcedii?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
@@ -175,7 +176,7 @@ namespace MAINPROJ
 
         private async void Aproba_Click(object sender, EventArgs e)
         {
-            var response = await Common.client.PutAsync($"http://localhost:5031/api/GestionareConcedii/UpdateStareConcediu?concediuId={ValCelula}",null);
+            var response = await Common.client.PutAsync(local+$"GestionareConcedii/AprobaConcediu?concediuId={ValCelula}",null);
             response.EnsureSuccessStatusCode();
             this.Hide();
             var otherform = new GestionareConcedii(angajatId,admin,manager);
@@ -185,7 +186,7 @@ namespace MAINPROJ
 
         private async void Refuza_Click(object sender, EventArgs e)
         {
-            var response = await Common.client.PutAsync($"http://localhost:5031/api/GestionareConcedii/UpdateStareConcediu?concediuId={ValCelula}", null);
+            var response = await Common.client.PutAsync(local+$"GestionareConcedii/RefuzaConcediu?concediuId={ValCelula}", null);
             response.EnsureSuccessStatusCode();
             this.Hide();
             var otherform = new GestionareConcedii(angajatId,admin,manager);

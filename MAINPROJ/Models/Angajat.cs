@@ -17,9 +17,9 @@ namespace RandomProj.Models
         public int Id { get; set; }
         public string Nume { get; set; } 
         public string Prenume { get; set; } 
-        public int LoginId { get; set; }
+        public int? LoginId { get; set; }
         public DateTime? DataAngajarii { get; set; }
-        public DateTime DataNasterii { get; set; }
+        public DateTime? DataNasterii { get; set; }
         public string Cnp { get; set; }
         public string SerieBuletin { get; set; } 
         public string NrBuletin { get; set; } 
@@ -35,11 +35,11 @@ namespace RandomProj.Models
 
         public int? IdFunctie { get; set; }
         public int? IdEchipa { get; set; }
-        public int? ZileConcediu { get; set; } 
+        public int? ZileConcediu { get; set; }
         public int? ZileConcediuRamase { get; set; }
         public string Poza { get; set; }
 
-        public virtual Echipa Echipa { get; set; }
+        public virtual Echipe Echipa { get; set; }
         public virtual Functie Functie { get; set; }
         public virtual Login Login { get; set; } 
         public virtual Angajat Manager { get; set; }

@@ -30,7 +30,7 @@ namespace MAINPROJ
         bool admin;
         bool manager;
         string pozaNoua;
-        string local = "http://localhost:5031/api";
+        string local = "http://localhost:5031/api/";
         System.Drawing.Image start;
         public int UserId { get; set; }
         public HomePage(int angajatId)
@@ -51,68 +51,60 @@ namespace MAINPROJ
             cmd1 = new OleDbCommand(comanda, con3);
             cmd1.ExecuteNonQuery();
 
-            //HttpResponseMessage response5 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetDateAngajat?Id={angajatId}");
-            //response5.EnsureSuccessStatusCode();
-            //string response5Body = await response5.Content.ReadAsStringAsync();
+            HttpResponseMessage response5 = await Common.client.GetAsync(local + $"meniumodificaredateangajat/getdateangajat?id={angajatId}");
+            response5.EnsureSuccessStatusCode();
+            string response5body = await response5.Content.ReadAsStringAsync();
+            List<Angajat> listaangajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5body);
+            txtNume.Text = listaangajati3[0].Nume;
+            txtPrenume.Text = listaangajati3[0].Prenume;
+            txtDataAngajare.Text = listaangajati3[0].DataAngajarii.ToString();
+            txtOvertime.Text = listaangajati3[0].Overtime.ToString();
+            txtSalariu.Text = listaangajati3[0].Salariu.ToString();
+            txtTelefon.Text = listaangajati3[0].NumarTelefon.ToString();
+            txtSex.Text = listaangajati3[0].Sex;
 
+            HttpResponseMessage response6 = await Common.client.GetAsync(local + $"HomePage/GetFunctieFromId?Id={listaangajati3[0].IdFunctie}");
+            response6.EnsureSuccessStatusCode();
+            string response6body = await response6.Content.ReadAsStringAsync();
+            List<Functie> listafunctie = JsonConvert.DeserializeObject<List<Functie>>(response6body);
+            txtFunctie.Text = listafunctie[0].Nume;
 
+            HttpResponseMessage response7 = await Common.client.GetAsync(local + $"HomePage/GetEchipaFromId?Id={listaangajati3[0].IdEchipa}");
+            response6.EnsureSuccessStatusCode();
+            string response7body = await response7.Content.ReadAsStringAsync();
+            List<Echipe> listaechipa = JsonConvert.DeserializeObject<List<Echipe>>(response7body);
+            txtEchipa.Text = listaechipa[0].Nume;
 
-            //List<Angajat> listaAngajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5Body);
-
-
-
-            //txtNume.Text = listaAngajati3[0].Nume;
-
-
-
-            //txtPrenume.Text = listaAngajati3[0].Prenume;
-
-
-
-            //txtDataAngajare.Text = listaAngajati3[0].DataAngajarii.ToString();
-
-
-
-            //txtOvertime.Text = listaAngajati3[0].Overtime.ToString();
-
-
-
-            //txtSalariu.Text = listaAngajati3[0].Salariu.ToString();
-
-
-
-            //txtTelefon.Text = listaAngajati3[0].NumarTelefon.ToString();
-
-
-
-            //txtSex.Text = listaAngajati3[0].Sex;
-
-
-            string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            var rdr = cmd.ExecuteReader();
+            HttpResponseMessage response8 = await Common.client.GetAsync(local + $"HomePage/GetEmailFromId?Id={listaangajati3[0].Id}");
+            response6.EnsureSuccessStatusCode();
+            string response8body = await response8.Content.ReadAsStringAsync();
+            List<Login> listaemail = JsonConvert.DeserializeObject<List<Login>>(response8body);
+            txtEmail.Text = listaemail[0].Email;
+            //string dateAngajat = $"SELECT  a.Nume as NumeA, a.Prenume, a.Salariu, a.Overtime, a.Numar_telefon, a.Sex, a.Data_angajarii,f.nume as Functie, e.nume as Echipa, l.Email as Email FROM Angajat a join functie f on a.IdFunctie = f.Id join echipa e on a.IdEchipa = e.Id join login l on l.AngajatId = a.Id where a.id ={angajatId}";
+            //cmd = new OleDbCommand(dateAngajat, con3);
+            //var rdr = cmd.ExecuteReader();
             showImage();
             start = pozaAngajat.Image;
-            while (rdr.Read())
-            {
-                txtNume.Text = rdr.GetString(0);
-                txtPrenume.Text = rdr.GetString(1);
-                txtSalariu.Text = rdr.GetValue(2).ToString();
-                txtOvertime.Text = rdr.GetValue(3).ToString();
-                txtTelefon.Text = rdr.GetValue(4).ToString();
-                txtSex.Text = rdr.GetValue(5).ToString();
-                txtDataAngajare.Text = rdr.GetValue(6).ToString();
-                txtFunctie.Text = rdr.GetValue(7).ToString();
-                txtEchipa.Text = rdr.GetValue(8).ToString();
-                txtEmail.Text = rdr.GetValue(9).ToString();
-            }
+            //while (rdr.Read())
+            //{
+            //    txtNume.Text = rdr.GetString(0);
+            //    txtPrenume.Text = rdr.GetString(1);
+            //    txtSalariu.Text = rdr.GetValue(2).ToString();
+            //    txtOvertime.Text = rdr.GetValue(3).ToString();
+            //    txtTelefon.Text = rdr.GetValue(4).ToString();
+            //    txtSex.Text = rdr.GetValue(5).ToString();
+            //    txtDataAngajare.Text = rdr.GetValue(6).ToString();
+            //    txtFunctie.Text = rdr.GetValue(7).ToString();
+            //    txtEchipa.Text = rdr.GetValue(8).ToString();
+            //    txtEmail.Text = rdr.GetValue(9).ToString();
+            //}
 
-            var response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            var response = await Common.client.GetAsync(local + $"GestionareConcedii/GetAdmin?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             admin = Convert.ToBoolean(responseBody);
 
-            response = await Common.client.GetAsync($"http://localhost:5031/api/GestionareConcedii/GetAdmin?angajatId={angajatId}");
+            response = await Common.client.GetAsync(local + $"GestionareConcedii/GetManager?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             responseBody = await response.Content.ReadAsStringAsync();
             manager = Convert.ToBoolean(responseBody);
@@ -176,7 +168,7 @@ namespace MAINPROJ
                 //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
                 //cmd = new OleDbCommand(modifTel, con);
                 //cmd.ExecuteNonQuery();
-                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
             }
             else
             {
@@ -187,7 +179,7 @@ namespace MAINPROJ
             //modificare email
             if(email.Length <=100)
             {
-                HttpResponseMessage response = await Common.client.PostAsync(local+$"UpdateEmail?email={email}&Id={angajatId}", null);
+                HttpResponseMessage response = await Common.client.PostAsync(local+$"HomePage/UpdateEmail?email={email}&Id={angajatId}", null);
 
                 //string modifEmail = $"UPDATE Login SET Email = '{email}' WHERE Id = '{angajatId}' ";
                 //cmd.CommandText = modifEmail;
@@ -208,13 +200,17 @@ namespace MAINPROJ
                 var updatePoza = new Angajat
                 {
                     Poza = pozaNoua,
-                    Id = angajatId
+                    Id = angajatId,
+                    Functie = null,
+                    Login = null,
+                    Concedius = null
+
                 };
 
                 string poza2 = JsonConvert.SerializeObject(updatePoza);
                 var requestContent = new StringContent(poza2, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdatePoza",requestContent);
-
+                HttpResponseMessage response = await Common.client.PutAsync(local+$"HomePage/UpdatePoza",requestContent);
+               // response.EnsureSuccessStatusCode();
                 //string modifPoza = $"UPDATE Angajat SET Poza = '{pozaNoua}' WHERE Id = '{angajatId}' ";
                 //cmd.CommandText = modifPoza;
                 //cmd.ExecuteNonQuery();
@@ -309,7 +305,7 @@ namespace MAINPROJ
 
         private async void showImage()
         {
-            HttpResponseMessage response = await Common.client.GetAsync(local + $"/HomePage/GetPoza?Id={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(local+$"HomePage/GetPoza?Id={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
 

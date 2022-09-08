@@ -113,15 +113,9 @@
     <Compile Include="MeniuModificareDateAngajat.Designer.cs">
       <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Recrutare.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Recrutare.Designer.cs">
-      <DependentUpon>Recrutare.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Angajat.cs" />
     <Compile Include="Models\Concediu.cs" />
-    <Compile Include="Models\Echipa.cs" />
+    <Compile Include="Models\Echipe.cs" />
     <Compile Include="Models\Functie.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Login.cs" />
@@ -203,9 +197,6 @@
     <EmbeddedResource Include="Recrutam.resx">
       <DependentUpon>Recrutam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Recrutare.resx">
-      <DependentUpon>Recrutare.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegisterPage.resx">
       <DependentUpon>RegisterPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +252,8 @@
     <Content Include="Barbed_wire151.png" />
     <Content Include="istockphoto-1199229384-612x612.jpg" />
     <Content Include="Prison_Break_logo.png" />
+    <Content Include="Resources\king.png" />
+    <Content Include="Resources\rsz_sheriff.png" />
     <None Include="Resources\image %281%29.png" />
     <None Include="Resources\image.png" />
     <None Include="Resources\reback.jpg" />

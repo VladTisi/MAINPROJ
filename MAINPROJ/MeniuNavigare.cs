@@ -11,6 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using RandomProj;
+using System.Net.Http;
 
 namespace MAINPROJ
 {
@@ -59,8 +62,9 @@ namespace MAINPROJ
         private void MeniuNavigare_Load(object sender, EventArgs e)
         {
             
-                if (admin != true && manager != true)
+                if (admin == false && manager == false)
                 {
+                    button6.Visible = false;
                     button7.Visible = false;
                     button8.Visible = false;
                 }
@@ -73,24 +77,45 @@ namespace MAINPROJ
             Application.Exit();
         }
         
-    private void showTable()
+    private async void showTable()
         {
-            string constring = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=PrisonBreak;Persist Security Info=True;User ID=internship2022;Password=int";
-            using (SqlConnection con = new SqlConnection(constring))
+            DataTable dt = new DataTable();
+            
+            DataColumn c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataAngajarii");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de angajati
+            List<Member> listaConcedii = new List<Member>();
+            listaConcedii = await GetAngajati();
+            foreach (Member myObject in listaConcedii)
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT Angajat.Prenume,Angajat.Nume,Functie.Nume as [Functia],Angajat.Data_Angajarii as [Data angajarii] FROM Angajat join Functie on Angajat.IdFunctie=Functie.Id", con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            tabelAngajati.DataSource = dt;
-                        }
-                    }
-                }
+                DataRow r = dt.NewRow();
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functia;
+                r["DataAngajarii"] = myObject.DataAngajarii.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
             }
+            tabelAngajati.DataSource = dt;
+            UpdateFont();
+
+            //this.tabelAngajati.Columns["Id"].Visible = false;
+            dt = null;
+            listaConcedii = null;
+        }
+        private async ValueTask<List<Member>> GetAngajati()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/MeniuNavigare/GetNumePrenumeFunctiaDataAngajarii");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
+            return listaAngajati;
         }
         /////////////////Butoane meniu navigare///////////////////
         private void button1_Click(object sender, EventArgs e)
@@ -146,5 +171,22 @@ namespace MAINPROJ
             otherform.Show();
         }
         //////////////////////////////////////////////////////////
+        ///
+        private void UpdateFont()
+        {
+            //Change cell font
+            foreach (DataGridViewColumn c in tabelAngajati.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new RegisterPage(0,"","",admin,manager,angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }

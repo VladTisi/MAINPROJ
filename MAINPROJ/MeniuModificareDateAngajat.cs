@@ -520,13 +520,5 @@ namespace MAINPROJ
                 }
             }
         }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new Recrutam(angajatId,admin,manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
     }
 }
