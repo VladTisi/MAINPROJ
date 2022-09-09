@@ -45,8 +45,10 @@ namespace MAINPROJ
         {
             SetDate(angajatId);
             showImage(angajatId);
-            AddItems();
+            await AddItems();
             start = pozaAngajat.Image;
+            comboListaAngajati.SelectedValue = angajatId;
+            angajatIdSelectat = angajatId;
 
             var response = await Common.client.GetAsync(local + $"GestionareConcedii/GetAdmin?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
@@ -87,91 +89,6 @@ namespace MAINPROJ
             }
             return 0;
         }
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            btnUpdatePoza.Visible = false;
-
-            btnSalvareModificari.Visible = false;
-
-            txtTelefon.Enabled = false;
-
-            btnSalvareModificari.Visible = false;
-
-            txtEmail.Enabled = false;
-
-            txtNume.Enabled = false;
-
-            txtPrenume.Enabled = false;
-
-            txtOvertime.Enabled = false;
-
-            txtSalariu.Enabled = false;
-
-            txtDataAngajare.Enabled = false;
-
-            comboEchipa.Enabled = false;
-
-            comboFunctie.Enabled = false;
-            //Accesibile de utilizator
-
-            HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatId}");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            Angajat Angj = JsonConvert.DeserializeObject<Angajat>(responseBody);
-            //modificare nr telefon
-            string numartelefon = txtTelefon.Text;
-            string email = txtEmail.Text;
-            if (validareNrTelefon(numartelefon) == 1)
-            {
-                HttpResponseMessage response1 = await Common.client.PostAsync(local+$"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}",null);
-            }
-            else
-            {
-                txtTelefon.Text = backuptel;
-                MessageBox.Show("Numar de telefon invalid");
-            }
-            Angj.NumarTelefon = txtTelefon.Text;
-            //modificare email
-            if(email.Length <=100)
-            {
-                HttpResponseMessage response2 = await Common.client.PostAsync(local+$"HomePage/UpdateEmail?email={email}&Id={angajatId}", null);
-            }
-            else
-            {
-                txtEmail.Text = backupmail;
-                MessageBox.Show("Email invalid");
-            }
-
-            //modificare poza
-            if (pozaAngajat.Image != start)
-            {
-                Angj.Poza = pozaNoua;
-            }
-            if(txtNume.Text!=Angj.Nume && txtNume.Text!="")
-            {
-                Angj.Nume = txtNume.Text;
-            }
-            if (txtPrenume.Text != Angj.Prenume && txtPrenume.Text != "")
-            {
-                Angj.Prenume = txtPrenume.Text;
-            }
-            if(txtOvertime.Text!=Angj.Overtime && txtOvertime.Text!= "")
-            {
-                Angj.Overtime=txtOvertime.Text;
-            }
-            if (txtSalariu.Text != Angj.Salariu && txtSalariu.Text != "")
-            {
-                Angj.Salariu = txtSalariu.Text;
-            }
-
-            string JsonAngajat = JsonConvert.SerializeObject(Angj);
-
-            var myAngj = new StringContent(JsonAngajat, Encoding.UTF8, "application/json");
-            HttpResponseMessage response3 = await Common.client.PutAsync(local + $"HomePage/UpdatePoza", myAngj);
-            response3.EnsureSuccessStatusCode();
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             backuptel = txtTelefon.Text;
@@ -193,11 +110,13 @@ namespace MAINPROJ
 
                 txtSalariu.Enabled = true;
 
-                txtDataAngajare.Enabled = true;
+                dtpDataAngajare.Enabled = true;
 
                 comboEchipa.Enabled = true;
 
                 comboFunctie.Enabled = true;
+
+
             }    
 
         }
@@ -305,7 +224,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
+            var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -344,7 +263,7 @@ namespace MAINPROJ
             angajatIdSelectat = Convert.ToInt32(respIdBody);
 
 
-            SetDate(angajatIdSelectat);
+            
 
             con3.Close();
 
@@ -373,8 +292,9 @@ namespace MAINPROJ
             comboFunctie.DisplayMember = "Nume";
 
             showImage(angajatIdSelectat);
+            SetDate(angajatIdSelectat);
         }
-        private async void AddItems()
+        private async ValueTask<int> AddItems()
         {
             HttpResponseMessage response = await Common.client.GetAsync(local+$"MeniuModificareDateAngajat/CheckAdmin?Id={angajatId}");
             response.EnsureSuccessStatusCode();
@@ -418,6 +338,7 @@ namespace MAINPROJ
                     comboListaAngajati.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
                 }
             }
+            return 1;
         }
         public async void SetDate(int angajatId)
         {
@@ -453,12 +374,154 @@ namespace MAINPROJ
             txtEmail.Text = listaemail[0].Email;
         }
 
-        private void button6_Click_1(object sender, EventArgs e)
+        private async void btnSalvareModificari_Click(object sender, EventArgs e)
+        {
+            btnUpdatePoza.Visible = false;
+
+            btnSalvareModificari.Visible = false;
+
+            txtTelefon.Enabled = false;
+
+            btnSalvareModificari.Visible = false;
+
+            txtEmail.Enabled = false;
+
+            txtNume.Enabled = false;
+
+            txtPrenume.Enabled = false;
+
+            txtOvertime.Enabled = false;
+
+            txtSalariu.Enabled = false;
+
+            dtpDataAngajare.Enabled = false;
+
+            comboEchipa.Enabled = false;
+
+            comboFunctie.Enabled = false;
+            //Accesibile de utilizator
+
+            HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatIdSelectat}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            Angajat Angj = JsonConvert.DeserializeObject<Angajat>(responseBody);
+            //modificare nr telefon
+            string numartelefon = txtTelefon.Text;
+            string email = txtEmail.Text;
+            if (validareNrTelefon(numartelefon) == 1)
+            {
+                HttpResponseMessage response1 = await Common.client.PostAsync(local + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatIdSelectat}", null);
+            }
+            else
+            {
+                txtTelefon.Text = backuptel;
+                MessageBox.Show("Numar de telefon invalid");
+            }
+            Angj.NumarTelefon = txtTelefon.Text;
+            //modificare email
+            if (email.Length <= 100)
+            {
+                HttpResponseMessage response2 = await Common.client.PostAsync(local + $"HomePage/UpdateEmail?email={email}&Id={angajatIdSelectat}", null);
+            }
+            else
+            {
+                txtEmail.Text = backupmail;
+                MessageBox.Show("Email invalid");
+            }
+
+            //modificare poza
+            if (pozaAngajat.Image != start)
+            {
+                if (pozaNoua != null)
+                {
+                    Angj.Poza = pozaNoua;
+                }
+                string JsonAngajat = JsonConvert.SerializeObject(Angj);
+                var myAngj = new StringContent(JsonAngajat, Encoding.UTF8, "application/json");
+                HttpResponseMessage response3 = await Common.client.PutAsync(local + $"HomePage/UpdatePoza", myAngj);
+                response3.EnsureSuccessStatusCode();
+            }
+
+            if (txtNume.Text != Angj.Nume && txtNume.Text != "")
+            {
+                Angj.Nume = txtNume.Text;
+            }
+            else
+            {
+                txtNume.Text = Angj.Nume;
+            }
+
+            if (txtPrenume.Text != Angj.Prenume && txtPrenume.Text != "")
+            {
+                Angj.Prenume = txtPrenume.Text;
+            }
+            else
+            {
+                txtPrenume.Text = Angj.Prenume;
+            }
+
+            if (txtOvertime.Text != Angj.Overtime && txtOvertime.Text != "")
+            {
+                Angj.Overtime = txtOvertime.Text;
+            }
+            else
+            {
+                txtOvertime.Text = Angj.Overtime;
+            }
+
+            if (txtSalariu.Text != Angj.Salariu && txtSalariu.Text != "")
+            {
+                Angj.Salariu = txtSalariu.Text;
+            }
+            else
+            {
+                txtSalariu.Text = Angj.Salariu;
+            }
+
+            if(txtDataAngajare.Text!= ((DateTime)(Angj.DataAngajarii)).ToString("dd/mm/yy") && txtDataAngajare.Text!="")
+            {
+                Angj.DataAngajarii = Convert.ToDateTime(txtDataAngajare.Text);
+            }
+
+            HttpResponseMessage response6 = await Common.client.GetAsync(local + $"HomePage/GetFunctieFromId?Id={Angj.IdFunctie}");
+            response6.EnsureSuccessStatusCode();
+            string response6body = await response6.Content.ReadAsStringAsync();
+            List<Functie> listafunctie = JsonConvert.DeserializeObject<List<Functie>>(response6body);
+            if (comboFunctie.Text != listafunctie[0].Nume)
+            {
+                Angj.IdFunctie = (int)comboFunctie.SelectedValue;
+            }
+
+            // if(comboEchipa.Text!=)
+            HttpResponseMessage response7 = await Common.client.GetAsync(local + $"HomePage/GetEchipaFromId?Id={Angj.IdEchipa}");
+            response6.EnsureSuccessStatusCode();
+            string response7body = await response7.Content.ReadAsStringAsync();
+            List<Echipe> listaechipa = JsonConvert.DeserializeObject<List<Echipe>>(response7body);
+            if (comboEchipa.Text != listaechipa[0].Nume)
+            {
+                Angj.IdEchipa = (int)comboEchipa.SelectedValue;
+            }
+
+            string jsonangajat = JsonConvert.SerializeObject(Angj);
+            var myangj = new StringContent(jsonangajat, Encoding.UTF8, "application/json");
+            HttpResponseMessage respons4 = await Common.client.PostAsync(local + $"MeniuModificareDateAngajat/UpdateDate", myangj);
+            response6.EnsureSuccessStatusCode();
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new SchimbareParola(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void dtpDataAngajare_ValueChanged(object sender, EventArgs e)
+        {
+            txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
+            OleDbConnection con5 = Common.GetConnection();
         }
     }
 }

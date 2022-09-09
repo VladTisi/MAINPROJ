@@ -288,7 +288,7 @@ namespace MAINPROJ
             comboFunctie.Enabled = false;
 
 
-            HttpResponseMessage response5 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetDateleAngajat?Id={angajatId}");
+            HttpResponseMessage response5 = await Common.client.GetAsync(local+$"MeniuModificareDateAngajat/GetDateleAngajat?Id={angajatId}");
             response5.EnsureSuccessStatusCode();
             string response5Body = await response5.Content.ReadAsStringAsync();
 
