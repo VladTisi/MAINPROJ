@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using RandomProj;
 using System.Net.Http;
+using static System.Net.WebRequestMethods;
 
 namespace MAINPROJ
 {
@@ -24,6 +25,7 @@ namespace MAINPROJ
         bool sidebarExpand;
         bool admin;
         bool manager;
+        string server = "http://localhost:5031/api/";
         public MeniuNavigare(int angajatId,bool admin,bool manager)
         {
             InitializeComponent();
@@ -111,7 +113,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Member>> GetAngajati()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/MeniuNavigare/GetNumePrenumeFunctiaDataAngajarii");
+            HttpResponseMessage response = await Common.client.GetAsync(server + $"MeniuNavigare/GetNumePrenumeFunctiaDataAngajarii");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);

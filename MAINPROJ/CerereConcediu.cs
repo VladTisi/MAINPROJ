@@ -147,6 +147,7 @@ namespace MAINPROJ
             else
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
+                Console.WriteLine(cmbInlocuitor.SelectedIndex); 
                 string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId,InlocuitorId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId},{cmbInlocuitor.SelectedIndex})";
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();

@@ -14,6 +14,7 @@ using RandomProj.Models;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using RandomProj;
+using System.Web.UI.WebControls;
 
 namespace MAINPROJ
 {
@@ -25,6 +26,7 @@ namespace MAINPROJ
         bool admin;
         bool manager;
         String local = "http://localhost:5031/api/";
+        DataTable dt = new DataTable();
         public GestionareConcedii(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace MAINPROJ
         private async void GestionareConcedii_Load(object sender, EventArgs e)
         {
             //Crearea tabelului de concedii
-            DataTable dt = new DataTable();
+            
             DataColumn c = new DataColumn("Id");
             dt.Columns.Add(c);
             c = new DataColumn("Nume");
@@ -60,8 +62,8 @@ namespace MAINPROJ
             dt.Columns.Add(c);
             c = new DataColumn("DataSfarsit");
             dt.Columns.Add(c);
-            c = new DataColumn("Inlocuitor");
-            dt.Columns.Add(c);
+            //c = new DataColumn("Inlocuitor");
+            //dt.Columns.Add(c);
 
 
 
@@ -84,8 +86,7 @@ namespace MAINPROJ
             UpdateFont();
 
             this.tabelConcedii.Columns["Id"].Visible = false;
-            dt = null;
-            listaConcedii = null;
+            
         }
        
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -196,12 +197,14 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void SearchBox_TextChanged(object sender, EventArgs e)
         {
-            int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
-            ValCelula = Convert.ToString(selectedRow.Cells["Id"].Value);
-            Console.WriteLine(ValCelula);
+            DataView dv = dt.DefaultView;
+            dv.RowFilter = "Nume LIKE '" + SearchBox.Text + "%'";
+            tabelConcedii.DataSource = dv;
         }
+
+
+
     }
 }

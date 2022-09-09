@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using MAINPROJ;
 using Newtonsoft.Json;
 using RandomProj;
+using static System.Net.WebRequestMethods;
 
 namespace MAINPROJ
 {
@@ -22,6 +23,7 @@ namespace MAINPROJ
         private int angajatId;
         bool admin;
         bool manager;
+        string server = "http://localhost:5031/api/";
         public ConcediiRefuzate(int angajatId,bool admin,bool manager)
         {
             InitializeComponent();
@@ -181,7 +183,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Dto>> GetConcediiAsteptare()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/PendingHolidays?Id={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(server + $"ConcediiPersonale/PendingHolidays?Id={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
@@ -189,7 +191,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Dto>> GetConcediiRefuzate()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/DisapprovedHolidays?Id={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(server + $"ConcediiPersonale/DisapprovedHolidays?Id={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
@@ -197,7 +199,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Dto>> GetConcediiAcceptate()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/ConcediiPersonale/ApprovedHolidays?Id={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(server + $"ConcediiPersonale/ApprovedHolidays?Id={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
