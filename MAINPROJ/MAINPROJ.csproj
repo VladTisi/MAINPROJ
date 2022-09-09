@@ -284,6 +284,7 @@
     <Content Include="Prison_Break_logo.png" />
     <Content Include="Resources\king.png" />
     <None Include="Resources\Magnifying_glass_icon.svg.png" />
+    <None Include="Resources\logouts.png" />
     <Content Include="Resources\rsz_sheriff.png" />
     <None Include="Resources\image %281%29.png" />
     <None Include="Resources\image.png" />

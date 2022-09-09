@@ -204,7 +204,12 @@ namespace MAINPROJ
             tabelConcedii.DataSource = dv;
         }
 
-
-
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
     }
 }

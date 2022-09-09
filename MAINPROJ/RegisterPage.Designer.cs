@@ -71,7 +71,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -540,25 +540,25 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.btnLogOut);
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 7;
             // 
-            // button9
+            // btnLogOut
             // 
-            this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Image = global::MAINPROJ.Properties.Resources.king;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(-2, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(199, 57);
-            this.button9.TabIndex = 1;
-            this.button9.Text = "         Alterare Date";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btnLogOut.BackColor = System.Drawing.Color.White;
+            this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
+            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(199, 60);
+            this.btnLogOut.TabIndex = 2;
+            this.btnLogOut.Text = "         Deconectare";
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // sidebarTimer
             // 
@@ -663,7 +663,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Timer sidebarTimer;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

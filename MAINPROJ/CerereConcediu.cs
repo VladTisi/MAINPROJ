@@ -82,7 +82,6 @@ namespace MAINPROJ
             if (admin != true && manager != 3)
             {
                 button7.Visible = false;
-                button8.Visible = false;
             }
 
             
@@ -220,6 +219,14 @@ namespace MAINPROJ
             string Nume = ((Angajat)e.ListItem).Nume;
             string Prenume = ((Angajat)e.ListItem).Prenume;
             e.Value = Nume + " " + Prenume;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
 
         private void cmbTipConcediu_SelectedIndexChanged(object sender, EventArgs e)
