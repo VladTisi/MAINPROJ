@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MAINPROJ
 {
@@ -65,40 +66,33 @@ namespace MAINPROJ
             cmbInlocuitor.DataSource = bindingSourceAngajat;
             cmbInlocuitor.ValueMember = "Id";
             cmbInlocuitor.DisplayMember = "Nume";
-            foreach (Angajat angajat in listaAngajati2)
-            {
-                //cmbInlocuitor.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
-            }
+
+            
 
             this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
-            // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
+            
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"ConcediiPersonale/GetAdminFunctieFromAngajat?angajatId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Angajat> listaParole = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            bool admin = (bool)listaParole[0].EsteAdmin;
+            int manager = (int)listaParole[0].IdFunctie;
 
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
 
-            string dateAngajat = $"SELECT  esteAdmin, IdFunctie FROM Angajat WHERE Id={angajatId}";
-            cmd = new OleDbCommand(dateAngajat, con3);
-            var rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            if (admin != true && manager != 3)
             {
-                bool admin = rdr.GetBoolean(0);
-                int manager = rdr.GetInt32(1);
-                if (admin != true && manager != 3)
-                {
-                    button7.Visible = false;
-                }
+                button7.Visible = false;
+                button8.Visible = false;
             }
 
-            string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId})  select @numar - isnull(sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1),0) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2";
-            cmd= new OleDbCommand(comanda, con3);
-            OleDbDataReader reader=cmd.ExecuteReader();
-            reader.Read();
-            label5.Text = reader["Zile"].ToString();
-            con3.Close();
-          
-             
+            
+            HttpResponseMessage response2 = await Common.client.GetAsync(url+$"CerereConcediu/GetZileRamase?angajatId={angajatId}");
+            response2.EnsureSuccessStatusCode();
+            string responseBody2 = await response2.Content.ReadAsStringAsync();
+            int s = Convert.ToInt32(responseBody2);
+            label5.Text=Convert.ToString(s);
+
+
         }
 
       
@@ -107,51 +101,33 @@ namespace MAINPROJ
             Application.Exit();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+       
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            if (dtpDataIncepere.Value<DateTime.Now)
-            {
-                MessageBox.Show("Data inceperii nu poate fi in trecut!");
-                dtpDataIncepere.Value=DateTime.Now;
-            }
-        }
+       
 
         private void dtpDataSfarsit_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpDataSfarsit.Value<DateTime.Now)
+            if (dtpDataSfarsit.Value<dtpDataIncepere.Value)
             {
                 MessageBox.Show("Data sfarsitului nu poate fi in trecut");
                 dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            
-            OleDbConnection con = Common.GetConnection();
-            con.Open();
-            //string sss = $"asdasd{dtpDataIncepere.Value},{dtpDataIncepere.Value}";
-            //Console.WriteLine(sss);
-            
-            string comanda = $"select datediff(day,'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}')+1";
-            cmd = new OleDbCommand(comanda, con);
-            int nr = (int)cmd.ExecuteScalar();
+
+
+            int nr = (dtpDataSfarsit.Value-dtpDataIncepere.Value).Days+1;
+            Console.WriteLine(nr);
             if (nr > Convert.ToInt32(label5.Text))
                 MessageBox.Show("Nu ai destule zile de concediu");
-            
+
             else
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
-                Console.WriteLine(cmbInlocuitor.SelectedIndex); 
-                string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId,InlocuitorId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId},{cmbInlocuitor.SelectedIndex})";
-                cmd = new OleDbCommand(register, con);
-                cmd.ExecuteNonQuery();
+                HttpResponseMessage response = await Common.client.PostAsync(url+$"CerereConcediu/InsertConcediu?TipConcediuId={cmbTipConcediu.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}&angajatId={angajatId}&inlocuitorId={cmbInlocuitor.SelectedValue}",null);
             }
-            con.Close();
             dtpDataIncepere.Value=DateTime.Now.AddDays(1);
             dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
             Console.WriteLine(nr);
@@ -237,9 +213,7 @@ namespace MAINPROJ
 
         }
 
-        private async void cmbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+        
 
         private void ComboBoxFormat(object sender, ListControlConvertEventArgs e)
         {
@@ -254,6 +228,15 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void cmbTipConcediu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbInlocuitor_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

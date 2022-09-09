@@ -103,7 +103,6 @@
             this.dtpDataIncepere.Name = "dtpDataIncepere";
             this.dtpDataIncepere.Size = new System.Drawing.Size(200, 20);
             this.dtpDataIncepere.TabIndex = 2;
-            this.dtpDataIncepere.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dtpDataSfarsit
             // 
@@ -129,9 +128,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(316, 251);
+            this.label2.Location = new System.Drawing.Point(305, 251);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 20);
+            this.label2.Size = new System.Drawing.Size(157, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Data sfarsitului";
             // 
@@ -145,7 +144,7 @@
             this.cmbTipConcediu.Size = new System.Drawing.Size(200, 21);
             this.cmbTipConcediu.TabIndex = 6;
             this.cmbTipConcediu.ValueMember = "Id";
-            this.cmbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.cmbTipConcediu_SelectedIndexChanged);
             // 
             // tipConcediuBindingSource1
             // 
@@ -393,7 +392,7 @@
             this.cmbInlocuitor.Name = "cmbInlocuitor";
             this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
             this.cmbInlocuitor.TabIndex = 13;
-            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged);
+            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged_1);
             this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
             // 
             // btnLogOut
