@@ -269,13 +269,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
+       
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -354,6 +348,15 @@ namespace MAINPROJ
             Aproba.Visible = false;
         }
 
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+    }
+}
         private void tabelConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             

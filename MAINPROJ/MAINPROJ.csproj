@@ -124,18 +124,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Recrutam.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Recrutam.Designer.cs">
-      <DependentUpon>Recrutam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MeniuModificareDateAngajat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MeniuModificareDateAngajat.Designer.cs">
-      <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Angajat.cs" />
     <Compile Include="Models\Concediu.cs" />
     <Compile Include="Models\Echipe.cs" />
@@ -204,9 +192,6 @@
     <EmbeddedResource Include="LogAuten.resx">
       <DependentUpon>LogAuten.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuModificareDateAngajat.resx">
-      <DependentUpon>MeniuModificareDateAngajat.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MeniuNavigare.resx">
       <DependentUpon>MeniuNavigare.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,9 +205,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Recrutam.resx">
-      <DependentUpon>Recrutam.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegisterPage.resx">
       <DependentUpon>RegisterPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +289,7 @@
     <None Include="Resources\Magnifying_glass_icon.svg.png" />
     <None Include="Resources\png-clipart-symbolize-x.png" />
     <None Include="Resources\png-transparent-x-log-x-plane-logo-aircraft-roblox-x-mark-transport-bird-silhouette-thumbnail.png" />
+    <None Include="Resources\logouts.png" />
     <Content Include="Resources\rsz_sheriff.png" />
     <None Include="Resources\image %281%29.png" />
     <None Include="Resources\image.png" />

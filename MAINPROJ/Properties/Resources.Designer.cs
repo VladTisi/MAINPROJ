@@ -173,6 +173,16 @@ namespace MAINPROJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logouts {
+            get {
+                object obj = ResourceManager.GetObject("logouts", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Magnifying_glass_icon_svg {
             get {
                 object obj = ResourceManager.GetObject("Magnifying_glass_icon.svg", resourceCulture);

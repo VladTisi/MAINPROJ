@@ -159,7 +159,6 @@ namespace MAINPROJ
                 if (admin != true && manager != true)
                 {
                     button7.Visible = false;
-                    button8.Visible = false;
                 }
         }
 
@@ -185,13 +184,6 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
 
         private void tabelEchipa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -230,6 +222,14 @@ namespace MAINPROJ
         private void tabelEchipa_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 

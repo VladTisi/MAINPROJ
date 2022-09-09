@@ -56,12 +56,12 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbInlocuitor = new System.Windows.Forms.ComboBox();
+            this.btnLogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -103,7 +103,6 @@
             this.dtpDataIncepere.Name = "dtpDataIncepere";
             this.dtpDataIncepere.Size = new System.Drawing.Size(200, 20);
             this.dtpDataIncepere.TabIndex = 2;
-            this.dtpDataIncepere.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dtpDataSfarsit
             // 
@@ -129,9 +128,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(316, 251);
+            this.label2.Location = new System.Drawing.Point(305, 251);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 20);
+            this.label2.Size = new System.Drawing.Size(157, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Data sfarsitului";
             // 
@@ -145,7 +144,7 @@
             this.cmbTipConcediu.Size = new System.Drawing.Size(200, 21);
             this.cmbTipConcediu.TabIndex = 6;
             this.cmbTipConcediu.ValueMember = "Id";
-            this.cmbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.cmbTipConcediu_SelectedIndexChanged);
             // 
             // tipConcediuBindingSource1
             // 
@@ -341,25 +340,11 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.button8);
+            this.panel7.Controls.Add(this.btnLogOut);
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 9;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Image = global::MAINPROJ.Properties.Resources.king;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(-2, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(199, 57);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "         Alterare Date";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // sidebarTimer
             // 
@@ -407,8 +392,22 @@
             this.cmbInlocuitor.Name = "cmbInlocuitor";
             this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
             this.cmbInlocuitor.TabIndex = 13;
-            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged);
+            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged_1);
             this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.White;
+            this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
+            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(199, 60);
+            this.btnLogOut.TabIndex = 5;
+            this.btnLogOut.Text = "         Deconectare";
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // CerereConcediu
             // 
@@ -485,11 +484,11 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.BindingSource tipConcediuBindingSource1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbInlocuitor;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

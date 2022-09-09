@@ -221,7 +221,6 @@ namespace MAINPROJ
 
             if (!admin && !manager )
                 {
-                    button10.Visible = false;
                     button9.Visible = false;
                 }
 
@@ -251,13 +250,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId, admin, manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
+        
         private void UpdateFont(DataGridView date)
         {
             //Change cell font
@@ -265,6 +258,14 @@ namespace MAINPROJ
             {
                 c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
             }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }

@@ -65,7 +65,6 @@ namespace MAINPROJ
             if (admin != true && manager != true)
             {
                     button7.Visible = false;
-                    button8.Visible = false;
                     comboListaAngajati.Visible = false;
             }
         }
@@ -501,6 +500,14 @@ namespace MAINPROJ
         {
             txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
             OleDbConnection con5 = Common.GetConnection();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }

@@ -73,7 +73,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -83,7 +82,6 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboListaAngajati
@@ -536,25 +534,10 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.button8);
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 7;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Image = global::MAINPROJ.Properties.Resources.king;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(-2, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(199, 57);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "         Alterare Date";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // MeniuModificareDateAngajat
             // 
@@ -605,7 +588,6 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,6 +639,5 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button8;
     }
 }

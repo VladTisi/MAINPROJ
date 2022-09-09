@@ -460,13 +460,6 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId, admin, manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
 
         public async void GetFunctii()
         {
@@ -534,6 +527,14 @@ namespace MAINPROJ
             cmbNumeEchipa.DataSource = dt;
 
             return;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
