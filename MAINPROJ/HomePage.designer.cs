@@ -74,7 +74,7 @@
             this.comboFunctie = new System.Windows.Forms.ComboBox();
             this.comboEchipa = new System.Windows.Forms.ComboBox();
             this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -236,7 +236,7 @@
             this.btnSalvareModificari.Text = "Salvare modificari";
             this.btnSalvareModificari.UseVisualStyleBackColor = false;
             this.btnSalvareModificari.Visible = false;
-            this.btnSalvareModificari.Click += new System.EventHandler(this.button2_Click);
+            this.btnSalvareModificari.Click += new System.EventHandler(this.btnSalvareModificari_Click);
             // 
             // txtEmail
             // 
@@ -554,15 +554,19 @@
             this.dtpDataAngajare.Name = "dtpDataAngajare";
             this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
             this.dtpDataAngajare.TabIndex = 78;
+            this.dtpDataAngajare.ValueChanged += new System.EventHandler(this.dtpDataAngajare_ValueChanged);
             // 
-            // button6
+            // btnReset
             // 
-            this.button6.Location = new System.Drawing.Point(267, 408);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 34);
-            this.button6.TabIndex = 79;
-            this.button6.Text = "Resetare\r\nParola";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnReset.BackColor = System.Drawing.Color.White;
+            this.btnReset.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(262, 409);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(85, 50);
+            this.btnReset.TabIndex = 79;
+            this.btnReset.Text = "Resetare\r\nParola";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // HomePage
             // 
@@ -570,7 +574,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.comboEchipa);
             this.Controls.Add(this.comboFunctie);
@@ -666,6 +670,6 @@
         private System.Windows.Forms.ComboBox comboEchipa;
         private System.Windows.Forms.DateTimePicker dtpDataAngajare;
         private System.Windows.Forms.Button ResetParola;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnReset;
     }
 }

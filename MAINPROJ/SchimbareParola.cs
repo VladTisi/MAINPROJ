@@ -31,7 +31,10 @@ namespace MAINPROJ
 
         private void Renunta_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            var otherform = new HomePage(angajatId);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
 
         }
         public static string Encrypt(string encryptString)
@@ -143,6 +146,10 @@ namespace MAINPROJ
                 response.EnsureSuccessStatusCode();
 
                 MessageBox.Show("Parola schimbata cu succes!");
+                this.Hide();
+                var otherform = new HomePage(angajatId);
+                otherform.Closed += (s, args) => this.Close();
+                otherform.Show();
             }
 
                      
