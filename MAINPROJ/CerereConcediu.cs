@@ -199,13 +199,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
+       
 
         private void label5_Click(object sender, EventArgs e)
         {
