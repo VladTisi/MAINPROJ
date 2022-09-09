@@ -221,7 +221,6 @@ namespace MAINPROJ
 
             if (!admin && !manager )
                 {
-                    button10.Visible = false;
                     button9.Visible = false;
                 }
 
@@ -265,6 +264,14 @@ namespace MAINPROJ
             {
                 c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
             }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }
