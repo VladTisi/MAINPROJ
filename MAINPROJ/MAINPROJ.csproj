@@ -101,6 +101,11 @@
       <DependentUpon>Echipa.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Dto.cs" />
+    <Compile Include="PrisonBreakDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Recrutam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +238,17 @@
     </None>
     <None Include="PrisonBreakDataSet.xss">
       <DependentUpon>PrisonBreakDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PrisonBreakDataSet1.xsc">
+      <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PrisonBreakDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrisonBreakDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PrisonBreakDataSet1.xss">
+      <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

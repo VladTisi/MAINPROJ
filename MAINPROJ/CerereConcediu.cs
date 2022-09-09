@@ -41,7 +41,12 @@ namespace MAINPROJ
 
         private void CerereConcediu_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'prisonBreakDataSet1.Angajat' table. You can move, or remove it, as needed.
+            this.angajatTableAdapter.Fill(this.prisonBreakDataSet1.Angajat);
+            // TODO: This line of code loads data into the 'prisonBreakDataSet.Echipa' table. You can move, or remove it, as needed.
+            this.echipaTableAdapter.Fill(this.prisonBreakDataSet.Echipa);
             this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
+           // this.inlocuitorTableAdapter.Fill(this.)
             // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
@@ -98,7 +103,7 @@ namespace MAINPROJ
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Trimitere_Click(object sender, EventArgs e)
         {
             
             OleDbConnection con = Common.GetConnection();

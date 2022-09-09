@@ -226,6 +226,11 @@ namespace MAINPROJ
                 c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
             }
         }
+
+        private void tabelEchipa_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

@@ -41,7 +41,7 @@
             this.tipConcediuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.tipConcediuTableAdapter = new MAINPROJ.DataSet1TableAdapters.TipConcediuTableAdapter();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Trimitere = new System.Windows.Forms.Button();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuButton = new System.Windows.Forms.Button();
@@ -60,6 +60,14 @@
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.echipaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.prisonBreakDataSet = new MAINPROJ.PrisonBreakDataSet();
+            this.echipaTableAdapter = new MAINPROJ.PrisonBreakDataSetTableAdapters.EchipaTableAdapter();
+            this.prisonBreakDataSet1 = new MAINPROJ.PrisonBreakDataSet1();
+            this.angajatBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.angajatTableAdapter = new MAINPROJ.PrisonBreakDataSet1TableAdapters.AngajatTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -72,13 +80,17 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.echipaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angajatBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(273, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(271, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(329, 107);
             this.pictureBox1.TabIndex = 0;
@@ -97,7 +109,7 @@
             // 
             // dtpDataIncepere
             // 
-            this.dtpDataIncepere.Location = new System.Drawing.Point(491, 200);
+            this.dtpDataIncepere.Location = new System.Drawing.Point(491, 150);
             this.dtpDataIncepere.Name = "dtpDataIncepere";
             this.dtpDataIncepere.Size = new System.Drawing.Size(200, 20);
             this.dtpDataIncepere.TabIndex = 2;
@@ -105,7 +117,7 @@
             // 
             // dtpDataSfarsit
             // 
-            this.dtpDataSfarsit.Location = new System.Drawing.Point(491, 251);
+            this.dtpDataSfarsit.Location = new System.Drawing.Point(491, 201);
             this.dtpDataSfarsit.Name = "dtpDataSfarsit";
             this.dtpDataSfarsit.Size = new System.Drawing.Size(200, 20);
             this.dtpDataSfarsit.TabIndex = 3;
@@ -116,7 +128,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(316, 200);
+            this.label1.Location = new System.Drawing.Point(316, 150);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 4;
@@ -127,7 +139,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(316, 251);
+            this.label2.Location = new System.Drawing.Point(316, 201);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 20);
             this.label2.TabIndex = 5;
@@ -138,7 +150,7 @@
             this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource1;
             this.cmbTipConcediu.DisplayMember = "Nume";
             this.cmbTipConcediu.FormattingEnabled = true;
-            this.cmbTipConcediu.Location = new System.Drawing.Point(491, 301);
+            this.cmbTipConcediu.Location = new System.Drawing.Point(491, 251);
             this.cmbTipConcediu.Name = "cmbTipConcediu";
             this.cmbTipConcediu.Size = new System.Drawing.Size(200, 21);
             this.cmbTipConcediu.TabIndex = 6;
@@ -165,7 +177,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(316, 300);
+            this.label3.Location = new System.Drawing.Point(316, 250);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 23);
             this.label3.TabIndex = 7;
@@ -175,16 +187,16 @@
             // 
             this.tipConcediuTableAdapter.ClearBeforeFill = true;
             // 
-            // button2
+            // Trimitere
             // 
-            this.button2.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button2.Location = new System.Drawing.Point(513, 392);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 46);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Trimite cerere";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Trimitere.Font = new System.Drawing.Font("Stencil", 10F);
+            this.Trimitere.Location = new System.Drawing.Point(513, 392);
+            this.Trimitere.Name = "Trimitere";
+            this.Trimitere.Size = new System.Drawing.Size(108, 46);
+            this.Trimitere.TabIndex = 8;
+            this.Trimitere.Text = "Trimite cerere";
+            this.Trimitere.UseVisualStyleBackColor = true;
+            this.Trimitere.Click += new System.EventHandler(this.Trimitere_Click);
             // 
             // sidebar
             // 
@@ -387,6 +399,57 @@
             this.label5.Text = "1";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.Location = new System.Drawing.Point(316, 306);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 19);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Inlocuitor";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.angajatBindingSource;
+            this.comboBox1.DisplayMember = "Nume";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(491, 307);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 13;
+            this.comboBox1.ValueMember = "IdEchipa";
+            // 
+            // echipaBindingSource
+            // 
+            this.echipaBindingSource.DataMember = "Echipa";
+            this.echipaBindingSource.DataSource = this.prisonBreakDataSet;
+            // 
+            // prisonBreakDataSet
+            // 
+            this.prisonBreakDataSet.DataSetName = "PrisonBreakDataSet";
+            this.prisonBreakDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // echipaTableAdapter
+            // 
+            this.echipaTableAdapter.ClearBeforeFill = true;
+            // 
+            // prisonBreakDataSet1
+            // 
+            this.prisonBreakDataSet1.DataSetName = "PrisonBreakDataSet1";
+            this.prisonBreakDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // angajatBindingSource
+            // 
+            this.angajatBindingSource.DataMember = "Angajat";
+            this.angajatBindingSource.DataSource = this.prisonBreakDataSet1;
+            // 
+            // angajatTableAdapter
+            // 
+            this.angajatTableAdapter.ClearBeforeFill = true;
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,10 +457,12 @@
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
             this.ControlBox = false;
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.sidebar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Trimitere);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbTipConcediu);
             this.Controls.Add(this.label2);
@@ -426,6 +491,10 @@
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.echipaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prisonBreakDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angajatBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,7 +513,7 @@
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource tipConcediuBindingSource;
         private DataSet1TableAdapters.TipConcediuTableAdapter tipConcediuTableAdapter;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Trimitere;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button menuButton;
@@ -464,5 +533,13 @@
         private System.Windows.Forms.BindingSource tipConcediuBindingSource1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private PrisonBreakDataSet prisonBreakDataSet;
+        private System.Windows.Forms.BindingSource echipaBindingSource;
+        private PrisonBreakDataSetTableAdapters.EchipaTableAdapter echipaTableAdapter;
+        private PrisonBreakDataSet1 prisonBreakDataSet1;
+        private System.Windows.Forms.BindingSource angajatBindingSource;
+        private PrisonBreakDataSet1TableAdapters.AngajatTableAdapter angajatTableAdapter;
     }
 }
