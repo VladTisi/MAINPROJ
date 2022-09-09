@@ -56,12 +56,19 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbInlocuitor = new System.Windows.Forms.ComboBox();
-            this.btnLogOut = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -80,7 +87,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(273, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(272, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(329, 107);
             this.pictureBox1.TabIndex = 0;
@@ -99,14 +106,14 @@
             // 
             // dtpDataIncepere
             // 
-            this.dtpDataIncepere.Location = new System.Drawing.Point(491, 200);
+            this.dtpDataIncepere.Location = new System.Drawing.Point(484, 140);
             this.dtpDataIncepere.Name = "dtpDataIncepere";
             this.dtpDataIncepere.Size = new System.Drawing.Size(200, 20);
             this.dtpDataIncepere.TabIndex = 2;
             // 
             // dtpDataSfarsit
             // 
-            this.dtpDataSfarsit.Location = new System.Drawing.Point(491, 251);
+            this.dtpDataSfarsit.Location = new System.Drawing.Point(484, 191);
             this.dtpDataSfarsit.Name = "dtpDataSfarsit";
             this.dtpDataSfarsit.Size = new System.Drawing.Size(200, 20);
             this.dtpDataSfarsit.TabIndex = 3;
@@ -117,7 +124,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(316, 200);
+            this.label1.Location = new System.Drawing.Point(309, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 4;
@@ -128,7 +135,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(305, 251);
+            this.label2.Location = new System.Drawing.Point(298, 191);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 20);
             this.label2.TabIndex = 5;
@@ -139,7 +146,7 @@
             this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource1;
             this.cmbTipConcediu.DisplayMember = "Nume";
             this.cmbTipConcediu.FormattingEnabled = true;
-            this.cmbTipConcediu.Location = new System.Drawing.Point(491, 301);
+            this.cmbTipConcediu.Location = new System.Drawing.Point(484, 241);
             this.cmbTipConcediu.Name = "cmbTipConcediu";
             this.cmbTipConcediu.Size = new System.Drawing.Size(200, 21);
             this.cmbTipConcediu.TabIndex = 6;
@@ -166,7 +173,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(316, 300);
+            this.label3.Location = new System.Drawing.Point(309, 240);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 23);
             this.label3.TabIndex = 7;
@@ -179,7 +186,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button2.Location = new System.Drawing.Point(536, 392);
+            this.button2.Location = new System.Drawing.Point(521, 389);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 46);
             this.button2.TabIndex = 8;
@@ -346,55 +353,6 @@
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 9;
             // 
-            // sidebarTimer
-            // 
-            this.sidebarTimer.Interval = 10;
-            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(316, 392);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 19);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "ZILE RAMASE";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(331, 427);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 22);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "1";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(316, 353);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 23);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "INLOCUITOR";
-            // 
-            // cmbInlocuitor
-            // 
-            this.cmbInlocuitor.FormattingEnabled = true;
-            this.cmbInlocuitor.Location = new System.Drawing.Point(491, 354);
-            this.cmbInlocuitor.Name = "cmbInlocuitor";
-            this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
-            this.cmbInlocuitor.TabIndex = 13;
-            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged_1);
-            this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
-            // 
             // btnLogOut
             // 
             this.btnLogOut.BackColor = System.Drawing.Color.White;
@@ -409,6 +367,134 @@
             this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // sidebarTimer
+            // 
+            this.sidebarTimer.Interval = 10;
+            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(309, 332);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 19);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "ZILE RAMASE";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(434, 372);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 22);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "1";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Snow;
+            this.label6.Location = new System.Drawing.Point(309, 293);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 23);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "INLOCUITOR";
+            // 
+            // cmbInlocuitor
+            // 
+            this.cmbInlocuitor.FormattingEnabled = true;
+            this.cmbInlocuitor.Location = new System.Drawing.Point(484, 294);
+            this.cmbInlocuitor.Name = "cmbInlocuitor";
+            this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
+            this.cmbInlocuitor.TabIndex = 13;
+            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged_1);
+            this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(300, 374);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 19);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Odihna";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label8.Location = new System.Drawing.Point(300, 399);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 19);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Medical";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label9.Location = new System.Drawing.Point(300, 424);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 19);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Maternitate";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label10.Location = new System.Drawing.Point(300, 449);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(115, 19);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Paternitate";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(434, 397);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(21, 22);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "1";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(434, 422);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(21, 22);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "1";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(434, 447);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(21, 22);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "1";
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,6 +502,13 @@
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
             this.ControlBox = false;
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbInlocuitor);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -490,5 +583,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbInlocuitor;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
