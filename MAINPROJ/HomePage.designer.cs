@@ -527,7 +527,7 @@
             this.comboListaAngajati.Name = "comboListaAngajati";
             this.comboListaAngajati.Size = new System.Drawing.Size(148, 21);
             this.comboListaAngajati.TabIndex = 51;
-            this.comboListaAngajati.SelectedIndexChanged += new System.EventHandler(this.comboListaAngajati_SelectedIndexChanged);
+            this.comboListaAngajati.SelectedValueChanged += new System.EventHandler(this.comboListaAngajati_SelectedValueChanged);
             // 
             // comboFunctie
             // 
