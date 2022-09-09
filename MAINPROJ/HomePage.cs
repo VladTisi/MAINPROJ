@@ -47,7 +47,8 @@ namespace MAINPROJ
             showImage(angajatId);
             await AddItems();
             start = pozaAngajat.Image;
-            comboListaAngajati.SelectedIndex = angajatId-1;
+            comboListaAngajati.SelectedValue = angajatId;
+            angajatIdSelectat = angajatId;
 
             var response = await Common.client.GetAsync(local + $"GestionareConcedii/GetAdmin?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
@@ -223,7 +224,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
+            var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
