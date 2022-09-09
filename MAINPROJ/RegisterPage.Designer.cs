@@ -49,14 +49,14 @@
             this.dtpDataNasterii = new System.Windows.Forms.DateTimePicker();
             this.cmbSex = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalvare = new System.Windows.Forms.Button();
             this.dtpDataAngajarii = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbNumeEchipa = new System.Windows.Forms.ComboBox();
             this.cmbNumeFunctie = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAdaugare = new System.Windows.Forms.Button();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuButton = new System.Windows.Forms.Button();
@@ -254,8 +254,6 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(205, 25);
             this.txtSerie.TabIndex = 16;
-            this.txtSerie.TextChanged += new System.EventHandler(this.txtSerie_TextChanged);
-            // 
             // txtCNP
             // 
             this.txtCNP.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -298,18 +296,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnSalvare
             // 
-            this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(481, 397);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 55);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Salvare";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSalvare.BackColor = System.Drawing.Color.Black;
+            this.btnSalvare.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnSalvare.ForeColor = System.Drawing.Color.White;
+            this.btnSalvare.Location = new System.Drawing.Point(481, 397);
+            this.btnSalvare.Name = "btnSalvare";
+            this.btnSalvare.Size = new System.Drawing.Size(127, 55);
+            this.btnSalvare.TabIndex = 22;
+            this.btnSalvare.Text = "Salvare";
+            this.btnSalvare.UseVisualStyleBackColor = false;
+            this.btnSalvare.Click += new System.EventHandler(this.btnSalvare_Click);
             // 
             // dtpDataAngajarii
             // 
@@ -375,18 +373,18 @@
             this.label13.TabIndex = 28;
             this.label13.Text = "Functie";
             // 
-            // button3
+            // btnAdaugare
             // 
-            this.button3.BackColor = System.Drawing.Color.Black;
-            this.button3.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button3.ForeColor = System.Drawing.SystemColors.Control;
-            this.button3.Location = new System.Drawing.Point(662, 397);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(127, 55);
-            this.button3.TabIndex = 48;
-            this.button3.Text = "Adaugare";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnAdaugare.BackColor = System.Drawing.Color.Black;
+            this.btnAdaugare.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnAdaugare.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAdaugare.Location = new System.Drawing.Point(662, 397);
+            this.btnAdaugare.Name = "btnAdaugare";
+            this.btnAdaugare.Size = new System.Drawing.Size(127, 55);
+            this.btnAdaugare.TabIndex = 48;
+            this.btnAdaugare.Text = "Adaugare";
+            this.btnAdaugare.UseVisualStyleBackColor = false;
+            this.btnAdaugare.Click += new System.EventHandler(this.btnAdaugare_Click);
             // 
             // sidebar
             // 
@@ -573,14 +571,14 @@
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
             this.Controls.Add(this.sidebar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnAdaugare);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cmbNumeFunctie);
             this.Controls.Add(this.cmbNumeEchipa);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dtpDataAngajarii);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSalvare);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbSex);
             this.Controls.Add(this.dtpDataNasterii);
@@ -642,14 +640,14 @@
         private System.Windows.Forms.DateTimePicker dtpDataNasterii;
         private System.Windows.Forms.ComboBox cmbSex;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalvare;
         private System.Windows.Forms.DateTimePicker dtpDataAngajarii;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbNumeEchipa;
         private System.Windows.Forms.ComboBox cmbNumeFunctie;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAdaugare;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button menuButton;

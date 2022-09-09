@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data.OleDb;
+using System.Data.OleDb
 using static MAINPROJ.Class1;
 using System.Web.Security;
 using Microsoft.VisualBasic;
