@@ -38,17 +38,19 @@ namespace MAINPROJ
         {
             InitializeComponent();
             this.angajatId = angajatId;
-            
 
         }
         private async void HomePage_Load(object sender, EventArgs e)
         {
             SetDate(angajatId);
             showImage(angajatId);
-            await AddItems();
+            await AddItems(angajatId);
             start = pozaAngajat.Image;
-            comboListaAngajati.SelectedValue = angajatId;
+
             angajatIdSelectat = angajatId;
+
+            comboListaAngajati.SelectedValue=angajatIdSelectat;
+
 
             var response = await Common.client.GetAsync(local + $"GestionareConcedii/GetAdmin?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
@@ -247,25 +249,11 @@ namespace MAINPROJ
         }
 
 
-        private async void comboListaAngajati_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboListaAngajati_SelectedValueChanged(object sender, EventArgs e)
         {
-            string[] myArray = comboListaAngajati.SelectedItem.ToString().Split(' ');
-
-
-            OleDbConnection con3 = Common.GetConnection();
-            con3.Open();
-            OleDbCommand cmd = new OleDbCommand();
-
-
-            HttpResponseMessage respId = await Common.client.GetAsync(local + $"HomePage/GetId?nume={myArray[0]}&prenume={myArray[1]}");
-            respId.EnsureSuccessStatusCode();
-            string respIdBody = await respId.Content.ReadAsStringAsync();
-            angajatIdSelectat = Convert.ToInt32(respIdBody);
-
-
-            
-
-            con3.Close();
+            if (comboListaAngajati.SelectedValue == null)
+                return;
+            angajatIdSelectat = (int)comboListaAngajati.SelectedValue;
 
             HttpResponseMessage respEch = await Common.client.GetAsync(local+"RegisterPage/GetIdNumeFromEchipa");
             respEch.EnsureSuccessStatusCode();
@@ -294,7 +282,7 @@ namespace MAINPROJ
             showImage(angajatIdSelectat);
             SetDate(angajatIdSelectat);
         }
-        private async ValueTask<int> AddItems()
+        private async ValueTask<int> AddItems(int Id)
         {
             HttpResponseMessage response = await Common.client.GetAsync(local+$"MeniuModificareDateAngajat/CheckAdmin?Id={angajatId}");
             response.EnsureSuccessStatusCode();
@@ -304,45 +292,36 @@ namespace MAINPROJ
 
             if (checkAdm == true)
             {
-                HttpResponseMessage response2 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetAllNames\r\n");
-                response2.EnsureSuccessStatusCode();
-                string response2Body = await response2.Content.ReadAsStringAsync();
+                var response10 = await Common.client.GetAsync(local + $"HomePage/GetUtilizatori");
+                response.EnsureSuccessStatusCode();
+                string responseBody3 = await response10.Content.ReadAsStringAsync();
+                var utilizatori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody3);
 
-                List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(response2Body);
-
-                foreach (Angajat angajat in listaAngajati)
-                {
-                    comboListaAngajati.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
-                }
+                var bindingSourceUtilizatori = new BindingSource();
+                bindingSourceUtilizatori.DataSource = utilizatori;
+                comboListaAngajati.ValueMember = "Id";
+                comboListaAngajati.DisplayMember = "Nume";
+                comboListaAngajati.DataSource = bindingSourceUtilizatori;
             }
             else
             {
-                HttpResponseMessage response3 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
-                response3.EnsureSuccessStatusCode();
-                string response3Body = await response3.Content.ReadAsStringAsync();
+                var response12 = await Common.client.GetAsync(local + $"HomePage/GetMembriEchipa?angajatId={Id}");
+                response.EnsureSuccessStatusCode();
+                string responseBody3 = await response12.Content.ReadAsStringAsync();
+                var utilizatori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody3);
 
-                int idechipa = Convert.ToInt32(response3Body);
-
-     
-
-                //Console.WriteLine(echipaId);
-
-                HttpResponseMessage response4 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetMembriEchipa?echipaId={idechipa}");
-                response4.EnsureSuccessStatusCode();
-                string response4Body = await response4.Content.ReadAsStringAsync();
-
-                List<Angajat> listaAngajati2 = JsonConvert.DeserializeObject<List<Angajat>>(response4Body);
-
-                foreach (Angajat angajat in listaAngajati2)
-                {
-                    comboListaAngajati.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
-                }
+                var bindingSourceUtilizatori = new BindingSource();
+                bindingSourceUtilizatori.DataSource = utilizatori;
+                comboListaAngajati.ValueMember = "Id";
+                comboListaAngajati.DisplayMember = "Nume";
+                comboListaAngajati.DataSource = bindingSourceUtilizatori;
             }
+            
             return 1;
         }
         public async void SetDate(int angajatId)
         {
-            HttpResponseMessage response5 = await Common.client.GetAsync(local + $"meniumodificaredateangajat/getdateangajat?id={angajatId}");
+            HttpResponseMessage response5 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetDateAngajat?Id={angajatId}");
             response5.EnsureSuccessStatusCode();
             string response5body = await response5.Content.ReadAsStringAsync();
             List<Angajat> listaangajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5body);

@@ -254,6 +254,7 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(205, 25);
             this.txtSerie.TabIndex = 16;
+            // 
             // txtCNP
             // 
             this.txtCNP.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

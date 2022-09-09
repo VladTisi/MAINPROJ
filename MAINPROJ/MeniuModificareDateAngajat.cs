@@ -29,7 +29,7 @@ namespace MAINPROJ
         bool sidebarExpand;
         bool admin;
         bool manager;
-        string local = "http://localhost:5031/api";
+        string server = "http://localhost:5031/api";
 
         OleDbCommand cmd = new OleDbCommand();
         OleDbCommand cmd2 = new OleDbCommand();
@@ -75,7 +75,7 @@ namespace MAINPROJ
         {
 
 
-            HttpResponseMessage  response =  await  Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/CheckAdmin?Id={angajatId}");
+            HttpResponseMessage  response =  await  Common.client.GetAsync(server + $"MeniuModificareDateAngajat/CheckAdmin?Id={angajatId}");
             response.EnsureSuccessStatusCode(); 
             string responseBody = await response.Content.ReadAsStringAsync();
 
@@ -83,7 +83,7 @@ namespace MAINPROJ
 
             if (checkAdm == true)
             {
-                HttpResponseMessage response2 = await Common.client.GetAsync("http://localhost:5031/api/MeniuModificareDateAngajat/GetAllNames\r\n");
+                HttpResponseMessage response2 = await Common.client.GetAsync(server + $"MeniuModificareDateAngajat/GetAllNames\r\n");
                 response2.EnsureSuccessStatusCode();
                 string response2Body = await response2.Content.ReadAsStringAsync();
 
@@ -98,7 +98,7 @@ namespace MAINPROJ
             }
             else
             {
-                HttpResponseMessage response3 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
+                HttpResponseMessage response3 = await Common.client.GetAsync(server + $"MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
                 response3.EnsureSuccessStatusCode();
                 string response3Body = await response3.Content.ReadAsStringAsync();
 
@@ -108,7 +108,7 @@ namespace MAINPROJ
 
                 //Console.WriteLine(echipaId);
 
-                HttpResponseMessage response4 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
+                HttpResponseMessage response4 = await Common.client.GetAsync(server + $"MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
                 response4.EnsureSuccessStatusCode();
                 string response4Body = await response4.Content.ReadAsStringAsync();
 
@@ -288,7 +288,7 @@ namespace MAINPROJ
             comboFunctie.Enabled = false;
 
 
-            HttpResponseMessage response5 = await Common.client.GetAsync(local+$"MeniuModificareDateAngajat/GetDateleAngajat?Id={angajatId}");
+            HttpResponseMessage response5 = await Common.client.GetAsync(server+$"MeniuModificareDateAngajat/GetDateleAngajat?Id={angajatId}");
             response5.EnsureSuccessStatusCode();
             string response5Body = await response5.Content.ReadAsStringAsync();
 
@@ -316,7 +316,7 @@ namespace MAINPROJ
 
             string jsonangajat = JsonConvert.SerializeObject(angajatulMEU);
             var myangj = new StringContent(jsonangajat, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await Common.client.PostAsync(local + $"UpdateDate", myangj);
+            HttpResponseMessage response = await Common.client.PostAsync(server + $"UpdateDate", myangj);
 
 
 
@@ -367,7 +367,7 @@ namespace MAINPROJ
                     //string modifTel = $"UPDATE Angajat SET Numar_telefon = '{numartelefon}' WHERE Id = '{angajatId}' ";
                     //cmd = new OleDbCommand(modifTel, con);
                     //cmd.ExecuteNonQuery();
-                    HttpResponseMessage response = await Common.client.PostAsync(local + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}", null);
+                    HttpResponseMessage response = await Common.client.PostAsync(server + $"HomePage/UpdateTelf?numarTelefon={numartelefon}&Id={angajatId}", null);
                 }
                 else
                 {
