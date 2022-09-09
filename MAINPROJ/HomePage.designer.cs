@@ -47,8 +47,6 @@
             this.txtNume = new System.Windows.Forms.TextBox();
             this.txtPrenume = new System.Windows.Forms.TextBox();
             this.txtSex = new System.Windows.Forms.TextBox();
-            this.txtFunctie = new System.Windows.Forms.TextBox();
-            this.txtEchipa = new System.Windows.Forms.TextBox();
             this.txtOvertime = new System.Windows.Forms.TextBox();
             this.txtSalariu = new System.Windows.Forms.TextBox();
             this.txtDataAngajare = new System.Windows.Forms.TextBox();
@@ -72,6 +70,11 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.comboListaAngajati = new System.Windows.Forms.ComboBox();
+            this.comboFunctie = new System.Windows.Forms.ComboBox();
+            this.comboEchipa = new System.Windows.Forms.ComboBox();
+            this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -195,7 +198,6 @@
             this.pozaAngajat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pozaAngajat.TabIndex = 11;
             this.pozaAngajat.TabStop = false;
-            this.pozaAngajat.Click += new System.EventHandler(this.pozaAngajat_Click);
             // 
             // labelPrenume
             // 
@@ -243,7 +245,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 36;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtTelefon
             // 
@@ -277,22 +278,6 @@
             this.txtSex.Size = new System.Drawing.Size(100, 20);
             this.txtSex.TabIndex = 41;
             // 
-            // txtFunctie
-            // 
-            this.txtFunctie.Enabled = false;
-            this.txtFunctie.Location = new System.Drawing.Point(536, 175);
-            this.txtFunctie.Name = "txtFunctie";
-            this.txtFunctie.Size = new System.Drawing.Size(100, 20);
-            this.txtFunctie.TabIndex = 42;
-            // 
-            // txtEchipa
-            // 
-            this.txtEchipa.Enabled = false;
-            this.txtEchipa.Location = new System.Drawing.Point(536, 234);
-            this.txtEchipa.Name = "txtEchipa";
-            this.txtEchipa.Size = new System.Drawing.Size(100, 20);
-            this.txtEchipa.TabIndex = 43;
-            // 
             // txtOvertime
             // 
             this.txtOvertime.Enabled = false;
@@ -300,7 +285,6 @@
             this.txtOvertime.Name = "txtOvertime";
             this.txtOvertime.Size = new System.Drawing.Size(100, 20);
             this.txtOvertime.TabIndex = 44;
-            this.txtOvertime.TextChanged += new System.EventHandler(this.txtOvertime_TextChanged);
             // 
             // txtSalariu
             // 
@@ -317,7 +301,6 @@
             this.txtDataAngajare.Name = "txtDataAngajare";
             this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
             this.txtDataAngajare.TabIndex = 46;
-            this.txtDataAngajare.TextChanged += new System.EventHandler(this.txtDataAngajare_TextChanged);
             // 
             // btnUpdatePoza
             // 
@@ -535,12 +518,66 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // comboListaAngajati
+            // 
+            this.comboListaAngajati.BackColor = System.Drawing.Color.GhostWhite;
+            this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboListaAngajati.FormattingEnabled = true;
+            this.comboListaAngajati.Location = new System.Drawing.Point(711, 29);
+            this.comboListaAngajati.Name = "comboListaAngajati";
+            this.comboListaAngajati.Size = new System.Drawing.Size(148, 21);
+            this.comboListaAngajati.TabIndex = 51;
+            this.comboListaAngajati.SelectedIndexChanged += new System.EventHandler(this.comboListaAngajati_SelectedIndexChanged);
+            // 
+            // comboFunctie
+            // 
+            this.comboFunctie.Enabled = false;
+            this.comboFunctie.FormattingEnabled = true;
+            this.comboFunctie.Location = new System.Drawing.Point(536, 180);
+            this.comboFunctie.Name = "comboFunctie";
+            this.comboFunctie.Size = new System.Drawing.Size(100, 21);
+            this.comboFunctie.TabIndex = 76;
+            // 
+            // comboEchipa
+            // 
+            this.comboEchipa.Enabled = false;
+            this.comboEchipa.FormattingEnabled = true;
+            this.comboEchipa.Location = new System.Drawing.Point(536, 235);
+            this.comboEchipa.Name = "comboEchipa";
+            this.comboEchipa.Size = new System.Drawing.Size(100, 21);
+            this.comboEchipa.TabIndex = 77;
+            // 
+            // dtpDataAngajare
+            // 
+            this.dtpDataAngajare.Enabled = false;
+            this.dtpDataAngajare.Location = new System.Drawing.Point(839, 359);
+            this.dtpDataAngajare.Name = "dtpDataAngajare";
+            this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
+            this.dtpDataAngajare.TabIndex = 78;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(262, 409);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 50);
+            this.button6.TabIndex = 79;
+            this.button6.Text = "Resetare\r\nParola";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.dtpDataAngajare);
+            this.Controls.Add(this.comboEchipa);
+            this.Controls.Add(this.comboFunctie);
+            this.Controls.Add(this.comboListaAngajati);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.pictureBox1);
@@ -548,8 +585,6 @@
             this.Controls.Add(this.txtDataAngajare);
             this.Controls.Add(this.txtSalariu);
             this.Controls.Add(this.txtOvertime);
-            this.Controls.Add(this.txtEchipa);
-            this.Controls.Add(this.txtFunctie);
             this.Controls.Add(this.txtSex);
             this.Controls.Add(this.txtPrenume);
             this.Controls.Add(this.txtNume);
@@ -606,8 +641,6 @@
         private System.Windows.Forms.TextBox txtNume;
         private System.Windows.Forms.TextBox txtPrenume;
         private System.Windows.Forms.TextBox txtSex;
-        private System.Windows.Forms.TextBox txtFunctie;
-        private System.Windows.Forms.TextBox txtEchipa;
         private System.Windows.Forms.TextBox txtOvertime;
         private System.Windows.Forms.TextBox txtSalariu;
         private System.Windows.Forms.TextBox txtDataAngajare;
@@ -631,5 +664,11 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ComboBox comboListaAngajati;
+        private System.Windows.Forms.ComboBox comboFunctie;
+        private System.Windows.Forms.ComboBox comboEchipa;
+        private System.Windows.Forms.DateTimePicker dtpDataAngajare;
+        private System.Windows.Forms.Button ResetParola;
+        private System.Windows.Forms.Button button6;
     }
 }

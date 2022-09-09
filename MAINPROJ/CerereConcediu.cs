@@ -1,4 +1,6 @@
 ﻿using MAINPROJ;
+using Newtonsoft.Json;
+using RandomProj.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,8 +35,32 @@ namespace MAINPROJ
             tmr.Start();
         }
 
-        private void CerereConcediu_Load(object sender, EventArgs e)
+        private async void CerereConcediu_Load(object sender, EventArgs e)
         {
+
+
+            HttpResponseMessage response3 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
+            response3.EnsureSuccessStatusCode();
+
+            string result = await response3.Content.ReadAsStringAsync();
+
+            var ceva = JsonConvert.DeserializeObject(result);
+
+            int echipaId = Convert.ToInt32(ceva);
+
+
+
+            HttpResponseMessage response4 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
+            response4.EnsureSuccessStatusCode();
+            string response4Body = await response4.Content.ReadAsStringAsync();
+
+            List<Angajat> listaAngajati2 = JsonConvert.DeserializeObject<List<Angajat>>(response4Body);
+
+            foreach (Angajat angajat in listaAngajati2)
+            {
+                cmbInlocuitor.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
+            }
+
             this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
             // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
             OleDbConnection con3 = Common.GetConnection();
@@ -56,14 +83,16 @@ namespace MAINPROJ
             }
 
             string comanda = $"declare @numar as int  set @numar=(select datediff( month, Angajat.Data_angajarii, Getdate() )*2  from Angajat where Id={angajatId})  select @numar - isnull(sum( datediff( day, Concediu.Data_inceput, Concediu.Data_sfarsit )- datediff( week, Concediu.Data_inceput, Concediu.Data_sfarsit )*2 +1),0) as Zile  from Angajat   join Concediu on Angajat.Id=Concediu.angajatId  join StareConcediu on Concediu.stareConcediuId=StareConcediu.Id  where Angajat.Id={angajatId} and StareConcediu.Id=2";
-            cmd = new OleDbCommand(comanda, con3);
-            OleDbDataReader reader = cmd.ExecuteReader();
+            cmd= new OleDbCommand(comanda, con3);
+            OleDbDataReader reader=cmd.ExecuteReader();
             reader.Read();
             label5.Text = reader["Zile"].ToString();
             con3.Close();
-
+          
+             
         }
 
+      
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -75,35 +104,36 @@ namespace MAINPROJ
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpDataIncepere.Value < DateTime.Now)
+            if (dtpDataIncepere.Value<DateTime.Now)
             {
                 MessageBox.Show("Data inceperii nu poate fi in trecut!");
-                dtpDataIncepere.Value = DateTime.Now;
+                dtpDataIncepere.Value=DateTime.Now;
             }
         }
 
         private void dtpDataSfarsit_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpDataSfarsit.Value < DateTime.Now)
+            if (dtpDataSfarsit.Value<DateTime.Now)
             {
                 MessageBox.Show("Data sfarsitului nu poate fi in trecut");
-                dtpDataSfarsit.Value = dtpDataIncepere.Value.AddDays(1);
+                dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
             OleDbConnection con = Common.GetConnection();
             con.Open();
             //string sss = $"asdasd{dtpDataIncepere.Value},{dtpDataIncepere.Value}";
             //Console.WriteLine(sss);
-
+            
             string comanda = $"select datediff(day,'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}')+1";
             cmd = new OleDbCommand(comanda, con);
             int nr = (int)cmd.ExecuteScalar();
             if (nr > Convert.ToInt32(label5.Text))
                 MessageBox.Show("Nu ai destule zile de concediu");
+            
             else
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
@@ -112,8 +142,8 @@ namespace MAINPROJ
                 cmd.ExecuteNonQuery();
             }
             con.Close();
-            dtpDataIncepere.Value = DateTime.Now.AddDays(1);
-            dtpDataSfarsit.Value = dtpDataIncepere.Value.AddDays(1);
+            dtpDataIncepere.Value=DateTime.Now.AddDays(1);
+            dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
             Console.WriteLine(nr);
         }
 
@@ -133,7 +163,7 @@ namespace MAINPROJ
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new ConcediiRefuzate(angajatId);
+            var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -141,7 +171,7 @@ namespace MAINPROJ
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new Echipa(angajatId);
+            var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -149,7 +179,7 @@ namespace MAINPROJ
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuNavigare(angajatId);
+            var otherform = new MeniuNavigare(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -179,7 +209,7 @@ namespace MAINPROJ
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId);
+            var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -187,7 +217,7 @@ namespace MAINPROJ
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var otherform = new MeniuModificareDateAngajat(angajatId);
+            var otherform = new MeniuModificareDateAngajat(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -195,6 +225,10 @@ namespace MAINPROJ
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void cmbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

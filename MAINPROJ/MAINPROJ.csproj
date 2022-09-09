@@ -72,6 +72,9 @@
     <Compile Include="ConcediiPersonale.Designer.cs">
       <DependentUpon>ConcediiPersonale.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +84,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet3.cs">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -99,6 +110,12 @@
     </Compile>
     <Compile Include="Echipa.Designer.cs">
       <DependentUpon>Echipa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SchimbareParola.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchimbareParola.Designer.cs">
+      <DependentUpon>SchimbareParola.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Dto.cs" />
     <Compile Include="PrisonBreakDataSet1.Designer.cs">
@@ -173,6 +190,9 @@
     <EmbeddedResource Include="Echipa.resx">
       <DependentUpon>Echipa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SchimbareParola.resx">
+      <DependentUpon>SchimbareParola.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionareConcedii.resx">
       <DependentUpon>GestionareConcedii.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +246,17 @@
     </None>
     <None Include="DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet3.xsc">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet3.xss">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="PrisonBreakDataSet.xsc">
