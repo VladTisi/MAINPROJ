@@ -408,6 +408,7 @@
             this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
             this.cmbInlocuitor.TabIndex = 13;
             this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged);
+            this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
             // 
             // CerereConcediu
             // 

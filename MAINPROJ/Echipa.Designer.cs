@@ -320,6 +320,7 @@
             this.tabelEchipa.Name = "tabelEchipa";
             this.tabelEchipa.Size = new System.Drawing.Size(240, 162);
             this.tabelEchipa.TabIndex = 58;
+            this.tabelEchipa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick_1);
             // 
             // Echipa
             // 

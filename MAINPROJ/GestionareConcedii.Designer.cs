@@ -49,6 +49,9 @@
             this.tabelConcedii = new System.Windows.Forms.DataGridView();
             this.Aproba = new System.Windows.Forms.Button();
             this.Refuza = new System.Windows.Forms.Button();
+            this.SearchBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,6 +61,7 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebar
@@ -262,8 +266,6 @@
             this.tabelConcedii.ReadOnly = true;
             this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
             this.tabelConcedii.TabIndex = 53;
-            this.tabelConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellClick);
-            //this.tabelConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellContentClick);
             // 
             // Aproba
             // 
@@ -291,12 +293,44 @@
             this.Refuza.UseVisualStyleBackColor = false;
             this.Refuza.Click += new System.EventHandler(this.Refuza_Click);
             // 
+            // SearchBox
+            // 
+            this.SearchBox.Location = new System.Drawing.Point(402, 38);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.Size = new System.Drawing.Size(352, 20);
+            this.SearchBox.TabIndex = 58;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(224, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(172, 19);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "Cautare dupa nume";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Magnifying_glass_icon_svg;
+            this.pictureBox1.Location = new System.Drawing.Point(760, 36);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 27);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 60;
+            this.pictureBox1.TabStop = false;
+            // 
             // GestionareConcedii
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(914, 491);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.Refuza);
             this.Controls.Add(this.Aproba);
             this.Controls.Add(this.tabelConcedii);
@@ -316,7 +350,9 @@
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -342,5 +378,8 @@
         private System.Windows.Forms.DataGridView tabelConcedii;
         private System.Windows.Forms.Button Aproba;
         private System.Windows.Forms.Button Refuza;
+        private System.Windows.Forms.TextBox SearchBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

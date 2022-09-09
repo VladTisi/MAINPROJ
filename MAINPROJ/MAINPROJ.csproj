@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -118,6 +119,11 @@
       <DependentUpon>SchimbareParola.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Dto.cs" />
+    <Compile Include="PrisonBreakDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Recrutam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +271,17 @@
     <None Include="PrisonBreakDataSet.xss">
       <DependentUpon>PrisonBreakDataSet.xsd</DependentUpon>
     </None>
+    <None Include="PrisonBreakDataSet1.xsc">
+      <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PrisonBreakDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrisonBreakDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PrisonBreakDataSet1.xss">
+      <DependentUpon>PrisonBreakDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -284,6 +301,7 @@
     <Content Include="istockphoto-1199229384-612x612.jpg" />
     <Content Include="Prison_Break_logo.png" />
     <Content Include="Resources\king.png" />
+    <None Include="Resources\Magnifying_glass_icon.svg.png" />
     <Content Include="Resources\rsz_sheriff.png" />
     <None Include="Resources\image %281%29.png" />
     <None Include="Resources\image.png" />

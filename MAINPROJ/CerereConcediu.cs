@@ -24,29 +24,27 @@ namespace MAINPROJ
         private System.Windows.Forms.Timer tmr;
         bool admin;
         bool manager;
-        public CerereConcediu(int angajatId, bool admin, bool manager)
+        String url = "http://localhost:5031/api/";
+        public CerereConcediu(int angajatId,bool admin, bool manager)
         {
             InitializeComponent();
             this.angajatId = angajatId;
-            this.admin = admin;
+            this.admin = admin; 
             this.manager = manager;
 
             tmr = new System.Windows.Forms.Timer();
-            tmr.Tick += delegate
-            {
+            tmr.Tick += delegate {
                 this.Close();
             };
             tmr.Interval = (int)TimeSpan.FromMinutes(5).TotalMilliseconds;
             tmr.Start();
-            this.admin = admin;
-            this.manager = manager;
         }
 
         private async void CerereConcediu_Load(object sender, EventArgs e)
         {
 
 
-            HttpResponseMessage response3 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
+            HttpResponseMessage response3 = await Common.client.GetAsync(url + $"MeniuModificareDateAngajat/GetIdEchipa?Id={angajatId}");
             response3.EnsureSuccessStatusCode();
 
             string result = await response3.Content.ReadAsStringAsync();
@@ -57,19 +55,24 @@ namespace MAINPROJ
 
 
 
-            HttpResponseMessage response4 = await Common.client.GetAsync($"http://localhost:5031/api/MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
+            HttpResponseMessage response4 = await Common.client.GetAsync(url + $"MeniuModificareDateAngajat/GetMembriEchipa?echipaId={echipaId}");
             response4.EnsureSuccessStatusCode();
             string response4Body = await response4.Content.ReadAsStringAsync();
 
             List<Angajat> listaAngajati2 = JsonConvert.DeserializeObject<List<Angajat>>(response4Body);
-
+            var bindingSourceAngajat = new BindingSource();
+            bindingSourceAngajat.DataSource = listaAngajati2;
+            cmbInlocuitor.DataSource = bindingSourceAngajat;
+            cmbInlocuitor.ValueMember = "Id";
+            cmbInlocuitor.DisplayMember = "Nume";
             foreach (Angajat angajat in listaAngajati2)
             {
-                cmbInlocuitor.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
+                //cmbInlocuitor.Items.Add(angajat.Nume + ' ' + angajat.Prenume);
             }
 
             this.tipConcediuTableAdapter.Fill(this.dataSet1.TipConcediu);
             // TODO: This line of code loads data into the 'dataSet1.TipConcediu' table. You can move, or remove it, as needed.
+
             OleDbConnection con3 = Common.GetConnection();
             con3.Open();
             OleDbCommand cmd = new OleDbCommand();
@@ -82,7 +85,7 @@ namespace MAINPROJ
             {
                 bool admin = rdr.GetBoolean(0);
                 int manager = rdr.GetInt32(1);
-                if (admin!=true && manager!=3)
+                if (admin != true && manager != 3)
                 {
                     button7.Visible = false;
                     button8.Visible = false;
@@ -144,7 +147,8 @@ namespace MAINPROJ
             else
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
-                string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId})";
+                Console.WriteLine(cmbInlocuitor.SelectedIndex); 
+                string register = $"INSERT INTO Concediu(TipConcediuId,Data_inceput,Data_sfarsit,stareConcediuId,angajatId,InlocuitorId) VALUES ({cmbTipConcediu.SelectedValue},'{dtpDataIncepere.Value}','{dtpDataSfarsit.Value}',{1},{angajatId},{cmbInlocuitor.SelectedIndex})";
                 cmd = new OleDbCommand(register, con);
                 cmd.ExecuteNonQuery();
             }
@@ -236,6 +240,13 @@ namespace MAINPROJ
 
         private async void cmbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void ComboBoxFormat(object sender, ListControlConvertEventArgs e)
+        {
+            string Nume = ((Angajat)e.ListItem).Nume;
+            string Prenume = ((Angajat)e.ListItem).Prenume;
+            e.Value = Nume + " " + Prenume;
         }
     }
 }

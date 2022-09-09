@@ -56,13 +56,13 @@ namespace MAINPROJ
             if (!admin && !manager)
             {
                 sidebar.Visible = false;
-                button3.Visible = false;
+                btnAdaugare.Visible = false;
             }
             else
             {
                 txtPrenume.Enabled = true;
                 txtNume.Enabled = true;
-                button2.Visible = false;
+                btnSalvare.Visible = false;
             }
         }
 
@@ -207,12 +207,8 @@ namespace MAINPROJ
 
         }
 
-        private void txtSerie_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+      
+        private async void btnSalvare_Click(object sender, EventArgs e)
         {
             bool cnpvalid = true;
             bool serievalida = true;
@@ -244,23 +240,19 @@ namespace MAINPROJ
             }
             if (nrbuletin&&nrtelefon&&serievalida&&cnpvalid)
             {
-                OleDbConnection con = Common.GetConnection();
-                con.Open();
-                string register = $"INSERT INTO Angajat(Nume,Prenume,LoginId,Data_Angajarii,Data_Nasterii,CNP,Serie_buletin,Nr_buletin,Numar_telefon,esteAdmin,Sex,Salariu,Overtime,IdFunctie,IdEchipa)" +
-                    $"VALUES ('{txtNume.Text}','{txtPrenume.Text}',{loginid},'{dtpDataAngajarii.Value}','{dtpDataNasterii.Value}','{txtCNP.Text}','{txtSerie.Text}','{txtNrBuletin.Text}','{txtTelefon.Text}','0','{cmbSex.Text}','0','0','{cmbNumeFunctie.SelectedValue}','{cmbNumeEchipa.SelectedValue}')";
-                cmd = new OleDbCommand(register, con);
-                cmd.ExecuteNonQuery();
+                
+                HttpResponseMessage insertAngajat = await Common.client.PostAsync(url+$"RegisterPage/InsertAccount?nume={txtNume.Text}&prenume={txtPrenume.Text}&loginid={loginid}&data_angajarii={dtpDataAngajarii.Value}&data_nasterii={dtpDataNasterii.Value}&CNP={txtCNP.Text}&Serie={txtSerie.Text}&NrBuletin={txtNrBuletin.Text}&NumarTelefon={txtTelefon.Text}&esteAdmin=false&Sex={cmbSex.Text}&salariu=0&overtime=0&IdFunctie={cmbNumeFunctie.SelectedValue}&IdEchipa={cmbNumeEchipa.SelectedValue}",null);
+                insertAngajat.EnsureSuccessStatusCode();
                 MessageBox.Show("Profilul tau a fost creat!");
 
-                //$"SELECT Id FROM Angajat WHERE Nume='{nume}' AND Prenume='{prenume}"
-                string selectangajatid = $"SELECT Id FROM Angajat WHERE Nume='{nume}' AND Prenume='{prenume}'";
-                cmd.CommandText = selectangajatid;
-                int angajatid = (int)cmd.ExecuteScalar();
-                string updateAngajatId = $"UPDATE Login SET AngajatId={angajatid} WHERE Id={loginid}";
-                cmd.CommandText=updateAngajatId;
-                cmd.ExecuteNonQuery();
-                con.Close();
-
+                
+                HttpResponseMessage response = await Common.client.GetAsync(url+$"RegisterPage/GetAngajatIdFromNumePrenume?nume={nume}&prenume={prenume}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                int angajatid = Convert.ToInt32(JsonConvert.DeserializeObject(responseBody));
+                
+                HttpResponseMessage updateAngajat = await Common.client.PostAsync(url+$"RegisterPage/UpdateAngajatID?id={loginid}&angajatid={angajatid}", null);
+                updateAngajat.EnsureSuccessStatusCode();
                 this.Hide();
                 var otherform = new HomePage(angajatid);
                 otherform.Closed += (s, args) => this.Close();
@@ -319,11 +311,12 @@ namespace MAINPROJ
             return encryptString;
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private async void btnAdaugare_Click(object sender, EventArgs e)
         {
             string email = $"{txtNume.Text}.{txtPrenume.Text}@totalsoft.ro";
             string generated_pass = Membership.GeneratePassword(8, 0);
             Console.WriteLine(generated_pass);
+            Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
             await Common.client.PostAsync(url+$"RegisterPage/InsertLogin?email={email}&parola={Encrypt(generated_pass)}",null);
             HttpResponseMessage response = await Common.client.GetAsync(url+$"RegisterPage/GetIdLogin?email={email}");
             response.EnsureSuccessStatusCode();
@@ -364,14 +357,9 @@ namespace MAINPROJ
             }
             if (nrbuletin && nrtelefon && serievalida && cnpvalid)
             {
-                OleDbConnection con = Common.GetConnection();
-                con.Open();
-                string register = $"INSERT INTO Angajat(Nume,Prenume,LoginId,Data_Angajarii,Data_Nasterii,CNP,Serie_buletin,Nr_buletin,Numar_telefon,esteAdmin,Sex,Salariu,Overtime,IdFunctie,IdEchipa)" +
-                    $"VALUES ('{txtNume.Text}','{txtPrenume.Text}',{loginid},'{dtpDataAngajarii.Value}','{dtpDataNasterii.Value}','{txtCNP.Text}','{txtSerie.Text}','{txtNrBuletin.Text}','{txtTelefon.Text}','0','{cmbSex.Text}','0','0','{cmbNumeFunctie.SelectedValue}','{cmbNumeEchipa.SelectedValue}')";
-                cmd = new OleDbCommand(register, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-
+               
+                HttpResponseMessage insertAngajat = await Common.client.PostAsync(url+$"RegisterPage/InsertAccount?nume={txtNume.Text}&prenume={txtPrenume.Text}&loginid={loginid}&data_angajarii={dtpDataAngajarii.Value}&data_nasterii={dtpDataNasterii.Value}&CNP={txtCNP.Text}&Serie={txtSerie.Text}&NrBuletin={txtNrBuletin.Text}&NumarTelefon={txtTelefon.Text}&esteAdmin=false&Sex={cmbSex.Text}&salariu=0&overtime=0&IdFunctie={cmbNumeFunctie.SelectedValue}&IdEchipa={cmbNumeEchipa.SelectedValue}", null);
+                insertAngajat.EnsureSuccessStatusCode();
                 int angajatid = 0;
                 HttpResponseMessage response2 = await Common.client.GetAsync(url+$"RegisterPage/GetAngajatIdFromLoginId?loginid={loginid}");
                 response2.EnsureSuccessStatusCode();
@@ -479,7 +467,6 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-        ///////////////////////////////////////////////////////////////////////////
 
         public async void GetFunctii()
         {
