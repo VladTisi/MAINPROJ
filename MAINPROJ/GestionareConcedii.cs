@@ -60,8 +60,10 @@ namespace MAINPROJ
             dt.Columns.Add(c);
             c = new DataColumn("DataSfarsit");
             dt.Columns.Add(c);
+            c = new DataColumn("Inlocuitor");
+            dt.Columns.Add(c);
 
-            
+
 
             //Popularea tabelului de concedii
             List<Dto> listaConcedii = new List<Dto>();
