@@ -63,9 +63,39 @@ namespace MAINPROJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4d47788e3f5976b3aa7d2a964129c232 {
+            get {
+                object obj = ResourceManager.GetObject("4d47788e3f5976b3aa7d2a964129c232", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _75519 {
+            get {
+                object obj = ResourceManager.GetObject("75519", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap background {
             get {
                 object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap black_check_tick_icon_4 {
+            get {
+                object obj = ResourceManager.GetObject("black-check-tick-icon-4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +176,27 @@ namespace MAINPROJ.Properties {
         internal static System.Drawing.Bitmap Magnifying_glass_icon_svg {
             get {
                 object obj = ResourceManager.GetObject("Magnifying_glass_icon.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_symbolize_x {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-symbolize-x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_x_log_x_plane_logo_aircraft_roblox_x_mark_transport_bird_silhouette_thumbnail {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-x-log-x-plane-logo-aircraft-roblox-x-mark-transport-bird-silhouet" +
+                        "te-thumbnail", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
