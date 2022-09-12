@@ -261,7 +261,7 @@
             this.tabelConcedii.ReadOnly = true;
             this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
             this.tabelConcedii.TabIndex = 53;
-            this.tabelConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellContentClick);
+            this.tabelConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellClick);
             // 
             // Aproba
             // 

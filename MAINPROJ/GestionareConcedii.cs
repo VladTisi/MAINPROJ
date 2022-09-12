@@ -92,7 +92,8 @@ namespace MAINPROJ
         {
             //Crearea tabelului de concedii
             DataTable dt = new DataTable();
-            DataColumn c = new DataColumn();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
             c = new DataColumn("Nume");
             dt.Columns.Add(c);
             c = new DataColumn("Prenume");
@@ -116,6 +117,7 @@ namespace MAINPROJ
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
+                r["Id"] = myObject.Id;
                 r["Nume"] = myObject.Nume;
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functie;
@@ -127,11 +129,14 @@ namespace MAINPROJ
             tabelConcedii.DataSource = dt;
             UpdateFont();
 
+            this.tabelConcedii.Columns["Id"].Visible = false;
+
         }
         private async void showTableREF()
         {
             DataTable dt = new DataTable();
-            DataColumn c = new DataColumn();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
             c = new DataColumn("Nume");
             dt.Columns.Add(c);
             c = new DataColumn("Prenume");
@@ -151,6 +156,7 @@ namespace MAINPROJ
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
+                r["Id"] = myObject.Id;
                 r["Nume"] = myObject.Nume;
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functie;
@@ -160,9 +166,9 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelConcedii.DataSource = dt;
-            dt = null;
-            listaConcedii = null;
             UpdateFont();
+
+            this.tabelConcedii.Columns["Id"].Visible = false;
         }
 
         private async void showTableACC()
@@ -355,9 +361,8 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-    }
-}
-        private void tabelConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
 
