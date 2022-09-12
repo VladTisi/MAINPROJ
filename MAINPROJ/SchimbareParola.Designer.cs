@@ -64,6 +64,7 @@
             this.txtParolaNoua.Name = "txtParolaNoua";
             this.txtParolaNoua.Size = new System.Drawing.Size(185, 22);
             this.txtParolaNoua.TabIndex = 3;
+            this.txtParolaNoua.TextChanged += new System.EventHandler(this.txtParolaNoua_TextChanged);
             // 
             // txtConfirm
             // 

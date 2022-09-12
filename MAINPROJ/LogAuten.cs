@@ -71,17 +71,6 @@ namespace MAINPROJ
             Console.WriteLine($"Afternames: {afternames}, domain: {domain}, domain2: {domain2}");
             if (domain.Length<2||domain2.Length<2) return 0;
             if (validateNume(nume)==0||validateNume(prenume)==0||validateNume(domain)==0||validateNume(domain2)==0) return 0;
-            
-
-
-
-
-
-
-
-
-
-
 
             return 1;
         }
