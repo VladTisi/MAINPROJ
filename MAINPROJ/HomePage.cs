@@ -40,6 +40,102 @@ namespace MAINPROJ
             this.angajatId = angajatId;
 
         }
+        private int validateEmail(string email)
+        {
+            if (!email.Contains('@')||!email.Contains('.')||email.Length<8)
+                return 0;
+            string nume = email.Split('.')[0];
+            string prenume = email.Split('.')[1].Split('@')[0];
+
+            Console.WriteLine($"Nume:{nume} , Prenume:{prenume}");
+            if (nume.Length<2||prenume.Length<2) return 0;//String.isnullorempty
+
+            string afternames = email.Split('@')[1];
+            string domain = afternames.Split('.')[0];
+            string domain2 = afternames.Split('.')[1];
+            Console.WriteLine($"Afternames: {afternames}, domain: {domain}, domain2: {domain2}");
+            if (domain.Length<2||domain2.Length<2) return 0;
+            if (validateNume(nume)==0||validateNume(prenume)==0||validateNume(domain)==0||validateNume(domain2)==0) return 0;
+
+            return 1;
+        }
+        private int validateNume(string nume)
+        {
+            char[] myArray = nume.ToCharArray();
+            for (int i = 0; i<myArray.Length; i++)
+            {
+                if (/*Char.IsNumber(myArray[i])||Char.IsWhiteSpace(myArray[i])||*/!Char.IsLetter(myArray[i]))
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length!=10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        private int validareSalariu(string salariu)
+        {
+            bool hasNumbersOnly = false;
+            if (salariu.Length<3)
+            {
+                return 0;
+            }
+            char[] myCharArray = salariu.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        private int validareOvertime(string overtime)
+        {
+            bool hasNumbersOnly = false;
+            char[] myCharArray = overtime.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
         private async void HomePage_Load(object sender, EventArgs e)
         {
             SetDate(angajatId);
@@ -68,28 +164,7 @@ namespace MAINPROJ
                     comboListaAngajati.Visible = false;
             }
         }
-        private int validareNrTelefon(string telefon)
-        {
-            bool hasNumbersOnly = false;
-            if (telefon.Length != 10)
-            {
-                return 0;
-            }
-            char[] myCharArray = telefon.ToCharArray();
-            for (int i = 0; i < myCharArray.Length; i++)
-            {
-                if (!Char.IsDigit(myCharArray[i]))
-                {
-                    break;
-                }
-                hasNumbersOnly = true;
-            }
-            if (hasNumbersOnly)
-            {
-                return 1;
-            }
-            return 0;
-        }
+       
         private void btnModificareDate_Click(object sender, EventArgs e)
         {
             backuptel = txtTelefon.Text;
@@ -399,7 +474,7 @@ namespace MAINPROJ
             }
             Angj.NumarTelefon = txtTelefon.Text;
             //modificare email
-            if (email.Length <= 100)
+            if (validateEmail(email)==1)
             {
                 HttpResponseMessage response2 = await Common.client.PostAsync(local + $"HomePage/UpdateEmail?email={email}&Id={angajatIdSelectat}", null);
             }
@@ -422,39 +497,43 @@ namespace MAINPROJ
                 response3.EnsureSuccessStatusCode();
             }
 
-            if (txtNume.Text != Angj.Nume && txtNume.Text != "")
+            if (txtNume.Text != Angj.Nume && txtNume.Text != ""&&validateNume(txtNume.Text)==1)
             {
                 Angj.Nume = txtNume.Text;
             }
             else
             {
+                MessageBox.Show("Nume invalid");
                 txtNume.Text = Angj.Nume;
             }
 
-            if (txtPrenume.Text != Angj.Prenume && txtPrenume.Text != "")
+            if (txtPrenume.Text != Angj.Prenume && txtPrenume.Text != ""&&validateNume(txtPrenume.Text)==1)
             {
                 Angj.Prenume = txtPrenume.Text;
             }
             else
             {
+                MessageBox.Show("Prenume invalid");
                 txtPrenume.Text = Angj.Prenume;
             }
 
-            if (txtOvertime.Text != Angj.Overtime && txtOvertime.Text != "")
+            if (txtOvertime.Text != Angj.Overtime && txtOvertime.Text != ""&&validareOvertime(txtOvertime.Text)==1)
             {
                 Angj.Overtime = txtOvertime.Text;
             }
             else
             {
+                MessageBox.Show("Overtime invalid");
                 txtOvertime.Text = Angj.Overtime;
             }
 
-            if (txtSalariu.Text != Angj.Salariu && txtSalariu.Text != "")
+            if (txtSalariu.Text != Angj.Salariu && txtSalariu.Text != "" &&validareSalariu(txtSalariu.Text)==1)
             {
                 Angj.Salariu = txtSalariu.Text;
             }
             else
             {
+                MessageBox.Show("Salariu invalid");
                 txtSalariu.Text = Angj.Salariu;
             }
 
@@ -499,8 +578,16 @@ namespace MAINPROJ
 
         private void dtpDataAngajare_ValueChanged(object sender, EventArgs e)
         {
-            txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
-            OleDbConnection con5 = Common.GetConnection();
+            if (dtpDataAngajare.Value>DateTime.Now) MessageBox.Show("Data angajarii in viitor?");
+            else
+            {
+                txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
+                OleDbConnection con5 = Common.GetConnection();
+            }
+            
         }
+
+        
+        
     }
 }

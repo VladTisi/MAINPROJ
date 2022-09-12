@@ -161,5 +161,10 @@ namespace MAINPROJ
 
            
         }
+
+        private void txtParolaNoua_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
