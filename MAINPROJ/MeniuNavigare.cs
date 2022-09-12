@@ -66,14 +66,14 @@ namespace MAINPROJ
             
                 if (admin == false && manager == false)
                 {
-                    button6.Visible = false;
-                    button7.Visible = false;
+                    btnRecrutare.Visible = false;
+                    btnGestionareConcedii.Visible = false;
                 }
             
          
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -119,7 +119,7 @@ namespace MAINPROJ
             return listaAngajati;
         }
         /////////////////Butoane meniu navigare///////////////////
-        private void button1_Click(object sender, EventArgs e)
+        private void btnHomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new HomePage(angajatId);
@@ -127,7 +127,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnConcediiPersonale_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new ConcediiRefuzate(angajatId,admin,manager);
@@ -135,7 +135,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnEchipa_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new Echipa(angajatId,admin,manager);
@@ -143,7 +143,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnListaAngajati_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId,admin,manager);
@@ -156,7 +156,7 @@ namespace MAINPROJ
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnGestionareConcedii_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new GestionareConcedii(angajatId,admin,manager);
@@ -174,7 +174,7 @@ namespace MAINPROJ
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnRecrutare_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new RegisterPage(0,"","",admin,manager,angajatId);

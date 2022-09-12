@@ -81,7 +81,7 @@ namespace MAINPROJ
 
             if (admin != true && manager != 3)
             {
-                button7.Visible = false;
+                btnGestionareConcedii.Visible = false;
             }
 
             
@@ -113,7 +113,7 @@ namespace MAINPROJ
             }
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void btnCerere_Click(object sender, EventArgs e)
         {
 
 
@@ -137,7 +137,7 @@ namespace MAINPROJ
             sidebarTimer.Start();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnHomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new HomePage(angajatId);
@@ -145,7 +145,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnConcediiPersonale_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new ConcediiRefuzate(angajatId,admin,manager);
@@ -153,7 +153,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnEchipa_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new Echipa(angajatId,admin,manager);
@@ -161,7 +161,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnListaAngajati_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId,admin,manager);
@@ -191,21 +191,13 @@ namespace MAINPROJ
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnGestionareConcedii_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new GestionareConcedii(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
 
         private void ComboBoxFormat(object sender, ListControlConvertEventArgs e)
         {
@@ -220,20 +212,6 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
-        }
-
-        private void cmbTipConcediu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void cmbInlocuitor_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

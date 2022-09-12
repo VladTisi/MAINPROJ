@@ -41,20 +41,20 @@
             this.tipConcediuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.tipConcediuTableAdapter = new MAINPROJ.DataSet1TableAdapters.TipConcediuTableAdapter();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCerere = new System.Windows.Forms.Button();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnHomePage = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnConcediiPersonale = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnEchipa = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnListaAngajati = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
@@ -151,7 +151,6 @@
             this.cmbTipConcediu.Size = new System.Drawing.Size(200, 21);
             this.cmbTipConcediu.TabIndex = 6;
             this.cmbTipConcediu.ValueMember = "Id";
-            this.cmbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.cmbTipConcediu_SelectedIndexChanged);
             // 
             // tipConcediuBindingSource1
             // 
@@ -183,16 +182,16 @@
             // 
             this.tipConcediuTableAdapter.ClearBeforeFill = true;
             // 
-            // button2
+            // btnCerere
             // 
-            this.button2.Font = new System.Drawing.Font("Stencil", 10F);
-            this.button2.Location = new System.Drawing.Point(521, 389);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 46);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Trimite cerere";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCerere.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnCerere.Location = new System.Drawing.Point(521, 389);
+            this.btnCerere.Name = "btnCerere";
+            this.btnCerere.Size = new System.Drawing.Size(108, 46);
+            this.btnCerere.TabIndex = 8;
+            this.btnCerere.Text = "Trimite cerere";
+            this.btnCerere.UseVisualStyleBackColor = true;
+            this.btnCerere.Click += new System.EventHandler(this.btnCerere_Click);
             // 
             // sidebar
             // 
@@ -237,113 +236,113 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.btnHomePage);
             this.panel2.Location = new System.Drawing.Point(3, 77);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(197, 63);
             this.panel2.TabIndex = 2;
             // 
-            // button3
+            // btnHomePage
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::MAINPROJ.Properties.Resources.rsz_homeicon;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(-3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 57);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "      Home";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnHomePage.BackColor = System.Drawing.Color.White;
+            this.btnHomePage.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomePage.Image = global::MAINPROJ.Properties.Resources.rsz_homeicon;
+            this.btnHomePage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHomePage.Location = new System.Drawing.Point(-3, 3);
+            this.btnHomePage.Name = "btnHomePage";
+            this.btnHomePage.Size = new System.Drawing.Size(200, 57);
+            this.btnHomePage.TabIndex = 1;
+            this.btnHomePage.Text = "      Home";
+            this.btnHomePage.UseVisualStyleBackColor = false;
+            this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.btnConcediiPersonale);
             this.panel3.Location = new System.Drawing.Point(3, 146);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(197, 63);
             this.panel3.TabIndex = 3;
             // 
-            // button4
+            // btnConcediiPersonale
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = global::MAINPROJ.Properties.Resources.rsz_calendaricon;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(-1, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(198, 57);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "       Concediile \r\n      mele";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnConcediiPersonale.BackColor = System.Drawing.Color.White;
+            this.btnConcediiPersonale.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConcediiPersonale.Image = global::MAINPROJ.Properties.Resources.rsz_calendaricon;
+            this.btnConcediiPersonale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConcediiPersonale.Location = new System.Drawing.Point(-1, 3);
+            this.btnConcediiPersonale.Name = "btnConcediiPersonale";
+            this.btnConcediiPersonale.Size = new System.Drawing.Size(198, 57);
+            this.btnConcediiPersonale.TabIndex = 1;
+            this.btnConcediiPersonale.Text = "       Concediile \r\n      mele";
+            this.btnConcediiPersonale.UseVisualStyleBackColor = false;
+            this.btnConcediiPersonale.Click += new System.EventHandler(this.btnConcediiPersonale_Click);
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button5);
+            this.panel4.Controls.Add(this.btnEchipa);
             this.panel4.Location = new System.Drawing.Point(3, 215);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(197, 63);
             this.panel4.TabIndex = 4;
             // 
-            // button5
+            // btnEchipa
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = global::MAINPROJ.Properties.Resources.rsz_teamicon;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(-2, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(199, 57);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "        Echipa";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnEchipa.BackColor = System.Drawing.Color.White;
+            this.btnEchipa.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEchipa.Image = global::MAINPROJ.Properties.Resources.rsz_teamicon;
+            this.btnEchipa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEchipa.Location = new System.Drawing.Point(-2, 3);
+            this.btnEchipa.Name = "btnEchipa";
+            this.btnEchipa.Size = new System.Drawing.Size(199, 57);
+            this.btnEchipa.TabIndex = 1;
+            this.btnEchipa.Text = "        Echipa";
+            this.btnEchipa.UseVisualStyleBackColor = false;
+            this.btnEchipa.Click += new System.EventHandler(this.btnEchipa_Click);
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.button6);
+            this.panel5.Controls.Add(this.btnListaAngajati);
             this.panel5.Location = new System.Drawing.Point(3, 284);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(197, 63);
             this.panel5.TabIndex = 5;
             // 
-            // button6
+            // btnListaAngajati
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = global::MAINPROJ.Properties.Resources.rsz_istockphoto_1136653100_170667a;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(-1, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(198, 57);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "           Lista Angajati";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnListaAngajati.BackColor = System.Drawing.Color.White;
+            this.btnListaAngajati.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListaAngajati.Image = global::MAINPROJ.Properties.Resources.rsz_istockphoto_1136653100_170667a;
+            this.btnListaAngajati.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListaAngajati.Location = new System.Drawing.Point(-1, 3);
+            this.btnListaAngajati.Name = "btnListaAngajati";
+            this.btnListaAngajati.Size = new System.Drawing.Size(198, 57);
+            this.btnListaAngajati.TabIndex = 1;
+            this.btnListaAngajati.Text = "           Lista Angajati";
+            this.btnListaAngajati.UseVisualStyleBackColor = false;
+            this.btnListaAngajati.Click += new System.EventHandler(this.btnListaAngajati_Click);
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.button7);
+            this.panel6.Controls.Add(this.btnGestionareConcedii);
             this.panel6.Location = new System.Drawing.Point(3, 353);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(197, 63);
             this.panel6.TabIndex = 8;
             // 
-            // button7
+            // btnGestionareConcedii
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Image = global::MAINPROJ.Properties.Resources.rsz_sheriff;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(-2, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(199, 57);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "          Gestionare \r\n        Concedii";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnGestionareConcedii.BackColor = System.Drawing.Color.White;
+            this.btnGestionareConcedii.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionareConcedii.Image = global::MAINPROJ.Properties.Resources.rsz_sheriff;
+            this.btnGestionareConcedii.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionareConcedii.Location = new System.Drawing.Point(-2, 3);
+            this.btnGestionareConcedii.Name = "btnGestionareConcedii";
+            this.btnGestionareConcedii.Size = new System.Drawing.Size(199, 57);
+            this.btnGestionareConcedii.TabIndex = 1;
+            this.btnGestionareConcedii.Text = "          Gestionare \r\n        Concedii";
+            this.btnGestionareConcedii.UseVisualStyleBackColor = false;
+            this.btnGestionareConcedii.Click += new System.EventHandler(this.btnGestionareConcedii_Click);
             // 
             // panel7
             // 
@@ -393,7 +392,6 @@
             this.label5.Size = new System.Drawing.Size(21, 22);
             this.label5.TabIndex = 11;
             this.label5.Text = "1";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -413,7 +411,6 @@
             this.cmbInlocuitor.Name = "cmbInlocuitor";
             this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
             this.cmbInlocuitor.TabIndex = 13;
-            this.cmbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cmbInlocuitor_SelectedIndexChanged_1);
             this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
             // 
             // label7
@@ -473,7 +470,6 @@
             this.label11.Size = new System.Drawing.Size(21, 22);
             this.label11.TabIndex = 18;
             this.label11.Text = "1";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -514,7 +510,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.sidebar);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCerere);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbTipConcediu);
             this.Controls.Add(this.label2);
@@ -561,21 +557,21 @@
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource tipConcediuBindingSource;
         private DataSet1TableAdapters.TipConcediuTableAdapter tipConcediuTableAdapter;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCerere;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button menuButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnConcediiPersonale;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnEchipa;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnListaAngajati;
         private System.Windows.Forms.Timer sidebarTimer;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnGestionareConcedii;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.BindingSource tipConcediuBindingSource1;
         private System.Windows.Forms.Label label4;
