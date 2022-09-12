@@ -184,13 +184,15 @@
             // 
             // btnCerere
             // 
+            this.btnCerere.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCerere.Font = new System.Drawing.Font("Stencil", 10F);
-            this.btnCerere.Location = new System.Drawing.Point(521, 389);
+            this.btnCerere.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCerere.Location = new System.Drawing.Point(622, 409);
             this.btnCerere.Name = "btnCerere";
-            this.btnCerere.Size = new System.Drawing.Size(108, 46);
+            this.btnCerere.Size = new System.Drawing.Size(116, 56);
             this.btnCerere.TabIndex = 8;
-            this.btnCerere.Text = "Trimite cerere";
-            this.btnCerere.UseVisualStyleBackColor = true;
+            this.btnCerere.Text = "trimite cerere";
+            this.btnCerere.UseVisualStyleBackColor = false;
             this.btnCerere.Click += new System.EventHandler(this.btnCerere_Click);
             // 
             // sidebar
@@ -387,7 +389,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(434, 372);
+            this.label5.Location = new System.Drawing.Point(641, 330);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(21, 22);
             this.label5.TabIndex = 11;
@@ -407,7 +409,7 @@
             // cmbInlocuitor
             // 
             this.cmbInlocuitor.FormattingEnabled = true;
-            this.cmbInlocuitor.Location = new System.Drawing.Point(484, 294);
+            this.cmbInlocuitor.Location = new System.Drawing.Point(489, 296);
             this.cmbInlocuitor.Name = "cmbInlocuitor";
             this.cmbInlocuitor.Size = new System.Drawing.Size(200, 21);
             this.cmbInlocuitor.TabIndex = 13;
@@ -418,8 +420,8 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(300, 374);
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(507, 332);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 19);
             this.label7.TabIndex = 14;
@@ -430,8 +432,8 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(300, 399);
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(507, 357);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 19);
             this.label8.TabIndex = 15;
@@ -442,30 +444,31 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(300, 424);
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label9.Location = new System.Drawing.Point(683, 333);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 19);
+            this.label9.Size = new System.Drawing.Size(55, 19);
             this.label9.TabIndex = 16;
-            this.label9.Text = "Maternitate";
+            this.label9.Text = "DECES";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label10.Location = new System.Drawing.Point(300, 449);
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label10.Location = new System.Drawing.Point(683, 358);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(115, 19);
+            this.label10.Size = new System.Drawing.Size(93, 19);
             this.label10.TabIndex = 17;
-            this.label10.Text = "Paternitate";
+            this.label10.Text = "neplatite";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(434, 397);
+            this.label11.Location = new System.Drawing.Point(641, 355);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(21, 22);
             this.label11.TabIndex = 18;
@@ -475,7 +478,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(434, 422);
+            this.label12.Location = new System.Drawing.Point(817, 331);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(21, 22);
             this.label12.TabIndex = 19;
@@ -485,7 +488,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(434, 447);
+            this.label13.Location = new System.Drawing.Point(817, 356);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(21, 22);
             this.label13.TabIndex = 20;
