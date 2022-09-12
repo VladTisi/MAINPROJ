@@ -83,6 +83,7 @@ namespace MAINPROJ
                 }
                 if (!Char.IsLetter(myArray[i]))
                 {
+                    hasLettersOnly=false;
                     break;
                 }
                 hasLettersOnly=true;
@@ -110,6 +111,7 @@ namespace MAINPROJ
             {
                 if (!Char.IsDigit(myCharArray[i]))
                 {
+                    hasNumbersOnly=false;
                     break;
                 }
                 hasNumbersOnly=true;
@@ -122,6 +124,30 @@ namespace MAINPROJ
             return 0;
         }
 
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length!=10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    hasNumbersOnly=false;
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
         private int validareCNP(string CNP) 
         {
             bool hasNumbersOnly = false;
@@ -134,6 +160,7 @@ namespace MAINPROJ
             {
                 if (!Char.IsDigit(myCharArray[i]))
                 {
+                    hasNumbersOnly=false;
                     break;
                 }
                 hasNumbersOnly=true;
@@ -185,29 +212,7 @@ namespace MAINPROJ
             }
 
         }
-        private int validareNrTelefon(string telefon)
-        {
-            bool hasNumbersOnly = false;
-            if (telefon.Length != 10)
-            {
-                return 0;
-            }
-            char[] myCharArray = telefon.ToCharArray();
-            for (int i = 0; i < myCharArray.Length; i++)
-            {
-                if (!Char.IsDigit(myCharArray[i]))
-                {
-                    break;
-                }
-                hasNumbersOnly = true;
-            }
-
-            if (hasNumbersOnly)
-            {
-                return 1;
-            }
-            return 0;
-        }
+        
 
         private async void btnSalvare_Click(object sender, EventArgs e)
         {
