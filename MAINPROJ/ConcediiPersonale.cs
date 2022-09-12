@@ -250,7 +250,6 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        
         private void UpdateFont(DataGridView date)
         {
             //Change cell font

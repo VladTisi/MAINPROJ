@@ -199,7 +199,6 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-       
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -228,6 +227,11 @@ namespace MAINPROJ
         }
 
         private void cmbInlocuitor_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
         {
 
         }
