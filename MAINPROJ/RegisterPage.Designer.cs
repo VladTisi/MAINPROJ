@@ -254,6 +254,7 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(205, 25);
             this.txtSerie.TabIndex = 16;
+            this.txtSerie.TextChanged += new System.EventHandler(this.txtSerie_TextChanged);
             // 
             // txtCNP
             // 

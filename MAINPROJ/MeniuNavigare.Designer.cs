@@ -49,6 +49,9 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.tabelAngajati = new System.Windows.Forms.DataGridView();
             this.btnRecrutare = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -56,9 +59,9 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).BeginInit();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -72,12 +75,15 @@
             this.sidebar.Controls.Add(this.panel5);
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel7);
+            this.sidebar.Controls.Add(this.panel8);
+            this.sidebar.Controls.Add(this.panel9);
+            this.sidebar.Controls.Add(this.panel10);
             this.sidebar.Location = new System.Drawing.Point(-5, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
-            this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
-            this.sidebar.MinimumSize = new System.Drawing.Size(61, 535);
+            this.sidebar.MaximumSize = new System.Drawing.Size(200, 700);
+            this.sidebar.MinimumSize = new System.Drawing.Size(61, 700);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(61, 535);
+            this.sidebar.Size = new System.Drawing.Size(61, 700);
             this.sidebar.TabIndex = 0;
             this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
             // 
@@ -215,7 +221,6 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btnLogOut);
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
@@ -227,7 +232,7 @@
             this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
+            this.btnLogOut.Location = new System.Drawing.Point(-1, 3);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(199, 60);
             this.btnLogOut.TabIndex = 3;
@@ -239,9 +244,9 @@
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
             this.Logo.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.Logo.Location = new System.Drawing.Point(304, 1);
+            this.Logo.Location = new System.Drawing.Point(355, 0);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(294, 80);
+            this.Logo.Size = new System.Drawing.Size(453, 109);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Logo.TabIndex = 1;
             this.Logo.TabStop = false;
@@ -255,10 +260,10 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(884, 0);
+            this.btnExit.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(1161, 0);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(33, 23);
+            this.btnExit.Size = new System.Drawing.Size(42, 34);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -269,29 +274,51 @@
             this.tabelAngajati.AllowUserToAddRows = false;
             this.tabelAngajati.AllowUserToDeleteRows = false;
             this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelAngajati.Location = new System.Drawing.Point(236, 115);
+            this.tabelAngajati.Location = new System.Drawing.Point(259, 150);
             this.tabelAngajati.Name = "tabelAngajati";
-            this.tabelAngajati.ReadOnly = true;
-            this.tabelAngajati.Size = new System.Drawing.Size(460, 298);
+            this.tabelAngajati.Size = new System.Drawing.Size(867, 462);
             this.tabelAngajati.TabIndex = 7;
+            this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
             // 
             // btnRecrutare
             // 
-            this.btnRecrutare.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecrutare.Location = new System.Drawing.Point(408, 426);
+            this.btnRecrutare.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecrutare.Location = new System.Drawing.Point(898, 633);
             this.btnRecrutare.Name = "btnRecrutare";
-            this.btnRecrutare.Size = new System.Drawing.Size(100, 40);
+            this.btnRecrutare.Size = new System.Drawing.Size(228, 61);
             this.btnRecrutare.TabIndex = 82;
             this.btnRecrutare.Text = "Recrutare";
             this.btnRecrutare.UseVisualStyleBackColor = true;
             this.btnRecrutare.Click += new System.EventHandler(this.btnRecrutare_Click);
             // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 10;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 11;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 12;
+            // 
             // MeniuNavigare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(914, 491);
+            this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.btnRecrutare);
             this.Controls.Add(this.tabelAngajati);
             this.Controls.Add(this.btnExit);
@@ -309,9 +336,9 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).EndInit();
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -338,5 +365,8 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnRecrutare;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
     }
 }

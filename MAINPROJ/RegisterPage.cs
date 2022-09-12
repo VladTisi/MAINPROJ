@@ -73,51 +73,30 @@ namespace MAINPROJ
 
         private int validareSerieBuletin(string Serie)
         {
-            bool hasDigits = false;
+            bool hasLettersOnly = false;
             char[] myArray = Serie.ToCharArray();
-            for (int i = 0; i<myArray.Length; i++) { 
+            for (int i = 0; i<myArray.Length; i++)
+            {
                 if (Serie.Length!=2)
                 {
                     break;
                 }
-                if (Char.IsNumber(myArray[i]))
+                if (!Char.IsLetter(myArray[i]))
                 {
                     break;
                 }
-                hasDigits=true;
+                hasLettersOnly=true;
 
-        }
+            }
 
-            if (hasDigits)
+            if (hasLettersOnly)
             {
                 return 1;
             }
             return 0;
         }
 
-        private int validareNrTelefon(string telefon)
-        {
-            bool hasNumbersOnly = false;
-            if (telefon.Length!=10)
-            {
-                return 0;
-            }
-            char[] myCharArray = telefon.ToCharArray();
-            for (int i = 0; i<myCharArray.Length; i++)
-            {
-                if (!Char.IsDigit(myCharArray[i]))
-                {
-                    break;
-                }
-                hasNumbersOnly=true;
-            }
-
-            if (hasNumbersOnly)
-            {
-                return 1;
-            }
-            return 0;
-        }
+        
 
         private int validareNrBuletin(string nrbuletin)
         {
@@ -206,8 +185,30 @@ namespace MAINPROJ
             }
 
         }
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length != 10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i < myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly = true;
+            }
 
-      
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
         private async void btnSalvare_Click(object sender, EventArgs e)
         {
             bool cnpvalid = true;
@@ -535,6 +536,11 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void txtSerie_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

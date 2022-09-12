@@ -68,13 +68,16 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.comboListaAngajati = new System.Windows.Forms.ComboBox();
             this.comboFunctie = new System.Windows.Forms.ComboBox();
             this.comboEchipa = new System.Windows.Forms.ComboBox();
             this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnLogOut = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -84,18 +87,18 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNume
             // 
             this.labelNume.AutoSize = true;
             this.labelNume.BackColor = System.Drawing.Color.Transparent;
-            this.labelNume.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNume.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNume.ForeColor = System.Drawing.Color.White;
-            this.labelNume.Location = new System.Drawing.Point(216, 308);
+            this.labelNume.Location = new System.Drawing.Point(226, 443);
             this.labelNume.Name = "labelNume";
-            this.labelNume.Size = new System.Drawing.Size(53, 19);
+            this.labelNume.Size = new System.Drawing.Size(62, 22);
             this.labelNume.TabIndex = 1;
             this.labelNume.Text = "Nume";
             // 
@@ -104,7 +107,7 @@
             this.labelFunctie.AutoSize = true;
             this.labelFunctie.BackColor = System.Drawing.Color.Transparent;
             this.labelFunctie.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelFunctie.Location = new System.Drawing.Point(532, 150);
+            this.labelFunctie.Location = new System.Drawing.Point(666, 287);
             this.labelFunctie.Name = "labelFunctie";
             this.labelFunctie.Size = new System.Drawing.Size(74, 19);
             this.labelFunctie.TabIndex = 2;
@@ -115,7 +118,7 @@
             this.labelEchipa.AutoSize = true;
             this.labelEchipa.BackColor = System.Drawing.Color.Transparent;
             this.labelEchipa.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelEchipa.Location = new System.Drawing.Point(532, 212);
+            this.labelEchipa.Location = new System.Drawing.Point(666, 349);
             this.labelEchipa.Name = "labelEchipa";
             this.labelEchipa.Size = new System.Drawing.Size(65, 19);
             this.labelEchipa.TabIndex = 3;
@@ -126,7 +129,7 @@
             this.labelEmail.AutoSize = true;
             this.labelEmail.BackColor = System.Drawing.Color.Transparent;
             this.labelEmail.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelEmail.Location = new System.Drawing.Point(532, 275);
+            this.labelEmail.Location = new System.Drawing.Point(666, 412);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(56, 19);
             this.labelEmail.TabIndex = 4;
@@ -137,7 +140,7 @@
             this.labelNumarTelefon.AutoSize = true;
             this.labelNumarTelefon.BackColor = System.Drawing.Color.Transparent;
             this.labelNumarTelefon.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelNumarTelefon.Location = new System.Drawing.Point(532, 336);
+            this.labelNumarTelefon.Location = new System.Drawing.Point(666, 473);
             this.labelNumarTelefon.Name = "labelNumarTelefon";
             this.labelNumarTelefon.Size = new System.Drawing.Size(159, 19);
             this.labelNumarTelefon.TabIndex = 5;
@@ -148,7 +151,7 @@
             this.labelDataAngajare.AutoSize = true;
             this.labelDataAngajare.BackColor = System.Drawing.Color.Transparent;
             this.labelDataAngajare.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelDataAngajare.Location = new System.Drawing.Point(726, 336);
+            this.labelDataAngajare.Location = new System.Drawing.Point(927, 472);
             this.labelDataAngajare.Name = "labelDataAngajare";
             this.labelDataAngajare.Size = new System.Drawing.Size(133, 19);
             this.labelDataAngajare.TabIndex = 6;
@@ -159,7 +162,7 @@
             this.labelSalariu.AutoSize = true;
             this.labelSalariu.BackColor = System.Drawing.Color.Transparent;
             this.labelSalariu.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelSalariu.Location = new System.Drawing.Point(726, 273);
+            this.labelSalariu.Location = new System.Drawing.Point(927, 409);
             this.labelSalariu.Name = "labelSalariu";
             this.labelSalariu.Size = new System.Drawing.Size(75, 19);
             this.labelSalariu.TabIndex = 7;
@@ -170,7 +173,7 @@
             this.labelOvertime.AutoSize = true;
             this.labelOvertime.BackColor = System.Drawing.Color.Transparent;
             this.labelOvertime.Font = new System.Drawing.Font("Stencil", 11.75F);
-            this.labelOvertime.Location = new System.Drawing.Point(726, 211);
+            this.labelOvertime.Location = new System.Drawing.Point(927, 347);
             this.labelOvertime.Name = "labelOvertime";
             this.labelOvertime.Size = new System.Drawing.Size(87, 19);
             this.labelOvertime.TabIndex = 8;
@@ -180,21 +183,21 @@
             // 
             this.labelSex.AutoSize = true;
             this.labelSex.BackColor = System.Drawing.Color.Transparent;
-            this.labelSex.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSex.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSex.ForeColor = System.Drawing.Color.White;
-            this.labelSex.Location = new System.Drawing.Point(216, 359);
+            this.labelSex.Location = new System.Drawing.Point(226, 552);
             this.labelSex.Name = "labelSex";
-            this.labelSex.Size = new System.Drawing.Size(37, 19);
+            this.labelSex.Size = new System.Drawing.Size(44, 22);
             this.labelSex.TabIndex = 9;
             this.labelSex.Text = "sex";
             // 
             // pozaAngajat
             // 
-            this.pozaAngajat.Location = new System.Drawing.Point(220, 78);
-            this.pozaAngajat.MaximumSize = new System.Drawing.Size(175, 175);
+            this.pozaAngajat.Location = new System.Drawing.Point(304, 147);
+            this.pozaAngajat.MaximumSize = new System.Drawing.Size(200, 200);
             this.pozaAngajat.MinimumSize = new System.Drawing.Size(90, 110);
             this.pozaAngajat.Name = "pozaAngajat";
-            this.pozaAngajat.Size = new System.Drawing.Size(175, 175);
+            this.pozaAngajat.Size = new System.Drawing.Size(200, 200);
             this.pozaAngajat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pozaAngajat.TabIndex = 11;
             this.pozaAngajat.TabStop = false;
@@ -203,22 +206,22 @@
             // 
             this.labelPrenume.AutoSize = true;
             this.labelPrenume.BackColor = System.Drawing.Color.Transparent;
-            this.labelPrenume.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrenume.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPrenume.ForeColor = System.Drawing.Color.White;
-            this.labelPrenume.Location = new System.Drawing.Point(216, 334);
+            this.labelPrenume.Location = new System.Drawing.Point(226, 495);
             this.labelPrenume.Name = "labelPrenume";
-            this.labelPrenume.Size = new System.Drawing.Size(83, 19);
+            this.labelPrenume.Size = new System.Drawing.Size(98, 22);
             this.labelPrenume.TabIndex = 15;
             this.labelPrenume.Text = "Prenume";
             // 
             // btnModificareDate
             // 
             this.btnModificareDate.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 10.25F);
+            this.btnModificareDate.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificareDate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnModificareDate.Location = new System.Drawing.Point(536, 409);
+            this.btnModificareDate.Location = new System.Drawing.Point(670, 602);
             this.btnModificareDate.Name = "btnModificareDate";
-            this.btnModificareDate.Size = new System.Drawing.Size(118, 33);
+            this.btnModificareDate.Size = new System.Drawing.Size(151, 64);
             this.btnModificareDate.TabIndex = 33;
             this.btnModificareDate.Text = "Modificare date";
             this.btnModificareDate.UseVisualStyleBackColor = false;
@@ -227,11 +230,11 @@
             // btnSalvareModificari
             // 
             this.btnSalvareModificari.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvareModificari.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvareModificari.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSalvareModificari.Location = new System.Drawing.Point(741, 410);
+            this.btnSalvareModificari.Location = new System.Drawing.Point(931, 602);
             this.btnSalvareModificari.Name = "btnSalvareModificari";
-            this.btnSalvareModificari.Size = new System.Drawing.Size(118, 33);
+            this.btnSalvareModificari.Size = new System.Drawing.Size(151, 64);
             this.btnSalvareModificari.TabIndex = 34;
             this.btnSalvareModificari.Text = "Salvare modificari";
             this.btnSalvareModificari.UseVisualStyleBackColor = false;
@@ -241,75 +244,83 @@
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
-            this.txtEmail.Location = new System.Drawing.Point(536, 297);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(670, 434);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.Size = new System.Drawing.Size(155, 26);
             this.txtEmail.TabIndex = 36;
             // 
             // txtTelefon
             // 
             this.txtTelefon.Enabled = false;
-            this.txtTelefon.Location = new System.Drawing.Point(536, 358);
+            this.txtTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefon.Location = new System.Drawing.Point(670, 495);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefon.Size = new System.Drawing.Size(155, 26);
             this.txtTelefon.TabIndex = 37;
             // 
             // txtNume
             // 
             this.txtNume.Enabled = false;
-            this.txtNume.Location = new System.Drawing.Point(319, 307);
+            this.txtNume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNume.Location = new System.Drawing.Point(342, 439);
             this.txtNume.Name = "txtNume";
-            this.txtNume.Size = new System.Drawing.Size(100, 20);
+            this.txtNume.Size = new System.Drawing.Size(162, 26);
             this.txtNume.TabIndex = 39;
             // 
             // txtPrenume
             // 
             this.txtPrenume.Enabled = false;
-            this.txtPrenume.Location = new System.Drawing.Point(319, 333);
+            this.txtPrenume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrenume.Location = new System.Drawing.Point(342, 493);
             this.txtPrenume.Name = "txtPrenume";
-            this.txtPrenume.Size = new System.Drawing.Size(100, 20);
+            this.txtPrenume.Size = new System.Drawing.Size(162, 26);
             this.txtPrenume.TabIndex = 40;
             // 
             // txtSex
             // 
             this.txtSex.Enabled = false;
-            this.txtSex.Location = new System.Drawing.Point(319, 358);
+            this.txtSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSex.Location = new System.Drawing.Point(342, 545);
             this.txtSex.Name = "txtSex";
-            this.txtSex.Size = new System.Drawing.Size(100, 20);
+            this.txtSex.Size = new System.Drawing.Size(162, 26);
             this.txtSex.TabIndex = 41;
             // 
             // txtOvertime
             // 
             this.txtOvertime.Enabled = false;
-            this.txtOvertime.Location = new System.Drawing.Point(730, 236);
+            this.txtOvertime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOvertime.Location = new System.Drawing.Point(931, 372);
             this.txtOvertime.Name = "txtOvertime";
-            this.txtOvertime.Size = new System.Drawing.Size(100, 20);
+            this.txtOvertime.Size = new System.Drawing.Size(155, 26);
             this.txtOvertime.TabIndex = 44;
             // 
             // txtSalariu
             // 
             this.txtSalariu.Enabled = false;
-            this.txtSalariu.Location = new System.Drawing.Point(730, 295);
+            this.txtSalariu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalariu.Location = new System.Drawing.Point(931, 431);
             this.txtSalariu.Name = "txtSalariu";
-            this.txtSalariu.Size = new System.Drawing.Size(100, 20);
+            this.txtSalariu.Size = new System.Drawing.Size(155, 26);
             this.txtSalariu.TabIndex = 45;
             // 
             // txtDataAngajare
             // 
             this.txtDataAngajare.Enabled = false;
-            this.txtDataAngajare.Location = new System.Drawing.Point(730, 358);
+            this.txtDataAngajare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataAngajare.Location = new System.Drawing.Point(931, 494);
             this.txtDataAngajare.Name = "txtDataAngajare";
-            this.txtDataAngajare.Size = new System.Drawing.Size(100, 20);
+            this.txtDataAngajare.Size = new System.Drawing.Size(155, 26);
             this.txtDataAngajare.TabIndex = 46;
             // 
             // btnUpdatePoza
             // 
             this.btnUpdatePoza.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUpdatePoza.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePoza.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdatePoza.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnUpdatePoza.Location = new System.Drawing.Point(262, 259);
+            this.btnUpdatePoza.Location = new System.Drawing.Point(304, 368);
             this.btnUpdatePoza.Name = "btnUpdatePoza";
-            this.btnUpdatePoza.Size = new System.Drawing.Size(90, 33);
+            this.btnUpdatePoza.Size = new System.Drawing.Size(200, 33);
             this.btnUpdatePoza.TabIndex = 47;
             this.btnUpdatePoza.Text = "Update";
             this.btnUpdatePoza.UseVisualStyleBackColor = false;
@@ -320,9 +331,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Prison_Break_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(329, -7);
+            this.pictureBox1.Location = new System.Drawing.Point(379, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(244, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(411, 104);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
@@ -343,12 +354,15 @@
             this.sidebar.Controls.Add(this.panel5);
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel7);
+            this.sidebar.Controls.Add(this.panel8);
+            this.sidebar.Controls.Add(this.panel9);
+            this.sidebar.Controls.Add(this.panel10);
             this.sidebar.Location = new System.Drawing.Point(-5, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
-            this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
-            this.sidebar.MinimumSize = new System.Drawing.Size(61, 535);
+            this.sidebar.MaximumSize = new System.Drawing.Size(200, 700);
+            this.sidebar.MinimumSize = new System.Drawing.Size(61, 700);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(61, 535);
+            this.sidebar.Size = new System.Drawing.Size(61, 700);
             this.sidebar.TabIndex = 49;
             // 
             // panel1
@@ -485,20 +499,33 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btnLogOut);
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 9;
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.White;
+            this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
+            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogOut.Location = new System.Drawing.Point(-1, -2);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(199, 60);
+            this.btnLogOut.TabIndex = 4;
+            this.btnLogOut.Text = "         Deconectare";
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(884, 0);
+            this.btnExit.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(1160, 0);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(33, 23);
+            this.btnExit.Size = new System.Drawing.Size(43, 33);
             this.btnExit.TabIndex = 50;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -507,36 +534,38 @@
             // comboListaAngajati
             // 
             this.comboListaAngajati.BackColor = System.Drawing.Color.GhostWhite;
-            this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboListaAngajati.FormattingEnabled = true;
-            this.comboListaAngajati.Location = new System.Drawing.Point(711, 29);
+            this.comboListaAngajati.Location = new System.Drawing.Point(819, 45);
             this.comboListaAngajati.Name = "comboListaAngajati";
-            this.comboListaAngajati.Size = new System.Drawing.Size(148, 21);
+            this.comboListaAngajati.Size = new System.Drawing.Size(267, 27);
             this.comboListaAngajati.TabIndex = 51;
             this.comboListaAngajati.SelectedValueChanged += new System.EventHandler(this.comboListaAngajati_SelectedValueChanged);
             // 
             // comboFunctie
             // 
             this.comboFunctie.Enabled = false;
+            this.comboFunctie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboFunctie.FormattingEnabled = true;
-            this.comboFunctie.Location = new System.Drawing.Point(536, 180);
+            this.comboFunctie.Location = new System.Drawing.Point(670, 317);
             this.comboFunctie.Name = "comboFunctie";
-            this.comboFunctie.Size = new System.Drawing.Size(100, 21);
+            this.comboFunctie.Size = new System.Drawing.Size(155, 28);
             this.comboFunctie.TabIndex = 76;
             // 
             // comboEchipa
             // 
             this.comboEchipa.Enabled = false;
+            this.comboEchipa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEchipa.FormattingEnabled = true;
-            this.comboEchipa.Location = new System.Drawing.Point(536, 235);
+            this.comboEchipa.Location = new System.Drawing.Point(670, 372);
             this.comboEchipa.Name = "comboEchipa";
-            this.comboEchipa.Size = new System.Drawing.Size(100, 21);
+            this.comboEchipa.Size = new System.Drawing.Size(155, 28);
             this.comboEchipa.TabIndex = 77;
             // 
             // dtpDataAngajare
             // 
             this.dtpDataAngajare.Enabled = false;
-            this.dtpDataAngajare.Location = new System.Drawing.Point(839, 359);
+            this.dtpDataAngajare.Location = new System.Drawing.Point(1040, 495);
             this.dtpDataAngajare.Name = "dtpDataAngajare";
             this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
             this.dtpDataAngajare.TabIndex = 78;
@@ -545,35 +574,43 @@
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.White;
-            this.btnReset.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(262, 409);
+            this.btnReset.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(342, 602);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 50);
+            this.btnReset.Size = new System.Drawing.Size(162, 64);
             this.btnReset.TabIndex = 79;
             this.btnReset.Text = "Resetare\r\nParola";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnLogOut
+            // panel8
             // 
-            this.btnLogOut.BackColor = System.Drawing.Color.White;
-            this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
-            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(199, 60);
-            this.btnLogOut.TabIndex = 4;
-            this.btnLogOut.Text = "         Deconectare";
-            this.btnLogOut.UseVisualStyleBackColor = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 10;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 11;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 12;
             // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(914, 491);
+            this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.comboEchipa);
@@ -617,7 +654,7 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -671,5 +708,8 @@
         private System.Windows.Forms.Button ResetParola;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
     }
 }

@@ -41,7 +41,7 @@ namespace MAINPROJ
             //Change cell font
             foreach (DataGridViewColumn c in tabelConcedii.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Stencil", 16F, GraphicsUnit.Pixel);
             }
         }
         private async void GestionareConcedii_Load(object sender, EventArgs e)
@@ -82,6 +82,7 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelConcedii.DataSource = dt;
+            tabelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
 
             this.tabelConcedii.Columns["Id"].Visible = false;
@@ -127,6 +128,7 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelConcedii.DataSource = dt;
+            tabelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
 
             this.tabelConcedii.Columns["Id"].Visible = false;
@@ -166,6 +168,7 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelConcedii.DataSource = dt;
+            tabelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
 
             this.tabelConcedii.Columns["Id"].Visible = false;
@@ -205,6 +208,7 @@ namespace MAINPROJ
             tabelConcedii.DataSource = dt;
             dt = null;
             listaConcedii = null;
+            tabelConcedii.AutoSizeColumnsMode =DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
         }
 

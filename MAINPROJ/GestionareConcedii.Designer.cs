@@ -58,6 +58,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,12 +68,12 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -85,12 +88,15 @@
             this.sidebar.Controls.Add(this.panel5);
             this.sidebar.Controls.Add(this.panel6);
             this.sidebar.Controls.Add(this.panel7);
+            this.sidebar.Controls.Add(this.panel8);
+            this.sidebar.Controls.Add(this.panel9);
+            this.sidebar.Controls.Add(this.panel10);
             this.sidebar.Location = new System.Drawing.Point(-5, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
-            this.sidebar.MaximumSize = new System.Drawing.Size(200, 535);
-            this.sidebar.MinimumSize = new System.Drawing.Size(61, 535);
+            this.sidebar.MaximumSize = new System.Drawing.Size(200, 700);
+            this.sidebar.MinimumSize = new System.Drawing.Size(61, 700);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(61, 535);
+            this.sidebar.Size = new System.Drawing.Size(61, 700);
             this.sidebar.TabIndex = 51;
             // 
             // panel1
@@ -227,7 +233,6 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btnLogOut);
             this.panel7.Location = new System.Drawing.Point(3, 422);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
@@ -239,7 +244,7 @@
             this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 0);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(199, 60);
             this.btnLogOut.TabIndex = 6;
@@ -256,10 +261,10 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(884, 0);
+            this.btnExit.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(1166, 0);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(33, 23);
+            this.btnExit.Size = new System.Drawing.Size(37, 31);
             this.btnExit.TabIndex = 52;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -269,22 +274,23 @@
             // 
             this.tabelConcedii.AllowUserToAddRows = false;
             this.tabelConcedii.AllowUserToDeleteRows = false;
+            this.tabelConcedii.BackgroundColor = System.Drawing.Color.White;
             this.tabelConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelConcedii.Location = new System.Drawing.Point(223, 63);
+            this.tabelConcedii.Location = new System.Drawing.Point(223, 101);
             this.tabelConcedii.Name = "tabelConcedii";
             this.tabelConcedii.ReadOnly = true;
-            this.tabelConcedii.Size = new System.Drawing.Size(558, 296);
+            this.tabelConcedii.Size = new System.Drawing.Size(753, 410);
             this.tabelConcedii.TabIndex = 53;
             this.tabelConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelConcedii_CellClick);
             // 
             // Aproba
             // 
             this.Aproba.BackColor = System.Drawing.Color.White;
-            this.Aproba.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Aproba.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aproba.ForeColor = System.Drawing.Color.Black;
-            this.Aproba.Location = new System.Drawing.Point(286, 406);
+            this.Aproba.Location = new System.Drawing.Point(335, 561);
             this.Aproba.Name = "Aproba";
-            this.Aproba.Size = new System.Drawing.Size(120, 41);
+            this.Aproba.Size = new System.Drawing.Size(138, 63);
             this.Aproba.TabIndex = 56;
             this.Aproba.Text = "Aproba";
             this.Aproba.UseVisualStyleBackColor = false;
@@ -293,11 +299,11 @@
             // Refuza
             // 
             this.Refuza.BackColor = System.Drawing.Color.Black;
-            this.Refuza.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Refuza.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Refuza.ForeColor = System.Drawing.Color.White;
-            this.Refuza.Location = new System.Drawing.Point(562, 406);
+            this.Refuza.Location = new System.Drawing.Point(745, 561);
             this.Refuza.Name = "Refuza";
-            this.Refuza.Size = new System.Drawing.Size(120, 41);
+            this.Refuza.Size = new System.Drawing.Size(144, 63);
             this.Refuza.TabIndex = 57;
             this.Refuza.Text = "refuza";
             this.Refuza.UseVisualStyleBackColor = false;
@@ -305,19 +311,20 @@
             // 
             // SearchBox
             // 
-            this.SearchBox.Location = new System.Drawing.Point(402, 38);
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBox.Location = new System.Drawing.Point(537, 23);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(352, 20);
+            this.SearchBox.Size = new System.Drawing.Size(401, 29);
             this.SearchBox.TabIndex = 58;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(224, 37);
+            this.label1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(227, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 19);
+            this.label1.Size = new System.Drawing.Size(223, 25);
             this.label1.TabIndex = 59;
             this.label1.Text = "Cautare dupa nume";
             // 
@@ -325,7 +332,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MAINPROJ.Properties.Resources.Magnifying_glass_icon_svg;
-            this.pictureBox1.Location = new System.Drawing.Point(760, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(944, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -335,11 +342,11 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button6.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button6.Location = new System.Drawing.Point(787, 164);
+            this.button6.Location = new System.Drawing.Point(1002, 214);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(120, 46);
+            this.button6.Size = new System.Drawing.Size(155, 62);
             this.button6.TabIndex = 61;
             this.button6.Text = "concedii in asteptare";
             this.button6.UseVisualStyleBackColor = false;
@@ -348,11 +355,11 @@
             // ConRef
             // 
             this.ConRef.BackColor = System.Drawing.Color.Black;
-            this.ConRef.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConRef.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConRef.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ConRef.Location = new System.Drawing.Point(787, 258);
+            this.ConRef.Location = new System.Drawing.Point(1002, 398);
             this.ConRef.Name = "ConRef";
-            this.ConRef.Size = new System.Drawing.Size(120, 45);
+            this.ConRef.Size = new System.Drawing.Size(155, 63);
             this.ConRef.TabIndex = 62;
             this.ConRef.Text = "Concedii refuzate";
             this.ConRef.UseVisualStyleBackColor = false;
@@ -361,11 +368,11 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button10.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button10.Location = new System.Drawing.Point(787, 69);
+            this.button10.Location = new System.Drawing.Point(1002, 63);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(120, 46);
+            this.button10.Size = new System.Drawing.Size(155, 57);
             this.button10.TabIndex = 63;
             this.button10.Text = "concedii acceptate";
             this.button10.UseVisualStyleBackColor = false;
@@ -375,9 +382,9 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::MAINPROJ.Properties.Resources.black_check_tick_icon_4;
-            this.pictureBox2.Location = new System.Drawing.Point(820, 114);
+            this.pictureBox2.Location = new System.Drawing.Point(1040, 126);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(53, 46);
+            this.pictureBox2.Size = new System.Drawing.Size(72, 67);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 64;
             this.pictureBox2.TabStop = false;
@@ -386,9 +393,9 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::MAINPROJ.Properties.Resources._4d47788e3f5976b3aa7d2a964129c232;
-            this.pictureBox3.Location = new System.Drawing.Point(820, 211);
+            this.pictureBox3.Location = new System.Drawing.Point(1040, 288);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(53, 48);
+            this.pictureBox3.Size = new System.Drawing.Size(72, 70);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 65;
             this.pictureBox3.TabStop = false;
@@ -397,19 +404,41 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::MAINPROJ.Properties.Resources._75519;
-            this.pictureBox4.Location = new System.Drawing.Point(820, 309);
+            this.pictureBox4.Location = new System.Drawing.Point(1040, 482);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox4.Size = new System.Drawing.Size(72, 63);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 66;
             this.pictureBox4.TabStop = false;
+            // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 8;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 9;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 10;
             // 
             // GestionareConcedii
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
-            this.ClientSize = new System.Drawing.Size(914, 491);
+            this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -436,12 +465,12 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,5 +507,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
     }
 }
