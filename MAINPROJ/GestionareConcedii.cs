@@ -371,6 +371,8 @@ namespace MAINPROJ
 
                 Console.WriteLine(ValCelula);
 
+                
+
             
         }
 
@@ -381,5 +383,7 @@ namespace MAINPROJ
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+
+      
     }
 }

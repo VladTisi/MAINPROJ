@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PrisonBreakModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Concediu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipConcediuId" Type="int" />
+          <Property Name="Data_inceput" Type="date" />
+          <Property Name="Data_sfarsit" Type="date" />
+          <Property Name="InlocuitorId" Type="int" />
+          <Property Name="Comentarii" Type="nvarchar" MaxLength="1" />
+          <Property Name="stareConcediuId" Type="int" />
+          <Property Name="angajatId" Type="int" />
+        </EntityType>
+        <Function Name="SelectConcedii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="PrisonBreakModelStoreContainer">
+          <EntitySet Name="Concediu" EntityType="Self.Concediu" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrisonBreakModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Concediu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipConcediuId" Type="Int32" />
+          <Property Name="Data_inceput" Type="DateTime" Precision="0" />
+          <Property Name="Data_sfarsit" Type="DateTime" Precision="0" />
+          <Property Name="InlocuitorId" Type="Int32" />
+          <Property Name="Comentarii" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="stareConcediuId" Type="Int32" />
+          <Property Name="angajatId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="PrisonBreakEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Concedius" EntityType="Self.Concediu" />
+          <FunctionImport Name="SelectConcedii" ReturnType="Collection(PrisonBreakModel.SelectConcedii_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SelectConcedii_Result">
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prenume" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="Data_inceput" Nullable="true" />
+          <Property Type="DateTime" Name="Data_sfarsit" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrisonBreakModelStoreContainer" CdmEntityContainer="PrisonBreakEntities">
+          <EntitySetMapping Name="Concedius">
+            <EntityTypeMapping TypeName="PrisonBreakModel.Concediu">
+              <MappingFragment StoreEntitySet="Concediu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipConcediuId" ColumnName="TipConcediuId" />
+                <ScalarProperty Name="Data_inceput" ColumnName="Data_inceput" />
+                <ScalarProperty Name="Data_sfarsit" ColumnName="Data_sfarsit" />
+                <ScalarProperty Name="InlocuitorId" ColumnName="InlocuitorId" />
+                <ScalarProperty Name="Comentarii" ColumnName="Comentarii" />
+                <ScalarProperty Name="stareConcediuId" ColumnName="stareConcediuId" />
+                <ScalarProperty Name="angajatId" ColumnName="angajatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SelectConcedii" FunctionName="PrisonBreakModel.Store.SelectConcedii">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrisonBreakModel.SelectConcedii_Result">
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Data_inceput" ColumnName="Data_inceput" />
+                <ScalarProperty Name="Data_sfarsit" ColumnName="Data_sfarsit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
