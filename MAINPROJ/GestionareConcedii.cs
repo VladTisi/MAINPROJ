@@ -356,10 +356,7 @@ namespace MAINPROJ
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var otherform = new LogAuten();
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
+
         }
 
         private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -375,6 +372,14 @@ namespace MAINPROJ
                 Console.WriteLine(ValCelula);
 
             
+        }
+
+        private void btnLogOut_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
         }
     }
 }

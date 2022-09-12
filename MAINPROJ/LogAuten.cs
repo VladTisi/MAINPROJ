@@ -19,6 +19,7 @@ using System.IO;
 using System.Net.Http;
 using Newtonsoft.Json;
 using RandomProj.Models;
+using System.Net.Mail;
 
 namespace MAINPROJ
 {
@@ -38,13 +39,51 @@ namespace MAINPROJ
 
 
         }
+
+
+        private int validateNume(string nume)
+        {
+            char[] myArray = nume.ToCharArray();
+            for(int i = 0; i<myArray.Length; i++)
+            {
+                if (/*Char.IsNumber(myArray[i])||Char.IsWhiteSpace(myArray[i])||*/!Char.IsLetter(myArray[i]))
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
         private int validateEmail(string email)
         {
-            if (email.Contains("@") && email.Contains(".") && email.Length > 8)
-            {
-                return 1;
-            }
-            else return 0;
+            if (!email.Contains('@')||!email.Contains('.')||email.Length<8)
+                return 0;
+            string nume = email.Split('.')[0];
+            string prenume = email.Split('.')[1].Split('@')[0];
+            
+            Console.WriteLine($"Nume:{nume} , Prenume:{prenume}");
+            if (nume.Length<2||prenume.Length<2) return 0;//String.isnullorempty
+
+            string afternames = email.Split('@')[1];
+            string domain = afternames.Split('.')[0];
+            string domain2 = afternames.Split('.')[1];
+            Console.WriteLine($"Afternames: {afternames}, domain: {domain}, domain2: {domain2}");
+            if (domain.Length<2||domain2.Length<2) return 0;
+            if (validateNume(nume)==0||validateNume(prenume)==0||validateNume(domain)==0||validateNume(domain2)==0) return 0;
+            
+
+
+
+
+
+
+
+
+
+
+
+            return 1;
         }
 
         private int validatePassword(string password, string confirmpassword)
