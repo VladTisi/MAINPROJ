@@ -96,7 +96,7 @@ namespace MAINPROJ
             return 0;
         }
 
-        c
+        
 
         private int validareNrBuletin(string nrbuletin)
         {
@@ -122,6 +122,29 @@ namespace MAINPROJ
             return 0;
         }
 
+        private int validareNrTelefon(string telefon)
+        {
+            bool hasNumbersOnly = false;
+            if (telefon.Length!=10)
+            {
+                return 0;
+            }
+            char[] myCharArray = telefon.ToCharArray();
+            for (int i = 0; i<myCharArray.Length; i++)
+            {
+                if (!Char.IsDigit(myCharArray[i]))
+                {
+                    break;
+                }
+                hasNumbersOnly=true;
+            }
+
+            if (hasNumbersOnly)
+            {
+                return 1;
+            }
+            return 0;
+        }
         private int validareCNP(string CNP) 
         {
             bool hasNumbersOnly = false;

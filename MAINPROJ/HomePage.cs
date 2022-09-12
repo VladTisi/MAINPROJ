@@ -72,6 +72,20 @@ namespace MAINPROJ
 
             return 1;
         }
+        private int validatePrenume (string nume)
+        {
+            char[] myArray = nume.ToCharArray();
+            for (int i = 0; i<myArray.Length; i++)
+            {
+                if (Char.IsWhiteSpace(myArray[i])) continue;
+                if (!Char.IsLetter(myArray[i]))
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
         private int validareNrTelefon(string telefon)
         {
             bool hasNumbersOnly = false;
@@ -497,7 +511,7 @@ namespace MAINPROJ
                 response3.EnsureSuccessStatusCode();
             }
 
-            if (txtNume.Text != Angj.Nume && txtNume.Text != ""&&validateNume(txtNume.Text)==1)
+            if (txtNume.Text != ""&&validateNume(txtNume.Text)==1)
             {
                 Angj.Nume = txtNume.Text;
             }
@@ -507,7 +521,7 @@ namespace MAINPROJ
                 txtNume.Text = Angj.Nume;
             }
 
-            if (txtPrenume.Text != Angj.Prenume && txtPrenume.Text != ""&&validateNume(txtPrenume.Text)==1)
+            if (txtPrenume.Text != ""&&validatePrenume(txtPrenume.Text)==1)
             {
                 Angj.Prenume = txtPrenume.Text;
             }
@@ -517,7 +531,7 @@ namespace MAINPROJ
                 txtPrenume.Text = Angj.Prenume;
             }
 
-            if (txtOvertime.Text != Angj.Overtime && txtOvertime.Text != ""&&validareOvertime(txtOvertime.Text)==1)
+            if (txtOvertime.Text != ""&&validareOvertime(txtOvertime.Text)==1)
             {
                 Angj.Overtime = txtOvertime.Text;
             }
@@ -527,7 +541,7 @@ namespace MAINPROJ
                 txtOvertime.Text = Angj.Overtime;
             }
 
-            if (txtSalariu.Text != Angj.Salariu && txtSalariu.Text != "" &&validareSalariu(txtSalariu.Text)==1)
+            if (txtSalariu.Text != "" &&validareSalariu(txtSalariu.Text)==1)
             {
                 Angj.Salariu = txtSalariu.Text;
             }
