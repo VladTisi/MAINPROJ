@@ -26,6 +26,7 @@ namespace MAINPROJ
         bool admin;
         bool manager;
         string server = "http://localhost:5031/api/";
+        int start = 0;
         public MeniuNavigare(int angajatId,bool admin,bool manager)
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace MAINPROJ
         {
             if (sidebarExpand)
             {
-                sidebar.Width -= 10;
+                sidebar.Width -= 18;
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     sidebarExpand = false;
@@ -52,7 +53,7 @@ namespace MAINPROJ
             }
             else
             {
-                sidebar.Width += 10;
+                sidebar.Width += 18;
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
                     sidebarExpand = true;
@@ -118,7 +119,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
-            return listaAngajati;
+            List<Member> listaSecundara = new List<Member>();
+            if (start + 18 > listaAngajati.Count)
+            {
+                btnForward.Visible = false;
+            }
+            else
+            {
+                btnForward.Visible = true;
+            }
+            if (listaAngajati.Count > start + 18)
+            {
+                for (int i = start; i < start + 18; i++)
+                {
+                    listaSecundara.Add(listaAngajati[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = start; i < listaAngajati.Count; i++)
+                {
+                    listaSecundara.Add(listaAngajati[i]);
+                }
+            }
+
+            return listaSecundara;
         }
         /////////////////Butoane meniu navigare///////////////////
         private void btnHomePage_Click(object sender, EventArgs e)
@@ -195,6 +221,22 @@ namespace MAINPROJ
         private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnBackward_Click(object sender, EventArgs e)
+        {
+            start -= 18;
+            if (start < 18)
+                btnBackward.Visible = false;
+            showTable();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            start += 18;
+            if (start >= 18)
+                btnBackward.Visible = true;
+            showTable();
         }
     }
 }

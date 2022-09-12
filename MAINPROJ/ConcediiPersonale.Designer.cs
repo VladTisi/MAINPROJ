@@ -46,6 +46,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,9 +57,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAsteptare = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.btnBackward = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -65,9 +69,9 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablelConcedii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -259,6 +263,28 @@
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 9;
             // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 10;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 11;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 12;
+            // 
             // btnLogOut
             // 
             this.btnLogOut.BackColor = System.Drawing.Color.White;
@@ -333,7 +359,7 @@
             // 
             this.btnAsteptare.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAsteptare.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAsteptare.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnAsteptare.ForeColor = System.Drawing.Color.White;
             this.btnAsteptare.Location = new System.Drawing.Point(742, 586);
             this.btnAsteptare.Name = "btnAsteptare";
             this.btnAsteptare.Size = new System.Drawing.Size(151, 58);
@@ -346,7 +372,7 @@
             // 
             this.button8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button8.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.MistyRose;
+            this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Location = new System.Drawing.Point(942, 585);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(151, 57);
@@ -355,27 +381,59 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.btnRefuzate_Click);
             // 
-            // panel8
+            // btnBackward
             // 
-            this.panel8.Location = new System.Drawing.Point(3, 491);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(197, 63);
-            this.panel8.TabIndex = 10;
+            this.btnBackward.BackColor = System.Drawing.Color.White;
+            this.btnBackward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnBackward.ForeColor = System.Drawing.Color.Black;
+            this.btnBackward.Location = new System.Drawing.Point(233, 468);
+            this.btnBackward.Name = "btnBackward";
+            this.btnBackward.Size = new System.Drawing.Size(84, 28);
+            this.btnBackward.TabIndex = 70;
+            this.btnBackward.Text = "<<<<";
+            this.btnBackward.UseVisualStyleBackColor = false;
+            this.btnBackward.Visible = false;
+            this.btnBackward.Click += new System.EventHandler(this.btnBackward_Click);
             // 
-            // panel9
+            // btnForward
             // 
-            this.panel9.Location = new System.Drawing.Point(3, 560);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(197, 63);
-            this.panel9.TabIndex = 11;
+            this.btnForward.BackColor = System.Drawing.Color.White;
+            this.btnForward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnForward.ForeColor = System.Drawing.Color.Black;
+            this.btnForward.Location = new System.Drawing.Point(500, 468);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(84, 28);
+            this.btnForward.TabIndex = 69;
+            this.btnForward.Text = ">>>>";
+            this.btnForward.UseVisualStyleBackColor = false;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
-            // panel10
+            // button1
             // 
-            this.panel10.Controls.Add(this.btnLogOut);
-            this.panel10.Location = new System.Drawing.Point(3, 629);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(197, 63);
-            this.panel10.TabIndex = 12;
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("Stencil", 10F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(739, 468);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 28);
+            this.button1.TabIndex = 72;
+            this.button1.Text = "<<<<";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.Font = new System.Drawing.Font("Stencil", 10F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(1009, 468);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 28);
+            this.button2.TabIndex = 71;
+            this.button2.Text = ">>>>";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ConcediiRefuzate
             // 
@@ -383,6 +441,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnBackward);
+            this.Controls.Add(this.btnForward);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.btnAsteptare);
             this.Controls.Add(this.dataGridView1);
@@ -406,9 +468,9 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablelConcedii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,5 +506,9 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btnBackward;
+        private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

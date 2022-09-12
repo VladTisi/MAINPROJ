@@ -24,6 +24,10 @@ namespace MAINPROJ
         bool admin;
         bool manager;
         string server = "http://localhost:5031/api/";
+        int start = 0;
+        int startacc = 0;
+        int startref = 0;
+        int selectedtable = 1;
         public ConcediiRefuzate(int angajatId,bool admin,bool manager)
         {
             InitializeComponent();
@@ -186,7 +190,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+            if (startacc + 5 > listaParole.Count)
+            {
+                button2.Visible = false;
+            }
+            else
+            {
+                button2.Visible = true;
+            }
+            if (listaParole.Count > startacc + 5)
+            {
+                for (int i = startacc; i < startacc + 5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = startacc; i < listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+
+            return listaSecundara;
         }
         private async ValueTask<List<Dto>> GetConcediiRefuzate()
         {
@@ -194,7 +223,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+            if (startref + 5 > listaParole.Count)
+            {
+                button2.Visible = false;
+            }
+            else
+            {
+                button2.Visible = true;
+            }
+            if (listaParole.Count > startref + 5)
+            {
+                for (int i = startref; i < startref + 5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = startref; i < listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+
+            return listaSecundara;
         }
         private async ValueTask<List<Dto>> GetConcediiAcceptate()
         {
@@ -202,7 +256,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+            if (start + 5 > listaParole.Count)
+            {
+                btnForward.Visible = false;
+            }
+            else
+            {
+                btnForward.Visible = true;
+            }
+            if (listaParole.Count > start + 5)
+            {
+                for (int i = start; i < start + 5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = start; i < listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+
+            return listaSecundara;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -233,11 +312,19 @@ namespace MAINPROJ
 
         private void btnAsteptare_Click(object sender, EventArgs e)
         {
+            selectedtable = 2;
+            if (startacc >= 5)
+                button2.Visible = true;
+            else button2.Visible = false;
             showTablePEND();
         }
 
         private void btnRefuzate_Click(object sender, EventArgs e)
         {
+            selectedtable = 1;
+            if (startref >= 5)
+                button2.Visible = true;
+            else button2.Visible = false;
             showTableREF();
         }
 
@@ -264,6 +351,61 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void btnBackward_Click(object sender, EventArgs e)
+        {
+            start -= 5;
+            if (start < 5)
+                btnBackward.Visible = false;
+            showTable();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            start += 5;
+            if (start >= 5)
+                btnBackward.Visible = true;
+            showTable();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (selectedtable == 1)
+            {
+                showTableREF();
+                startref -= 5;
+                if (startref < 5)
+                    button1.Visible = false;
+
+            }
+            if (selectedtable == 2)
+            {
+                showTablePEND();
+                startacc -= 5;
+                if (startacc < 5)
+                    button1.Visible = false;
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (selectedtable == 1)
+            {
+                showTableREF();
+                startref += 5;
+                if (startref >= 5)
+                    button1.Visible = true;
+            }
+
+            if (selectedtable == 2)
+            {
+                showTablePEND();
+                startacc += 5;
+                if (startacc >= 5)
+                    button1.Visible = true;
+            }
         }
     }
 }

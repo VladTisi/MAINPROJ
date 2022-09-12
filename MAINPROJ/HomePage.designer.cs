@@ -591,7 +591,7 @@
             // dtpDataAngajare
             // 
             this.dtpDataAngajare.Enabled = false;
-            this.dtpDataAngajare.Location = new System.Drawing.Point(1040, 495);
+            this.dtpDataAngajare.Location = new System.Drawing.Point(1092, 497);
             this.dtpDataAngajare.Name = "dtpDataAngajare";
             this.dtpDataAngajare.Size = new System.Drawing.Size(20, 20);
             this.dtpDataAngajare.TabIndex = 78;

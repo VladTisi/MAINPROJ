@@ -472,7 +472,7 @@ namespace MAINPROJ
             List<Angajat> listaangajati3 = JsonConvert.DeserializeObject<List<Angajat>>(response5body);
             txtNume.Text = listaangajati3[0].Nume;
             txtPrenume.Text = listaangajati3[0].Prenume;
-            txtDataAngajare.Text = ((DateTime)(listaangajati3[0].DataAngajarii)).ToString("dd/mm/yy");
+            txtDataAngajare.Text = ((DateTime)(listaangajati3[0].DataAngajarii)).ToString("dd/MM/yyyy");
 
             txtOvertime.Text = listaangajati3[0].Overtime.ToString();
             txtSalariu.Text = listaangajati3[0].Salariu.ToString();
@@ -607,7 +607,7 @@ namespace MAINPROJ
                 txtSalariu.Text = Angj.Salariu;
             }
 
-            if(txtDataAngajare.Text!= ((DateTime)(Angj.DataAngajarii)).ToString("dd/mm/yy") && txtDataAngajare.Text!="")
+            if(txtDataAngajare.Text!= ((DateTime)(Angj.DataAngajarii)).ToString("dd/MM/yyyy") && txtDataAngajare.Text!="")
             {
                 Angj.DataAngajarii = Convert.ToDateTime(txtDataAngajare.Text);
             }
@@ -651,7 +651,7 @@ namespace MAINPROJ
             if (dtpDataAngajare.Value>DateTime.Now) MessageBox.Show("Data angajarii in viitor?");
             else
             {
-                txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
+                txtDataAngajare.Text = dtpDataAngajare.Value.ToString("dd/MM/yyyy").Split(' ')[0];
                 OleDbConnection con5 = Common.GetConnection();
             }
             
