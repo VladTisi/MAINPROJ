@@ -64,7 +64,7 @@ namespace MAINPROJ
             
             if (admin != true && manager != true)
             {
-                    button7.Visible = false;
+                    btnGestionareConcedii.Visible = false;
                     comboListaAngajati.Visible = false;
             }
         }
@@ -90,7 +90,7 @@ namespace MAINPROJ
             }
             return 0;
         }
-        private void button6_Click(object sender, EventArgs e)
+        private void btnModificareDate_Click(object sender, EventArgs e)
         {
             backuptel = txtTelefon.Text;
             backupmail = txtEmail.Text;
@@ -122,15 +122,6 @@ namespace MAINPROJ
 
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
-        {
-            sidebarTimer.Start();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
@@ -154,8 +145,8 @@ namespace MAINPROJ
             }
         }
 
-
-        private void button4_Click(object sender, EventArgs e)
+        // Meniu \\
+        private void btnListaAngajati_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId,admin,manager);
@@ -163,7 +154,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void btnConcediiPersonale_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new ConcediiRefuzate(angajatId,admin,manager);
@@ -171,7 +162,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnEchipa_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new Echipa(angajatId,admin,manager);
@@ -179,13 +170,38 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnHomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new LogAuten();
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+        private void btnGestionareConcedii_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var otherform = new GestionareConcedii(angajatId, admin, manager);
+            otherform.Closed += (s, args) => this.Close();
+            otherform.Show();
+        }
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+        //
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
 
         private async void showImage(int IdAngajat)
         {
@@ -214,21 +230,6 @@ namespace MAINPROJ
 
         
     }
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new GestionareConcedii(angajatId,admin,manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new LogAuten();
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
-        }
 
         private void btnUpdatePoza_Click(object sender, EventArgs e)
         {
@@ -500,14 +501,6 @@ namespace MAINPROJ
         {
             txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
             OleDbConnection con5 = Common.GetConnection();
-        }
-
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var otherform = new LogAuten();
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
         }
     }
 }

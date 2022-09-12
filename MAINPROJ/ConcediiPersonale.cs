@@ -32,12 +32,7 @@ namespace MAINPROJ
             this.manager = manager;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCerereNoua_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new CerereConcediu(angajatId,admin,manager);
@@ -126,28 +121,28 @@ namespace MAINPROJ
         {
             sidebarTimer.Start();
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void btnHomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new HomePage(angajatId);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void btnConcediiPersonale_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new ConcediiRefuzate(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-        private void button4_Click(object sender, EventArgs e)
+        private void btnEchipa_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new Echipa(angajatId,admin,manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void btnListaAngajati_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId,admin,manager);
@@ -155,7 +150,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -221,7 +216,7 @@ namespace MAINPROJ
 
             if (!admin && !manager )
                 {
-                    button9.Visible = false;
+                    btnGestionareConcedii.Visible = false;
                 }
 
 
@@ -232,17 +227,17 @@ namespace MAINPROJ
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnAsteptare_Click(object sender, EventArgs e)
         {
             showTablePEND();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnRefuzate_Click(object sender, EventArgs e)
         {
             showTableREF();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnGestionareConcedii_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new GestionareConcedii(angajatId,admin,manager);
@@ -250,7 +245,6 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        
         private void UpdateFont(DataGridView date)
         {
             //Change cell font

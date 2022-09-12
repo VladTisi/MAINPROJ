@@ -47,7 +47,6 @@ namespace MAINPROJ
         private async void GestionareConcedii_Load(object sender, EventArgs e)
         {
             //Crearea tabelului de concedii
-            
             DataColumn c = new DataColumn("Id");
             dt.Columns.Add(c);
             c = new DataColumn("Nume");
@@ -88,7 +87,127 @@ namespace MAINPROJ
             this.tabelConcedii.Columns["Id"].Visible = false;
             
         }
-       
+
+        private async void showTablePEND()
+        {
+            //Crearea tabelului de concedii
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
+            c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("Status");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+            //c = new DataColumn("Inlocuitor");
+            //dt.Columns.Add(c);
+
+
+
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcedii();
+            foreach (Dto myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["Id"] = myObject.Id;
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functie;
+                r["Status"] = myObject.Status;
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
+            }
+            tabelConcedii.DataSource = dt;
+            UpdateFont();
+
+            this.tabelConcedii.Columns["Id"].Visible = false;
+
+        }
+        private async void showTableREF()
+        {
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn("Id");
+            dt.Columns.Add(c);
+            c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("Status");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcediiRefuzate();
+            foreach (Dto myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["Id"] = myObject.Id;
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functie;
+                r["Status"] = myObject.Status;
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
+            }
+            tabelConcedii.DataSource = dt;
+            UpdateFont();
+
+            this.tabelConcedii.Columns["Id"].Visible = false;
+        }
+
+        private async void showTableACC()
+        {
+            DataTable dt = new DataTable();
+            DataColumn c = new DataColumn();
+            c = new DataColumn("Nume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Prenume");
+            dt.Columns.Add(c);
+            c = new DataColumn("Functia");
+            dt.Columns.Add(c);
+            c = new DataColumn("Status");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataInceput");
+            dt.Columns.Add(c);
+            c = new DataColumn("DataSfarsit");
+            dt.Columns.Add(c);
+
+            //Popularea tabelului de concedii
+            List<Dto> listaConcedii = new List<Dto>();
+            listaConcedii = await GetConcediiAcceptate();
+            foreach (Dto myObject in listaConcedii)
+            {
+                DataRow r = dt.NewRow();
+                r["Nume"] = myObject.Nume;
+                r["Prenume"] = myObject.Prenume;
+                r["Functia"] = myObject.Functie;
+                r["Status"] = myObject.Status;
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                dt.Rows.Add(r);
+            }
+            tabelConcedii.DataSource = dt;
+            dt = null;
+            listaConcedii = null;
+            UpdateFont();
+        }
+
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
             if (sidebarExpand)
@@ -116,7 +235,7 @@ namespace MAINPROJ
             sidebarTimer.Start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnHomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new HomePage(angajatId);
@@ -124,7 +243,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnConcediiPersonale_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new ConcediiRefuzate(angajatId,admin,manager);
@@ -132,7 +251,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnEchipa_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new Echipa(angajatId,admin,manager);
@@ -140,7 +259,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnListaAngajati_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId,admin,manager);
@@ -148,7 +267,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnGestionareConcedii_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new GestionareConcedii(angajatId, admin, manager);
@@ -158,7 +277,7 @@ namespace MAINPROJ
 
        
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -173,20 +292,36 @@ namespace MAINPROJ
 
         private async void Aproba_Click(object sender, EventArgs e)
         {
-            var response = await Common.client.PutAsync(local+$"GestionareConcedii/AprobaConcediu?concediuId={ValCelula}",null);
+            var response = await Common.client.PutAsync(local + $"GestionareConcedii/AprobaConcediu?concediuId={ValCelula}", null);
             response.EnsureSuccessStatusCode();
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId,admin,manager);
+            var otherform = new GestionareConcedii(angajatId, admin, manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
+        private async ValueTask<List<Dto>> GetConcediiRefuzate()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync(local + $"GestionareConcedii/GetConcediuRefuzat?concediuId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
+        }
 
+        private async ValueTask<List<Dto>> GetConcediiAcceptate()
+        {
+            HttpResponseMessage response = await Common.client.GetAsync(local + $"GestionareConcedii/GetConcediuAcceptate?concediuId={angajatId}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
+            return listaParole;
+        }
         private async void Refuza_Click(object sender, EventArgs e)
         {
-            var response = await Common.client.PutAsync(local+$"GestionareConcedii/RefuzaConcediu?concediuId={ValCelula}", null);
+            var response = await Common.client.PutAsync(local + $"GestionareConcedii/RefuzaConcediu?concediuId={ValCelula}", null);
             response.EnsureSuccessStatusCode();
             this.Hide();
-            var otherform = new GestionareConcedii(angajatId,admin,manager);
+            var otherform = new GestionareConcedii(angajatId, admin, manager);
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
         }
@@ -198,7 +333,48 @@ namespace MAINPROJ
             tabelConcedii.DataSource = dv;
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            showTableREF();
+            Refuza.Visible = false;
+            Aproba.Visible = false;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            showTablePEND();
+            Refuza.Visible = true;
+            Aproba.Visible = true;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            showTableACC();
+            Refuza.Visible = false;
+            Aproba.Visible = false;
+        }
+
         private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+                int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
+
+                ValCelula = Convert.ToString(selectedRow.Cells["Id"].Value);
+
+                Console.WriteLine(ValCelula);
+
+            
+        }
+
+        private void btnLogOut_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new LogAuten();
