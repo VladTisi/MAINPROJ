@@ -51,6 +51,7 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelConcediu.DataSource = dt;
+            tabelConcediu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(tabelConcediu);
         }
         private async void showEchipa()
@@ -79,6 +80,7 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelEchipa.DataSource = dt;
+            tabelEchipa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(tabelEchipa);
         }
         bool sidebarExpand;
@@ -215,7 +217,7 @@ namespace MAINPROJ
             //Change cell font
             foreach (DataGridViewColumn c in a.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Stencil", 16F, GraphicsUnit.Pixel);
             }
         }
 
