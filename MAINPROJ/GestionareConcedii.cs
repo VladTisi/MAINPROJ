@@ -27,6 +27,7 @@ namespace MAINPROJ
         bool manager;
         String local = "http://localhost:5031/api/";
         DataTable dt = new DataTable();
+        int start = 0;
         public GestionareConcedii(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();

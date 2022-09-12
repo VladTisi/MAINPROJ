@@ -29,10 +29,12 @@ namespace MAINPROJ
         bool sidebarExpand;
         bool admin;
         bool manager;
+        int idechipa;
         string pozaNoua;
         string local = "http://localhost:5031/api/";
         int angajatIdSelectat;
         System.Drawing.Image start;
+        DataTable dt = new DataTable();
         public int UserId { get; set; }
         public HomePage(int angajatId)
         {
@@ -357,7 +359,7 @@ namespace MAINPROJ
             showImage(angajatIdSelectat);
             SetDate(angajatIdSelectat);
         }
-        private async ValueTask<int> AddItems(int Id)
+        public async ValueTask<int> AddItems(int Id)
         {
             HttpResponseMessage response = await Common.client.GetAsync(local+$"MeniuModificareDateAngajat/CheckAdmin?Id={angajatId}");
             response.EnsureSuccessStatusCode();
@@ -381,11 +383,11 @@ namespace MAINPROJ
             else
             {
                 var response12 = await Common.client.GetAsync(local + $"HomePage/GetMembriEchipa?angajatId={Id}");
-                response.EnsureSuccessStatusCode();
+                response12.EnsureSuccessStatusCode();
                 string responseBody3 = await response12.Content.ReadAsStringAsync();
-                var utilizatori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody3);
+                 var utilizatori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody3);
 
-                var bindingSourceUtilizatori = new BindingSource();
+                BindingSource bindingSourceUtilizatori = new BindingSource();
                 bindingSourceUtilizatori.DataSource = utilizatori;
                 comboListaAngajati.ValueMember = "Id";
                 comboListaAngajati.DisplayMember = "Nume";
@@ -394,6 +396,57 @@ namespace MAINPROJ
             
             return 1;
         }
+
+        public async void txtFindByName_TextChanged(object sender, EventArgs e)
+        {
+           
+
+            if (admin)
+            {
+                if (!String.IsNullOrEmpty(txtFindByName.Text))
+                {
+                    comboListaAngajati.DataSource = new BindingSource();
+                    HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetFindByName?textnume={txtFindByName.Text}");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    var utilizatori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+                    BindingSource bindingSourceUtilizatori = new BindingSource();
+                    bindingSourceUtilizatori.DataSource = utilizatori;
+                    comboListaAngajati.DataSource = bindingSourceUtilizatori;
+                    comboListaAngajati.ValueMember = "Id";
+                    comboListaAngajati.DisplayMember = "Nume";
+                }
+                
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(txtFindByName.Text))
+                {
+                    HttpResponseMessage response2 = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatId}");
+                    response2.EnsureSuccessStatusCode();
+                    string responseBody2 = await response2.Content.ReadAsStringAsync();
+                    var angajat = JsonConvert.DeserializeObject<Angajat>(responseBody2);
+
+
+
+                    comboListaAngajati.DataSource = new BindingSource();
+                    HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetFindByNameForManager?textnume={txtFindByName.Text}&IdEchipa={angajat.IdEchipa}");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    var utilizatori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+                    var bindingSourceUtilizatori = new BindingSource();
+                    bindingSourceUtilizatori.DataSource = utilizatori;
+                    comboListaAngajati.DataSource = bindingSourceUtilizatori;
+                    comboListaAngajati.ValueMember = "Id";
+                    comboListaAngajati.DisplayMember = "Nume";
+                }
+                
+            }
+        }
+
         public async void SetDate(int angajatId)
         {
             HttpResponseMessage response5 = await Common.client.GetAsync(local + $"MeniuModificareDateAngajat/GetDateAngajat?Id={angajatId}");
@@ -587,7 +640,9 @@ namespace MAINPROJ
             
         }
 
-        
-        
+        private void comboListaAngajati_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
