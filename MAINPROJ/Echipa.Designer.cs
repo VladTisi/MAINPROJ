@@ -44,6 +44,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.tabelConcediu = new System.Windows.Forms.DataGridView();
             this.btnCerereNoua = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabelEchipa = new System.Windows.Forms.DataGridView();
-            this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -229,6 +229,20 @@
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 7;
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.White;
+            this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
+            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(199, 60);
+            this.btnLogOut.TabIndex = 3;
+            this.btnLogOut.Text = "         Deconectare";
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -244,9 +258,12 @@
             // 
             // tabelConcediu
             // 
+            this.tabelConcediu.AllowUserToAddRows = false;
+            this.tabelConcediu.AllowUserToDeleteRows = false;
             this.tabelConcediu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelConcediu.Location = new System.Drawing.Point(543, 202);
             this.tabelConcediu.Name = "tabelConcediu";
+            this.tabelConcediu.ReadOnly = true;
             this.tabelConcediu.Size = new System.Drawing.Size(321, 162);
             this.tabelConcediu.TabIndex = 53;
             this.tabelConcediu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick);
@@ -301,26 +318,15 @@
             // 
             // tabelEchipa
             // 
+            this.tabelEchipa.AllowUserToAddRows = false;
+            this.tabelEchipa.AllowUserToDeleteRows = false;
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelEchipa.Location = new System.Drawing.Point(202, 202);
             this.tabelEchipa.Name = "tabelEchipa";
+            this.tabelEchipa.ReadOnly = true;
             this.tabelEchipa.Size = new System.Drawing.Size(240, 162);
             this.tabelEchipa.TabIndex = 58;
             this.tabelEchipa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick_1);
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.Color.White;
-            this.btnLogOut.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Image = global::MAINPROJ.Properties.Resources.logouts;
-            this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(-1, 1);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(199, 60);
-            this.btnLogOut.TabIndex = 3;
-            this.btnLogOut.Text = "         Deconectare";
-            this.btnLogOut.UseVisualStyleBackColor = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Echipa
             // 
