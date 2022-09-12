@@ -44,7 +44,7 @@ namespace MAINPROJ
         {
             if (sidebarExpand)
             {
-                sidebar.Width -= 5;
+                sidebar.Width -= 18;
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     sidebarExpand = false;
@@ -53,7 +53,7 @@ namespace MAINPROJ
             }
             else
             {
-                sidebar.Width += 5;
+                sidebar.Width += 18;
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
                     sidebarExpand = true;
@@ -120,7 +120,7 @@ namespace MAINPROJ
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
             List<Member> listaSecundara = new List<Member>();
-            if (start + 5 > listaAngajati.Count)
+            if (start + 18 > listaAngajati.Count)
             {
                 btnForward.Visible = false;
             }
@@ -128,9 +128,9 @@ namespace MAINPROJ
             {
                 btnForward.Visible = true;
             }
-            if (listaAngajati.Count > start + 5)
+            if (listaAngajati.Count > start + 18)
             {
-                for (int i = start; i < start + 5; i++)
+                for (int i = start; i < start + 18; i++)
                 {
                     listaSecundara.Add(listaAngajati[i]);
                 }
@@ -225,16 +225,16 @@ namespace MAINPROJ
 
         private void btnBackward_Click(object sender, EventArgs e)
         {
-            start -= 5;
-            if (start < 5)
+            start -= 18;
+            if (start < 18)
                 btnBackward.Visible = false;
             showTable();
         }
 
         private void btnForward_Click(object sender, EventArgs e)
         {
-            start += 5;
-            if (start >= 5)
+            start += 18;
+            if (start >= 18)
                 btnBackward.Visible = true;
             showTable();
         }

@@ -45,8 +45,8 @@ namespace MAINPROJ
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functie;
 
-                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
-                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
+                r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yyyy");
+                r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yyyy");
                 dt.Rows.Add(r);
             }
             tabelConcediu.DataSource = dt;
@@ -75,7 +75,7 @@ namespace MAINPROJ
                 r["Nume"] = myObject.Nume;
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functia;
-                r["DataAngajarii"] = myObject.DataAngajarii.ToString("dd/MM/yy");
+                r["DataAngajarii"] = myObject.DataAngajarii.ToString("dd/MM/yyyy");
                 dt.Rows.Add(r);
             }
             tabelEchipa.DataSource = dt;
@@ -86,6 +86,8 @@ namespace MAINPROJ
         private int angajatId;
         bool admin;
         bool manager;
+        int start = 0;
+        int startacc = 0;
         public Echipa(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
@@ -201,7 +203,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
-            return listaAngajati;
+            List<Member> listaSecundara = new List<Member>();
+            if (start + 5 > listaAngajati.Count)
+            {
+                btnForward.Visible = false;
+            }
+            else
+            {
+                btnForward.Visible = true;
+            }
+            if (listaAngajati.Count > start + 5)
+            {
+                for (int i = start; i < start + 5; i++)
+                {
+                    listaSecundara.Add(listaAngajati[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = start; i < listaAngajati.Count; i++)
+                {
+                    listaSecundara.Add(listaAngajati[i]);
+                }
+            }
+
+            return listaSecundara;
         }
         private async ValueTask<List<Dto>> GetConcedii()
         {
@@ -209,7 +236,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+            if (startacc + 5 > listaParole.Count)
+            {
+                button2.Visible = false;
+            }
+            else
+            {
+                button2.Visible = true;
+            }
+            if (listaParole.Count > startacc + 5)
+            {
+                for (int i = startacc; i < startacc + 5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = startacc; i < listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+
+            return listaSecundara;
         }
         private void UpdateFont(DataGridView a)
         {
@@ -231,6 +283,38 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void btnBackward_Click(object sender, EventArgs e)
+        {
+            start -= 5;
+            if (start < 5)
+                btnBackward.Visible = false;
+            showEchipa();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            start += 5;
+            if (start >= 5)
+                btnBackward.Visible = true;
+            showEchipa();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            startacc -= 5;
+            if (startacc < 5)
+                button1.Visible = false;
+            showTable();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            startacc += 5;
+            if (startacc >= 5)
+                button1.Visible = true;
+            showTable();
         }
     }
 

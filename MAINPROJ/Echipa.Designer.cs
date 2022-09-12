@@ -44,6 +44,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.tabelConcediu = new System.Windows.Forms.DataGridView();
@@ -52,9 +55,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabelEchipa = new System.Windows.Forms.DataGridView();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.btnBackward = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,10 +66,10 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcediu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).BeginInit();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebarTimer
@@ -234,6 +238,28 @@
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 7;
             // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 8;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 9;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 10;
+            // 
             // btnLogOut
             // 
             this.btnLogOut.BackColor = System.Drawing.Color.White;
@@ -270,7 +296,6 @@
             this.tabelConcediu.Location = new System.Drawing.Point(684, 303);
             this.tabelConcediu.Name = "tabelConcediu";
             this.tabelConcediu.ReadOnly = true;
-            this.tabelConcediu.Size = new System.Drawing.Size(321, 162);
             this.tabelConcediu.Size = new System.Drawing.Size(445, 252);
             this.tabelConcediu.TabIndex = 53;
             this.tabelConcediu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick);
@@ -305,7 +330,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(342, 269);
+            this.label1.Location = new System.Drawing.Point(312, 269);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 25);
             this.label1.TabIndex = 56;
@@ -331,33 +356,64 @@
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelEchipa.Location = new System.Drawing.Point(202, 303);
             this.tabelEchipa.Name = "tabelEchipa";
-            this.tabelEchipa.Size = new System.Drawing.Size(397, 252);
             this.tabelEchipa.ReadOnly = true;
-            this.tabelEchipa.Size = new System.Drawing.Size(240, 162);
+            this.tabelEchipa.Size = new System.Drawing.Size(351, 252);
             this.tabelEchipa.TabIndex = 58;
             this.tabelEchipa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick_1);
             // 
-            // panel8
+            // btnBackward
             // 
-            this.panel8.Location = new System.Drawing.Point(3, 491);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(197, 63);
-            this.panel8.TabIndex = 8;
+            this.btnBackward.BackColor = System.Drawing.Color.White;
+            this.btnBackward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnBackward.ForeColor = System.Drawing.Color.Black;
+            this.btnBackward.Location = new System.Drawing.Point(202, 578);
+            this.btnBackward.Name = "btnBackward";
+            this.btnBackward.Size = new System.Drawing.Size(84, 28);
+            this.btnBackward.TabIndex = 72;
+            this.btnBackward.Text = "<<<<";
+            this.btnBackward.UseVisualStyleBackColor = false;
+            this.btnBackward.Visible = false;
+            this.btnBackward.Click += new System.EventHandler(this.btnBackward_Click);
             // 
-            // panel9
+            // btnForward
             // 
-            this.panel9.Location = new System.Drawing.Point(3, 560);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(197, 63);
-            this.panel9.TabIndex = 9;
+            this.btnForward.BackColor = System.Drawing.Color.White;
+            this.btnForward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnForward.ForeColor = System.Drawing.Color.Black;
+            this.btnForward.Location = new System.Drawing.Point(469, 578);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(84, 28);
+            this.btnForward.TabIndex = 71;
+            this.btnForward.Text = ">>>>";
+            this.btnForward.UseVisualStyleBackColor = false;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
-            // panel10
+            // button1
             // 
-            this.panel10.Controls.Add(this.btnLogOut);
-            this.panel10.Location = new System.Drawing.Point(3, 629);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(197, 63);
-            this.panel10.TabIndex = 10;
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("Stencil", 10F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(684, 578);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 28);
+            this.button1.TabIndex = 74;
+            this.button1.Text = "<<<<";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.Font = new System.Drawing.Font("Stencil", 10F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(1045, 578);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 28);
+            this.button2.TabIndex = 73;
+            this.button2.Text = ">>>>";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Echipa
             // 
@@ -365,6 +421,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnBackward);
+            this.Controls.Add(this.btnForward);
             this.Controls.Add(this.tabelEchipa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -385,10 +445,10 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcediu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelEchipa)).EndInit();
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,5 +482,9 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btnBackward;
+        private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
