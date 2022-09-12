@@ -78,6 +78,7 @@
             this.comboEchipa = new System.Windows.Forms.ComboBox();
             this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
             this.btnReset = new System.Windows.Forms.Button();
+            this.txtFindByName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -558,10 +559,11 @@
             this.comboListaAngajati.BackColor = System.Drawing.Color.GhostWhite;
             this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboListaAngajati.FormattingEnabled = true;
-            this.comboListaAngajati.Location = new System.Drawing.Point(819, 45);
+            this.comboListaAngajati.Location = new System.Drawing.Point(819, 77);
             this.comboListaAngajati.Name = "comboListaAngajati";
             this.comboListaAngajati.Size = new System.Drawing.Size(267, 27);
             this.comboListaAngajati.TabIndex = 51;
+            this.comboListaAngajati.SelectedIndexChanged += new System.EventHandler(this.comboListaAngajati_SelectedIndexChanged);
             this.comboListaAngajati.SelectedValueChanged += new System.EventHandler(this.comboListaAngajati_SelectedValueChanged);
             // 
             // comboFunctie
@@ -605,12 +607,22 @@
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // txtFindByName
+            // 
+            this.txtFindByName.Font = new System.Drawing.Font("Stencil", 10F);
+            this.txtFindByName.Location = new System.Drawing.Point(819, 43);
+            this.txtFindByName.Name = "txtFindByName";
+            this.txtFindByName.Size = new System.Drawing.Size(267, 23);
+            this.txtFindByName.TabIndex = 80;
+            this.txtFindByName.TextChanged += new System.EventHandler(this.txtFindByName_TextChanged);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.txtFindByName);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.dtpDataAngajare);
             this.Controls.Add(this.comboEchipa);
@@ -711,5 +723,6 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.TextBox txtFindByName;
     }
 }

@@ -263,10 +263,14 @@
             // 
             // tabelConcediu
             // 
+            this.tabelConcediu.AllowUserToAddRows = false;
+            this.tabelConcediu.AllowUserToDeleteRows = false;
             this.tabelConcediu.BackgroundColor = System.Drawing.Color.White;
             this.tabelConcediu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelConcediu.Location = new System.Drawing.Point(684, 303);
             this.tabelConcediu.Name = "tabelConcediu";
+            this.tabelConcediu.ReadOnly = true;
+            this.tabelConcediu.Size = new System.Drawing.Size(321, 162);
             this.tabelConcediu.Size = new System.Drawing.Size(445, 252);
             this.tabelConcediu.TabIndex = 53;
             this.tabelConcediu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick);
@@ -321,11 +325,15 @@
             // 
             // tabelEchipa
             // 
+            this.tabelEchipa.AllowUserToAddRows = false;
+            this.tabelEchipa.AllowUserToDeleteRows = false;
             this.tabelEchipa.BackgroundColor = System.Drawing.Color.White;
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelEchipa.Location = new System.Drawing.Point(202, 303);
             this.tabelEchipa.Name = "tabelEchipa";
             this.tabelEchipa.Size = new System.Drawing.Size(397, 252);
+            this.tabelEchipa.ReadOnly = true;
+            this.tabelEchipa.Size = new System.Drawing.Size(240, 162);
             this.tabelEchipa.TabIndex = 58;
             this.tabelEchipa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick_1);
             // 

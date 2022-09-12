@@ -469,6 +469,8 @@ namespace MAINPROJ
 
                 Console.WriteLine(ValCelula);
 
+                
+
             
         }
 

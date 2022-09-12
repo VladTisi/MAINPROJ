@@ -295,6 +295,8 @@
             // 
             // tabelAngajati
             // 
+            this.tabelAngajati.AllowUserToAddRows = false;
+            this.tabelAngajati.AllowUserToDeleteRows = false;
             this.tabelAngajati.BackgroundColor = System.Drawing.Color.White;
             this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelAngajati.Location = new System.Drawing.Point(259, 150);
