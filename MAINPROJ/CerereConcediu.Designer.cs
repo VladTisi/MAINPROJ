@@ -56,6 +56,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
@@ -69,9 +72,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -363,6 +363,28 @@
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 9;
             // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 10;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 11;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 12;
+            // 
             // btnLogOut
             // 
             this.btnLogOut.BackColor = System.Drawing.Color.White;
@@ -460,7 +482,6 @@
             this.label9.Size = new System.Drawing.Size(66, 22);
             this.label9.TabIndex = 16;
             this.label9.Text = "DECES";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -503,28 +524,6 @@
             this.label13.Size = new System.Drawing.Size(21, 22);
             this.label13.TabIndex = 20;
             this.label13.Text = "1";
-            // 
-            // panel8
-            // 
-            this.panel8.Location = new System.Drawing.Point(3, 491);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(197, 63);
-            this.panel8.TabIndex = 10;
-            // 
-            // panel9
-            // 
-            this.panel9.Location = new System.Drawing.Point(3, 560);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(197, 63);
-            this.panel9.TabIndex = 11;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.btnLogOut);
-            this.panel10.Location = new System.Drawing.Point(3, 629);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(197, 63);
-            this.panel10.TabIndex = 12;
             // 
             // CerereConcediu
             // 
