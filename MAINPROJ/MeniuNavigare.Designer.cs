@@ -43,15 +43,17 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.btnExit = new System.Windows.Forms.Button();
             this.tabelAngajati = new System.Windows.Forms.DataGridView();
             this.btnRecrutare = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.btnBackward = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -59,9 +61,9 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).BeginInit();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -226,6 +228,28 @@
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 9;
             // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 10;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 11;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 12;
+            // 
             // btnLogOut
             // 
             this.btnLogOut.BackColor = System.Drawing.Color.White;
@@ -271,17 +295,18 @@
             // 
             // tabelAngajati
             // 
+            this.tabelAngajati.BackgroundColor = System.Drawing.Color.White;
             this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelAngajati.Location = new System.Drawing.Point(259, 150);
             this.tabelAngajati.Name = "tabelAngajati";
-            this.tabelAngajati.Size = new System.Drawing.Size(867, 462);
+            this.tabelAngajati.Size = new System.Drawing.Size(867, 450);
             this.tabelAngajati.TabIndex = 7;
             this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);
             // 
             // btnRecrutare
             // 
             this.btnRecrutare.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecrutare.Location = new System.Drawing.Point(898, 633);
+            this.btnRecrutare.Location = new System.Drawing.Point(580, 627);
             this.btnRecrutare.Name = "btnRecrutare";
             this.btnRecrutare.Size = new System.Drawing.Size(228, 61);
             this.btnRecrutare.TabIndex = 82;
@@ -289,27 +314,32 @@
             this.btnRecrutare.UseVisualStyleBackColor = true;
             this.btnRecrutare.Click += new System.EventHandler(this.btnRecrutare_Click);
             // 
-            // panel8
+            // btnForward
             // 
-            this.panel8.Location = new System.Drawing.Point(3, 491);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(197, 63);
-            this.panel8.TabIndex = 10;
+            this.btnForward.BackColor = System.Drawing.Color.Black;
+            this.btnForward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnForward.ForeColor = System.Drawing.Color.White;
+            this.btnForward.Location = new System.Drawing.Point(989, 627);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(137, 28);
+            this.btnForward.TabIndex = 83;
+            this.btnForward.Text = ">>>>";
+            this.btnForward.UseVisualStyleBackColor = false;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
-            // panel9
+            // btnBackward
             // 
-            this.panel9.Location = new System.Drawing.Point(3, 560);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(197, 63);
-            this.panel9.TabIndex = 11;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.btnLogOut);
-            this.panel10.Location = new System.Drawing.Point(3, 629);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(197, 63);
-            this.panel10.TabIndex = 12;
+            this.btnBackward.BackColor = System.Drawing.Color.White;
+            this.btnBackward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnBackward.ForeColor = System.Drawing.Color.Black;
+            this.btnBackward.Location = new System.Drawing.Point(259, 627);
+            this.btnBackward.Name = "btnBackward";
+            this.btnBackward.Size = new System.Drawing.Size(137, 28);
+            this.btnBackward.TabIndex = 84;
+            this.btnBackward.Text = "<<<<";
+            this.btnBackward.UseVisualStyleBackColor = false;
+            this.btnBackward.Visible = false;
+            this.btnBackward.Click += new System.EventHandler(this.btnBackward_Click);
             // 
             // MeniuNavigare
             // 
@@ -317,6 +347,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.btnBackward);
+            this.Controls.Add(this.btnForward);
             this.Controls.Add(this.btnRecrutare);
             this.Controls.Add(this.tabelAngajati);
             this.Controls.Add(this.btnExit);
@@ -334,9 +366,9 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelAngajati)).EndInit();
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -366,5 +398,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button btnBackward;
     }
 }

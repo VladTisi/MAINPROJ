@@ -598,7 +598,7 @@ namespace MAINPROJ
             if (dtpDataAngajare.Value>DateTime.Now) MessageBox.Show("Data angajarii in viitor?");
             else
             {
-                txtDataAngajare.Text = dtpDataAngajare.Value.ToString().Split(' ')[0];
+                txtDataAngajare.Text = dtpDataAngajare.Value.ToString("dd/mm/yy").Split(' ')[0];
                 OleDbConnection con5 = Common.GetConnection();
             }
             
