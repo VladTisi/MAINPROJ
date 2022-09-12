@@ -28,6 +28,10 @@ namespace MAINPROJ
         String local = "http://localhost:5031/api/";
         DataTable dt = new DataTable();
         int start = 0;
+        int startacc = 0;
+        int startref = 0;
+        int selectedtable = 1;
+        int counter = 0;
         public GestionareConcedii(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
@@ -69,7 +73,7 @@ namespace MAINPROJ
 
             //Popularea tabelului de concedii
             List<Dto> listaConcedii = new List<Dto>();
-            listaConcedii = await GetConcedii(start);
+            listaConcedii = await GetConcedii();
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
@@ -117,7 +121,7 @@ namespace MAINPROJ
 
             //Popularea tabelului de concedii
             List<Dto> listaConcedii = new List<Dto>();
-            listaConcedii = await GetConcedii(start);
+            listaConcedii = await GetConcedii();
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
@@ -174,7 +178,7 @@ namespace MAINPROJ
             tabelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
 
-            this.tabelConcedii.Columns["Id"].Visible = false;
+            this.tabelConcedii.Columns["Id"].Visible = true;
         }
 
         private async void showTableACC()
@@ -288,14 +292,37 @@ namespace MAINPROJ
         {
             Application.Exit();
         }
-        private async ValueTask<List<Dto>> GetConcedii(int start)
+        private async ValueTask<List<Dto>> GetConcedii()
         {
             HttpResponseMessage response = await Common.client.GetAsync(local+$"GestionareConcedii/GetConcedii?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
             List<Dto> listaSecundara = new List<Dto>();
+            if (start+5>listaParole.Count)
+            {
+                btnForward.Visible=false;
+            }
+            else
+            {
+                btnForward.Visible=true;
+            }
+            if(listaParole.Count > start+5)
+            {
+                for (int i = start; i<start+5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
 
+            }
+            else
+            {
+                for(int i = start; i<listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+            
             return listaSecundara;
         }
 
@@ -314,7 +341,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+            if (startref+5>listaParole.Count)
+            {
+                btnForward.Visible=false;
+            }
+            else
+            {
+                btnForward.Visible=true;
+            }
+            if (listaParole.Count > startref+5)
+            {
+                for (int i = startref; i<startref+5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = startref; i<listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+
+            return listaSecundara;
         }
 
         private async ValueTask<List<Dto>> GetConcediiAcceptate()
@@ -323,7 +375,32 @@ namespace MAINPROJ
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+            if (startacc+5>listaParole.Count)
+            {
+                btnForward.Visible=false;
+            }
+            else
+            {
+                btnForward.Visible=true;
+            }
+            if (listaParole.Count > startacc+5)
+            {
+                for (int i = startacc; i<startacc+5; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+
+            }
+            else
+            {
+                for (int i = startacc; i<listaParole.Count; i++)
+                {
+                    listaSecundara.Add(listaParole[i]);
+                }
+            }
+
+            return listaSecundara;
         }
         private async void Refuza_Click(object sender, EventArgs e)
         {
@@ -344,6 +421,10 @@ namespace MAINPROJ
 
         private void button9_Click(object sender, EventArgs e)
         {
+            if (startref>=5) 
+                btnBackward.Visible=true;
+            else btnBackward.Visible=false;
+            selectedtable=3;
             showTableREF();
             Refuza.Visible = false;
             Aproba.Visible = false;
@@ -351,6 +432,10 @@ namespace MAINPROJ
 
         private void button6_Click(object sender, EventArgs e)
         {
+            if (start>=5)
+                btnBackward.Visible=true;
+            else btnBackward.Visible=false;
+            selectedtable=1;
             showTablePEND();
             Refuza.Visible = true;
             Aproba.Visible = true;
@@ -358,6 +443,10 @@ namespace MAINPROJ
 
         private void button10_Click(object sender, EventArgs e)
         {
+            if (startacc>=5)
+                btnBackward.Visible=true;
+            else btnBackward.Visible=false;
+            selectedtable=2;
             showTableACC();
             Refuza.Visible = false;
             Aproba.Visible = false;
@@ -389,6 +478,63 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            if (selectedtable==1)
+            {
+                showTablePEND();
+                start+=5;
+                if (start>=5)
+                    btnBackward.Visible=true;
+            }
+
+            if (selectedtable==2)
+            {
+                showTableACC();
+                startacc+=5;
+                if (startacc>=5)
+                    btnBackward.Visible=true;
+            }
+            if (selectedtable==3)
+            {
+                showTableREF();
+                startref+=5;
+                if (startref>=5)
+                    btnBackward.Visible=true;
+            }
+            
+        }
+
+        private void btnBackward_Click(object sender, EventArgs e)
+        {
+            
+            if (selectedtable==1)
+            {
+                showTablePEND();
+                start-=5;
+                if (start<5)
+                    btnBackward.Visible=false;
+
+            }
+            if (selectedtable==2)
+            {
+                showTableACC();
+                startacc-=5;
+                if (startacc<5)
+                    btnBackward.Visible=false;
+
+            }
+            if (selectedtable==3)
+            {
+                showTableREF();
+                startref-=5;
+                if (startref<5)
+                    btnBackward.Visible=false;
+
+            }
+
         }
     }
 }
