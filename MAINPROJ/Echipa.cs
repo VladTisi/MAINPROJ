@@ -28,8 +28,7 @@ namespace MAINPROJ
             dt.Columns.Add(c);
             c = new DataColumn("Functia");
             dt.Columns.Add(c);
-            c = new DataColumn("Status");
-            dt.Columns.Add(c);
+
             c = new DataColumn("DataInceput");
             dt.Columns.Add(c);
             c = new DataColumn("DataSfarsit");
@@ -45,12 +44,13 @@ namespace MAINPROJ
                 r["Nume"] = myObject.Nume;
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functie;
-                r["Status"] = myObject.Status;
+
                 r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
                 r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
                 dt.Rows.Add(r);
             }
             tabelConcediu.DataSource = dt;
+            tabelConcediu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(tabelConcediu);
         }
         private async void showEchipa()
@@ -79,6 +79,7 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelEchipa.DataSource = dt;
+            tabelEchipa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(tabelEchipa);
         }
         bool sidebarExpand;

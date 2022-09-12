@@ -61,8 +61,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
+            this.btnBackward = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -312,7 +312,7 @@
             this.Aproba.BackColor = System.Drawing.Color.White;
             this.Aproba.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aproba.ForeColor = System.Drawing.Color.Black;
-            this.Aproba.Location = new System.Drawing.Point(335, 591);
+            this.Aproba.Location = new System.Drawing.Point(328, 625);
             this.Aproba.Name = "Aproba";
             this.Aproba.Size = new System.Drawing.Size(138, 63);
             this.Aproba.TabIndex = 56;
@@ -325,7 +325,7 @@
             this.Refuza.BackColor = System.Drawing.Color.Black;
             this.Refuza.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Refuza.ForeColor = System.Drawing.Color.White;
-            this.Refuza.Location = new System.Drawing.Point(747, 591);
+            this.Refuza.Location = new System.Drawing.Point(741, 625);
             this.Refuza.Name = "Refuza";
             this.Refuza.Size = new System.Drawing.Size(144, 63);
             this.Refuza.TabIndex = 57;
@@ -435,29 +435,32 @@
             this.pictureBox4.TabIndex = 66;
             this.pictureBox4.TabStop = false;
             // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBack.Font = new System.Drawing.Font("Stencil", 10F);
-            this.btnBack.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBack.Location = new System.Drawing.Point(223, 522);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(82, 33);
-            this.btnBack.TabIndex = 67;
-            this.btnBack.Text = "<<<";
-            this.btnBack.UseVisualStyleBackColor = false;
-            // 
             // btnForward
             // 
-            this.btnForward.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnForward.BackColor = System.Drawing.Color.Black;
             this.btnForward.Font = new System.Drawing.Font("Stencil", 10F);
-            this.btnForward.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnForward.Location = new System.Drawing.Point(894, 522);
+            this.btnForward.ForeColor = System.Drawing.Color.White;
+            this.btnForward.Location = new System.Drawing.Point(839, 517);
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(82, 33);
-            this.btnForward.TabIndex = 68;
-            this.btnForward.Text = ">>>";
+            this.btnForward.Size = new System.Drawing.Size(137, 28);
+            this.btnForward.TabIndex = 67;
+            this.btnForward.Text = ">>>>";
             this.btnForward.UseVisualStyleBackColor = false;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
+            // btnBackward
+            // 
+            this.btnBackward.BackColor = System.Drawing.Color.White;
+            this.btnBackward.Font = new System.Drawing.Font("Stencil", 10F);
+            this.btnBackward.ForeColor = System.Drawing.Color.Black;
+            this.btnBackward.Location = new System.Drawing.Point(223, 517);
+            this.btnBackward.Name = "btnBackward";
+            this.btnBackward.Size = new System.Drawing.Size(137, 28);
+            this.btnBackward.TabIndex = 68;
+            this.btnBackward.Text = "<<<<";
+            this.btnBackward.UseVisualStyleBackColor = false;
+            this.btnBackward.Visible = false;
+            this.btnBackward.Click += new System.EventHandler(this.btnBackward_Click);
             // 
             // GestionareConcedii
             // 
@@ -465,8 +468,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.btnBackward);
             this.Controls.Add(this.btnForward);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -538,7 +541,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button btnBackward;
     }
 }
