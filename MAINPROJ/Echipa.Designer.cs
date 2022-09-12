@@ -323,9 +323,9 @@
             // 
             this.tabelEchipa.BackgroundColor = System.Drawing.Color.White;
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelEchipa.Location = new System.Drawing.Point(218, 303);
+            this.tabelEchipa.Location = new System.Drawing.Point(202, 303);
             this.tabelEchipa.Name = "tabelEchipa";
-            this.tabelEchipa.Size = new System.Drawing.Size(366, 252);
+            this.tabelEchipa.Size = new System.Drawing.Size(397, 252);
             this.tabelEchipa.TabIndex = 58;
             this.tabelEchipa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick_1);
             // 

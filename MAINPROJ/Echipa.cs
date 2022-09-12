@@ -28,8 +28,7 @@ namespace MAINPROJ
             dt.Columns.Add(c);
             c = new DataColumn("Functia");
             dt.Columns.Add(c);
-            c = new DataColumn("Status");
-            dt.Columns.Add(c);
+
             c = new DataColumn("DataInceput");
             dt.Columns.Add(c);
             c = new DataColumn("DataSfarsit");
@@ -45,7 +44,7 @@ namespace MAINPROJ
                 r["Nume"] = myObject.Nume;
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functie;
-                r["Status"] = myObject.Status;
+
                 r["DataInceput"] = myObject.DataInceput.ToString("dd/MM/yy");
                 r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
                 dt.Rows.Add(r);
@@ -217,7 +216,7 @@ namespace MAINPROJ
             //Change cell font
             foreach (DataGridViewColumn c in a.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Stencil", 16F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
             }
         }
 
