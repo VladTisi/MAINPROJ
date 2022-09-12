@@ -138,23 +138,33 @@ namespace MAINPROJ
             Console.WriteLine(nr);
             HttpResponseMessage response15 = await Common.client.GetAsync(url + $"CerereConcediu/GetConcediuDeja?angajatId={angajatId}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}");
             response15.EnsureSuccessStatusCode();
+            HttpResponseMessage response16 = await Common.client.GetAsync(url + $"CerereConcediu/GetConcediuDeja?angajatId={cmbInlocuitor.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}");
+            response16.EnsureSuccessStatusCode();
             string responseBody15 = await response15.Content.ReadAsStringAsync();
+            string responseBody16 = await response16.Content.ReadAsStringAsync();
             if ((int)cmbTipConcediu.SelectedValue == 1 && nr > Convert.ToInt32(label5.Text))
-                    MessageBox.Show("Nu ai destule zile de concediu");
+                MessageBox.Show("Nu ai destule zile de concediu");
 
             else if ((int)cmbTipConcediu.SelectedValue == 2 && nr > Convert.ToInt32(label11.Text))
-                    MessageBox.Show("Nu ai destule zile de concediu");
+                MessageBox.Show("Nu ai destule zile de concediu");
 
             else if ((int)cmbTipConcediu.SelectedValue == 3 && nr > Convert.ToInt32(label13.Text))
-                    MessageBox.Show("Nu ai destule zile de concediu");
+                MessageBox.Show("Nu ai destule zile de concediu");
 
             else if ((int)cmbTipConcediu.SelectedValue == 4 && nr > Convert.ToInt32(label12.Text))
-                    MessageBox.Show("Nu ai destule zile de concediu");
-            
+                MessageBox.Show("Nu ai destule zile de concediu");
+
+            else if (!Convert.ToBoolean(responseBody16))
+                MessageBox.Show("Inlocuitorul ales are concediu in acea perioada");
+
             else if (Convert.ToBoolean(responseBody15))
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
                 HttpResponseMessage response = await Common.client.PostAsync(url+$"CerereConcediu/InsertConcediu?TipConcediuId={cmbTipConcediu.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}&angajatId={angajatId}&inlocuitorId={cmbInlocuitor.SelectedValue}",null);
+            }
+            else
+            {
+                MessageBox.Show("Exista deja o cerere de concediu aprobata in acea perioada");
             }
             dtpDataIncepere.Value=DateTime.Now.AddDays(1);
             dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
