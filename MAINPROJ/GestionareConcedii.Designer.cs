@@ -43,6 +43,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
             this.btnExit = new System.Windows.Forms.Button();
@@ -58,9 +61,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,12 +68,12 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -237,6 +237,28 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(197, 63);
             this.panel7.TabIndex = 7;
+            // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(3, 491);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(197, 63);
+            this.panel8.TabIndex = 8;
+            // 
+            // panel9
+            // 
+            this.panel9.Location = new System.Drawing.Point(3, 560);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(197, 63);
+            this.panel9.TabIndex = 9;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnLogOut);
+            this.panel10.Location = new System.Drawing.Point(3, 629);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(197, 63);
+            this.panel10.TabIndex = 10;
             // 
             // btnLogOut
             // 
@@ -411,28 +433,6 @@
             this.pictureBox4.TabIndex = 66;
             this.pictureBox4.TabStop = false;
             // 
-            // panel8
-            // 
-            this.panel8.Location = new System.Drawing.Point(3, 491);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(197, 63);
-            this.panel8.TabIndex = 8;
-            // 
-            // panel9
-            // 
-            this.panel9.Location = new System.Drawing.Point(3, 560);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(197, 63);
-            this.panel9.TabIndex = 9;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.btnLogOut);
-            this.panel10.Location = new System.Drawing.Point(3, 629);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(197, 63);
-            this.panel10.TabIndex = 10;
-            // 
             // GestionareConcedii
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,12 +465,12 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelConcedii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

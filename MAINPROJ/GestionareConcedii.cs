@@ -27,6 +27,7 @@ namespace MAINPROJ
         bool manager;
         String local = "http://localhost:5031/api/";
         DataTable dt = new DataTable();
+        int start = 0;
         public GestionareConcedii(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
@@ -68,7 +69,7 @@ namespace MAINPROJ
 
             //Popularea tabelului de concedii
             List<Dto> listaConcedii = new List<Dto>();
-            listaConcedii = await GetConcedii();
+            listaConcedii = await GetConcedii(start);
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
@@ -81,7 +82,9 @@ namespace MAINPROJ
                 r["DataSfarsit"] = myObject.DataSfarsit.ToString("dd/MM/yy");
                 dt.Rows.Add(r);
             }
+            
             tabelConcedii.DataSource = dt;
+
             tabelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
 
@@ -114,7 +117,7 @@ namespace MAINPROJ
 
             //Popularea tabelului de concedii
             List<Dto> listaConcedii = new List<Dto>();
-            listaConcedii = await GetConcedii();
+            listaConcedii = await GetConcedii(start);
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
@@ -285,13 +288,15 @@ namespace MAINPROJ
         {
             Application.Exit();
         }
-        private async ValueTask<List<Dto>> GetConcedii()
+        private async ValueTask<List<Dto>> GetConcedii(int start)
         {
             HttpResponseMessage response = await Common.client.GetAsync(local+$"GestionareConcedii/GetConcedii?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
-            return listaParole;
+            List<Dto> listaSecundara = new List<Dto>();
+
+            return listaSecundara;
         }
 
         private async void Aproba_Click(object sender, EventArgs e)
