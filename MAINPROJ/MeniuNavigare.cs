@@ -104,7 +104,9 @@ namespace MAINPROJ
                 dt.Rows.Add(r);
             }
             tabelAngajati.DataSource = dt;
+            tabelAngajati.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  
             UpdateFont();
+
 
             //this.tabelAngajati.Columns["Id"].Visible = false;
             dt = null;
@@ -170,7 +172,7 @@ namespace MAINPROJ
             //Change cell font
             foreach (DataGridViewColumn c in tabelAngajati.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Stencil", 16F, GraphicsUnit.Pixel);
             }
         }
 
@@ -188,6 +190,11 @@ namespace MAINPROJ
             var otherform = new LogAuten();
             otherform.Closed += (s, args) => this.Close();
             otherform.Show();
+        }
+
+        private void tabelAngajati_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

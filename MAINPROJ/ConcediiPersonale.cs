@@ -63,6 +63,7 @@ namespace MAINPROJ
             tablelConcedii.DataSource = dt;
             dt = null;
             listaConcedii = null;
+            tablelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(tablelConcedii);
         }
         private async void showTableREF()
@@ -88,6 +89,8 @@ namespace MAINPROJ
             dataGridView1.DataSource = dt;
             dt = null;
             listaConcedii = null;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             UpdateFont(dataGridView1);
         }
 
@@ -114,6 +117,7 @@ namespace MAINPROJ
             dataGridView1.DataSource = dt;
             dt = null;
             listaConcedii = null;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(dataGridView1);
         }
         ///Meniu Navigare
@@ -250,7 +254,7 @@ namespace MAINPROJ
             //Change cell font
             foreach (DataGridViewColumn c in date.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Stencil", 16F, GraphicsUnit.Pixel);
             }
         }
 
