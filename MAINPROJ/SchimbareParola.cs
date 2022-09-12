@@ -119,13 +119,7 @@ namespace MAINPROJ
             return 0;
         }
 
-        private async void txtParolaVeche_TextChanged(object sender, EventArgs e)
-        {
-            
-
-           
-          
-        }
+       
 
         private async void Salvare_Click(object sender, EventArgs e)
         {

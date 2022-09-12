@@ -56,7 +56,6 @@
             this.txtParolaVeche.Name = "txtParolaVeche";
             this.txtParolaVeche.Size = new System.Drawing.Size(185, 22);
             this.txtParolaVeche.TabIndex = 2;
-            this.txtParolaVeche.TextChanged += new System.EventHandler(this.txtParolaVeche_TextChanged);
             // 
             // txtParolaNoua
             // 
