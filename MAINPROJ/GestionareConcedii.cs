@@ -178,7 +178,7 @@ namespace MAINPROJ
             tabelConcedii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
 
-            this.tabelConcedii.Columns["Id"].Visible = true;
+            this.tabelConcedii.Columns["Id"].Visible = false;
         }
 
         private async void showTableACC()
@@ -217,6 +217,7 @@ namespace MAINPROJ
             listaConcedii = null;
             tabelConcedii.AutoSizeColumnsMode =DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont();
+
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -328,12 +329,20 @@ namespace MAINPROJ
 
         private async void Aproba_Click(object sender, EventArgs e)
         {
-            var response = await Common.client.PutAsync(local + $"GestionareConcedii/AprobaConcediu?concediuId={ValCelula}", null);
-            response.EnsureSuccessStatusCode();
-            this.Hide();
-            var otherform = new GestionareConcedii(angajatId, admin, manager);
-            otherform.Closed += (s, args) => this.Close();
-            otherform.Show();
+            if (ValCelula != null)
+            {
+                var response = await Common.client.PutAsync(local + $"GestionareConcedii/AprobaConcediu?concediuId={ValCelula}", null);
+                response.EnsureSuccessStatusCode();
+                this.Hide();
+                var otherform = new GestionareConcedii(angajatId, admin, manager);
+                otherform.Closed += (s, args) => this.Close();
+                otherform.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("Niciun concediu selectat!");
+            }
         }
         private async ValueTask<List<Dto>> GetConcediiRefuzate()
         {

@@ -79,6 +79,7 @@
             this.dtpDataAngajare = new System.Windows.Forms.DateTimePicker();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtFindByName = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pozaAngajat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
@@ -89,6 +90,7 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNume
@@ -616,12 +618,24 @@
             this.txtFindByName.TabIndex = 80;
             this.txtFindByName.TextChanged += new System.EventHandler(this.txtFindByName_TextChanged);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::MAINPROJ.Properties.Resources.Magnifying_glass_icon_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(1092, 43);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 23);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 81;
+            this.pictureBox2.TabStop = false;
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtFindByName);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.dtpDataAngajare);
@@ -667,6 +681,7 @@
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -724,5 +739,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TextBox txtFindByName;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
