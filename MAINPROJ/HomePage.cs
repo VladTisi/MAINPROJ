@@ -98,6 +98,7 @@ namespace MAINPROJ
             {
                 if (!Char.IsDigit(myCharArray[i]))
                 {
+                    hasNumbersOnly=false;
                     break;
                 }
                 hasNumbersOnly=true;
@@ -121,6 +122,7 @@ namespace MAINPROJ
             {
                 if (!Char.IsDigit(myCharArray[i]))
                 {
+                    hasNumbersOnly=false;
                     break;
                 }
                 hasNumbersOnly=true;
@@ -140,6 +142,7 @@ namespace MAINPROJ
             {
                 if (!Char.IsDigit(myCharArray[i]))
                 {
+                    hasNumbersOnly = false;
                     break;
                 }
                 hasNumbersOnly=true;
