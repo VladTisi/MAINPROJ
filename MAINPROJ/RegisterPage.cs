@@ -420,7 +420,7 @@ namespace MAINPROJ
             sidebarTimer.Start();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnHomePage_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new HomePage(angajatId);
@@ -428,7 +428,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnConcediiPersonale_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new ConcediiRefuzate(angajatId, admin, manager);
@@ -436,7 +436,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnEchipa_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new Echipa(angajatId, admin, manager);
@@ -444,7 +444,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnListaAngajati_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new MeniuNavigare(angajatId, admin, manager);
@@ -452,7 +452,7 @@ namespace MAINPROJ
             otherform.Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnGestionareConcedii_Click(object sender, EventArgs e)
         {
             this.Hide();
             var otherform = new GestionareConcedii(angajatId, admin, manager);

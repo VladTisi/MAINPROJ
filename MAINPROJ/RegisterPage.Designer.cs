@@ -61,15 +61,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnHomePage = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnConcediiPersonale = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnEchipa = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnListaAngajati = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnGestionareConcedii = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
@@ -430,113 +430,113 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.btnHomePage);
             this.panel2.Location = new System.Drawing.Point(3, 77);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(197, 63);
             this.panel2.TabIndex = 2;
             // 
-            // button4
+            // btnHomePage
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = global::MAINPROJ.Properties.Resources.rsz_homeicon;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(-3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 57);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "      Home";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnHomePage.BackColor = System.Drawing.Color.White;
+            this.btnHomePage.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomePage.Image = global::MAINPROJ.Properties.Resources.rsz_homeicon;
+            this.btnHomePage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHomePage.Location = new System.Drawing.Point(-3, 3);
+            this.btnHomePage.Name = "btnHomePage";
+            this.btnHomePage.Size = new System.Drawing.Size(200, 57);
+            this.btnHomePage.TabIndex = 1;
+            this.btnHomePage.Text = "      Home";
+            this.btnHomePage.UseVisualStyleBackColor = false;
+            this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button5);
+            this.panel3.Controls.Add(this.btnConcediiPersonale);
             this.panel3.Location = new System.Drawing.Point(3, 146);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(197, 63);
             this.panel3.TabIndex = 3;
             // 
-            // button5
+            // btnConcediiPersonale
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = global::MAINPROJ.Properties.Resources.rsz_calendaricon;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(-1, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(198, 57);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "       Concediile \r\n      mele";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnConcediiPersonale.BackColor = System.Drawing.Color.White;
+            this.btnConcediiPersonale.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConcediiPersonale.Image = global::MAINPROJ.Properties.Resources.rsz_calendaricon;
+            this.btnConcediiPersonale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConcediiPersonale.Location = new System.Drawing.Point(-1, 3);
+            this.btnConcediiPersonale.Name = "btnConcediiPersonale";
+            this.btnConcediiPersonale.Size = new System.Drawing.Size(198, 57);
+            this.btnConcediiPersonale.TabIndex = 1;
+            this.btnConcediiPersonale.Text = "       Concediile \r\n      mele";
+            this.btnConcediiPersonale.UseVisualStyleBackColor = false;
+            this.btnConcediiPersonale.Click += new System.EventHandler(this.btnConcediiPersonale_Click);
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button6);
+            this.panel4.Controls.Add(this.btnEchipa);
             this.panel4.Location = new System.Drawing.Point(3, 215);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(197, 63);
             this.panel4.TabIndex = 4;
             // 
-            // button6
+            // btnEchipa
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = global::MAINPROJ.Properties.Resources.rsz_teamicon;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(-2, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(199, 57);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "        Echipa";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnEchipa.BackColor = System.Drawing.Color.White;
+            this.btnEchipa.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEchipa.Image = global::MAINPROJ.Properties.Resources.rsz_teamicon;
+            this.btnEchipa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEchipa.Location = new System.Drawing.Point(-2, 3);
+            this.btnEchipa.Name = "btnEchipa";
+            this.btnEchipa.Size = new System.Drawing.Size(199, 57);
+            this.btnEchipa.TabIndex = 1;
+            this.btnEchipa.Text = "        Echipa";
+            this.btnEchipa.UseVisualStyleBackColor = false;
+            this.btnEchipa.Click += new System.EventHandler(this.btnEchipa_Click);
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.button7);
+            this.panel5.Controls.Add(this.btnListaAngajati);
             this.panel5.Location = new System.Drawing.Point(3, 284);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(197, 63);
             this.panel5.TabIndex = 5;
             // 
-            // button7
+            // btnListaAngajati
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Image = global::MAINPROJ.Properties.Resources.rsz_istockphoto_1136653100_170667a;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(-1, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(198, 57);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "           Lista Angajati";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnListaAngajati.BackColor = System.Drawing.Color.White;
+            this.btnListaAngajati.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListaAngajati.Image = global::MAINPROJ.Properties.Resources.rsz_istockphoto_1136653100_170667a;
+            this.btnListaAngajati.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListaAngajati.Location = new System.Drawing.Point(-1, 3);
+            this.btnListaAngajati.Name = "btnListaAngajati";
+            this.btnListaAngajati.Size = new System.Drawing.Size(198, 57);
+            this.btnListaAngajati.TabIndex = 1;
+            this.btnListaAngajati.Text = "           Lista Angajati";
+            this.btnListaAngajati.UseVisualStyleBackColor = false;
+            this.btnListaAngajati.Click += new System.EventHandler(this.btnListaAngajati_Click);
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.button8);
+            this.panel6.Controls.Add(this.btnGestionareConcedii);
             this.panel6.Location = new System.Drawing.Point(3, 353);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(197, 63);
             this.panel6.TabIndex = 6;
             // 
-            // button8
+            // btnGestionareConcedii
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Image = global::MAINPROJ.Properties.Resources.rsz_sheriff;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(-2, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(199, 57);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "          Gestionare \r\n        Concedii";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnGestionareConcedii.BackColor = System.Drawing.Color.White;
+            this.btnGestionareConcedii.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionareConcedii.Image = global::MAINPROJ.Properties.Resources.rsz_sheriff;
+            this.btnGestionareConcedii.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionareConcedii.Location = new System.Drawing.Point(-2, 3);
+            this.btnGestionareConcedii.Name = "btnGestionareConcedii";
+            this.btnGestionareConcedii.Size = new System.Drawing.Size(199, 57);
+            this.btnGestionareConcedii.TabIndex = 1;
+            this.btnGestionareConcedii.Text = "          Gestionare \r\n        Concedii";
+            this.btnGestionareConcedii.UseVisualStyleBackColor = false;
+            this.btnGestionareConcedii.Click += new System.EventHandler(this.btnGestionareConcedii_Click);
             // 
             // panel7
             // 
@@ -653,15 +653,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button menuButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnConcediiPersonale;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnEchipa;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnListaAngajati;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnGestionareConcedii;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Timer sidebarTimer;
         private System.Windows.Forms.Button btnLogOut;
