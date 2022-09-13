@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 
 namespace MAINPROJ
@@ -88,6 +89,7 @@ namespace MAINPROJ
         bool manager;
         int start = 0;
         int startacc = 0;
+        string url ="http://localhost:5031/api/";
         public Echipa(int angajatId, bool admin, bool manager)
         {
             InitializeComponent();
@@ -199,7 +201,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Member>> GetAngajati()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/Echipa/GetEchipa?angajatId={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"Echipa/GetEchipa?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
@@ -232,7 +234,7 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Dto>> GetConcedii()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/Echipa/GetConcediiEchipa?angajatId={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"Echipa/GetConcediiEchipa?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
