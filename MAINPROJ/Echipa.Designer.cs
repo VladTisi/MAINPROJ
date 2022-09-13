@@ -293,10 +293,10 @@
             this.tabelConcediu.AllowUserToDeleteRows = false;
             this.tabelConcediu.BackgroundColor = System.Drawing.Color.White;
             this.tabelConcediu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelConcediu.Location = new System.Drawing.Point(673, 216);
+            this.tabelConcediu.Location = new System.Drawing.Point(613, 216);
             this.tabelConcediu.Name = "tabelConcediu";
             this.tabelConcediu.ReadOnly = true;
-            this.tabelConcediu.Size = new System.Drawing.Size(445, 252);
+            this.tabelConcediu.Size = new System.Drawing.Size(562, 252);
             this.tabelConcediu.TabIndex = 53;
             this.tabelConcediu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick);
             // 
@@ -330,7 +330,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(301, 182);
+            this.label1.Location = new System.Drawing.Point(327, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 25);
             this.label1.TabIndex = 56;
@@ -357,7 +357,7 @@
             this.tabelEchipa.Location = new System.Drawing.Point(191, 216);
             this.tabelEchipa.Name = "tabelEchipa";
             this.tabelEchipa.ReadOnly = true;
-            this.tabelEchipa.Size = new System.Drawing.Size(351, 252);
+            this.tabelEchipa.Size = new System.Drawing.Size(394, 252);
             this.tabelEchipa.TabIndex = 58;
             this.tabelEchipa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelEchipa_CellContentClick_1);
             // 
@@ -380,7 +380,7 @@
             this.btnForward.BackColor = System.Drawing.Color.White;
             this.btnForward.Font = new System.Drawing.Font("Stencil", 10F);
             this.btnForward.ForeColor = System.Drawing.Color.Black;
-            this.btnForward.Location = new System.Drawing.Point(458, 491);
+            this.btnForward.Location = new System.Drawing.Point(501, 491);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(84, 28);
             this.btnForward.TabIndex = 71;
@@ -393,7 +393,7 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Stencil", 10F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(673, 491);
+            this.button1.Location = new System.Drawing.Point(613, 492);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 28);
             this.button1.TabIndex = 74;
@@ -407,7 +407,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Stencil", 10F);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1034, 491);
+            this.button2.Location = new System.Drawing.Point(1091, 492);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 28);
             this.button2.TabIndex = 73;

@@ -122,6 +122,7 @@ namespace MAINPROJ
             dt = null;
             listaConcedii = null;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
             UpdateFont(dataGridView1);
         }
         ///Meniu Navigare

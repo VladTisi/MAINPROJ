@@ -271,7 +271,7 @@ namespace MAINPROJ
             //Change cell font
             foreach (DataGridViewColumn c in a.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Stencil", 12F, GraphicsUnit.Pixel);
+                c.DefaultCellStyle.Font = new Font("Stencil", 14F, GraphicsUnit.Pixel);
             }
         }
 
