@@ -435,6 +435,10 @@ namespace MAINPROJ
                     comboListaAngajati.ValueMember = "Id";
                     comboListaAngajati.DisplayMember = "Nume";
                 }
+                else
+                {
+                    await AddItems(angajatId);
+                }
                 
             }
             else
@@ -460,7 +464,11 @@ namespace MAINPROJ
                     comboListaAngajati.ValueMember = "Id";
                     comboListaAngajati.DisplayMember = "Nume";
                 }
-                
+                else
+                {
+                    await AddItems(angajatId);
+                }
+
             }
         }
 
