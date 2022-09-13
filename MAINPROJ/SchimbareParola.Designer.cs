@@ -62,6 +62,7 @@
             this.txtParolaNoua.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtParolaNoua.Location = new System.Drawing.Point(273, 80);
             this.txtParolaNoua.Name = "txtParolaNoua";
+            this.txtParolaNoua.PasswordChar = '*';
             this.txtParolaNoua.Size = new System.Drawing.Size(185, 22);
             this.txtParolaNoua.TabIndex = 3;
             this.txtParolaNoua.TextChanged += new System.EventHandler(this.txtParolaNoua_TextChanged);
@@ -71,6 +72,7 @@
             this.txtConfirm.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirm.Location = new System.Drawing.Point(273, 128);
             this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.PasswordChar = '*';
             this.txtConfirm.Size = new System.Drawing.Size(185, 22);
             this.txtConfirm.TabIndex = 4;
             // 

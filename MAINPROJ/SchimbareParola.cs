@@ -129,6 +129,7 @@ namespace MAINPROJ
                 return;
             }
 
+     
             
 
             if (validatePassword(txtParolaNoua.Text, txtConfirm.Text) == 1)
