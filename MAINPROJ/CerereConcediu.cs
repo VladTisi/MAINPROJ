@@ -154,8 +154,13 @@ namespace MAINPROJ
             else if ((int)cmbTipConcediu.SelectedValue == 4 && nr > Convert.ToInt32(label12.Text))
                 MessageBox.Show("Nu ai destule zile de concediu");
 
+            else if (Convert.ToString(dtpDataIncepere.Value.DayOfWeek)=="Saturday" || Convert.ToString(dtpDataIncepere.Value.DayOfWeek) == "Sunday" || 
+                Convert.ToString(dtpDataSfarsit.Value.DayOfWeek) == "Saturday" || Convert.ToString(dtpDataSfarsit.Value.DayOfWeek) == "Sunday")
+                    MessageBox.Show("Inceputul sau sfarsitul concediului nu poate fi in weekend");
+
             else if (!Convert.ToBoolean(responseBody16))
                 MessageBox.Show("Inlocuitorul ales are concediu in acea perioada");
+
             else if (Convert.ToBoolean(responseBody15))
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
