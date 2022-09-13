@@ -293,7 +293,7 @@
             this.tabelConcediu.AllowUserToDeleteRows = false;
             this.tabelConcediu.BackgroundColor = System.Drawing.Color.White;
             this.tabelConcediu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelConcediu.Location = new System.Drawing.Point(684, 303);
+            this.tabelConcediu.Location = new System.Drawing.Point(673, 216);
             this.tabelConcediu.Name = "tabelConcediu";
             this.tabelConcediu.ReadOnly = true;
             this.tabelConcediu.Size = new System.Drawing.Size(445, 252);
@@ -305,7 +305,7 @@
             this.btnCerereNoua.BackColor = System.Drawing.Color.Black;
             this.btnCerereNoua.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerereNoua.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCerereNoua.Location = new System.Drawing.Point(835, 630);
+            this.btnCerereNoua.Location = new System.Drawing.Point(811, 536);
             this.btnCerereNoua.Name = "btnCerereNoua";
             this.btnCerereNoua.Size = new System.Drawing.Size(166, 58);
             this.btnCerereNoua.TabIndex = 54;
@@ -330,7 +330,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(312, 269);
+            this.label1.Location = new System.Drawing.Point(301, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 25);
             this.label1.TabIndex = 56;
@@ -342,7 +342,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(817, 269);
+            this.label2.Location = new System.Drawing.Point(806, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(184, 25);
             this.label2.TabIndex = 57;
@@ -354,7 +354,7 @@
             this.tabelEchipa.AllowUserToDeleteRows = false;
             this.tabelEchipa.BackgroundColor = System.Drawing.Color.White;
             this.tabelEchipa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelEchipa.Location = new System.Drawing.Point(202, 303);
+            this.tabelEchipa.Location = new System.Drawing.Point(191, 216);
             this.tabelEchipa.Name = "tabelEchipa";
             this.tabelEchipa.ReadOnly = true;
             this.tabelEchipa.Size = new System.Drawing.Size(351, 252);
@@ -366,7 +366,7 @@
             this.btnBackward.BackColor = System.Drawing.Color.White;
             this.btnBackward.Font = new System.Drawing.Font("Stencil", 10F);
             this.btnBackward.ForeColor = System.Drawing.Color.Black;
-            this.btnBackward.Location = new System.Drawing.Point(202, 578);
+            this.btnBackward.Location = new System.Drawing.Point(191, 491);
             this.btnBackward.Name = "btnBackward";
             this.btnBackward.Size = new System.Drawing.Size(84, 28);
             this.btnBackward.TabIndex = 72;
@@ -380,7 +380,7 @@
             this.btnForward.BackColor = System.Drawing.Color.White;
             this.btnForward.Font = new System.Drawing.Font("Stencil", 10F);
             this.btnForward.ForeColor = System.Drawing.Color.Black;
-            this.btnForward.Location = new System.Drawing.Point(469, 578);
+            this.btnForward.Location = new System.Drawing.Point(458, 491);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(84, 28);
             this.btnForward.TabIndex = 71;
@@ -393,7 +393,7 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Stencil", 10F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(684, 578);
+            this.button1.Location = new System.Drawing.Point(673, 491);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 28);
             this.button1.TabIndex = 74;
@@ -407,7 +407,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Stencil", 10F);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1045, 578);
+            this.button2.Location = new System.Drawing.Point(1034, 491);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 28);
             this.button2.TabIndex = 73;
