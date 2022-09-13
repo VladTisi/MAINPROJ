@@ -419,7 +419,7 @@ namespace MAINPROJ
 
             if (admin)
             {
-                if (!String.IsNullOrEmpty(txtFindByName.Text))
+                if (!String.IsNullOrEmpty(txtFindByName.Text) && !txtFindByName.Text.Contains(" "))
                 {
                     comboListaAngajati.DataSource = new BindingSource();
                     HttpResponseMessage response = await Common.client.GetAsync(local + $"HomePage/GetFindByName?textnume={txtFindByName.Text}");
@@ -434,15 +434,21 @@ namespace MAINPROJ
                     comboListaAngajati.ValueMember = "Id";
                     comboListaAngajati.DisplayMember = "Nume";
                 }
+                else if(txtFindByName.Text.Contains(" "))
+                {
+                    await AddItems(angajatId);
+                    MessageBox.Show("Numele sau prenumele nu pot avea spatiu! Filtrarea se efectueaza fie dupa nume fie dupa prenume.");
+                }
                 else
                 {
+
                     await AddItems(angajatId);
                 }
                 
             }
             else
             {
-                if (!String.IsNullOrEmpty(txtFindByName.Text))
+                if (!String.IsNullOrEmpty(txtFindByName.Text) && !txtFindByName.Text.Contains(" "))
                 {
                     HttpResponseMessage response2 = await Common.client.GetAsync(local + $"HomePage/GetAngajat?Id={angajatId}");
                     response2.EnsureSuccessStatusCode();
@@ -462,6 +468,11 @@ namespace MAINPROJ
                     comboListaAngajati.DataSource = bindingSourceUtilizatori;
                     comboListaAngajati.ValueMember = "Id";
                     comboListaAngajati.DisplayMember = "Nume";
+                }
+                else if (txtFindByName.Text.Contains(" "))
+                {
+                    await AddItems(angajatId);
+                    MessageBox.Show("Numele sau prenumele nu pot avea spatiu! Filtrarea se efectueaza fie dupa nume fie dupa prenume.");
                 }
                 else
                 {

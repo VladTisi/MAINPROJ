@@ -444,7 +444,7 @@
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(137, 28);
             this.btnForward.TabIndex = 67;
-            this.btnForward.Text = ">>>>";
+            this.btnForward.Text = ">>>";
             this.btnForward.UseVisualStyleBackColor = false;
             this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
@@ -457,7 +457,7 @@
             this.btnBackward.Name = "btnBackward";
             this.btnBackward.Size = new System.Drawing.Size(137, 28);
             this.btnBackward.TabIndex = 68;
-            this.btnBackward.Text = "<<<<";
+            this.btnBackward.Text = "<<<";
             this.btnBackward.UseVisualStyleBackColor = false;
             this.btnBackward.Visible = false;
             this.btnBackward.Click += new System.EventHandler(this.btnBackward_Click);
