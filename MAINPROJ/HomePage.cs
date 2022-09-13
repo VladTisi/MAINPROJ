@@ -435,6 +435,10 @@ namespace MAINPROJ
                     comboListaAngajati.ValueMember = "Id";
                     comboListaAngajati.DisplayMember = "Nume";
                 }
+                else
+                {
+                    await AddItems(angajatId);
+                }
                 
             }
             else
@@ -460,7 +464,11 @@ namespace MAINPROJ
                     comboListaAngajati.ValueMember = "Id";
                     comboListaAngajati.DisplayMember = "Nume";
                 }
-                
+                else
+                {
+                    await AddItems(angajatId);
+                }
+
             }
         }
 
@@ -621,6 +629,15 @@ namespace MAINPROJ
                 Angj.IdFunctie = (int)comboFunctie.SelectedValue;
             }
 
+            if(txtSalariu.Text=="1987")
+            {
+                System.Media.SoundPlayer Player = new System.Media.SoundPlayer();
+                string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+                string FileName = string.Format("{0}Resources\\RickRoll.wav", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+                Player.SoundLocation = FileName;
+                Console.WriteLine(Player.SoundLocation);
+                Player.Play();
+            }
             // if(comboEchipa.Text!=)
             HttpResponseMessage response7 = await Common.client.GetAsync(local + $"HomePage/GetEchipaFromId?Id={Angj.IdEchipa}");
             response6.EnsureSuccessStatusCode();

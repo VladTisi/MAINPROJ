@@ -12,12 +12,31 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 
 namespace MAINPROJ
 {
     public partial class Echipa : Form
     {
+      
+        bool sidebarExpand;
+        private int angajatId;
+        bool admin;
+        bool manager;
+        int start = 0;
+        int startacc = 0;
+        string url = "http://localhost:5031/api/";
+        public Echipa(int angajatId, bool admin, bool manager)
+        {
+            InitializeComponent();
+            this.angajatId=angajatId;
+            this.admin = admin;
+            this.manager = manager;
+            showTable();
+            showEchipa();
+
+        }
         private async void showTable()
         {
             DataTable dt = new DataTable();
@@ -81,22 +100,6 @@ namespace MAINPROJ
             tabelEchipa.DataSource = dt;
             tabelEchipa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UpdateFont(tabelEchipa);
-        }
-        bool sidebarExpand;
-        private int angajatId;
-        bool admin;
-        bool manager;
-        int start = 0;
-        int startacc = 0;
-        public Echipa(int angajatId, bool admin, bool manager)
-        {
-            InitializeComponent();
-            this.angajatId=angajatId;
-            this.admin = admin;
-            this.manager = manager;
-            showTable();
-            showEchipa();
-
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -199,12 +202,12 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Member>> GetAngajati()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/Echipa/GetEchipa?angajatId={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"Echipa/GetEchipa?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Member> listaAngajati = JsonConvert.DeserializeObject<List<Member>>(responseBody);
             List<Member> listaSecundara = new List<Member>();
-            if (start + 5 > listaAngajati.Count)
+            if (start + 10 > listaAngajati.Count)
             {
                 btnForward.Visible = false;
             }
@@ -212,9 +215,9 @@ namespace MAINPROJ
             {
                 btnForward.Visible = true;
             }
-            if (listaAngajati.Count > start + 5)
+            if (listaAngajati.Count > start + 10)
             {
-                for (int i = start; i < start + 5; i++)
+                for (int i = start; i < start + 10; i++)
                 {
                     listaSecundara.Add(listaAngajati[i]);
                 }
@@ -232,12 +235,12 @@ namespace MAINPROJ
         }
         private async ValueTask<List<Dto>> GetConcedii()
         {
-            HttpResponseMessage response = await Common.client.GetAsync($"http://localhost:5031/api/Echipa/GetConcediiEchipa?angajatId={angajatId}");
+            HttpResponseMessage response = await Common.client.GetAsync(url+$"Echipa/GetConcediiEchipa?angajatId={angajatId}");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
             List<Dto> listaSecundara = new List<Dto>();
-            if (startacc + 5 > listaParole.Count)
+            if (startacc + 10 > listaParole.Count)
             {
                 button2.Visible = false;
             }
@@ -245,9 +248,9 @@ namespace MAINPROJ
             {
                 button2.Visible = true;
             }
-            if (listaParole.Count > startacc + 5)
+            if (listaParole.Count > startacc + 10)
             {
-                for (int i = startacc; i < startacc + 5; i++)
+                for (int i = startacc; i < startacc + 10; i++)
                 {
                     listaSecundara.Add(listaParole[i]);
                 }
@@ -287,32 +290,32 @@ namespace MAINPROJ
 
         private void btnBackward_Click(object sender, EventArgs e)
         {
-            start -= 5;
-            if (start < 5)
+            start -= 10;
+            if (start < 10)
                 btnBackward.Visible = false;
             showEchipa();
         }
 
         private void btnForward_Click(object sender, EventArgs e)
         {
-            start += 5;
-            if (start >= 5)
+            start += 10;
+            if (start >= 10)
                 btnBackward.Visible = true;
             showEchipa();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            startacc -= 5;
-            if (startacc < 5)
+            startacc -= 10;
+            if (startacc < 10)
                 button1.Visible = false;
             showTable();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            startacc += 5;
-            if (startacc >= 5)
+            startacc += 10;
+            if (startacc >= 10)
                 button1.Visible = true;
             showTable();
         }

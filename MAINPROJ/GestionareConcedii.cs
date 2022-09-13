@@ -185,6 +185,8 @@ namespace MAINPROJ
         {
             DataTable dt = new DataTable();
             DataColumn c = new DataColumn();
+            c = new DataColumn("Id");
+            dt.Columns.Add(c);
             c = new DataColumn("Nume");
             dt.Columns.Add(c);
             c = new DataColumn("Prenume");
@@ -204,6 +206,7 @@ namespace MAINPROJ
             foreach (Dto myObject in listaConcedii)
             {
                 DataRow r = dt.NewRow();
+                r["Id"] = myObject.Id;
                 r["Nume"] = myObject.Nume;
                 r["Prenume"] = myObject.Prenume;
                 r["Functia"] = myObject.Functie;
@@ -216,6 +219,7 @@ namespace MAINPROJ
             dt = null;
             listaConcedii = null;
             tabelConcedii.AutoSizeColumnsMode =DataGridViewAutoSizeColumnsMode.Fill;
+            this.tabelConcedii.Columns["Id"].Visible = false;
             UpdateFont();
 
         }
@@ -300,7 +304,7 @@ namespace MAINPROJ
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
             List<Dto> listaSecundara = new List<Dto>();
-            if (start+5>listaParole.Count)
+            if (start+17>listaParole.Count)
             {
                 btnForward.Visible=false;
             }
@@ -308,9 +312,9 @@ namespace MAINPROJ
             {
                 btnForward.Visible=true;
             }
-            if(listaParole.Count > start+5)
+            if(listaParole.Count > start+17)
             {
-                for (int i = start; i<start+5; i++)
+                for (int i = start; i<start+17; i++)
                 {
                     listaSecundara.Add(listaParole[i]);
                 }
@@ -351,7 +355,7 @@ namespace MAINPROJ
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
             List<Dto> listaSecundara = new List<Dto>();
-            if (startref+5>listaParole.Count)
+            if (startref+17>listaParole.Count)
             {
                 btnForward.Visible=false;
             }
@@ -359,9 +363,9 @@ namespace MAINPROJ
             {
                 btnForward.Visible=true;
             }
-            if (listaParole.Count > startref+5)
+            if (listaParole.Count > startref+17)
             {
-                for (int i = startref; i<startref+5; i++)
+                for (int i = startref; i<startref+17; i++)
                 {
                     listaSecundara.Add(listaParole[i]);
                 }
@@ -385,7 +389,7 @@ namespace MAINPROJ
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Dto> listaParole = JsonConvert.DeserializeObject<List<Dto>>(responseBody);
             List<Dto> listaSecundara = new List<Dto>();
-            if (startacc+5>listaParole.Count)
+            if (startacc+17>listaParole.Count)
             {
                 btnForward.Visible=false;
             }
@@ -393,9 +397,9 @@ namespace MAINPROJ
             {
                 btnForward.Visible=true;
             }
-            if (listaParole.Count > startacc+5)
+            if (listaParole.Count > startacc+17)
             {
-                for (int i = startacc; i<startacc+5; i++)
+                for (int i = startacc; i<startacc+17; i++)
                 {
                     listaSecundara.Add(listaParole[i]);
                 }
@@ -430,7 +434,7 @@ namespace MAINPROJ
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (startref>=5) 
+            if (startref>=17) 
                 btnBackward.Visible=true;
             else btnBackward.Visible=false;
             selectedtable=3;
@@ -441,7 +445,7 @@ namespace MAINPROJ
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (start>=5)
+            if (start>=17)
                 btnBackward.Visible=true;
             else btnBackward.Visible=false;
             selectedtable=1;
@@ -452,7 +456,7 @@ namespace MAINPROJ
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (startacc>=5)
+            if (startacc>=17)
                 btnBackward.Visible=true;
             else btnBackward.Visible=false;
             selectedtable=2;
@@ -496,23 +500,23 @@ namespace MAINPROJ
             if (selectedtable==1)
             {
                 showTablePEND();
-                start+=5;
-                if (start>=5)
+                start+=17;
+                if (start>=17)
                     btnBackward.Visible=true;
             }
 
             if (selectedtable==2)
             {
                 showTableACC();
-                startacc+=5;
-                if (startacc>=5)
+                startacc+=17;
+                if (startacc>=17)
                     btnBackward.Visible=true;
             }
             if (selectedtable==3)
             {
                 showTableREF();
-                startref+=5;
-                if (startref>=5)
+                startref+=17;
+                if (startref>=17)
                     btnBackward.Visible=true;
             }
             
@@ -524,24 +528,24 @@ namespace MAINPROJ
             if (selectedtable==1)
             {
                 showTablePEND();
-                start-=5;
-                if (start<5)
+                start-=17;
+                if (start<17)
                     btnBackward.Visible=false;
 
             }
             if (selectedtable==2)
             {
                 showTableACC();
-                startacc-=5;
-                if (startacc<5)
+                startacc-=17;
+                if (startacc<17)
                     btnBackward.Visible=false;
 
             }
             if (selectedtable==3)
             {
                 showTableREF();
-                startref-=5;
-                if (startref<5)
+                startref-=17;
+                if (startref<17)
                     btnBackward.Visible=false;
 
             }
