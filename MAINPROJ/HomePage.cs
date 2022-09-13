@@ -195,7 +195,7 @@ namespace MAINPROJ
             btnSalvareModificari.Visible = true;
 
             btnUpdatePoza.Visible = true;
-            if(admin || manager)
+            if(admin || (manager == true && (int)comboListaAngajati.SelectedValue != angajatId))
             {
                 txtNume.Enabled = true;
 
@@ -210,9 +210,8 @@ namespace MAINPROJ
                 comboEchipa.Enabled = true;
 
                 comboFunctie.Enabled = true;
+            }
 
-
-            }    
 
         }
 
