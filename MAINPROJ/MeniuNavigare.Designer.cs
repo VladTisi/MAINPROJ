@@ -301,6 +301,7 @@
             this.tabelAngajati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelAngajati.Location = new System.Drawing.Point(259, 150);
             this.tabelAngajati.Name = "tabelAngajati";
+            this.tabelAngajati.ReadOnly = true;
             this.tabelAngajati.Size = new System.Drawing.Size(867, 450);
             this.tabelAngajati.TabIndex = 7;
             this.tabelAngajati.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelAngajati_CellContentClick);

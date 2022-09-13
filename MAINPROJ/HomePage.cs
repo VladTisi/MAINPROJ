@@ -181,6 +181,8 @@ namespace MAINPROJ
             {
                     btnGestionareConcedii.Visible = false;
                     comboListaAngajati.Visible = false;
+                txtFindByName.Visible = false;
+                pictureBox2.Visible = false;
             }
         }
        

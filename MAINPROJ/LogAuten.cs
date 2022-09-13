@@ -169,30 +169,45 @@ namespace MAINPROJ
                     Console.WriteLine(x);
                     Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat inregistrarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
                     String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                    if (Convert.ToInt32(codstring)==x)
+                    int number;
+                    bool tryparse = Int32.TryParse(codstring, out number);
+                    if (tryparse)
                     {
-                        HttpResponseMessage response = await Common.client.PostAsync(url+$"api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}", null);
+                        if (Convert.ToInt32(codstring)==x)
+                        {
+                            HttpResponseMessage response = await Common.client.PostAsync(url+$"api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}", null);
 
 
-                        MessageBox.Show("Contul tau a fost creat!");
-                        string[] myArray = autemail.Text.Split('.');
-                        Console.WriteLine(myArray[0]);
-                        Console.WriteLine(myArray[1].Split('@')[0]);
+                            MessageBox.Show("Contul tau a fost creat!");
+                            string[] myArray = autemail.Text.Split('.');
+                            Console.WriteLine(myArray[0]);
+                            Console.WriteLine(myArray[1].Split('@')[0]);
 
 
-                        HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
-                        newresponse.EnsureSuccessStatusCode();
-                        string responseBody2 = await newresponse.Content.ReadAsStringAsync();
-                        List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                        int IdLogin = listaParole[0].Id;
-                        autemail.Text="";
-                        autpass.Text="";
-                        conpass.Text="";
-                        this.Hide();
-                        var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
-                        otherform.Closed += (s, args) => this.Close();
-                        otherform.Show();
+                            HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
+                            newresponse.EnsureSuccessStatusCode();
+                            string responseBody2 = await newresponse.Content.ReadAsStringAsync();
+                            List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                            int IdLogin = listaParole[0].Id;
+                            autemail.Text="";
+                            autpass.Text="";
+                            conpass.Text="";
+                            this.Hide();
+                            var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
+                            otherform.Closed += (s, args) => this.Close();
+                            otherform.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cod invalid");
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Cod invalid");
+                    }
+
+
 
 
 
@@ -270,40 +285,57 @@ namespace MAINPROJ
                     Console.WriteLine(x);
                     Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat logarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
                     String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                    if (Convert.ToInt32(codstring)==x)
+                    int number;
+                    bool tryparse = Int32.TryParse(codstring, out number);
+                    if (tryparse)
                     {
-
-                        HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
-                        response2.EnsureSuccessStatusCode();
-                        string responseBody2 = await response2.Content.ReadAsStringAsync();
-                        List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                        if (!listaParole2[0].AngajatId.HasValue)
+                        if (Convert.ToInt32(codstring)==x)
                         {
 
-                            HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
-                            newresponse.EnsureSuccessStatusCode();
-                            string responseBody3 = await newresponse.Content.ReadAsStringAsync();
-                            List<Login> listaParole3 = JsonConvert.DeserializeObject<List<Login>>(responseBody3);
-                            int IdLogin = listaParole3[0].Id;
-                            string[] myArray = logmail.Text.Split('.');
-                            Console.WriteLine(myArray[0]);
-                            Console.WriteLine(myArray[1].Split('@')[0]);
-                            this.Hide();
-                            var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
-                            otherform.Closed += (s, args) => this.Close();
-                            otherform.Show();
+                            HttpResponseMessage response2 = await Common.client.GetAsync(url+$"api/LogAuten/GetAngajatIdFromEmail?email={email}");
+                            response2.EnsureSuccessStatusCode();
+                            string responseBody2 = await response2.Content.ReadAsStringAsync();
+                            List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                            if (!listaParole2[0].AngajatId.HasValue)
+                            {
+
+                                HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
+                                newresponse.EnsureSuccessStatusCode();
+                                string responseBody3 = await newresponse.Content.ReadAsStringAsync();
+                                List<Login> listaParole3 = JsonConvert.DeserializeObject<List<Login>>(responseBody3);
+                                int IdLogin = listaParole3[0].Id;
+                                string[] myArray = logmail.Text.Split('.');
+                                Console.WriteLine(myArray[0]);
+                                Console.WriteLine(myArray[1].Split('@')[0]);
+                                this.Hide();
+                                var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
+                                otherform.Closed += (s, args) => this.Close();
+                                otherform.Show();
+                            }
+                            else
+                            {
+                                int angajatId = (int)listaParole2[0].AngajatId;
+                                this.Hide();
+                                var otherform = new HomePage(angajatId);
+                                otherform.Closed += (s, args) => this.Close();
+                                otherform.Show();
+                            }
                         }
                         else
                         {
-                            int angajatId = (int)listaParole2[0].AngajatId;
-                            this.Hide();
-                            var otherform = new HomePage(angajatId);
-                            otherform.Closed += (s, args) => this.Close();
-                            otherform.Show();
+                            MessageBox.Show("Cod invalid");
                         }
-                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cod invalid");
                     }
 
+
+                }
+                else
+                {
+                    MessageBox.Show("Cont invalid");
                 }
             }
             else

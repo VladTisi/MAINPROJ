@@ -160,22 +160,65 @@ namespace MAINPROJ
             {
                 if (!Char.IsDigit(myCharArray[i]))
                 {
-                    hasNumbersOnly=false;
-                    break;
+                    return 0;
+                    
                 }
                 hasNumbersOnly=true;
             }
+            string primacifra = CNP.Substring(0, 1);
+
+            if (Convert.ToInt32(primacifra)==0||Convert.ToInt32(primacifra)==7||Convert.ToInt32(primacifra)==8||Convert.ToInt32(primacifra)==9)
+            {
+                return 0;
+            }
+            string luna = CNP.Substring(3, 2);
+            string zi = CNP.Substring(5, 2);
+
+
+            if (Convert.ToInt32(luna)>12||Convert.ToInt32(zi)>31)
+            {
+                return 0;
+            }
+
+            if (Convert.ToInt32(luna)==2&&Convert.ToInt32(zi)>28)
+            {
+                return 0;
+            }
+            switch (Convert.ToInt32(luna))
+            {
+                case 4:
+                    if (Convert.ToInt32(zi)>30)
+                        return 0;
+                    break;
+                case 6:
+                    if (Convert.ToInt32(zi)>30)
+                        return 0;
+                    break;
+                case 9:
+                    if (Convert.ToInt32(zi)>30)
+                        return 0;
+                    break;
+                case 11:
+                    if (Convert.ToInt32(zi)>30)
+                        return 0;
+                    break;
+            }
+                
+
 
             if (hasNumbersOnly)
             {
                 return 1;
             }
             return 0;
+
+
         }
 
         private void txtCNP_TextChanged(object sender, EventArgs e)
         {
-
+            cmbSex.SelectedItem=null;
+            dtpDataNasterii.Value = DateTime.Now;
             if (validareCNP(txtCNP.Text)==1)
             {
                 string an="";
@@ -194,11 +237,15 @@ namespace MAINPROJ
                 {
                     an= "19";
                 }
-                if (firstpart=="1"||firstpart=="5")
+                if (firstpart=="3"||firstpart=="4")
+                {
+                    an= "18";
+                }
+                if (firstpart=="1"||firstpart=="5"||firstpart=="3")
                 {
                     cmbSex.SelectedIndex=0;
                 }
-                else if(firstpart=="2"||firstpart=="6")
+                else if(firstpart=="2"||firstpart=="6"||firstpart=="4")
                 {
                     cmbSex.SelectedIndex=1;
                 }
@@ -207,6 +254,11 @@ namespace MAINPROJ
                 String ziua = Convert.ToString(ziua1)+Convert.ToString(ziua2);
                 String fulldata = fullan +" " + luna + " " + ziua;
                 dtpDataNasterii.Value = DateTime.Parse(fulldata);
+                if (dtpDataNasterii.Value>DateTime.Now)
+                {
+                    MessageBox.Show("CNP Invalid.");
+                    txtCNP.Text="";
+                }
 
 
             }

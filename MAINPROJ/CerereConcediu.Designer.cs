@@ -153,6 +153,7 @@
             // 
             this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource1;
             this.cmbTipConcediu.DisplayMember = "Nume";
+            this.cmbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipConcediu.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipConcediu.FormattingEnabled = true;
             this.cmbTipConcediu.Location = new System.Drawing.Point(642, 302);
@@ -441,6 +442,7 @@
             // 
             // cmbInlocuitor
             // 
+            this.cmbInlocuitor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInlocuitor.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbInlocuitor.FormattingEnabled = true;
             this.cmbInlocuitor.Location = new System.Drawing.Point(642, 374);

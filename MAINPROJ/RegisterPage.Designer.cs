@@ -234,6 +234,7 @@
             // 
             this.txtTelefon.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefon.Location = new System.Drawing.Point(779, 299);
+            this.txtTelefon.MaxLength = 10;
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(334, 30);
             this.txtTelefon.TabIndex = 18;
@@ -242,6 +243,7 @@
             // 
             this.txtNrBuletin.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNrBuletin.Location = new System.Drawing.Point(779, 254);
+            this.txtNrBuletin.MaxLength = 6;
             this.txtNrBuletin.Name = "txtNrBuletin";
             this.txtNrBuletin.Size = new System.Drawing.Size(334, 30);
             this.txtNrBuletin.TabIndex = 17;
@@ -250,6 +252,7 @@
             // 
             this.txtSerie.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerie.Location = new System.Drawing.Point(383, 294);
+            this.txtSerie.MaxLength = 2;
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(205, 30);
             this.txtSerie.TabIndex = 16;
@@ -259,6 +262,7 @@
             // 
             this.txtCNP.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCNP.Location = new System.Drawing.Point(383, 254);
+            this.txtCNP.MaxLength = 13;
             this.txtCNP.Name = "txtCNP";
             this.txtCNP.Size = new System.Drawing.Size(205, 30);
             this.txtCNP.TabIndex = 15;
@@ -277,6 +281,7 @@
             // 
             // cmbSex
             // 
+            this.cmbSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSex.Enabled = false;
             this.cmbSex.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSex.FormattingEnabled = true;
@@ -333,6 +338,7 @@
             // 
             // cmbNumeEchipa
             // 
+            this.cmbNumeEchipa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumeEchipa.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNumeEchipa.FormattingEnabled = true;
             this.cmbNumeEchipa.Location = new System.Drawing.Point(383, 338);
@@ -343,6 +349,7 @@
             // 
             // cmbNumeFunctie
             // 
+            this.cmbNumeFunctie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNumeFunctie.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNumeFunctie.FormattingEnabled = true;
             this.cmbNumeFunctie.Location = new System.Drawing.Point(383, 378);

@@ -250,7 +250,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(670, 434);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(155, 26);
+            this.txtEmail.Size = new System.Drawing.Size(240, 26);
             this.txtEmail.TabIndex = 36;
             // 
             // txtTelefon
@@ -259,7 +259,7 @@
             this.txtTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefon.Location = new System.Drawing.Point(670, 495);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(155, 26);
+            this.txtTelefon.Size = new System.Drawing.Size(240, 26);
             this.txtTelefon.TabIndex = 37;
             // 
             // txtNume
@@ -548,7 +548,7 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1160, 0);
+            this.btnExit.Location = new System.Drawing.Point(1192, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(43, 33);
             this.btnExit.TabIndex = 50;
@@ -558,7 +558,8 @@
             // 
             // comboListaAngajati
             // 
-            this.comboListaAngajati.BackColor = System.Drawing.Color.GhostWhite;
+            this.comboListaAngajati.BackColor = System.Drawing.Color.White;
+            this.comboListaAngajati.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboListaAngajati.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboListaAngajati.FormattingEnabled = true;
             this.comboListaAngajati.Location = new System.Drawing.Point(819, 77);
@@ -570,22 +571,24 @@
             // 
             // comboFunctie
             // 
+            this.comboFunctie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboFunctie.Enabled = false;
             this.comboFunctie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboFunctie.FormattingEnabled = true;
             this.comboFunctie.Location = new System.Drawing.Point(670, 317);
             this.comboFunctie.Name = "comboFunctie";
-            this.comboFunctie.Size = new System.Drawing.Size(155, 28);
+            this.comboFunctie.Size = new System.Drawing.Size(240, 28);
             this.comboFunctie.TabIndex = 76;
             // 
             // comboEchipa
             // 
+            this.comboEchipa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEchipa.Enabled = false;
             this.comboEchipa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEchipa.FormattingEnabled = true;
             this.comboEchipa.Location = new System.Drawing.Point(670, 372);
             this.comboEchipa.Name = "comboEchipa";
-            this.comboEchipa.Size = new System.Drawing.Size(155, 28);
+            this.comboEchipa.Size = new System.Drawing.Size(240, 28);
             this.comboEchipa.TabIndex = 77;
             // 
             // dtpDataAngajare
@@ -634,7 +637,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
-            this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.ClientSize = new System.Drawing.Size(1232, 700);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtFindByName);
             this.Controls.Add(this.btnReset);
