@@ -62,7 +62,7 @@ namespace MAINPROJ
 
             List<Angajat> listaAngajati2 = JsonConvert.DeserializeObject<List<Angajat>>(response4Body);
             var bindingSourceAngajat = new BindingSource();
-            bindingSourceAngajat.DataSource = listaAngajati2;
+            bindingSourceAngajat.DataSource = listaAngajati2.Where(x=> x.Id!=angajatId);
             cmbInlocuitor.DataSource = bindingSourceAngajat;
             cmbInlocuitor.ValueMember = "Id";
             cmbInlocuitor.DisplayMember = "Nume";
