@@ -20,6 +20,8 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using RandomProj.Models;
 using System.Net.Mail;
+using System.Web.UI.WebControls;
+using Login = RandomProj.Models.Login;
 
 namespace MAINPROJ
 {
@@ -269,11 +271,31 @@ namespace MAINPROJ
                         response2.EnsureSuccessStatusCode();
                         string responseBody2 = await response2.Content.ReadAsStringAsync();
                         List<Login> listaParole2 = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                        int angajatId = (int)listaParole2[0].AngajatId;
-                        this.Hide();
-                        var otherform = new HomePage(angajatId);
-                        otherform.Closed += (s, args) => this.Close();
-                        otherform.Show();
+                        if (!listaParole2[0].AngajatId.HasValue)
+                        {
+
+                            HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
+                            newresponse.EnsureSuccessStatusCode();
+                            string responseBody3 = await newresponse.Content.ReadAsStringAsync();
+                            List<Login> listaParole3 = JsonConvert.DeserializeObject<List<Login>>(responseBody3);
+                            int IdLogin = listaParole3[0].Id;
+                            string[] myArray = logmail.Text.Split('.');
+                            Console.WriteLine(myArray[0]);
+                            Console.WriteLine(myArray[1].Split('@')[0]);
+                            this.Hide();
+                            var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
+                            otherform.Closed += (s, args) => this.Close();
+                            otherform.Show();
+                        }
+                        else
+                        {
+                            int angajatId = (int)listaParole2[0].AngajatId;
+                            this.Hide();
+                            var otherform = new HomePage(angajatId);
+                            otherform.Closed += (s, args) => this.Close();
+                            otherform.Show();
+                        }
+                        
                     }
 
                 }
