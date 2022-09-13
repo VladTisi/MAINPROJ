@@ -168,6 +168,7 @@ namespace MAINPROJ
                 {
                     txtComentarii.Text = "Niciun comentariu";
                 }
+
                 HttpResponseMessage response = await Common.client.PostAsync(url+$"CerereConcediu/InsertConcediu?TipConcediuId={cmbTipConcediu.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}&comentarii={txtComentarii.Text}&angajatId={angajatId}&inlocuitorId={cmbInlocuitor.SelectedValue}",null);
                 txtComentarii.Text = "";
             }
