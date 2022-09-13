@@ -319,65 +319,69 @@ namespace MAINPROJ
 
         private async void btnAdaugare_Click(object sender, EventArgs e)
         {
-            string email = $"{txtNume.Text}.{txtPrenume.Text}@totalsoft.ro";
-            string generated_pass = Membership.GeneratePassword(8, 0);
-            Console.WriteLine(generated_pass);
-            Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
-            await Common.client.PostAsync(url+$"RegisterPage/InsertLogin?email={email}&parola={Encrypt(generated_pass)}",null);
-            HttpResponseMessage response = await Common.client.GetAsync(url+$"RegisterPage/GetIdLogin?email={email}");
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Login> ids = JsonConvert.DeserializeObject<List<Login>>(responseBody);
-            int loginid = ids[0].Id;
-            Console.WriteLine($"userid is {loginid}");
-
-
-
-            bool cnpvalid = true;
-            bool serievalida = true;
-            bool nrtelefon = true;
-            bool nrbuletin = true;
-            if (validareCNP(txtCNP.Text) == 0)
+            if (!String.IsNullOrEmpty(txtNume.Text)&&!String.IsNullOrEmpty(txtPrenume.Text))
             {
-                MessageBox.Show("CNP Invalid");
-                cnpvalid = false;
-                txtCNP.Text = "";
-            }
-            if (validareSerieBuletin(txtSerie.Text) == 0)
-            {
-                MessageBox.Show("Serie Invalida");
-                serievalida = false;
-                txtSerie.Text = "";
-            }
-            if (validareNrTelefon(txtTelefon.Text) == 0)
-            {
-                MessageBox.Show("Numar telefon Invalid");
-                nrtelefon = false;
-                txtTelefon.Text = "";
-            }
-            if (validareNrBuletin(txtNrBuletin.Text) == 0)
-            {
-                MessageBox.Show("Numar buletin invalid");
-                nrbuletin = false;
-                txtNrBuletin.Text = "";
-            }
-            if (nrbuletin && nrtelefon && serievalida && cnpvalid)
-            {
-               
-                HttpResponseMessage insertAngajat = await Common.client.PostAsync(url+$"RegisterPage/InsertAccount?nume={txtNume.Text}&prenume={txtPrenume.Text}&loginid={loginid}&data_angajarii={dtpDataAngajarii.Value}&data_nasterii={dtpDataNasterii.Value}&CNP={txtCNP.Text}&Serie={txtSerie.Text}&NrBuletin={txtNrBuletin.Text}&NumarTelefon={txtTelefon.Text}&esteAdmin=false&Sex={cmbSex.Text}&salariu=0&overtime=0&IdFunctie={cmbNumeFunctie.SelectedValue}&IdEchipa={cmbNumeEchipa.SelectedValue}", null);
-                insertAngajat.EnsureSuccessStatusCode();
-                int angajatid = 0;
-                HttpResponseMessage response2 = await Common.client.GetAsync(url+$"RegisterPage/GetAngajatIdFromLoginId?loginid={loginid}");
-                response2.EnsureSuccessStatusCode();
-                string responseBody2 = await response2.Content.ReadAsStringAsync();
-                List<Login> listaid = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                angajatid=listaid[0].Id;
+                string email = $"{txtNume.Text}.{txtPrenume.Text}@totalsoft.ro";
+                string generated_pass = Membership.GeneratePassword(8, 0);
+                Console.WriteLine(generated_pass);
+                Class1.sendMail("Parola temporara", $"Parola dumneavoasta temporara este: {generated_pass}", email);
+                await Common.client.PostAsync(url+$"RegisterPage/InsertLogin?email={email}&parola={Encrypt(generated_pass)}", null);
+                HttpResponseMessage response = await Common.client.GetAsync(url+$"RegisterPage/GetIdLogin?email={email}");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                List<Login> ids = JsonConvert.DeserializeObject<List<Login>>(responseBody);
+                int loginid = ids[0].Id;
+                Console.WriteLine($"userid is {loginid}");
 
 
-                await Common.client.PostAsync(url+$"RegisterPage/UpdateAngajatId?id={loginid}&angajatid={angajatid}",null);
 
-                MessageBox.Show("Profilul tau a fost creat!");
+                bool cnpvalid = true;
+                bool serievalida = true;
+                bool nrtelefon = true;
+                bool nrbuletin = true;
+                if (validareCNP(txtCNP.Text) == 0)
+                {
+                    MessageBox.Show("CNP Invalid");
+                    cnpvalid = false;
+                    txtCNP.Text = "";
+                }
+                if (validareSerieBuletin(txtSerie.Text) == 0)
+                {
+                    MessageBox.Show("Serie Invalida");
+                    serievalida = false;
+                    txtSerie.Text = "";
+                }
+                if (validareNrTelefon(txtTelefon.Text) == 0)
+                {
+                    MessageBox.Show("Numar telefon Invalid");
+                    nrtelefon = false;
+                    txtTelefon.Text = "";
+                }
+                if (validareNrBuletin(txtNrBuletin.Text) == 0)
+                {
+                    MessageBox.Show("Numar buletin invalid");
+                    nrbuletin = false;
+                    txtNrBuletin.Text = "";
+                }
+                if (nrbuletin && nrtelefon && serievalida && cnpvalid)
+                {
+
+                    HttpResponseMessage insertAngajat = await Common.client.PostAsync(url+$"RegisterPage/InsertAccount?nume={txtNume.Text}&prenume={txtPrenume.Text}&loginid={loginid}&data_angajarii={dtpDataAngajarii.Value}&data_nasterii={dtpDataNasterii.Value}&CNP={txtCNP.Text}&Serie={txtSerie.Text}&NrBuletin={txtNrBuletin.Text}&NumarTelefon={txtTelefon.Text}&esteAdmin=false&Sex={cmbSex.Text}&salariu=0&overtime=0&IdFunctie={cmbNumeFunctie.SelectedValue}&IdEchipa={cmbNumeEchipa.SelectedValue}", null);
+                    insertAngajat.EnsureSuccessStatusCode();
+                    int angajatid = 0;
+                    HttpResponseMessage response2 = await Common.client.GetAsync(url+$"RegisterPage/GetAngajatIdFromLoginId?loginid={loginid}");
+                    response2.EnsureSuccessStatusCode();
+                    string responseBody2 = await response2.Content.ReadAsStringAsync();
+                    List<Login> listaid = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                    angajatid=listaid[0].Id;
+
+
+                    await Common.client.PostAsync(url+$"RegisterPage/UpdateAngajatId?id={loginid}&angajatid={angajatid}", null);
+
+                    MessageBox.Show("Profilul tau a fost creat!");
+                }
             }
+            
 
 
 
