@@ -470,21 +470,21 @@ namespace MAINPROJ
 
         }
 
-        private void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void tabelConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
 
-                int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
+            int selectedrowindex = tabelConcedii.SelectedCells[0].RowIndex;
 
-                DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
+            DataGridViewRow selectedRow = tabelConcedii.Rows[selectedrowindex];
 
-                ValCelula = Convert.ToString(selectedRow.Cells["Id"].Value);
+            ValCelula = Convert.ToString(selectedRow.Cells["Id"].Value);
 
-                Console.WriteLine(ValCelula);
-
-                
-
-            
+            Console.WriteLine(ValCelula);
+            HttpResponseMessage response = await Common.client.GetAsync(local + $"GestionareConcedii/GetComentariu?concediuId={ValCelula}");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            MessageBox.Show(responseBody);
         }
 
         private void btnLogOut_Click_1(object sender, EventArgs e)
