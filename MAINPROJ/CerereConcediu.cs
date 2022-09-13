@@ -162,10 +162,12 @@ namespace MAINPROJ
                 MessageBox.Show("Cerere de concediu adaugata!");
                 HttpResponseMessage response = await Common.client.PostAsync(url+$"CerereConcediu/InsertConcediu?TipConcediuId={cmbTipConcediu.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}&angajatId={angajatId}&inlocuitorId={cmbInlocuitor.SelectedValue}",null);
             }
+
             else
             {
-                MessageBox.Show("Exista deja o cerere de concediu aprobata in acea perioada");
+                MessageBox.Show("Exista deja o cerere de concediu pentru acea perioada");
             }
+
             dtpDataIncepere.Value=DateTime.Now.AddDays(1);
             dtpDataSfarsit.Value=dtpDataIncepere.Value.AddDays(1);
             Console.WriteLine(nr);
