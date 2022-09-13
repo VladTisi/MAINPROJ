@@ -456,7 +456,15 @@ namespace MAINPROJ
            
         }
 
-        
+        private void autpass_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Parola va contine:\n 8 caractere\n Cel putin o cifra \n Cel putin o litera mare \n Cel putin un caracter special");
+        }
+
+        private void autemail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

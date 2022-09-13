@@ -181,6 +181,7 @@
             this.autemail.Name = "autemail";
             this.autemail.Size = new System.Drawing.Size(135, 20);
             this.autemail.TabIndex = 10;
+            this.autemail.Click += new System.EventHandler(this.autemail_Click);
             // 
             // label4
             // 
@@ -211,6 +212,7 @@
             this.autpass.PasswordChar = '*';
             this.autpass.Size = new System.Drawing.Size(135, 20);
             this.autpass.TabIndex = 13;
+            this.autpass.Click += new System.EventHandler(this.autpass_Click);
             // 
             // label6
             // 
