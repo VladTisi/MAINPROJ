@@ -156,11 +156,15 @@ namespace MAINPROJ
 
             else if (!Convert.ToBoolean(responseBody16))
                 MessageBox.Show("Inlocuitorul ales are concediu in acea perioada");
-
             else if (Convert.ToBoolean(responseBody15))
             {
                 MessageBox.Show("Cerere de concediu adaugata!");
-                HttpResponseMessage response = await Common.client.PostAsync(url+$"CerereConcediu/InsertConcediu?TipConcediuId={cmbTipConcediu.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}&angajatId={angajatId}&inlocuitorId={cmbInlocuitor.SelectedValue}",null);
+                if(String.IsNullOrEmpty(txtComentarii.Text))
+                {
+                    txtComentarii.Text = "Niciun comentariu";
+                }
+                HttpResponseMessage response = await Common.client.PostAsync(url+$"CerereConcediu/InsertConcediu?TipConcediuId={cmbTipConcediu.SelectedValue}&Inceput={dtpDataIncepere.Value}&Sfarsit={dtpDataSfarsit.Value}&comentarii={txtComentarii.Text}&angajatId={angajatId}&inlocuitorId={cmbInlocuitor.SelectedValue}",null);
+                txtComentarii.Text = "";
             }
 
             else

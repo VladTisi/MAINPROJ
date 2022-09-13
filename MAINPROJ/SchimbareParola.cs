@@ -128,9 +128,8 @@ namespace MAINPROJ
                 MessageBox.Show("Parola incorecta!");
                 return;
             }
+          
 
-     
-            
 
             if (validatePassword(txtParolaNoua.Text, txtConfirm.Text) == 1)
             {
@@ -145,6 +144,10 @@ namespace MAINPROJ
                 var otherform = new HomePage(angajatId);
                 otherform.Closed += (s, args) => this.Close();
                 otherform.Show();
+            }
+            else
+            {
+                MessageBox.Show("Parola invalida");
             }
 
                      
@@ -166,6 +169,22 @@ namespace MAINPROJ
         private void txtParolaNoua_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxParola_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxParola.Checked)
+            {
+                txtConfirm.PasswordChar = '\0';
+                txtParolaNoua.PasswordChar = '\0';
+                txtParolaVeche.PasswordChar = '\0';
+            }
+            else
+            {
+                txtConfirm.PasswordChar = '*';
+                txtParolaNoua.PasswordChar = '*';
+                txtParolaVeche.PasswordChar = '*';
+            }
         }
     }
 }

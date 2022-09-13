@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Salvare = new System.Windows.Forms.Button();
             this.Renunta = new System.Windows.Forms.Button();
+            this.checkBoxParola = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +55,7 @@
             this.txtParolaVeche.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtParolaVeche.Location = new System.Drawing.Point(273, 30);
             this.txtParolaVeche.Name = "txtParolaVeche";
+            this.txtParolaVeche.PasswordChar = '*';
             this.txtParolaVeche.Size = new System.Drawing.Size(185, 22);
             this.txtParolaVeche.TabIndex = 2;
             // 
@@ -132,12 +134,26 @@
             this.Renunta.UseVisualStyleBackColor = false;
             this.Renunta.Click += new System.EventHandler(this.Renunta_Click);
             // 
+            // checkBoxParola
+            // 
+            this.checkBoxParola.AutoSize = true;
+            this.checkBoxParola.BackColor = System.Drawing.Color.White;
+            this.checkBoxParola.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxParola.Location = new System.Drawing.Point(40, 176);
+            this.checkBoxParola.Name = "checkBoxParola";
+            this.checkBoxParola.Size = new System.Drawing.Size(90, 17);
+            this.checkBoxParola.TabIndex = 10;
+            this.checkBoxParola.Text = "Afisare parola";
+            this.checkBoxParola.UseVisualStyleBackColor = false;
+            this.checkBoxParola.CheckedChanged += new System.EventHandler(this.checkBoxParola_CheckedChanged);
+            // 
             // SchimbareParola
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.reback;
             this.ClientSize = new System.Drawing.Size(496, 211);
+            this.Controls.Add(this.checkBoxParola);
             this.Controls.Add(this.Renunta);
             this.Controls.Add(this.Salvare);
             this.Controls.Add(this.label3);
@@ -168,5 +184,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Salvare;
         private System.Windows.Forms.Button Renunta;
+        private System.Windows.Forms.CheckBox checkBoxParola;
     }
 }

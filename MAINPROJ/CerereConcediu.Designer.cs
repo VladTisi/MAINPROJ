@@ -72,6 +72,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtComentarii = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipConcediuBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -110,18 +112,18 @@
             // 
             // dtpDataIncepere
             // 
-            this.dtpDataIncepere.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataIncepere.Location = new System.Drawing.Point(642, 255);
+            this.dtpDataIncepere.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataIncepere.Location = new System.Drawing.Point(642, 171);
             this.dtpDataIncepere.Name = "dtpDataIncepere";
-            this.dtpDataIncepere.Size = new System.Drawing.Size(315, 26);
+            this.dtpDataIncepere.Size = new System.Drawing.Size(315, 25);
             this.dtpDataIncepere.TabIndex = 2;
             // 
             // dtpDataSfarsit
             // 
-            this.dtpDataSfarsit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataSfarsit.Location = new System.Drawing.Point(642, 319);
+            this.dtpDataSfarsit.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataSfarsit.Location = new System.Drawing.Point(642, 235);
             this.dtpDataSfarsit.Name = "dtpDataSfarsit";
-            this.dtpDataSfarsit.Size = new System.Drawing.Size(315, 26);
+            this.dtpDataSfarsit.Size = new System.Drawing.Size(315, 25);
             this.dtpDataSfarsit.TabIndex = 3;
             this.dtpDataSfarsit.ValueChanged += new System.EventHandler(this.dtpDataSfarsit_ValueChanged);
             // 
@@ -130,7 +132,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(396, 259);
+            this.label1.Location = new System.Drawing.Point(396, 175);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(187, 20);
             this.label1.TabIndex = 4;
@@ -141,7 +143,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(396, 325);
+            this.label2.Location = new System.Drawing.Point(396, 241);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(187, 20);
             this.label2.TabIndex = 5;
@@ -151,11 +153,11 @@
             // 
             this.cmbTipConcediu.DataSource = this.tipConcediuBindingSource1;
             this.cmbTipConcediu.DisplayMember = "Nume";
-            this.cmbTipConcediu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipConcediu.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipConcediu.FormattingEnabled = true;
-            this.cmbTipConcediu.Location = new System.Drawing.Point(642, 386);
+            this.cmbTipConcediu.Location = new System.Drawing.Point(642, 302);
             this.cmbTipConcediu.Name = "cmbTipConcediu";
-            this.cmbTipConcediu.Size = new System.Drawing.Size(315, 28);
+            this.cmbTipConcediu.Size = new System.Drawing.Size(315, 26);
             this.cmbTipConcediu.TabIndex = 6;
             this.cmbTipConcediu.ValueMember = "Id";
             // 
@@ -179,7 +181,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(396, 391);
+            this.label3.Location = new System.Drawing.Point(396, 307);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 23);
             this.label3.TabIndex = 7;
@@ -431,7 +433,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(396, 463);
+            this.label6.Location = new System.Drawing.Point(396, 379);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 23);
             this.label6.TabIndex = 12;
@@ -439,11 +441,11 @@
             // 
             // cmbInlocuitor
             // 
-            this.cmbInlocuitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbInlocuitor.Font = new System.Drawing.Font("Stencil", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbInlocuitor.FormattingEnabled = true;
-            this.cmbInlocuitor.Location = new System.Drawing.Point(642, 458);
+            this.cmbInlocuitor.Location = new System.Drawing.Point(642, 374);
             this.cmbInlocuitor.Name = "cmbInlocuitor";
-            this.cmbInlocuitor.Size = new System.Drawing.Size(315, 28);
+            this.cmbInlocuitor.Size = new System.Drawing.Size(315, 26);
             this.cmbInlocuitor.TabIndex = 13;
             this.cmbInlocuitor.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.ComboBoxFormat);
             // 
@@ -525,6 +527,26 @@
             this.label13.TabIndex = 20;
             this.label13.Text = "1";
             // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Stencil", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Snow;
+            this.label14.Location = new System.Drawing.Point(396, 440);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(146, 23);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "comentarii";
+            // 
+            // txtComentarii
+            // 
+            this.txtComentarii.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComentarii.Location = new System.Drawing.Point(642, 440);
+            this.txtComentarii.Name = "txtComentarii";
+            this.txtComentarii.Size = new System.Drawing.Size(315, 96);
+            this.txtComentarii.TabIndex = 22;
+            this.txtComentarii.Text = "";
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,6 +554,8 @@
             this.BackgroundImage = global::MAINPROJ.Properties.Resources.Back_1200x700;
             this.ClientSize = new System.Drawing.Size(1200, 700);
             this.ControlBox = false;
+            this.Controls.Add(this.txtComentarii);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -623,5 +647,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.RichTextBox txtComentarii;
     }
 }

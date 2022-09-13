@@ -155,45 +155,51 @@ namespace MAINPROJ
                 MessageBox.Show("Exista deja un cont cu acest email!");
                 autemail.Text="";
 
-            }
 
-            if (passvalid == 1 && emailvalid == 1 && (await checkIfEmailExists())==1)
+            }
+            else
             {
-                Random r = new Random();
-                string email = autemail.Text;
 
-                int x = r.Next(100000, 999999);
-                Console.WriteLine(x);
-                Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat inregistrarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
-                String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
-                if (Convert.ToInt32(codstring)==x)
+                if (passvalid == 1 && emailvalid == 1 && (await checkIfEmailExists())==1)
                 {
-                    HttpResponseMessage response = await Common.client.PostAsync(url+$"api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}", null);
+                    Random r = new Random();
+                    string email = autemail.Text;
+
+                    int x = r.Next(100000, 999999);
+                    Console.WriteLine(x);
+                    Class1.sendMail("Mail de confirmare a identitatii", $"Ati solicitat inregistrarea. Introduceti codul:{x}. Daca nu ati fost dumneavoastra, ignorati acest mail. ", email);
+                    String codstring = Interaction.InputBox("Introduceti codul de validare primit pe email", "Cod de validare", "000000");
+                    if (Convert.ToInt32(codstring)==x)
+                    {
+                        HttpResponseMessage response = await Common.client.PostAsync(url+$"api/LogAuten/InsertLogin?email={autemail.Text}&password={Encrypt(autpass.Text)}", null);
 
 
-                    MessageBox.Show("Contul tau a fost creat!");
-                    string[] myArray = autemail.Text.Split('.');
-                    Console.WriteLine(myArray[0]);
-                    Console.WriteLine(myArray[1].Split('@')[0]);
+                        MessageBox.Show("Contul tau a fost creat!");
+                        string[] myArray = autemail.Text.Split('.');
+                        Console.WriteLine(myArray[0]);
+                        Console.WriteLine(myArray[1].Split('@')[0]);
 
 
-                    HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
-                    newresponse.EnsureSuccessStatusCode();
-                    string responseBody2 = await newresponse.Content.ReadAsStringAsync();
-                    List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
-                    int IdLogin = listaParole[0].Id;
-                    autemail.Text="";
-                    autpass.Text="";
-                    conpass.Text="";
-                    this.Hide();
-                    var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
-                    otherform.Closed += (s, args) => this.Close();
-                    otherform.Show();
+                        HttpResponseMessage newresponse = await Common.client.GetAsync(url+$"api/LogAuten/GetIdFromEmail?email={email}");
+                        newresponse.EnsureSuccessStatusCode();
+                        string responseBody2 = await newresponse.Content.ReadAsStringAsync();
+                        List<Login> listaParole = JsonConvert.DeserializeObject<List<Login>>(responseBody2);
+                        int IdLogin = listaParole[0].Id;
+                        autemail.Text="";
+                        autpass.Text="";
+                        conpass.Text="";
+                        this.Hide();
+                        var otherform = new RegisterPage(IdLogin, myArray[0], myArray[1].Split('@')[0], false, false, 0);
+                        otherform.Closed += (s, args) => this.Close();
+                        otherform.Show();
+                    }
+
+
+
                 }
-                    
-
-                
             }
+
+
 
 
 
