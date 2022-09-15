@@ -427,6 +427,17 @@ namespace MAINPROJ
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+            char[] s = SearchBox.Text.ToCharArray();
+            for(int i=0;i<s.Length;i++)
+            {
+                if (Char.IsLetter(s[i]) == false)
+                {
+                    MessageBox.Show("Se pot introduce doar litere");
+                    SearchBox.Text = "";
+                    return;
+                }
+                    
+            }
             DataView dv = dt.DefaultView;
             dv.RowFilter = "Nume LIKE '" + SearchBox.Text + "%'";
             tabelConcedii.DataSource = dv;
