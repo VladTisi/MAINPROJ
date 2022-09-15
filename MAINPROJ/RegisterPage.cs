@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PagedList;
 using RandomProj;
 using RandomProj.Models;
 using System;
@@ -173,14 +174,45 @@ namespace MAINPROJ
             }
             string luna = CNP.Substring(3, 2);
             string zi = CNP.Substring(5, 2);
-
+            
 
             if (Convert.ToInt32(luna)>12||Convert.ToInt32(zi)>31)
             {
                 return 0;
             }
+            string an="";
+            string firstpart = CNP.Substring(0,1);
+            if (firstpart=="5"||firstpart=="6")
+            {
+                an = "20"+CNP.Substring(1,2);
+            }
+            if (firstpart=="1"||firstpart=="2")
+            {
+                an= "19"+CNP.Substring(1, 2);
+            }
+            if (firstpart=="3"||firstpart=="4")
+            {
+                an= "18"+CNP.Substring(1, 2);
+            }
+            bool bisect = false;
+            if ((Convert.ToInt32(an) % 400) == 0)
+                bisect=true;
+            //Console.WriteLine("{0} is a leap year.\n", Convert.ToInt32(an));
+            else if ((Convert.ToInt32(an) % 100) == 0)
+                bisect = false;
+            //Console.WriteLine("{0} is not a leap year.\n", Convert.ToInt32(an));
+            else if ((Convert.ToInt32(an) % 4) == 0)
+                bisect=true;
+                //Console.WriteLine("{0} is a leap year.\n", Convert.ToInt32(an));
+            else
+                bisect = false;
+                //Console.WriteLine("{0} is not a leap year.\n", Convert.ToInt32(an));
 
-            if (Convert.ToInt32(luna)==2&&Convert.ToInt32(zi)>28)
+            if ((Convert.ToInt32(luna)==2&&Convert.ToInt32(zi)>28 && !bisect))
+            {
+                return 0;
+            }
+            if (( Convert.ToInt32(luna)==2&&Convert.ToInt32(zi)>29&&bisect))
             {
                 return 0;
             }
@@ -368,11 +400,41 @@ namespace MAINPROJ
             }
             return encryptString;
         }
+        private int validateNume(string nume)
+        {
+            int myLength = nume.Split(' ')[0].Length;
+            char[] myArray = nume.ToCharArray();
+            for (int i = 0; i<myArray.Length; i++)
+            {
+                if (!Char.IsLetter(myArray[i]))
+                {
+                    return 0;
+                }
+            }
 
+            return 1;
+        }
+        private int validatePrenume(string nume)
+        {
+            char[] myArray = nume.ToCharArray();
+            for (int i = 0; i<myArray.Length; i++)
+            {
+                if (!Char.IsLetter(myArray[i]))
+                {
+                    return 0;
+                }
+            }
+            return 1;
+        }
         private async void btnAdaugare_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtNume.Text)&&!String.IsNullOrEmpty(txtPrenume.Text))
             {
+                txtNume.Text=txtNume.Text.TrimStart();
+                txtPrenume.Text=txtPrenume.Text.TrimStart();
+                txtNume.Text=txtNume.Text.TrimEnd();
+                txtPrenume.Text=txtPrenume.Text.TrimEnd();
+
                 string email = $"{txtNume.Text}.{txtPrenume.Text}@totalsoft.ro";
                 string generated_pass = Membership.GeneratePassword(8, 0);
                 Console.WriteLine(generated_pass);
@@ -386,7 +448,8 @@ namespace MAINPROJ
                 Console.WriteLine($"userid is {loginid}");
 
 
-
+                bool numevalid = true;
+                bool prenumevalid = true;
                 bool cnpvalid = true;
                 bool serievalida = true;
                 bool nrtelefon = true;
@@ -396,6 +459,18 @@ namespace MAINPROJ
                     MessageBox.Show("CNP Invalid");
                     cnpvalid = false;
                     txtCNP.Text = "";
+                }
+                if (validateNume(txtNume.Text) == 0)
+                {
+                    MessageBox.Show("Nume Invalid");
+                    numevalid = false;
+                    txtNume.Text = "";
+                }
+                if (validatePrenume(txtPrenume.Text) == 0)
+                {
+                    MessageBox.Show("Prenume Invalid");
+                    prenumevalid = false;
+                    txtPrenume.Text = "";
                 }
                 if (validareSerieBuletin(txtSerie.Text) == 0)
                 {
@@ -415,7 +490,7 @@ namespace MAINPROJ
                     nrbuletin = false;
                     txtNrBuletin.Text = "";
                 }
-                if (nrbuletin && nrtelefon && serievalida && cnpvalid)
+                if (nrbuletin && nrtelefon && serievalida && cnpvalid&&numevalid&&prenumevalid)
                 {
 
                     HttpResponseMessage insertAngajat = await Common.client.PostAsync(url+$"RegisterPage/InsertAccount?nume={txtNume.Text}&prenume={txtPrenume.Text}&loginid={loginid}&data_angajarii={dtpDataAngajarii.Value}&data_nasterii={dtpDataNasterii.Value}&CNP={txtCNP.Text}&Serie={txtSerie.Text}&NrBuletin={txtNrBuletin.Text}&NumarTelefon={txtTelefon.Text}&esteAdmin=false&Sex={cmbSex.Text}&salariu=0&overtime=0&IdFunctie={cmbNumeFunctie.SelectedValue}&IdEchipa={cmbNumeEchipa.SelectedValue}", null);
